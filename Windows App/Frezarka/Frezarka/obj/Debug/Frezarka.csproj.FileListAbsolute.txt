@@ -1,0 +1,10 @@
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe.config
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.pdb
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csprojResolveAssemblyReference.cache
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Form1.resources
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Properties.Resources.resources
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.GenerateResource.cache
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.CoreCompileInputs.cache
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.exe
+C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.pdb
