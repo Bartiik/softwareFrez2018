@@ -16,5 +16,23 @@ namespace Frezarka
         {
             InitializeComponent();
         }
+
+        private void ManualControlXYMouseHoverEvent(object sender, EventArgs e)
+        {
+            XYChangeText.Text = ((Button)sender).Tag.ToString();
+        }
+        private void ManualControlZMouseHoverEvent(object sender, EventArgs e)
+        {
+            ZChangeText.Text = ((Button)sender).Tag.ToString();
+        }
+        private void ManualControlXYZMouseLeaveEvent(object sender, EventArgs e)
+        {
+            ZChangeText.Text = "";
+            XYChangeText.Text = "";
+        }
     }
+
+
+
+
 }

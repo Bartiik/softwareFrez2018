@@ -8,3 +8,13 @@ C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\D
 C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.CoreCompileInputs.cache
 C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.exe
 C:\Users\Bartek\Documents\GitKraken\Frezarka\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.pdb
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe.config
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.pdb
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csprojResolveAssemblyReference.cache
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Form1.resources
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Properties.Resources.resources
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.GenerateResource.cache
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.CoreCompileInputs.cache
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.exe
+D:\ProjectsGITHUB\MańkaNator GitHub\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.pdb
