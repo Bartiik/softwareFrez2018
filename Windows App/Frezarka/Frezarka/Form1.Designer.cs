@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -76,6 +77,7 @@
             this.TableFlipButton = new System.Windows.Forms.Button();
             this.XYChangeText = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.MoveQueueDown = new System.Windows.Forms.Button();
             this.MoveQueueUp = new System.Windows.Forms.Button();
             this.AddCommandToQueue = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -90,6 +92,7 @@
             this.OpenedGCodesList = new System.Windows.Forms.ListBox();
             this.GCodeBrowseButton = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.CommandSendButton = new System.Windows.Forms.Button();
             this.customGText = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.CommunicationBox = new System.Windows.Forms.ListBox();
@@ -108,7 +111,8 @@
             this.BeginButton = new System.Windows.Forms.Button();
             this.HardStopButton = new System.Windows.Forms.Button();
             this.PortListCombo = new System.Windows.Forms.ComboBox();
-            this.MoveQueueDown = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -128,8 +132,10 @@
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(88, 23);
             this.ConnectButton.TabIndex = 0;
+            this.ConnectButton.Tag = "0";
             this.ConnectButton.Text = "Open Port";
             this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +184,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 235);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 241);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // groupBox6
@@ -228,7 +234,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(599, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(394, 229);
+            this.groupBox6.Size = new System.Drawing.Size(394, 235);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control";
@@ -240,9 +246,13 @@
             this.SpeedText.Name = "SpeedText";
             this.SpeedText.Size = new System.Drawing.Size(60, 20);
             this.SpeedText.TabIndex = 88;
+            this.SpeedText.Text = "0";
+            this.SpeedText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpeedText.TextChanged += new System.EventHandler(this.SpeedText_TextChanged);
             // 
             // SetSpeedButton
             // 
+            this.SetSpeedButton.Enabled = false;
             this.SetSpeedButton.Location = new System.Drawing.Point(325, 189);
             this.SetSpeedButton.Name = "SetSpeedButton";
             this.SetSpeedButton.Size = new System.Drawing.Size(60, 23);
@@ -261,11 +271,14 @@
             // 
             // SpeedBar
             // 
+            this.SpeedBar.Enabled = false;
             this.SpeedBar.Location = new System.Drawing.Point(332, 66);
+            this.SpeedBar.Maximum = 255;
             this.SpeedBar.Name = "SpeedBar";
             this.SpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.SpeedBar.Size = new System.Drawing.Size(45, 104);
             this.SpeedBar.TabIndex = 0;
+            this.SpeedBar.Scroll += new System.EventHandler(this.SpeedBar_Scroll);
             // 
             // label7
             // 
@@ -278,6 +291,7 @@
             // 
             // HomeY
             // 
+            this.HomeY.Enabled = false;
             this.HomeY.Location = new System.Drawing.Point(80, 39);
             this.HomeY.Name = "HomeY";
             this.HomeY.Size = new System.Drawing.Size(58, 24);
@@ -295,6 +309,7 @@
             this.ZPosText.Name = "ZPosText";
             this.ZPosText.Size = new System.Drawing.Size(58, 20);
             this.ZPosText.TabIndex = 89;
+            this.ZPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -307,6 +322,7 @@
             // 
             // HomeX
             // 
+            this.HomeX.Enabled = false;
             this.HomeX.Location = new System.Drawing.Point(80, 11);
             this.HomeX.Name = "HomeX";
             this.HomeX.Size = new System.Drawing.Size(58, 25);
@@ -324,9 +340,11 @@
             this.YPosText.Name = "YPosText";
             this.YPosText.Size = new System.Drawing.Size(58, 20);
             this.YPosText.TabIndex = 88;
+            this.YPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // HomeZ
             // 
+            this.HomeZ.Enabled = false;
             this.HomeZ.Location = new System.Drawing.Point(80, 66);
             this.HomeZ.Name = "HomeZ";
             this.HomeZ.Size = new System.Drawing.Size(58, 25);
@@ -344,9 +362,11 @@
             this.XPosText.Name = "XPosText";
             this.XPosText.Size = new System.Drawing.Size(58, 20);
             this.XPosText.TabIndex = 87;
+            this.XPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // X4minus
             // 
+            this.X4minus.Enabled = false;
             this.X4minus.Location = new System.Drawing.Point(159, 87);
             this.X4minus.Name = "X4minus";
             this.X4minus.Size = new System.Drawing.Size(20, 60);
@@ -368,6 +388,7 @@
             // 
             // X4plus
             // 
+            this.X4plus.Enabled = false;
             this.X4plus.Location = new System.Drawing.Point(237, 87);
             this.X4plus.Name = "X4plus";
             this.X4plus.Size = new System.Drawing.Size(20, 60);
@@ -380,6 +401,7 @@
             // 
             // Z4plus
             // 
+            this.Z4plus.Enabled = false;
             this.Z4plus.Location = new System.Drawing.Point(6, 81);
             this.Z4plus.Name = "Z4plus";
             this.Z4plus.Size = new System.Drawing.Size(60, 20);
@@ -392,6 +414,7 @@
             // 
             // X3plus
             // 
+            this.X3plus.Enabled = false;
             this.X3plus.Location = new System.Drawing.Point(255, 93);
             this.X3plus.Name = "X3plus";
             this.X3plus.Size = new System.Drawing.Size(20, 48);
@@ -404,6 +427,7 @@
             // 
             // X3minus
             // 
+            this.X3minus.Enabled = false;
             this.X3minus.Location = new System.Drawing.Point(140, 93);
             this.X3minus.Name = "X3minus";
             this.X3minus.Size = new System.Drawing.Size(20, 48);
@@ -416,6 +440,7 @@
             // 
             // Z3plus
             // 
+            this.Z3plus.Enabled = false;
             this.Z3plus.Location = new System.Drawing.Point(12, 62);
             this.Z3plus.Name = "Z3plus";
             this.Z3plus.Size = new System.Drawing.Size(48, 20);
@@ -428,6 +453,7 @@
             // 
             // X1minus
             // 
+            this.X1minus.Enabled = false;
             this.X1minus.Location = new System.Drawing.Point(102, 104);
             this.X1minus.Name = "X1minus";
             this.X1minus.Size = new System.Drawing.Size(20, 26);
@@ -440,6 +466,7 @@
             // 
             // X2plus
             // 
+            this.X2plus.Enabled = false;
             this.X2plus.Location = new System.Drawing.Point(274, 99);
             this.X2plus.Name = "X2plus";
             this.X2plus.Size = new System.Drawing.Size(20, 36);
@@ -452,6 +479,7 @@
             // 
             // X2minus
             // 
+            this.X2minus.Enabled = false;
             this.X2minus.Location = new System.Drawing.Point(121, 99);
             this.X2minus.Name = "X2minus";
             this.X2minus.Size = new System.Drawing.Size(20, 36);
@@ -464,6 +492,7 @@
             // 
             // Z2plus
             // 
+            this.Z2plus.Enabled = false;
             this.Z2plus.Location = new System.Drawing.Point(18, 43);
             this.Z2plus.Name = "Z2plus";
             this.Z2plus.Size = new System.Drawing.Size(36, 20);
@@ -476,6 +505,7 @@
             // 
             // X1plus
             // 
+            this.X1plus.Enabled = false;
             this.X1plus.Location = new System.Drawing.Point(293, 104);
             this.X1plus.Name = "X1plus";
             this.X1plus.Size = new System.Drawing.Size(20, 26);
@@ -497,6 +527,7 @@
             // 
             // Z1plus
             // 
+            this.Z1plus.Enabled = false;
             this.Z1plus.Location = new System.Drawing.Point(23, 24);
             this.Z1plus.Name = "Z1plus";
             this.Z1plus.Size = new System.Drawing.Size(26, 20);
@@ -509,6 +540,7 @@
             // 
             // Z4minus
             // 
+            this.Z4minus.Enabled = false;
             this.Z4minus.Location = new System.Drawing.Point(6, 133);
             this.Z4minus.Name = "Z4minus";
             this.Z4minus.Size = new System.Drawing.Size(60, 20);
@@ -521,6 +553,7 @@
             // 
             // Z3minus
             // 
+            this.Z3minus.Enabled = false;
             this.Z3minus.Location = new System.Drawing.Point(12, 152);
             this.Z3minus.Name = "Z3minus";
             this.Z3minus.Size = new System.Drawing.Size(48, 20);
@@ -533,6 +566,7 @@
             // 
             // Z2minus
             // 
+            this.Z2minus.Enabled = false;
             this.Z2minus.Location = new System.Drawing.Point(18, 171);
             this.Z2minus.Name = "Z2minus";
             this.Z2minus.Size = new System.Drawing.Size(36, 20);
@@ -545,6 +579,7 @@
             // 
             // Z1minus
             // 
+            this.Z1minus.Enabled = false;
             this.Z1minus.Location = new System.Drawing.Point(23, 190);
             this.Z1minus.Name = "Z1minus";
             this.Z1minus.Size = new System.Drawing.Size(26, 20);
@@ -557,6 +592,7 @@
             // 
             // Y4minus
             // 
+            this.Y4minus.Enabled = false;
             this.Y4minus.Location = new System.Drawing.Point(178, 147);
             this.Y4minus.Name = "Y4minus";
             this.Y4minus.Size = new System.Drawing.Size(60, 20);
@@ -569,6 +605,7 @@
             // 
             // BoardHoldButton
             // 
+            this.BoardHoldButton.Enabled = false;
             this.BoardHoldButton.Location = new System.Drawing.Point(242, 23);
             this.BoardHoldButton.Name = "BoardHoldButton";
             this.BoardHoldButton.Size = new System.Drawing.Size(74, 40);
@@ -578,6 +615,7 @@
             // 
             // Y4plus
             // 
+            this.Y4plus.Enabled = false;
             this.Y4plus.Location = new System.Drawing.Point(178, 68);
             this.Y4plus.Name = "Y4plus";
             this.Y4plus.Size = new System.Drawing.Size(60, 20);
@@ -590,6 +628,7 @@
             // 
             // Y3plus
             // 
+            this.Y3plus.Enabled = false;
             this.Y3plus.Location = new System.Drawing.Point(184, 49);
             this.Y3plus.Name = "Y3plus";
             this.Y3plus.Size = new System.Drawing.Size(48, 20);
@@ -602,6 +641,7 @@
             // 
             // Y3minus
             // 
+            this.Y3minus.Enabled = false;
             this.Y3minus.Location = new System.Drawing.Point(184, 166);
             this.Y3minus.Name = "Y3minus";
             this.Y3minus.Size = new System.Drawing.Size(48, 20);
@@ -614,6 +654,7 @@
             // 
             // HomeAllButton
             // 
+            this.HomeAllButton.Enabled = false;
             this.HomeAllButton.Location = new System.Drawing.Point(178, 87);
             this.HomeAllButton.Name = "HomeAllButton";
             this.HomeAllButton.Size = new System.Drawing.Size(60, 40);
@@ -626,6 +667,7 @@
             // 
             // Y2minus
             // 
+            this.Y2minus.Enabled = false;
             this.Y2minus.Location = new System.Drawing.Point(190, 185);
             this.Y2minus.Name = "Y2minus";
             this.Y2minus.Size = new System.Drawing.Size(36, 20);
@@ -638,6 +680,7 @@
             // 
             // Y2plus
             // 
+            this.Y2plus.Enabled = false;
             this.Y2plus.Location = new System.Drawing.Point(190, 30);
             this.Y2plus.Name = "Y2plus";
             this.Y2plus.Size = new System.Drawing.Size(36, 20);
@@ -650,6 +693,7 @@
             // 
             // Y1minus
             // 
+            this.Y1minus.Enabled = false;
             this.Y1minus.Location = new System.Drawing.Point(195, 204);
             this.Y1minus.Name = "Y1minus";
             this.Y1minus.Size = new System.Drawing.Size(26, 20);
@@ -662,6 +706,7 @@
             // 
             // Y1plus
             // 
+            this.Y1plus.Enabled = false;
             this.Y1plus.Location = new System.Drawing.Point(195, 11);
             this.Y1plus.Name = "Y1plus";
             this.Y1plus.Size = new System.Drawing.Size(26, 20);
@@ -674,6 +719,7 @@
             // 
             // TableFlipButton
             // 
+            this.TableFlipButton.Enabled = false;
             this.TableFlipButton.Location = new System.Drawing.Point(242, 177);
             this.TableFlipButton.Name = "TableFlipButton";
             this.TableFlipButton.Size = new System.Drawing.Size(71, 28);
@@ -703,10 +749,19 @@
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox8.Location = new System.Drawing.Point(301, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(292, 229);
+            this.groupBox8.Size = new System.Drawing.Size(292, 235);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Milling Process Overview";
+            // 
+            // MoveQueueDown
+            // 
+            this.MoveQueueDown.Location = new System.Drawing.Point(141, 136);
+            this.MoveQueueDown.Name = "MoveQueueDown";
+            this.MoveQueueDown.Size = new System.Drawing.Size(75, 23);
+            this.MoveQueueDown.TabIndex = 7;
+            this.MoveQueueDown.Text = "Move Down";
+            this.MoveQueueDown.UseVisualStyleBackColor = true;
             // 
             // MoveQueueUp
             // 
@@ -779,7 +834,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(292, 229);
+            this.groupBox5.Size = new System.Drawing.Size(292, 235);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Open G-Code file";
@@ -827,24 +882,40 @@
             this.GCodeBrowseButton.TabIndex = 0;
             this.GCodeBrowseButton.Text = "browse...";
             this.GCodeBrowseButton.UseVisualStyleBackColor = true;
+            this.GCodeBrowseButton.Click += new System.EventHandler(this.GCodeBrowseButton_Click);
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.CommandSendButton);
             this.groupBox7.Controls.Add(this.customGText);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox7.Location = new System.Drawing.Point(3, 251);
+            this.groupBox7.Location = new System.Drawing.Point(3, 257);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(996, 46);
+            this.groupBox7.Size = new System.Drawing.Size(996, 40);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Custom G-Code";
             // 
+            // CommandSendButton
+            // 
+            this.CommandSendButton.Enabled = false;
+            this.CommandSendButton.Location = new System.Drawing.Point(6, 14);
+            this.CommandSendButton.Name = "CommandSendButton";
+            this.CommandSendButton.Size = new System.Drawing.Size(76, 23);
+            this.CommandSendButton.TabIndex = 1;
+            this.CommandSendButton.Text = "Send";
+            this.CommandSendButton.UseVisualStyleBackColor = true;
+            this.CommandSendButton.Click += new System.EventHandler(this.CommandSendButton_Click);
+            // 
             // customGText
             // 
-            this.customGText.Location = new System.Drawing.Point(9, 19);
+            this.customGText.Dock = System.Windows.Forms.DockStyle.Right;
+            this.customGText.Enabled = false;
+            this.customGText.Location = new System.Drawing.Point(81, 16);
             this.customGText.Name = "customGText";
-            this.customGText.Size = new System.Drawing.Size(981, 20);
+            this.customGText.Size = new System.Drawing.Size(912, 20);
             this.customGText.TabIndex = 0;
+            this.customGText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.customGText_KeyDown);
             // 
             // groupBox3
             // 
@@ -959,6 +1030,7 @@
             // 
             // StopButton
             // 
+            this.StopButton.Enabled = false;
             this.StopButton.Location = new System.Drawing.Point(626, 14);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(75, 23);
@@ -968,6 +1040,7 @@
             // 
             // PauseButton
             // 
+            this.PauseButton.Enabled = false;
             this.PauseButton.Location = new System.Drawing.Point(545, 14);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(75, 23);
@@ -995,6 +1068,7 @@
             // 
             // BeginButton
             // 
+            this.BeginButton.Enabled = false;
             this.BeginButton.Location = new System.Drawing.Point(425, 14);
             this.BeginButton.Name = "BeginButton";
             this.BeginButton.Size = new System.Drawing.Size(114, 23);
@@ -1021,15 +1095,15 @@
             this.PortListCombo.Name = "PortListCombo";
             this.PortListCombo.Size = new System.Drawing.Size(121, 21);
             this.PortListCombo.TabIndex = 6;
+            this.PortListCombo.Enter += new System.EventHandler(this.PortListCombo_Enter);
             // 
-            // MoveQueueDown
+            // openFileDialog1
             // 
-            this.MoveQueueDown.Location = new System.Drawing.Point(141, 136);
-            this.MoveQueueDown.Name = "MoveQueueDown";
-            this.MoveQueueDown.Size = new System.Drawing.Size(75, 23);
-            this.MoveQueueDown.TabIndex = 7;
-            this.MoveQueueDown.Text = "Move Down";
-            this.MoveQueueDown.UseVisualStyleBackColor = true;
+            this.openFileDialog1.Filter = "\"G-Code files(*.g)|*.g|All files (*.*)|*.*\"";
+            // 
+            // serialPort
+            // 
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // Form1
             // 
@@ -1146,6 +1220,9 @@
         private System.Windows.Forms.Button MoveQueueUp;
         private System.Windows.Forms.Button AddCommandToQueue;
         private System.Windows.Forms.Button MoveQueueDown;
+        private System.Windows.Forms.Button CommandSendButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.IO.Ports.SerialPort serialPort;
     }
 }
 
