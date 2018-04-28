@@ -898,7 +898,6 @@
             // 
             // CommandSendButton
             // 
-            this.CommandSendButton.Enabled = false;
             this.CommandSendButton.Location = new System.Drawing.Point(6, 14);
             this.CommandSendButton.Name = "CommandSendButton";
             this.CommandSendButton.Size = new System.Drawing.Size(76, 23);
@@ -910,7 +909,6 @@
             // customGText
             // 
             this.customGText.Dock = System.Windows.Forms.DockStyle.Right;
-            this.customGText.Enabled = false;
             this.customGText.Location = new System.Drawing.Point(81, 16);
             this.customGText.Name = "customGText";
             this.customGText.Size = new System.Drawing.Size(912, 20);
@@ -930,7 +928,7 @@
             // 
             // CommunicationBox
             // 
-            this.CommunicationBox.ColumnWidth = 100;
+            this.CommunicationBox.ColumnWidth = 900;
             this.CommunicationBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CommunicationBox.FormattingEnabled = true;
             this.CommunicationBox.Location = new System.Drawing.Point(3, 16);
