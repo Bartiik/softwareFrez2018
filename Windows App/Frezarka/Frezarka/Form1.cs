@@ -89,17 +89,13 @@ namespace Frezarka
         private void CommandSendButton_Click(object sender, EventArgs e)
         {
             String gcode = customGText.Text;
-            //Regex regex = new Regex("G\\d{ 2, 3 }( \\w\\d{ 0,3}){ 0,3}");
-            //if (regex.IsMatch(gcode))
-            //{
-                serialPort.NewLine = gcode;
-                addToCommunicationBox(true, gcode);
-            //}
-            //else
-            //{
-            //    MessageBox.Show(gcode + "\n wrong gcode");
-            //}
-            customGText.Clear();
+            Command temp = new Command();
+            if (temp.Fill(gcode))
+            {
+                addToCommunicationBox(true, temp);
+                customGText.Clear();
+            }
+            else MessageBox.Show("Something went Wrong");
         }
         void DisableEnable(bool e)
         {
@@ -151,7 +147,7 @@ namespace Frezarka
             }
         }
 
-        void addToCommunicationBox(bool messageToArduino, String text)
+        void addToCommunicationBox(bool messageToArduino, Command C)
         {
             String time = DateTime.Now.ToString("hh:mm:ss tt");
             StringBuilder k = new StringBuilder();
@@ -164,13 +160,15 @@ namespace Frezarka
             {
                 k.Append(" >>>> ");
             }
-            k.Append(text);
+            k.Append(C.ToString());
             CommunicationBox.Items.Add(k.ToString());
         }
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            addToCommunicationBox(false, serialPort.ReadLine());
+            Command temp = new Command();
+            temp.Fill(serialPort.ReadLine());
+            addToCommunicationBox(false, temp);
         }
     }
     
