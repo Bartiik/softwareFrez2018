@@ -12,6 +12,7 @@ namespace Frezarka
         String chars;
         public Command()
         {
+            ParentFile = "";
             values = new double[9];
             chars = "GXYZIJMSF";
             for (int i = 0; i < values.Length; i++)
@@ -24,7 +25,7 @@ namespace Frezarka
             code.ToUpper();
             var myRegex = new Regex(@"[A-Z]\d{0,}[\.\,]{0,1}\d{0,}");
             List<String> lines = myRegex.Matches(code).Cast<Match>().Select(m => m.Value).ToList();
-            foreach( String line in lines)
+            foreach ( String line in lines)
             {
                 char c = line[0];
                 int value;
@@ -40,7 +41,7 @@ namespace Frezarka
         {
             return values[chars.IndexOf(c)];
         }
-
+        public String ParentFile { get; set; }
         public override String ToString()
         {
             StringBuilder value = new StringBuilder();
