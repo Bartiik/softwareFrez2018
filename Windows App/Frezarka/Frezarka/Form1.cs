@@ -75,6 +75,10 @@ namespace Frezarka
                 serialPort.BaudRate = 115200;
                 serialPort.PortName = PortListCombo.SelectedItem.ToString();
                 serialPort.Open();
+                if(serialPort.IsOpen)
+                {
+                    OpenPortLabel.Text = serialPort.PortName;
+                }
                 DisableEnable(true);
             }
             else
@@ -94,8 +98,16 @@ namespace Frezarka
             {
                 addToCommunicationBox(true, temp);
                 customGText.Clear();
+                sendCommand(temp);
             }
             else MessageBox.Show("Something went Wrong");
+        }
+        void sendCommand(Command comm)
+        {
+            if(serialPort.IsOpen)
+            {
+                serialPort.WriteLine(comm.ToSend());
+            }
         }
         void DisableEnable(bool e)
         {
@@ -161,14 +173,18 @@ namespace Frezarka
                 k.Append(" >>>> ");
             }
             k.Append(C.ToString());
-            CommunicationBox.Items.Add(k.ToString());
+            //CommunicationBox.Items.Add(k.ToString());
+            CommunicationBox.Invoke((MethodInvoker)delegate {
+                CommunicationBox.Items.Add(k.ToString() );
+            });
         }
-
+        
+    
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Command temp = new Command();
-            temp.Fill(serialPort.ReadLine());
-            addToCommunicationBox(false, temp);
+            if(temp.Fill(serialPort.ReadLine()))
+                addToCommunicationBox(false, temp);
         }
     }
     
