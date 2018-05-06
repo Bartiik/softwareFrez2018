@@ -84,8 +84,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Communication.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="MMStateMachine.h" />
     <ClInclude Include="__vm\.MillingMachineFirmware.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Communication.cpp" />
+    <ClCompile Include="MMStateMachine.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

@@ -1,4 +1,10 @@
 #pragma once
+#ifndef config
+
+#define config
+
+
+
 // PINOUT
 
 #define RX0_PIN					0   // RX PIN - DO NOT USE <- CONNECTED TO USB
@@ -83,3 +89,23 @@
 
 // SERIAL
 #define BAUD_RATE				115200
+
+
+
+
+
+//					STATIC COMMANDS
+
+#define COMMUNICATION_TEST_COMMAND			"unknown command"
+#define STANDARD_REPLY_COMMAND				"unknown command"
+#define ROTATE_TABLE_COMMAND				"unknown command"
+#define BED_LEVELING_COMMAND				"unknown command"
+#define ERROR_COMMAND						"unknown command"
+#define BEGIN_PROCESS_COMMAND				"unknown command"
+#define END_PROCESS_COMMAND					"unknown command"
+#define RESET_COMMAND						"unknown command"
+
+
+
+
+#endif // !

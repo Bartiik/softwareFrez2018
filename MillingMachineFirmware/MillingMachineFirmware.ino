@@ -1,40 +1,41 @@
 #include "config.h"
+#include "MMStateMachine.h"
+#include "Communication.h"
 
-
-String inputString = "";
 boolean stringComplete = false;
 bool val = true;
-int millingMachineState = INIT_STATE;
 void setup()
 {
+	cli(); //Timer 0 - endstops
+	TCCR0A = 0;
+	TCCR0B = 0;
+	TCNT0 = 0;
+	OCR0A = 124;// = (16*10^6) / (2000*64) - 1 (must be <256)
+	TCCR0A |= (1 << WGM01);
+	TCCR0B |= (1 << CS01) | (1 << CS00);
+	TIMSK0 |= (1 << OCIE0A);
+	sei();
+
+
 	Serial.begin(BAUD_RATE);
 	pinMode(LED_PIN, OUTPUT);
+	StateMachine.MMSafetyBegin(N_C);
+}
+
+ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
+{
+	StateMachine.CheckEndstops();
 }
 
 void loop()
 {
 
-	switch (millingMachineState)
+	switch (StateMachine.CurrentState())
 	// nothing should happen outside this switch
 	{
 	case INIT_STATE:
 	{
 		// BEGIN OF INIT STATE
-		if (stringComplete)
-		{
-			stringComplete = false;
-			if (inputString == "M0")
-			{
-
-				millingMachineState = IDLE_STATE;
-			}
-				
-			inputString = "";
-		}
-
-
-
-
 
 		// END OF INIT STATE
 	}
@@ -43,22 +44,12 @@ void loop()
 	{
 		// BEGIN OF IDLE STATE
 
-
-
-
-
-
 		// END OF IDLE STATE
 	}
 	break;
 	case COMMAND_STATE:
 	{
 		// BEGIN OF COMMAND STATE
-
-
-
-
-
 
 		// END OF COMMAND STATE
 	}
@@ -67,11 +58,6 @@ void loop()
 	{
 		// BEGIN OF ERROR STATE
 
-
-
-
-
-
 		// END OF ERROR STATE
 	}
 	break;
@@ -79,22 +65,20 @@ void loop()
 	{
 		// COMPLETE FUCKUP STATE, IF HAPPENS THE PROGRAM
 		// IS SOMEWHERE COMPLETELY FUCKED UP
-
 	}
 
 	};
 }
 
 void serialEvent() {
+	String inputString = "";
 	while (Serial.available()) {
 		char inChar = (char)Serial.read();
 		inputString += inChar;
 		if (inChar == '\n') {
-			stringComplete = true;
+			StateMachine.TryUpdateState(inputString);
+			MMcomm.ReceiveMessage(inputString);
 		}
 	}
 }
-void sendMessage()
-{
 
-}
