@@ -1,5 +1,7 @@
 #pragma once
 #include "Arduino.h"
+#include "config.h"
+#include "MMStateMachine.h"
 class Communication
 {
 private:
@@ -13,7 +15,6 @@ public:
 	String LatestMessage();
 	void SendReply();
 	bool IsMessageNew();
-
 };
 
-extern Communication MMcomm
+extern Communication MMcomm;

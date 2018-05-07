@@ -1,11 +1,13 @@
 #include "Communication.h"
 
+Communication MMcomm;
+
 Communication::Communication(){}
 Communication::~Communication(){}
 
-void Communication::SendMessage(String message)
+void Communication::SendMessage(String message )
 {
-	Serial.println(String(StateMachine.CurrentState) + message);
+	Serial.println(String(StateMachine.CurrentState()) + message);
 }
 
 void Communication::ReceiveMessage(String message)

@@ -1,5 +1,8 @@
 #include "MMStateMachine.h"
 #include "config.h"
+
+MMStateMachine StateMachine;
+
 MMStateMachine::MMStateMachine()
 {
 	_state = INIT_STATE;
@@ -48,6 +51,9 @@ bool MMStateMachine::TryUpdateState(String command)
 		{
 			_state = IDLE_STATE;
 			commandIsUsed = true;
+#ifdef DEBUG
+			Serial.println("DEBUG DATA: Entering IDLE state.");
+#endif
 		}
 	}
 	break;
@@ -57,6 +63,9 @@ bool MMStateMachine::TryUpdateState(String command)
 		{
 			_state = ERROR_STATE;
 			commandIsUsed = true;
+#ifdef DEBUG
+			Serial.println("DEBUG DATA: Entering ERROR state.");
+#endif
 		}
 
 	}
@@ -67,6 +76,9 @@ bool MMStateMachine::TryUpdateState(String command)
 		{
 			_state = ERROR_STATE;
 			commandIsUsed = true;
+#ifdef DEBUG
+			Serial.println("DEBUG DATA: Entering ERROR state.");
+#endif
 		}
 	}
 	break;
@@ -76,6 +88,9 @@ bool MMStateMachine::TryUpdateState(String command)
 		{
 			_state = IDLE_STATE;
 			commandIsUsed = true;
+#ifdef DEBUG
+			Serial.println("DEBUG DATA: Entering IDLE state.");
+#endif
 		}
 	}
 	break;

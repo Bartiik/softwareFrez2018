@@ -3,7 +3,7 @@
 
 #define config
 
-
+#define DEBUG
 
 // PINOUT
 
@@ -89,7 +89,7 @@
 
 // SERIAL
 #define BAUD_RATE				115200
-
+#define DUMMY_VALUE				1234.56789
 
 
 
@@ -104,7 +104,6 @@
 #define BEGIN_PROCESS_COMMAND				"unknown command"
 #define END_PROCESS_COMMAND					"unknown command"
 #define RESET_COMMAND						"unknown command"
-
 
 
 

@@ -1,16 +1,16 @@
 #include "config.h"
-#include "MMStateMachine.h"
+//#include "MMStateMachine.h"
 #include "Communication.h"
 
 boolean stringComplete = false;
 bool val = true;
 void setup()
 {
-	cli(); //Timer 0 - endstops
+	cli(); //Timer 0 - endstops - 200Hz
 	TCCR0A = 0;
 	TCCR0B = 0;
 	TCNT0 = 0;
-	OCR0A = 124;// = (16*10^6) / (2000*64) - 1 (must be <256)
+	OCR0A = 249;// = (16*10^6) / (1000*64) - 1 (must be <256)
 	TCCR0A |= (1 << WGM01);
 	TCCR0B |= (1 << CS01) | (1 << CS00);
 	TIMSK0 |= (1 << OCIE0A);

@@ -1,14 +1,14 @@
 C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\core\HardwareSerial0.cpp.o: \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\HardwareSerial0.cpp \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\Arduino.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\binary.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\WCharacter.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\WString.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\HardwareSerial.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\Stream.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\Print.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\Printable.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\USBAPI.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\variants\mega/pins_arduino.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\HardwareSerial_private.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\wiring_private.h
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial0.cpp \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\Arduino.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\binary.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\WCharacter.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\WString.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\Stream.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\Print.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\Printable.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\USBAPI.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\mega/pins_arduino.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial_private.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\wiring_private.h
