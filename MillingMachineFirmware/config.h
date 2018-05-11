@@ -82,29 +82,29 @@
 
 #define INIT_STATE				0
 #define IDLE_STATE				1
-#define COMMAND_STATE			2
-#define ERROR_STATE				3
+#define COMMAND_IDLE_STATE		2
+#define COMMAND_EXECUTION_STATE	3
+#define ERROR_STATE				4
 
 //					PARAMETERS
 
 // SERIAL
 #define BAUD_RATE				115200
+
+// DUMMY
 #define DUMMY_VALUE				1234.56789
-
-
-
 
 //					STATIC COMMANDS
 
-#define COMMUNICATION_TEST_COMMAND			"unknown command"
-#define STANDARD_REPLY_COMMAND				"unknown command"
-#define ROTATE_TABLE_COMMAND				"unknown command"
-#define BED_LEVELING_COMMAND				"unknown command"
-#define ERROR_COMMAND						"unknown command"
-#define BEGIN_PROCESS_COMMAND				"unknown command"
-#define END_PROCESS_COMMAND					"unknown command"
-#define RESET_COMMAND						"unknown command"
-
-
+#define ROTATE_TABLE_COMMAND				"U0"
+#define LOCK_BOARD_COMMAND					"U1"
+#define UNLOCK_BOARD_COMMAND				"U2"
+#define BED_LEVELING_COMMAND				"U3"
+#define COMMUNICATION_TEST_COMMAND			"U4"
+#define STANDARD_REPLY_COMMAND				"U5"
+#define ERROR_COMMAND						"U6"
+#define BEGIN_PROCESS_COMMAND				"U7"
+#define END_PROCESS_COMMAND					"U8"
+#define RESET_COMMAND						"U9"
 
 #endif // !

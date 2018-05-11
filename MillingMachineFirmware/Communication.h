@@ -14,7 +14,7 @@ public:
 	void ReceiveMessage(String);
 	String LatestMessage();
 	void SendReply();
-	bool IsMessageNew();
+	bool MessageIsNew();
 };
 
 extern Communication MMcomm;

@@ -7,6 +7,13 @@ class MMStateMachine
 private:
 	uint8_t _state;
 	bool _Endstop;
+	uint8_t StateChangeLookupTable[5][5] = {
+	{ IDLE_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE },
+	{ ERROR_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE },
+	{ ERROR_STATE, COMMAND_EXECUTION_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE },
+	{ ERROR_STATE, ERROR_STATE, IDLE_STATE, IDLE_STATE, ERROR_STATE },
+	{ IDLE_STATE, IDLE_STATE, IDLE_STATE, IDLE_STATE, IDLE_STATE }};
+	
 public:
 
 	MMStateMachine();
@@ -17,6 +24,7 @@ public:
 	void SetErrorState();
 	void CheckEndstops();
 	bool IsEndstopPressed();
+	void Reset();
 };
 
 extern MMStateMachine StateMachine;

@@ -1,4 +1,5 @@
 #include "MMStateMachine.h"
+#include "GCodeInterpreter.h"
 #include "config.h"
 
 MMStateMachine StateMachine;
@@ -18,6 +19,7 @@ void MMStateMachine::MMSafetyBegin(uint16_t TableMaxEndstopPin)
 	pinMode(Z_MIN_ENDSTOP_PIN, INPUT);
 	pinMode(Z_MAX_ENDSTOP_PIN, INPUT);
 	pinMode(TableMaxEndstopPin, INPUT);
+	
 }
 
 uint8_t MMStateMachine::CurrentState()
@@ -42,58 +44,26 @@ bool MMStateMachine::IsEndstopPressed()
 
 bool MMStateMachine::TryUpdateState(String command)
 {
-	bool commandIsUsed = false;
-	switch (_state)
+	bool commandIsUsed = true;
+	uint8_t cmd;
+	if (command == COMMUNICATION_TEST_COMMAND) cmd = 0;
+	else if (command == ERROR_COMMAND) cmd = 1;
+	else if (command == BEGIN_PROCESS_COMMAND) cmd = 2;
+	else if (command == END_PROCESS_COMMAND) cmd = 3;
+	else if (command == RESET_COMMAND) cmd = 4;
+	else
 	{
-	case INIT_STATE:
-	{
-		if(command == COMMUNICATION_TEST_COMMAND)
-		{
-			_state = IDLE_STATE;
-			commandIsUsed = true;
-#ifdef DEBUG
-			Serial.println("DEBUG DATA: Entering IDLE state.");
-#endif
-		}
+		commandIsUsed = false;
 	}
-	break;
-	case IDLE_STATE:
+	if (commandIsUsed)
 	{
-		if (command == ERROR_COMMAND)
-		{
-			_state = ERROR_STATE;
-			commandIsUsed = true;
-#ifdef DEBUG
-			Serial.println("DEBUG DATA: Entering ERROR state.");
-#endif
-		}
-
+		_state = StateChangeLookupTable[_state][cmd];
 	}
-	break;
-	case COMMAND_STATE:
-	{
-		if (command == ERROR_COMMAND)
-		{
-			_state = ERROR_STATE;
-			commandIsUsed = true;
-#ifdef DEBUG
-			Serial.println("DEBUG DATA: Entering ERROR state.");
-#endif
-		}
-	}
-	break;
-	case ERROR_STATE:
-	{
-		if (command == RESET_COMMAND)
-		{
-			_state = IDLE_STATE;
-			commandIsUsed = true;
-#ifdef DEBUG
-			Serial.println("DEBUG DATA: Entering IDLE state.");
-#endif
-		}
-	}
-	break;
-	};
+	MMcomm.SendReply();
 	return commandIsUsed;
+}
+
+void MMStateMachine::Reset()
+{
+	_state = INIT_STATE;
 }

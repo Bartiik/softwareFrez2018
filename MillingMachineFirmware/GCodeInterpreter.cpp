@@ -1,5 +1,7 @@
 #include "GCodeInterpreter.h"
-
+#include "Communication.h"
+#include "MMStateMachine.h"
+GCodeInterpreter Command;
 
 GCodeInterpreter::GCodeInterpreter()
 {
@@ -20,16 +22,172 @@ void GCodeInterpreter::Clear()
 	_S = DUMMY_VALUE;
 	_F = DUMMY_VALUE;
 }
-
 void GCodeInterpreter::ExecuteStep()
 {
+	if (newCommand)
+	{
+		PrepareForExecution();
+		newCommand = false;
+	}
+	//			G COMMANDS
+
 	switch ((int)_G)
 	{
-	case 0: //G0 command - to be filled
+	case 0: //G00 command - to be filled
 
 		break;
+	case 1: //G01 command - to be filled
+
+		break;
+	case 2: //G02 command - to be filled
+
+		break;
+	case 3: //G03 command - to be filled
+
+		break;
+	case 4: //G04 command - to be filled
+
+		break;
+	case 28: //G28 command - to be filled
+
+		break;
+	default:
+
+
+
+
+		//			M COMMANDS
+
+
+
+
+		switch ((int)_M)
+		{
+		case 3: //M03 command - to be filled
+
+			break;
+		case 4: //M04 command - to be filled
+
+			break;
+		case 5: //M05 command - to be filled
+
+			break;
+		default:
+
+
+			//		U COMMANDS
+
+
+			switch ((int)_U)
+			{
+
+			case 0: //U00 command - to be filled
+
+				break;
+			case 1: //U01 command - to be filled
+
+				break;
+			case 2: //U02 command - to be filled
+
+				break;
+			case 3: //U03 command - to be filled
+
+				break;
+			default:
+
+				// ERROR
+				MMcomm.SendMessage("ERROR. UNKNOWN COMMAND");
+				StateMachine.SetErrorState();
+				Clear();
+				break;
+			}
+		}
 	}
 }
+
+void GCodeInterpreter::PrepareForExecution()
+{
+
+	//			G COMMANDS
+
+	switch ((int)_G)
+	{
+	case 0: //G00 command - to be filled
+
+		break;
+	case 1: //G01 command - to be filled
+
+		break;
+	case 2: //G02 command - to be filled
+
+		break;
+	case 3: //G03 command - to be filled
+
+		break;
+	case 4: //G04 command - to be filled
+
+		break;
+	case 28: //G28 command - to be filled
+
+		break;
+	default:
+
+
+
+
+		//			M COMMANDS
+
+
+
+
+		switch ((int)_M)
+		{
+		case 3: //M03 command - to be filled
+
+			break;
+		case 4: //M04 command - to be filled
+
+			break;
+		case 5: //M05 command - to be filled
+
+			break;
+		default:
+
+
+
+			//		U COMMANDS
+
+
+
+
+			switch ((int)_U)
+			{
+
+			case 0: //U00 command - to be filled
+
+				break;
+			case 1: //U01 command - to be filled
+
+				break;
+			case 2: //U02 command - to be filled
+
+				break;
+			case 3: //U03 command - to be filled
+
+				break;
+			default:
+				
+				// ERROR
+				MMcomm.SendMessage("ERROR. UNKNOWN COMMAND");
+				StateMachine.SetErrorState();
+				Clear();
+				break;
+			}
+		}
+	}
+}
+
+
 
 void GCodeInterpreter::Interpret(String command)
 {
@@ -118,6 +276,14 @@ void GCodeInterpreter::Interpret(String command)
 				number = "";
 			}
 			currentLetter = &_F;
+			break;
+		case 'U':
+			if (number != "")
+			{
+				*currentLetter = number.toFloat();
+				number = "";
+			}
+			currentLetter = &_U;
 			break;
 		
 		default:

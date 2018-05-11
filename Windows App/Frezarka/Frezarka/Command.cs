@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Frezarka
 {
-    class Command
+    public class Command
     {
         double[] values;
         String chars;
@@ -69,5 +69,6 @@ namespace Frezarka
             }
             return value.ToString();
         }
+
     }
 }

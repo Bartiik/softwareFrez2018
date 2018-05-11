@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Frezarka
 {
     public partial class Form1 : Form
     {
+        public List<Command> AllCommands = new List<Command>();
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +37,35 @@ namespace Frezarka
 
         private void GCodeBrowseButton_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
+            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                Stream myStream = null;
+                
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        OpenedGCodesList.Items.Add(openFileDialog1.FileName);
+                        using (myStream)
+                        {
+                            StreamReader stream = new StreamReader(myStream);
+                            while(!stream.EndOfStream)
+                            {
+                                Command temp = new Command();
+                                temp.Fill(stream.ReadLine());
+                                temp.ParentFile = openFileDialog1.FileName;
+                                AllCommands.Add(temp);
+                            }
+                        }
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+            
         }
 
         private void SpeedBar_Scroll(object sender, EventArgs e)
@@ -183,7 +213,22 @@ namespace Frezarka
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Command temp = new Command();
-            if(temp.Fill(serialPort.ReadLine()))
+            String msg = serialPort.ReadLine();
+            String State;
+            int state;
+            if(Int32.TryParse(msg,out state))
+            {
+                State = state.ToString();
+            }
+            else
+            {
+                State = "ERROR";
+            }
+            MillingMachineStateLabel.Invoke((MethodInvoker)delegate {
+                MillingMachineStateLabel.Text = State;
+            });
+            msg.Remove(0, 1);
+            if(temp.Fill(msg))
                 addToCommunicationBox(false, temp);
         }
     }

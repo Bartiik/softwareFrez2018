@@ -22,7 +22,7 @@ String Communication::LatestMessage()
 	_newMessage = false;
 }
 
-bool Communication::IsMessageNew()
+bool Communication::MessageIsNew()
 {
 	return _newMessage;
 }

@@ -113,6 +113,8 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
+            this.PrepareQueue = new System.Windows.Forms.Button();
+            this.QueueStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -738,6 +740,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.QueueStatus);
+            this.groupBox8.Controls.Add(this.PrepareQueue);
             this.groupBox8.Controls.Add(this.MoveQueueDown);
             this.groupBox8.Controls.Add(this.MoveQueueUp);
             this.groupBox8.Controls.Add(this.AddCommandToQueue);
@@ -1099,12 +1103,31 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "\"G-Code files(*.g)|*.g|All files (*.*)|*.*\"";
+            this.openFileDialog1.DefaultExt = "g";
+            this.openFileDialog1.Filter = "\"txt files (*.txt)|*.txt|All files (*.*)|*.*\"";
             // 
             // serialPort
             // 
             this.serialPort.BaudRate = 115200;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            // 
+            // PrepareQueue
+            // 
+            this.PrepareQueue.Location = new System.Drawing.Point(141, 165);
+            this.PrepareQueue.Name = "PrepareQueue";
+            this.PrepareQueue.Size = new System.Drawing.Size(101, 23);
+            this.PrepareQueue.TabIndex = 8;
+            this.PrepareQueue.Text = "Generate Queue";
+            this.PrepareQueue.UseVisualStyleBackColor = true;
+            // 
+            // QueueStatus
+            // 
+            this.QueueStatus.AutoSize = true;
+            this.QueueStatus.Location = new System.Drawing.Point(138, 194);
+            this.QueueStatus.Name = "QueueStatus";
+            this.QueueStatus.Size = new System.Drawing.Size(90, 13);
+            this.QueueStatus.TabIndex = 9;
+            this.QueueStatus.Text = "No Queue Added";
             // 
             // Form1
             // 
@@ -1224,6 +1247,8 @@
         private System.Windows.Forms.Button CommandSendButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.IO.Ports.SerialPort serialPort;
+        private System.Windows.Forms.Label QueueStatus;
+        private System.Windows.Forms.Button PrepareQueue;
     }
 }
 

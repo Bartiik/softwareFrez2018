@@ -1,9 +1,10 @@
 #include "config.h"
 //#include "MMStateMachine.h"
+#include "GCodeInterpreter.h"
 #include "Communication.h"
 
 boolean stringComplete = false;
-bool val = true;
+bool initial = true;
 void setup()
 {
 	cli(); //Timer 0 - endstops - 200Hz
@@ -47,13 +48,23 @@ void loop()
 		// END OF IDLE STATE
 	}
 	break;
-	case COMMAND_STATE:
+	case COMMAND_IDLE_STATE:
 	{
-		// BEGIN OF COMMAND STATE
+		// BEGIN OF COMMAND STATE - INDICATION THAT THE MANUEL CONTROL IS OFF
 
 		// END OF COMMAND STATE
 	}
 	break;
+
+	case COMMAND_EXECUTION_STATE:
+	{
+		Command.ExecuteStep();
+		// BEGIN OF COMMAND EXECUTION STATE - PERFORM COMMAND
+
+		// END OF COMMAND STATE
+	}
+	break;
+
 	case ERROR_STATE:
 	{
 		// BEGIN OF ERROR STATE
@@ -65,6 +76,8 @@ void loop()
 	{
 		// COMPLETE FUCKUP STATE, IF HAPPENS THE PROGRAM
 		// IS SOMEWHERE COMPLETELY FUCKED UP
+		MMcomm.SendMessage("CRITICAL ERROR! UNKNOWN STATE. COMMUNICATION RESET REQUIRED");
+		StateMachine.Reset();
 	}
 
 	};
@@ -76,8 +89,8 @@ void serialEvent() {
 		char inChar = (char)Serial.read();
 		inputString += inChar;
 		if (inChar == '\n') {
-			StateMachine.TryUpdateState(inputString);
-			MMcomm.ReceiveMessage(inputString);
+			if(!StateMachine.TryUpdateState(inputString))
+				MMcomm.ReceiveMessage(inputString);
 		}
 	}
 }
