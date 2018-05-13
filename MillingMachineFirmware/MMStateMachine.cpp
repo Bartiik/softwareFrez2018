@@ -48,11 +48,10 @@ bool MMStateMachine::TryUpdateState(String command)
 	uint8_t cmd;
 	if (command == COMMUNICATION_TEST_COMMAND) cmd = 0;
 	else if (command == ERROR_COMMAND) cmd = 1;
-	else if (command == BEGIN_PROCESS_COMMAND) cmd = 2;
-	else if (command == END_PROCESS_COMMAND) cmd = 3;
-	else if (command == RESET_COMMAND) cmd = 4;
+	else if (command == RESET_COMMAND) cmd = 2;
 	else
 	{
+		_state = EXECUTION_STATE;
 		commandIsUsed = false;
 	}
 	if (commandIsUsed)

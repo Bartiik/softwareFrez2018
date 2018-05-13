@@ -7,14 +7,16 @@ boolean stringComplete = false;
 bool initial = true;
 void setup()
 {
-	cli(); //Timer 0 - endstops - 200Hz
+	cli(); //Timer 0 - endstops - 1000Hz
 	TCCR0A = 0;
 	TCCR0B = 0;
 	TCNT0 = 0;
-	OCR0A = 249;// = (16*10^6) / (1000*64) - 1 (must be <256)
+	OCR0A = 249;// = (16*10^6) / (200*64) - 1 (must be <256)
 	TCCR0A |= (1 << WGM01);
 	TCCR0B |= (1 << CS01) | (1 << CS00);
 	TIMSK0 |= (1 << OCIE0A);
+
+
 	sei();
 
 
@@ -48,15 +50,8 @@ void loop()
 		// END OF IDLE STATE
 	}
 	break;
-	case COMMAND_IDLE_STATE:
-	{
-		// BEGIN OF COMMAND STATE - INDICATION THAT THE MANUEL CONTROL IS OFF
 
-		// END OF COMMAND STATE
-	}
-	break;
-
-	case COMMAND_EXECUTION_STATE:
+	case EXECUTION_STATE:
 	{
 		Command.ExecuteStep();
 		// BEGIN OF COMMAND EXECUTION STATE - PERFORM COMMAND

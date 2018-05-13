@@ -82,9 +82,8 @@
 
 #define INIT_STATE				0
 #define IDLE_STATE				1
-#define COMMAND_IDLE_STATE		2
-#define COMMAND_EXECUTION_STATE	3
-#define ERROR_STATE				4
+#define EXECUTION_STATE			2
+#define ERROR_STATE				3
 
 //					PARAMETERS
 
@@ -103,8 +102,6 @@
 #define COMMUNICATION_TEST_COMMAND			"U4"
 #define STANDARD_REPLY_COMMAND				"U5"
 #define ERROR_COMMAND						"U6"
-#define BEGIN_PROCESS_COMMAND				"U7"
-#define END_PROCESS_COMMAND					"U8"
-#define RESET_COMMAND						"U9"
+#define RESET_COMMAND						"U7"
 
 #endif // !
