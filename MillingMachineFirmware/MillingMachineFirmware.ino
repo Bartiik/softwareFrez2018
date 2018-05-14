@@ -3,6 +3,7 @@
 #include "GCodeInterpreter.h"
 #include "Communication.h"
 
+String inputString;
 boolean stringComplete = false;
 bool initial = true;
 void setup()
@@ -79,13 +80,16 @@ void loop()
 }
 
 void serialEvent() {
-	String inputString = "";
+	
 	while (Serial.available()) {
 		char inChar = (char)Serial.read();
 		inputString += inChar;
 		if (inChar == '\n') {
+
 			if(!StateMachine.TryUpdateState(inputString))
 				MMcomm.ReceiveMessage(inputString);
+			inputString = "";
+
 		}
 	}
 }

@@ -90,34 +90,36 @@ namespace Frezarka
 
         }
 
-        private void PortListCombo_Enter(object sender, EventArgs e)
-        {
-            PortListCombo.Items.Clear();
-            PortListCombo.Items.AddRange(SerialPort.GetPortNames());
-        }
-
         private void ConnectButton_Click(object sender, EventArgs e)
-        {
-            if(ConnectButton.Tag.ToString() == "0")
+        { 
+            try
             {
-                ConnectButton.Tag = "1";
-                ConnectButton.Text = "Close Port";
-                serialPort.BaudRate = 115200;
-                serialPort.PortName = PortListCombo.SelectedItem.ToString();
-                serialPort.Open();
-                if(serialPort.IsOpen)
+                if (ConnectButton.Tag.ToString() == "0")
                 {
-                    OpenPortLabel.Text = serialPort.PortName;
+                    ConnectButton.Tag = "1";
+                    ConnectButton.Text = "Close Port";
+                    serialPort.BaudRate = 115200;
+                    serialPort.PortName = PortListCombo.SelectedItem.ToString();
+                    serialPort.Open();
+                    if (serialPort.IsOpen)
+                    {
+                        OpenPortLabel.Text = serialPort.PortName;
+                    }
+                    DisableEnable(true);
                 }
-                DisableEnable(true);
+                else
+                {
+                    ConnectButton.Tag = "0";
+                    ConnectButton.Text = "Open Port";
+                    serialPort.Close();
+                    DisableEnable(false);
+                }
             }
-            else
+            catch(Exception error)
             {
-                ConnectButton.Tag = "0";
-                ConnectButton.Text = "Open Port";
-                serialPort.Close();
-                DisableEnable(false);
+                MessageBox.Show("Wrong port\n" + error);
             }
+            
         }
 
         private void CommandSendButton_Click(object sender, EventArgs e)
@@ -206,6 +208,7 @@ namespace Frezarka
             //CommunicationBox.Items.Add(k.ToString());
             CommunicationBox.Invoke((MethodInvoker)delegate {
                 CommunicationBox.Items.Add(k.ToString() );
+                CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
             });
         }
         
@@ -216,7 +219,9 @@ namespace Frezarka
             String msg = serialPort.ReadLine();
             String State;
             int state;
-            if(Int32.TryParse(msg,out state))
+            State = msg[0].ToString();
+            MessageBox.Show(State + msg);
+            if(Int32.TryParse(State,out state))
             {
                 State = state.ToString();
             }
@@ -230,6 +235,12 @@ namespace Frezarka
             msg.Remove(0, 1);
             if(temp.Fill(msg))
                 addToCommunicationBox(false, temp);
+        }
+
+        private void PortListCombo_MouseDown(object sender, MouseEventArgs e)
+        {
+            PortListCombo.Items.Clear();
+            PortListCombo.Items.AddRange(SerialPort.GetPortNames());
         }
     }
     

@@ -58,7 +58,7 @@ bool MMStateMachine::TryUpdateState(String command)
 	{
 		_state = StateChangeLookupTable[_state][cmd];
 	}
-	MMcomm.SendReply();
+	MMcomm.SendMessage(command);
 	return commandIsUsed;
 }
 
