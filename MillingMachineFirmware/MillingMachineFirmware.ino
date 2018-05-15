@@ -3,7 +3,7 @@
 #include "GCodeInterpreter.h"
 #include "Communication.h"
 
-String inputString;
+String inputString = "";
 boolean stringComplete = false;
 bool initial = true;
 void setup()
@@ -33,27 +33,27 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
-
 	switch (StateMachine.CurrentState())
 	// nothing should happen outside this switch
 	{
 	case INIT_STATE:
 	{
 		// BEGIN OF INIT STATE
-
+		ProcessNewMessage();
 		// END OF INIT STATE
 	}
 	break;
 	case IDLE_STATE:
 	{
 		// BEGIN OF IDLE STATE
-
+		ProcessNewMessage();
 		// END OF IDLE STATE
 	}
 	break;
 
 	case EXECUTION_STATE:
 	{
+		ProcessNewMessage();
 		Command.ExecuteStep();
 		// BEGIN OF COMMAND EXECUTION STATE - PERFORM COMMAND
 
@@ -64,7 +64,7 @@ void loop()
 	case ERROR_STATE:
 	{
 		// BEGIN OF ERROR STATE
-
+		ProcessNewMessage();
 		// END OF ERROR STATE
 	}
 	break;
@@ -83,14 +83,27 @@ void serialEvent() {
 	
 	while (Serial.available()) {
 		char inChar = (char)Serial.read();
-		inputString += inChar;
+		
 		if (inChar == '\n') {
-
-			if(!StateMachine.TryUpdateState(inputString))
-				MMcomm.ReceiveMessage(inputString);
-			inputString = "";
-
+			stringComplete = true;
+		}
+		else if(inChar - '0' > 0)
+		{
+			inputString += inChar;
 		}
 	}
+}
+bool ProcessNewMessage()
+{
+	if (stringComplete)
+	{
+		if (!StateMachine.TryUpdateState(inputString))
+			MMcomm.ReceiveMessage(inputString);
+		inputString = "";
+		stringComplete = false;
+		return true;
+		
+	}
+	else return false;
 }
 

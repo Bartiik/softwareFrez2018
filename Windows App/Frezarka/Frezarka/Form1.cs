@@ -8,6 +8,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -105,7 +106,21 @@ namespace Frezarka
                     {
                         OpenPortLabel.Text = serialPort.PortName;
                     }
+                    Command begin = new Command();
+                    begin.Fill("U4");
+                    try
+                    {
+                        serialPort.DiscardOutBuffer();
+                    }
+                    catch(Exception error1)
+                    {
+                        MessageBox.Show("buffer is empty\n" + error1);
+                    }
+                    Thread.Sleep(1000);
+                    sendCommand(begin);
                     DisableEnable(true);
+                    
+
                 }
                 else
                 {
@@ -128,7 +143,6 @@ namespace Frezarka
             Command temp = new Command();
             if (temp.Fill(gcode))
             {
-                addToCommunicationBox(true, temp);
                 customGText.Clear();
                 sendCommand(temp);
             }
@@ -138,6 +152,11 @@ namespace Frezarka
         {
             if(serialPort.IsOpen)
             {
+                if(serialPort.BytesToWrite > 0)
+                {
+                    serialPort.DiscardOutBuffer();
+                }
+                addToCommunicationBox(true, comm);
                 serialPort.WriteLine(comm.ToSend());
             }
         }
@@ -220,7 +239,9 @@ namespace Frezarka
             String State;
             int state;
             State = msg[0].ToString();
-            MessageBox.Show(State + msg);
+            //MessageBox.Show(msg);
+            String st = MillingMachineStateLabel.Text;
+            
             if(Int32.TryParse(State,out state))
             {
                 State = state.ToString();
@@ -235,6 +256,11 @@ namespace Frezarka
             msg.Remove(0, 1);
             if(temp.Fill(msg))
                 addToCommunicationBox(false, temp);
+            //if (st == "0" && State == "2")
+            //{
+            //    temp.Fill("U4");
+            //    sendCommand(temp);
+            //}
         }
 
         private void PortListCombo_MouseDown(object sender, MouseEventArgs e)

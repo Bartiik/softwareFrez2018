@@ -890,6 +890,7 @@
             // 
             // OpenedGCodesList
             // 
+            this.OpenedGCodesList.AllowDrop = true;
             this.OpenedGCodesList.FormattingEnabled = true;
             this.OpenedGCodesList.Location = new System.Drawing.Point(6, 88);
             this.OpenedGCodesList.Name = "OpenedGCodesList";
