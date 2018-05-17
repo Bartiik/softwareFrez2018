@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +16,7 @@ namespace Frezarka
 {
     public partial class Form1 : Form
     {
+        public List<Command> AllCommands = new List<Command>();
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +38,35 @@ namespace Frezarka
 
         private void GCodeBrowseButton_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
+            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                Stream myStream = null;
+                
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        OpenedGCodesList.Items.Add(openFileDialog1.FileName);
+                        using (myStream)
+                        {
+                            StreamReader stream = new StreamReader(myStream);
+                            while(!stream.EndOfStream)
+                            {
+                                Command temp = new Command();
+                                temp.Fill(stream.ReadLine());
+                                temp.ParentFile = openFileDialog1.FileName;
+                                AllCommands.Add(temp);
+                            }
+                        }
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+            
         }
 
         private void SpeedBar_Scroll(object sender, EventArgs e)
@@ -60,30 +91,50 @@ namespace Frezarka
 
         }
 
-        private void PortListCombo_Enter(object sender, EventArgs e)
-        {
-            PortListCombo.Items.Clear();
-            PortListCombo.Items.AddRange(SerialPort.GetPortNames());
-        }
-
         private void ConnectButton_Click(object sender, EventArgs e)
-        {
-            if(ConnectButton.Tag.ToString() == "0")
+        { 
+            try
             {
-                ConnectButton.Tag = "1";
-                ConnectButton.Text = "Close Port";
-                serialPort.BaudRate = 115200;
-                serialPort.PortName = PortListCombo.SelectedItem.ToString();
-                serialPort.Open();
-                DisableEnable(true);
+                if (ConnectButton.Tag.ToString() == "0")
+                {
+                    ConnectButton.Tag = "1";
+                    ConnectButton.Text = "Close Port";
+                    serialPort.BaudRate = 115200;
+                    serialPort.PortName = PortListCombo.SelectedItem.ToString();
+                    serialPort.Open();
+                    if (serialPort.IsOpen)
+                    {
+                        OpenPortLabel.Text = serialPort.PortName;
+                    }
+                    Command begin = new Command();
+                    begin.Fill("U4");
+                    try
+                    {
+                        serialPort.DiscardOutBuffer();
+                    }
+                    catch(Exception error1)
+                    {
+                        MessageBox.Show("buffer is empty\n" + error1);
+                    }
+                    Thread.Sleep(1000);
+                    sendCommand(begin);
+                    DisableEnable(true);
+                    
+
+                }
+                else
+                {
+                    ConnectButton.Tag = "0";
+                    ConnectButton.Text = "Open Port";
+                    serialPort.Close();
+                    DisableEnable(false);
+                }
             }
-            else
+            catch(Exception error)
             {
-                ConnectButton.Tag = "0";
-                ConnectButton.Text = "Open Port";
-                serialPort.Close();
-                DisableEnable(false);
+                MessageBox.Show("Wrong port\n" + error);
             }
+            
         }
 
         private void CommandSendButton_Click(object sender, EventArgs e)
@@ -92,10 +143,22 @@ namespace Frezarka
             Command temp = new Command();
             if (temp.Fill(gcode))
             {
-                addToCommunicationBox(true, temp);
                 customGText.Clear();
+                sendCommand(temp);
             }
             else MessageBox.Show("Something went Wrong");
+        }
+        void sendCommand(Command comm)
+        {
+            if(serialPort.IsOpen)
+            {
+                if(serialPort.BytesToWrite > 0)
+                {
+                    serialPort.DiscardOutBuffer();
+                }
+                addToCommunicationBox(true, comm);
+                serialPort.WriteLine(comm.ToSend());
+            }
         }
         void DisableEnable(bool e)
         {
@@ -161,14 +224,49 @@ namespace Frezarka
                 k.Append(" >>>> ");
             }
             k.Append(C.ToString());
-            CommunicationBox.Items.Add(k.ToString());
+            //CommunicationBox.Items.Add(k.ToString());
+            CommunicationBox.Invoke((MethodInvoker)delegate {
+                CommunicationBox.Items.Add(k.ToString() );
+                CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
+            });
         }
-
+        
+    
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Command temp = new Command();
-            temp.Fill(serialPort.ReadLine());
-            addToCommunicationBox(false, temp);
+            String msg = serialPort.ReadLine();
+            String State;
+            int state;
+            State = msg[0].ToString();
+            //MessageBox.Show(msg);
+            String st = MillingMachineStateLabel.Text;
+            
+            if(Int32.TryParse(State,out state))
+            {
+                State = state.ToString();
+            }
+            else
+            {
+                State = "ERROR";
+            }
+            MillingMachineStateLabel.Invoke((MethodInvoker)delegate {
+                MillingMachineStateLabel.Text = State;
+            });
+            msg.Remove(0, 1);
+            if(temp.Fill(msg))
+                addToCommunicationBox(false, temp);
+            //if (st == "0" && State == "2")
+            //{
+            //    temp.Fill("U4");
+            //    sendCommand(temp);
+            //}
+        }
+
+        private void PortListCombo_MouseDown(object sender, MouseEventArgs e)
+        {
+            PortListCombo.Items.Clear();
+            PortListCombo.Items.AddRange(SerialPort.GetPortNames());
         }
     }
     
