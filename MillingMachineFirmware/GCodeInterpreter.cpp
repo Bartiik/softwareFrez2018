@@ -10,6 +10,10 @@ GCodeInterpreter::GCodeInterpreter()
 
 GCodeInterpreter::~GCodeInterpreter(){}
 
+
+/* autor: Bartek Kudroń
+wyczyszczenie danych zawartych w klasie
+*/
 void GCodeInterpreter::Clear()
 {
 	_G = DUMMY_VALUE;
@@ -22,6 +26,9 @@ void GCodeInterpreter::Clear()
 	_S = DUMMY_VALUE;
 	_F = DUMMY_VALUE;
 }
+/* autor: Bartek Kudroń
+funkcja wykonywana co krok programu, w zależności od komendy różny kod.
+*/
 void GCodeInterpreter::ExecuteStep()
 {
 	if (newCommand)
@@ -104,7 +111,9 @@ void GCodeInterpreter::ExecuteStep()
 		}
 	}
 }
-
+/* autor: Bartek Kudroń
+funkcja wykonywana przed rozpoczęciem pętli komendy. wykonywana raz, kod różny w zależności od komendy.
+*/
 void GCodeInterpreter::PrepareForExecution()
 {
 
@@ -188,7 +197,10 @@ void GCodeInterpreter::PrepareForExecution()
 }
 
 
-
+/* autor: Bartek Kudroń
+funkcja wyciągająca ze stringa wartości dla konkretnych liter.
+!!! NIESPRAWDZONA !!!
+*/
 void GCodeInterpreter::Interpret(String command)
 {
 	float *currentLetter;

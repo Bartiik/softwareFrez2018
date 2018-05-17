@@ -10,6 +10,9 @@ MMStateMachine::MMStateMachine()
 }
 MMStateMachine::~MMStateMachine(){}
 
+/* autor: Bartek Kudroń
+	Inicjalizacja klasy bezpieczeństwa. Działąnie niesprawdzone.
+*/
 void MMStateMachine::MMSafetyBegin(uint16_t TableMaxEndstopPin)
 {
 	pinMode(X_MIN_ENDSTOP_PIN, INPUT);
@@ -21,27 +24,37 @@ void MMStateMachine::MMSafetyBegin(uint16_t TableMaxEndstopPin)
 	pinMode(TableMaxEndstopPin, INPUT);
 	
 }
-
+/* autor: Bartek Kudroń
+	zwraca stan maszyny.
+*/
 uint8_t MMStateMachine::CurrentState()
 {
 	return _state;
 }
-
+/* autor: Bartek Kudroń
+	zmiana stanu na error.
+*/
 void MMStateMachine::SetErrorState()
 {
 	_state = ERROR_STATE;
 }
-
+/* autor: Bartek Kudroń
+	sprawdzenie krańcówek, czy któraś nie jest wciśnięta. niesprawdzone
+*/
 void MMStateMachine::CheckEndstops()
 {
 	_Endstop = digitalRead(X_MIN_ENDSTOP_PIN) + digitalRead(X_MAX_ENDSTOP_PIN) + digitalRead(Y_MIN_ENDSTOP_PIN) + digitalRead(Y_MAX_ENDSTOP_PIN) + digitalRead(Z_MIN_ENDSTOP_PIN) + digitalRead(Z_MAX_ENDSTOP_PIN) > 0 ? true : false;
 }
-
+/* autor: Bartek Kudroń
+	zwraca czy wciśnięta jest krańcówka.
+*/
 bool MMStateMachine::IsEndstopPressed()
 {
 	return _Endstop;
 }
-
+/* autor: Bartek Kudroń
+	próba wykorzystania komendy do zmiany stanu (sprawdzenie czy komenda należy do jednej z konkretnych komend U i zmiana jeśli tak).
+*/
 bool MMStateMachine::TryUpdateState(String command)
 {
 	bool commandIsUsed = true;
@@ -61,7 +74,9 @@ bool MMStateMachine::TryUpdateState(String command)
 	MMcomm.SendMessage(command);
 	return commandIsUsed;
 }
-
+/* autor: Bartek Kudroń
+	zmiana stanu na INIT
+*/
 void MMStateMachine::Reset()
 {
 	_state = INIT_STATE;
