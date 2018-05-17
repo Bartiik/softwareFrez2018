@@ -6,15 +6,15 @@ using System.Text.RegularExpressions;
 
 namespace Frezarka
 {
-    class Command
+    public class Command
     {
         double[] values;
         String chars;
         public Command()
         {
             ParentFile = "";
-            values = new double[9];
-            chars = "GXYZIJMSF";
+            values = new double[10];
+            chars = "GXYZIJMSFU";
             for (int i = 0; i < values.Length; i++)
                 values[i] = 1234.56789;
         }
@@ -69,5 +69,6 @@ namespace Frezarka
             }
             return value.ToString();
         }
+
     }
 }

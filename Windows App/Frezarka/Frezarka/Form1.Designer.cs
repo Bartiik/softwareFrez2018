@@ -77,6 +77,8 @@
             this.TableFlipButton = new System.Windows.Forms.Button();
             this.XYChangeText = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.QueueStatus = new System.Windows.Forms.Label();
+            this.PrepareQueue = new System.Windows.Forms.Button();
             this.MoveQueueDown = new System.Windows.Forms.Button();
             this.MoveQueueUp = new System.Windows.Forms.Button();
             this.AddCommandToQueue = new System.Windows.Forms.Button();
@@ -155,7 +157,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 561);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 562);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox2
@@ -165,7 +167,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1002, 300);
+            this.groupBox2.Size = new System.Drawing.Size(1002, 301);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Control";
@@ -184,7 +186,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 241);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 242);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // groupBox6
@@ -234,7 +236,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(599, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(394, 235);
+            this.groupBox6.Size = new System.Drawing.Size(394, 236);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control";
@@ -738,6 +740,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.QueueStatus);
+            this.groupBox8.Controls.Add(this.PrepareQueue);
             this.groupBox8.Controls.Add(this.MoveQueueDown);
             this.groupBox8.Controls.Add(this.MoveQueueUp);
             this.groupBox8.Controls.Add(this.AddCommandToQueue);
@@ -749,10 +753,28 @@
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox8.Location = new System.Drawing.Point(301, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(292, 235);
+            this.groupBox8.Size = new System.Drawing.Size(292, 236);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Milling Process Overview";
+            // 
+            // QueueStatus
+            // 
+            this.QueueStatus.AutoSize = true;
+            this.QueueStatus.Location = new System.Drawing.Point(138, 194);
+            this.QueueStatus.Name = "QueueStatus";
+            this.QueueStatus.Size = new System.Drawing.Size(90, 13);
+            this.QueueStatus.TabIndex = 9;
+            this.QueueStatus.Text = "No Queue Added";
+            // 
+            // PrepareQueue
+            // 
+            this.PrepareQueue.Location = new System.Drawing.Point(141, 165);
+            this.PrepareQueue.Name = "PrepareQueue";
+            this.PrepareQueue.Size = new System.Drawing.Size(101, 23);
+            this.PrepareQueue.TabIndex = 8;
+            this.PrepareQueue.Text = "Generate Queue";
+            this.PrepareQueue.UseVisualStyleBackColor = true;
             // 
             // MoveQueueDown
             // 
@@ -834,7 +856,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(292, 235);
+            this.groupBox5.Size = new System.Drawing.Size(292, 236);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Open G-Code file";
@@ -868,6 +890,7 @@
             // 
             // OpenedGCodesList
             // 
+            this.OpenedGCodesList.AllowDrop = true;
             this.OpenedGCodesList.FormattingEnabled = true;
             this.OpenedGCodesList.Location = new System.Drawing.Point(6, 88);
             this.OpenedGCodesList.Name = "OpenedGCodesList";
@@ -889,7 +912,7 @@
             this.groupBox7.Controls.Add(this.CommandSendButton);
             this.groupBox7.Controls.Add(this.customGText);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox7.Location = new System.Drawing.Point(3, 257);
+            this.groupBox7.Location = new System.Drawing.Point(3, 258);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(996, 40);
             this.groupBox7.TabIndex = 3;
@@ -898,6 +921,7 @@
             // 
             // CommandSendButton
             // 
+            this.CommandSendButton.Enabled = false;
             this.CommandSendButton.Location = new System.Drawing.Point(6, 14);
             this.CommandSendButton.Name = "CommandSendButton";
             this.CommandSendButton.Size = new System.Drawing.Size(76, 23);
@@ -909,6 +933,7 @@
             // customGText
             // 
             this.customGText.Dock = System.Windows.Forms.DockStyle.Right;
+            this.customGText.Enabled = false;
             this.customGText.Location = new System.Drawing.Point(81, 16);
             this.customGText.Name = "customGText";
             this.customGText.Size = new System.Drawing.Size(912, 20);
@@ -919,7 +944,7 @@
             // 
             this.groupBox3.Controls.Add(this.CommunicationBox);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 360);
+            this.groupBox3.Location = new System.Drawing.Point(3, 361);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1002, 147);
             this.groupBox3.TabIndex = 9;
@@ -932,7 +957,6 @@
             this.CommunicationBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CommunicationBox.FormattingEnabled = true;
             this.CommunicationBox.Location = new System.Drawing.Point(3, 16);
-            this.CommunicationBox.MultiColumn = true;
             this.CommunicationBox.Name = "CommunicationBox";
             this.CommunicationBox.Size = new System.Drawing.Size(996, 128);
             this.CommunicationBox.TabIndex = 1;
@@ -948,7 +972,7 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 513);
+            this.groupBox4.Location = new System.Drawing.Point(3, 514);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1002, 45);
             this.groupBox4.TabIndex = 10;
@@ -1093,21 +1117,23 @@
             this.PortListCombo.Name = "PortListCombo";
             this.PortListCombo.Size = new System.Drawing.Size(121, 21);
             this.PortListCombo.TabIndex = 6;
-            this.PortListCombo.Enter += new System.EventHandler(this.PortListCombo_Enter);
+            this.PortListCombo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PortListCombo_MouseDown);
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "\"G-Code files(*.g)|*.g|All files (*.*)|*.*\"";
+            this.openFileDialog1.DefaultExt = "g";
+            this.openFileDialog1.Filter = "\"txt files (*.txt)|*.txt|All files (*.*)|*.*\"";
             // 
             // serialPort
             // 
+            this.serialPort.BaudRate = 115200;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 561);
+            this.ClientSize = new System.Drawing.Size(1008, 562);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1024, 600);
@@ -1221,6 +1247,8 @@
         private System.Windows.Forms.Button CommandSendButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.IO.Ports.SerialPort serialPort;
+        private System.Windows.Forms.Label QueueStatus;
+        private System.Windows.Forms.Button PrepareQueue;
     }
 }
 
