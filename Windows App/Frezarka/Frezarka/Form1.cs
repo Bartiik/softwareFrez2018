@@ -143,6 +143,7 @@ namespace Frezarka
             Command temp = new Command();
             if (temp.Fill(gcode))
             {
+                //MessageBox.Show(temp.ToSend());
                 customGText.Clear();
                 sendCommand(temp);
             }

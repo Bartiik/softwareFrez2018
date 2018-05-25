@@ -64,7 +64,7 @@ bool MMStateMachine::TryUpdateState(String command)
 	else if (command == RESET_COMMAND) cmd = 2;
 	else
 	{
-		_state = EXECUTION_STATE;
+		//_state = EXECUTION_STATE;
 		commandIsUsed = false;
 	}
 	if (commandIsUsed)
