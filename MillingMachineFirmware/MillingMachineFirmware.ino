@@ -2,10 +2,14 @@
 //#include "MMStateMachine.h"
 #include "GCodeInterpreter.h"
 #include "Communication.h"
+#include"SMotor.h"
+
 
 String inputString = "";
 boolean stringComplete = false;
 bool initial = true;
+bool var = false;
+
 
 /* 
 ZASADA DZIAŁANIA PROGAMU (IDEA, NIEZWERYFIKOWANA - MOGĄ BYĆ BŁĘDY) 
@@ -40,6 +44,11 @@ void setup()
 	TCCR0B |= (1 << CS01) | (1 << CS00);
 	TIMSK0 |= (1 << OCIE0A);
 
+	TCCR1A = 0;
+	TCCR1B = 0;
+	TCNT1 = RPS2_5;
+	TCCR1B |= (1 << CS11);
+	TIMSK1 |= (1 << TOIE1);
 
 	sei();
 
@@ -47,7 +56,23 @@ void setup()
 	Serial.begin(BAUD_RATE);
 	pinMode(LED_PIN, OUTPUT);
 	StateMachine.MMSafetyBegin(N_C);
+
+	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
+	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
+//	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
+
 }
+
+ISR(TIMER1_OVF_vect) { //timer for steppers
+	TCNT1 = RPS3; //by changing this value we can change the speed of rotation
+	if (StateMachine.CurrentState() == EXECUTION_STATE) {
+		
+		Command.ExecuteStep();
+	}
+	
+	
+}
+
 
 ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 {
@@ -56,11 +81,13 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
+	
 	switch (StateMachine.CurrentState())
 	// nothing should happen outside this switch
 	{
 	case INIT_STATE:
 	{
+
 		// BEGIN OF INIT STATE
 		ProcessNewMessage();
 		// END OF INIT STATE
@@ -68,18 +95,50 @@ void loop()
 	break;
 	case IDLE_STATE:
 	{
+		
 		// BEGIN OF IDLE STATE
+
 		ProcessNewMessage();
+		
+		if (MMcomm.MessageIsNew())
+		{
+		//	MMcomm.SendMessage("New message");
+
+			Command.Interpret(MMcomm.LatestMessage());
+			Command.PrepareForExecution();
+			if (Command.IsExecutionFinished()==0) {
+			//	MMcomm.SendMessage("Set to execution");
+				StateMachine.SetExecutionState();
+			}
+			else {
+			//	MMcomm.SendMessage("the same coord, Set to idle");
+				MMcomm.SendMessage(THE_SAME_COORD);
+				StateMachine.SetIdleState();
+			}
+		}
 		// END OF IDLE STATE
 	}
 	break;
 
 	case EXECUTION_STATE:
 	{
+		XStepper.SetEnable(0);
+		YStepper.SetEnable(0);
+		//ZStepper.SetEnable(0);
 		ProcessNewMessage();
-		Command.ExecuteStep();
-		// BEGIN OF COMMAND EXECUTION STATE - PERFORM COMMAND
+		if (Command.IsExecutionFinished()) {
+			
+		//	MMcomm.SendMessage("Movement done correctly");
+		//	MMcomm.SendMessage("");
+			XStepper.SetEnable(1);
+			YStepper.SetEnable(1);
+			MMcomm.SendMessage(MOVEMENT_DONE);
+			StateMachine.SetIdleState();
+			//ZStepper.SetEnable(0);
 
+		}
+
+	
 		// END OF COMMAND STATE
 	}
 	break;
@@ -93,6 +152,7 @@ void loop()
 	break;
 	default:
 	{
+
 		// COMPLETE FUCKUP STATE, IF HAPPENS THE PROGRAM
 		// IS SOMEWHERE COMPLETELY FUCKED UP
 		MMcomm.SendMessage("CRITICAL ERROR! UNKNOWN STATE. COMMUNICATION RESET REQUIRED");
@@ -104,13 +164,15 @@ void loop()
 
 void serialEvent() {
 	
+
+	
 	while (Serial.available()) {
 		char inChar = (char)Serial.read();
 		
 		if (inChar == '\n') {
 			stringComplete = true;
 		}
-		else if(inChar - '0' > 0)
+		else if(inChar  >= 33)
 		{
 			inputString += inChar;
 		}
@@ -130,3 +192,8 @@ bool ProcessNewMessage()
 	else return false;
 }
 
+void debugLED()
+{
+	digitalWrite(13, var);
+	var = !var;
+}

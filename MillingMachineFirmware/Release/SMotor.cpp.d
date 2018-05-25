@@ -1,5 +1,6 @@
-C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\GCodeInterpreter.cpp.o: \
- C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\GCodeInterpreter.cpp \
+C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\SMotor.cpp.o: \
+ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\SMotor.cpp \
+ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\config.h \
  C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\GCodeInterpreter.h \
  F:\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  F:\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
@@ -12,7 +13,6 @@ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\G
  F:\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
  F:\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  F:\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h \
- C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\config.h \
+ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\SMotor.h \
  C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\Communication.h \
- C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\MMStateMachine.h \
- C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\SMotor.h
+ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\MMStateMachine.h
