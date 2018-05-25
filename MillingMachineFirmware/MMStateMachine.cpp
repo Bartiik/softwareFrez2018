@@ -32,13 +32,6 @@ uint8_t MMStateMachine::CurrentState()
 	return _state;
 }
 /* autor: Bartek Kudroń
-	zmiana stanu na error.
-*/
-void MMStateMachine::SetErrorState()
-{
-	_state = ERROR_STATE;
-}
-/* autor: Bartek Kudroń
 	sprawdzenie krańcówek, czy któraś nie jest wciśnięta. niesprawdzone
 */
 void MMStateMachine::CheckEndstops()
@@ -64,7 +57,6 @@ bool MMStateMachine::TryUpdateState(String command)
 	else if (command == RESET_COMMAND) cmd = 2;
 	else
 	{
-		_state = EXECUTION_STATE;
 		commandIsUsed = false;
 	}
 	if (commandIsUsed)
@@ -80,4 +72,25 @@ bool MMStateMachine::TryUpdateState(String command)
 void MMStateMachine::Reset()
 {
 	_state = INIT_STATE;
+}
+/* autor: Bartek Kudroń
+zmiana stanu na error.
+*/
+void MMStateMachine::SetErrorState()
+{
+	_state = ERROR_STATE;
+}
+/* autor: Maciej Wiecheć
+zmiana stanu na execution.
+*/
+void MMStateMachine::SetExecutionState()
+{
+	_state = EXECUTION_STATE;
+}
+/* autor: Maciej Wiecheć
+zmiana stanu na idle.
+*/
+void MMStateMachine::SetIdleState()
+{
+	_state = IDLE_STATE;
 }

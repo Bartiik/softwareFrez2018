@@ -1,9 +1,11 @@
 #include "config.h"
 #include "GCodeInterpreter.h"
 #include "SMotor.h"
+#include"Communication.h"
 
 SMotor XStepper;
 SMotor YStepper;
+SMotor ZStepper;
 
 SMotor::SMotor( ){
   
@@ -24,7 +26,7 @@ void SMotor::Init(uint8_t DirPin, uint8_t StepPin, uint8_t EnPin){
   pinMode(_dir_pin, OUTPUT);
   pinMode(_step_pin, OUTPUT);
   pinMode(_enable_pin, OUTPUT);
-  digitalWrite(_enable_pin, LOW);
+  digitalWrite(_enable_pin, HIGH);
 }
 
 /* autor: Maciek Wiecheć
@@ -47,6 +49,8 @@ bool SMotor::GetBoolEnable(){
 */
 void SMotor::SetEnable(bool EN){
   _enable=EN;
+  if(EN) digitalWrite(_enable_pin, HIGH);
+  else digitalWrite(_enable_pin, LOW);
 }
 
 
@@ -54,12 +58,11 @@ void SMotor::SetEnable(bool EN){
   Wykonanie pojedynczego kroku
 */
 void SMotor::Step (int DIR){
-  
-  if(_enable){
-    digitalWrite(_enable_pin, HIGH);
-  }
-  else{
-    digitalWrite(_dir_pin, DIR=0? HIGH:LOW);
+	
+  if(_enable==0){
+    if(DIR>0) digitalWrite(_dir_pin,HIGH);
+	else digitalWrite(_dir_pin, LOW);
+
     digitalWrite(_step_pin,HIGH);
     digitalWrite(_step_pin,LOW);
   }

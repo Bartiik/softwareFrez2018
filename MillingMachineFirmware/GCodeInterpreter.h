@@ -46,6 +46,8 @@ private:
 	float _S;
 	float _F;
 	float _U;
+	float _LV[100]; // LocalVariables vector 
+
 
 	uint32_t _numberOfStepsRequired;
 	uint32_t _currentStep;
@@ -61,15 +63,18 @@ private:
 	uint8_t _SpindleSpeed;
 	uint16_t _CartesianSpeed;
 
-	bool newCommand;
+	bool _isFinished;
 
 public:
 	GCodeInterpreter();
 	~GCodeInterpreter();
+	void G01_SetUp();
+	void G01_Execute();
 	void PrepareForExecution();
 	void ExecuteStep();
 	void Interpret(String);
 	void Clear();
+	bool IsExecutionFinished();
 
 
 };

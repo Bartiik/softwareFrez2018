@@ -45,7 +45,7 @@
 #define UNKNOWN_PIN				35
 #define E2_STEP_PIN				36
 #define UNKNOWN_PIN				37
-#define X_ENABLE_PIN			38
+#define X_ENABLE_PIN			7//38
 #define UNKNOWN_PIN				39
 #define UNKNOWN_PIN				40
 #define UNKNOWN_PIN				41
@@ -53,23 +53,23 @@
 #define UNKNOWN_PIN				43
 #define UNKNOWN_PIN				44  // PWM PIN
 #define UNKNOWN_PIN				45  // PWM PIN
-#define Z_STEP_PIN				46  // PWM PIN
+#define Z_STEP_PIN				A0//46  // PWM PIN
 #define UNKNOWN_PIN				47
-#define Z_DIR_PIN				48
+#define Z_DIR_PIN				A1//48
 #define UNKNOWN_PIN				49
 #define UNKNOWN_PIN				50  // MISO
 #define UNKNOWN_PIN				51  // MOSI
 #define UNKNOWN_PIN				52
 #define UNKNOWN_PIN				53
-#define X_STEP_PIN				A0  // ANALOG PIN
-#define X_DIR_PIN				A1  // ANALOG PIN
-#define Y_ENABLE_PIN			A2  // ANALOG PIN
+#define X_STEP_PIN				12// A0  // ANALOG PIN
+#define X_DIR_PIN				11//A1  // ANALOG PIN
+#define Y_ENABLE_PIN			6//A2  // ANALOG PIN
 #define UNKNOWN_PIN				A3  // ANALOG PIN
 #define UNKNOWN_PIN				A4  // ANALOG PIN
 #define UNKNOWN_PIN				A5  // ANALOG PIN
-#define Y_STEP_PIN				A6  // ANALOG PIN
-#define Y_DIR_PIN				A7  // ANALOG PIN
-#define Z_ENABLE_PIN			A8  // ANALOG PIN
+#define Y_STEP_PIN				10//A6  // ANALOG PIN
+#define Y_DIR_PIN				9//A7  // ANALOG PIN
+#define Z_ENABLE_PIN			A2//A8  // ANALOG PIN
 #define UNKNOWN_PIN				A9  // ANALOG PIN
 #define UNKNOWN_PIN				A10 // ANALOG PIN
 #define UNKNOWN_PIN				A11 // ANALOG PIN
@@ -91,7 +91,15 @@
 #define BAUD_RATE				115200
 
 // DUMMY
-#define DUMMY_VALUE				1234.56789
+#define DUMMY_VALUE				999999
+
+// Motro
+#define RPS0_25  25536  //50Hz
+#define RPS0_5 45536; // 100Hz
+#define RPS1 55536; // 200Hz
+#define RPS2 60536; // 400Hz
+#define RPS2_5 61536; // 500Hz
+#define RPS3 62203; // 600Hz
 
 //					STATIC COMMANDS
 
@@ -103,5 +111,7 @@
 #define STANDARD_REPLY_COMMAND				"U5"
 #define ERROR_COMMAND						"U6"
 #define RESET_COMMAND						"U7"
+#define MOVEMENT_DONE						"U8"
+#define THE_SAME_COORD						"U9"
 
 #endif // !

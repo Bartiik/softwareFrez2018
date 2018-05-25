@@ -25,8 +25,9 @@ void Communication::ReceiveMessage(String message)
 */
 String Communication::LatestMessage()
 {
-	return _message;
 	_newMessage = false;
+	return _message;
+	
 }
 /* autor: Bartek Kudroń
 	test czy wiadomość została użyta
