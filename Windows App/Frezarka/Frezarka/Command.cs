@@ -22,8 +22,8 @@ namespace Frezarka
         {
             bool test = true;
             code.Replace(" ", String.Empty);
-            code.ToUpper();
-            var myRegex = new Regex(@"[A-Z]\d{0,}[\.\,]{0,1}\d{0,}");
+            code = code.ToUpper();
+            var myRegex = new Regex(@"[A-Z][-]{0,1}\d{0,}[\.\,]{0,1}\d{0,}");
             List<String> lines = myRegex.Matches(code).Cast<Match>().Select(m => m.Value).ToList();
             foreach ( String line in lines)
             {
