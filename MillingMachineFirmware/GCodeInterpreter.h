@@ -75,6 +75,7 @@ public:
 	void Interpret(String);
 	void Clear();
 	bool IsExecutionFinished();
+	void ExecutionIsComplete();
 
 
 };

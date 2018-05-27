@@ -9,7 +9,7 @@ String inputString = "";
 boolean stringComplete = false;
 bool initial = true;
 bool var = false;
-
+bool ExecutionInterrupt = false;
 
 /* 
 ZASADA DZIAŁANIA PROGAMU (IDEA, NIEZWERYFIKOWANA - MOGĄ BYĆ BŁĘDY) 
@@ -66,8 +66,7 @@ void setup()
 ISR(TIMER1_OVF_vect) { //timer for steppers
 	TCNT1 = RPS3; //by changing this value we can change the speed of rotation
 	if (StateMachine.CurrentState() == EXECUTION_STATE) {
-		
-		Command.ExecuteStep();
+		ExecutionInterrupt = true;
 	}
 	
 	
@@ -122,22 +121,29 @@ void loop()
 
 	case EXECUTION_STATE:
 	{
-		XStepper.SetEnable(0);
-		YStepper.SetEnable(0);
-		//ZStepper.SetEnable(0);
-		ProcessNewMessage();
-		if (Command.IsExecutionFinished()) {
+		if (ExecutionInterrupt)
+		{
 			
-		//	MMcomm.SendMessage("Movement done correctly");
-		//	MMcomm.SendMessage("");
-			XStepper.SetEnable(1);
-			YStepper.SetEnable(1);
-			MMcomm.SendMessage(MOVEMENT_DONE);
-			StateMachine.SetIdleState();
+
+
+			XStepper.SetEnable(0);
+			YStepper.SetEnable(0);
 			//ZStepper.SetEnable(0);
+			ProcessNewMessage();
+			if (Command.IsExecutionFinished()) {
 
+				//	MMcomm.SendMessage("Movement done correctly");
+				//	MMcomm.SendMessage("");
+				XStepper.SetEnable(1);
+				YStepper.SetEnable(1);
+				MMcomm.SendMessage(MOVEMENT_DONE);
+				StateMachine.SetIdleState();
+				//ZStepper.SetEnable(0);
+
+			}
+
+			ExecutionInterrupt = false;
 		}
-
 	
 		// END OF COMMAND STATE
 	}

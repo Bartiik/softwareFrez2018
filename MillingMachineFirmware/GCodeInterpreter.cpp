@@ -25,6 +25,7 @@ void GCodeInterpreter::Clear()
 	_J = DUMMY_VALUE;
 	_S = DUMMY_VALUE;
 	_F = DUMMY_VALUE;
+	_U = DUMMY_VALUE;
 	_XPosition = 0;
 	_YPosition = 0;
 	_ZPosition = 0;
@@ -83,6 +84,14 @@ void GCodeInterpreter::G01_SetUp() {
 			_LV[7] = 0;
 		}
 	}
+}
+
+
+void GCodeInterpreter::ExecutionIsComplete()
+{
+	Clear();
+	MMcomm.SendReply();
+	StateMachine.SetIdleState();
 }
 /* autor: Maciej Wiecheć
 making single execution of one step in streight line
