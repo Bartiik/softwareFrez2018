@@ -225,9 +225,27 @@ namespace Frezarka
                 k.Append(" >>>> ");
             }
             k.Append(C.ToString());
-            //CommunicationBox.Items.Add(k.ToString());
             CommunicationBox.Invoke((MethodInvoker)delegate {
                 CommunicationBox.Items.Add(k.ToString() );
+                CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
+            });
+        }
+        void addToCommunicationBox(bool messageToArduino, String C)
+        {
+            String time = DateTime.Now.ToString("hh:mm:ss tt");
+            StringBuilder k = new StringBuilder();
+            k.Append(time);
+            if (messageToArduino)
+            {
+                k.Append(" <<<< ");
+            }
+            else
+            {
+                k.Append(" >>>> ");
+            }
+            k.Append(C);
+            CommunicationBox.Invoke((MethodInvoker)delegate {
+                CommunicationBox.Items.Add(k.ToString());
                 CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
             });
         }
@@ -255,8 +273,64 @@ namespace Frezarka
                 MillingMachineStateLabel.Text = State;
             });
             msg.Remove(0, 1);
-            if(temp.Fill(msg))
-                addToCommunicationBox(false, temp);
+            String message;
+            if (temp.Fill(msg))
+            {
+                if (temp.returnValue('W') != 1234.56789)
+                {
+                    switch (temp.returnValue('W'))
+                    {
+                        case 0:
+                            {
+                                message = "Warning.";
+                            }
+                            break;
+                        case 1:
+                            {
+                                message = "Warning. Interpretation failed";
+                            }
+                            break;
+                        default:
+                            {
+                                message = "Warning. Unknown";
+                            }
+                            break;
+                    }
+                    addToCommunicationBox(false, message);
+
+                }
+                else if (temp.returnValue('E') != 1234.56789)
+                {
+                    switch (temp.returnValue('E'))
+                    {
+                        case 1:
+                            {
+                                message = "ERROR! Unexpected state change.";
+                            }
+                            break;
+                        case 2:
+                            {
+                                message = "ERROR! Unknown state reached.";
+                            }
+                            break;
+                        case 3:
+                            {
+                                message = "ERROR! Unknown G-Code sent.";
+                            }
+                            break;
+
+                        default:
+                            {
+                                message = "ERROR! Unknown.";
+                            }
+                            break;
+                    }
+                }
+
+            }
+                    
+
+                
             //if (st == "0" && State == "2")
             //{
             //    temp.Fill("U4");

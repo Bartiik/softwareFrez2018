@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef config
 
 #define config
@@ -113,5 +113,19 @@
 #define RESET_COMMAND						"U7"
 #define MOVEMENT_DONE						"U8"
 #define THE_SAME_COORD						"U9"
+
+
+// kody błędów - używane przez funkcję MMComm.SetErrorState - jeśli funkcja nie posiada parametru, wysyła E0.
+
+#define UNKNOWN_ERROR						"E0" // ogólny błąd wskazujący że coś jest nie tak. Im mniej się go użyje, tym lepiej. 
+#define UNEXPECTED_STATE_ERROR				"E1" // nieogarnięta wiadomość - np. test komunikacji w stanie innym niż init.
+#define UNHANDLED_STATE_ERROR				"E2" // nieznana wartość zmiennej _State
+#define UNKNOWN_GCODE_ERROR					"E3" // nieznana komenda G, M lub U
+
+//kody ostrzeżeń - nie zmieniają stanu na error, ale informują o czymś komputer.
+
+#define WARNING								"W0" // nieznany warning.
+#define INTERPRETATION_FAILED_WARNING		"W1" // błąd interpretacji G-Kodu
+
 
 #endif // !

@@ -62,6 +62,8 @@ bool MMStateMachine::TryUpdateState(String command)
 	if (commandIsUsed)
 	{
 		_state = StateChangeLookupTable[_state][cmd];
+		if (_state == ERROR_STATE)
+			MMcomm.SendMessage(UNEXPECTED_STATE_ERROR);
 	}
 	MMcomm.SendMessage(command);
 	return commandIsUsed;
@@ -76,9 +78,14 @@ void MMStateMachine::Reset()
 /* autor: Bartek Kudroń
 zmiana stanu na error.
 */
+void MMStateMachine::SetErrorState(String error)
+{
+	MMcomm.SendMessage(error);
+	_state = ERROR_STATE;
+}
 void MMStateMachine::SetErrorState()
 {
-	_state = ERROR_STATE;
+	MMcomm.SendMessage(UNKNOWN_ERROR);
 }
 /* autor: Maciej Wiecheć
 zmiana stanu na execution.
