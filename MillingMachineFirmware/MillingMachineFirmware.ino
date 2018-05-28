@@ -9,7 +9,7 @@ String inputString = "";
 boolean stringComplete = false;
 bool initial = true;
 bool var = false;
-
+bool ExecutionInterrupt = false;
 
 /* 
 ZASADA DZIAŁANIA PROGAMU (IDEA, NIEZWERYFIKOWANA - MOGĄ BYĆ BŁĘDY) 
@@ -66,8 +66,7 @@ void setup()
 ISR(TIMER1_OVF_vect) { //timer for steppers
 	TCNT1 = RPS3; //by changing this value we can change the speed of rotation
 	if (StateMachine.CurrentState() == EXECUTION_STATE) {
-		
-		Command.ExecuteStep();
+		ExecutionInterrupt = true;
 	}
 	
 	
@@ -102,19 +101,20 @@ void loop()
 		
 		if (MMcomm.MessageIsNew())
 		{
-		//	MMcomm.SendMessage("New message");
+			if(Command.Interpret(MMcomm.LatestMessage()))
+				Command.PrepareForExecution();
 
-			Command.Interpret(MMcomm.LatestMessage());
-			Command.PrepareForExecution();
-			if (Command.IsExecutionFinished()==0) {
-			//	MMcomm.SendMessage("Set to execution");
-				StateMachine.SetExecutionState();
-			}
-			else {
-			//	MMcomm.SendMessage("the same coord, Set to idle");
-				MMcomm.SendMessage(THE_SAME_COORD);
-				StateMachine.SetIdleState();
-			}
+
+			// TEGO TU BYC nie może
+			//if (Command.IsExecutionFinished()==0) {
+			////	MMcomm.SendMessage("Set to execution");
+			//	StateMachine.SetExecutionState();
+			//}
+			//else {
+			////	MMcomm.SendMessage("the same coord, Set to idle");
+			//	MMcomm.SendMessage(THE_SAME_COORD);
+			//	StateMachine.SetIdleState();
+			//}
 		}
 		// END OF IDLE STATE
 	}
@@ -122,22 +122,31 @@ void loop()
 
 	case EXECUTION_STATE:
 	{
-		XStepper.SetEnable(0);
-		YStepper.SetEnable(0);
-		//ZStepper.SetEnable(0);
-		ProcessNewMessage();
-		if (Command.IsExecutionFinished()) {
-			
-		//	MMcomm.SendMessage("Movement done correctly");
-		//	MMcomm.SendMessage("");
-			XStepper.SetEnable(1);
-			YStepper.SetEnable(1);
-			MMcomm.SendMessage(MOVEMENT_DONE);
-			StateMachine.SetIdleState();
-			//ZStepper.SetEnable(0);
+		if (ExecutionInterrupt)
+		{
+			Command.ExecuteStep();
+			ExecutionInterrupt = false;
+
+			// TEGO TEŻ TU BYC NIE MOZE
+
+			//XStepper.SetEnable(0);
+			//YStepper.SetEnable(0);
+			////ZStepper.SetEnable(0);
+			//ProcessNewMessage();
+			//if (Command.IsExecutionFinished()) {
+
+			//	//	MMcomm.SendMessage("Movement done correctly");
+			//	//	MMcomm.SendMessage("");
+			//	XStepper.SetEnable(1);
+			//	YStepper.SetEnable(1);
+			//	MMcomm.SendMessage(MOVEMENT_DONE);
+			//	StateMachine.SetIdleState();
+			//	//ZStepper.SetEnable(0);
+
+			//}
+
 
 		}
-
 	
 		// END OF COMMAND STATE
 	}
@@ -155,7 +164,7 @@ void loop()
 
 		// COMPLETE FUCKUP STATE, IF HAPPENS THE PROGRAM
 		// IS SOMEWHERE COMPLETELY FUCKED UP
-		MMcomm.SendMessage("CRITICAL ERROR! UNKNOWN STATE. COMMUNICATION RESET REQUIRED");
+		StateMachine.SetErrorState(UNHANDLED_STATE_ERROR);
 		StateMachine.Reset();
 	}
 

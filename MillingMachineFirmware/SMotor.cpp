@@ -27,6 +27,7 @@ void SMotor::Init(uint8_t DirPin, uint8_t StepPin, uint8_t EnPin){
   pinMode(_step_pin, OUTPUT);
   pinMode(_enable_pin, OUTPUT);
   digitalWrite(_enable_pin, HIGH);
+  _enable = true;
 }
 
 /* autor: Maciek Wiecheć
@@ -49,8 +50,7 @@ bool SMotor::GetBoolEnable(){
 */
 void SMotor::SetEnable(bool EN){
   _enable=EN;
-  if(EN) digitalWrite(_enable_pin, HIGH);
-  else digitalWrite(_enable_pin, LOW);
+  digitalWrite(_enable_pin, EN);
 }
 
 

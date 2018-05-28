@@ -25,10 +25,16 @@ void GCodeInterpreter::Clear()
 	_J = DUMMY_VALUE;
 	_S = DUMMY_VALUE;
 	_F = DUMMY_VALUE;
+	_U = DUMMY_VALUE;
 	_XPosition = 0;
 	_YPosition = 0;
 	_ZPosition = 0;
 	_isFinished = 0;
+	for (int i = 0; i < sizeof(_LV) / sizeof(float); i++)
+	{
+		_LV[i] = DUMMY_VALUE;
+	}
+
 }
 
 /* autor: Maciej Wiecheć
@@ -83,6 +89,14 @@ void GCodeInterpreter::G01_SetUp() {
 			_LV[7] = 0;
 		}
 	}
+}
+
+
+void GCodeInterpreter::ExecutionIsComplete()
+{
+	Clear();
+	MMcomm.SendReply();
+	StateMachine.SetIdleState();
 }
 /* autor: Maciej Wiecheć
 making single execution of one step in streight line
@@ -306,8 +320,7 @@ void GCodeInterpreter::PrepareForExecution()
 			default:
 				
 				// ERROR
-				MMcomm.SendMessage("ERROR. UNKNOWN COMMAND");
-				StateMachine.SetErrorState();
+				StateMachine.SetErrorState(UNKNOWN_GCODE_ERROR);
 				Clear();
 				break;
 			}
@@ -319,10 +332,13 @@ void GCodeInterpreter::PrepareForExecution()
 /* autor: Bartek Kudroń
 funkcja wyciągająca ze stringa wartości dla konkretnych liter.
 */
-void GCodeInterpreter::Interpret(String command)
+bool GCodeInterpreter::Interpret(String command)
 {
+	bool success = true;
 	float *currentLetter;
 	String number = "";
+	if (command == "") success = false;
+
 	for (int i = 0; i < command.length(); i++)
 	{
 		switch (command[i])
@@ -424,6 +440,11 @@ void GCodeInterpreter::Interpret(String command)
 					number += '.';
 				}
 				else number += command[i];
+			else
+			{
+
+				success = false;
+			}
 			break;
 		}
 
@@ -434,6 +455,11 @@ void GCodeInterpreter::Interpret(String command)
 	{
 		*currentLetter = number.toFloat();
 	}
+	if (!success)
+	{
+		MMcomm.SendMessage(INTERPRETATION_FAILED_WARNING);
+	}
+	return success;
 
 //	MMcomm.SendMessage("G: " + (String)_G);
 //	MMcomm.SendMessage("X: " + (String)_X + "Y: " + (String)_Y);

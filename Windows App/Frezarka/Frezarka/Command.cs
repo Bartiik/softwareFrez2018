@@ -13,8 +13,8 @@ namespace Frezarka
         public Command()
         {
             ParentFile = "";
-            values = new double[10];
-            chars = "GXYZIJMSFU";
+            values = new double[12];
+            chars = "GXYZIJMSFUEW";
             for (int i = 0; i < values.Length; i++)
                 values[i] = 1234.56789;
         }

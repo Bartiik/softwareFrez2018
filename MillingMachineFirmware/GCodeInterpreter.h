@@ -48,6 +48,7 @@ private:
 	float _U;
 	float _LV[100]; // LocalVariables vector 
 
+	bool UnitIsCm;
 
 	uint32_t _numberOfStepsRequired;
 	uint32_t _currentStep;
@@ -65,16 +66,19 @@ private:
 
 	bool _isFinished;
 
+	void G01_SetUp();
+	void G01_Execute();
+
 public:
 	GCodeInterpreter();
 	~GCodeInterpreter();
-	void G01_SetUp();
-	void G01_Execute();
+
 	void PrepareForExecution();
 	void ExecuteStep();
-	void Interpret(String);
+	bool Interpret(String);
 	void Clear();
 	bool IsExecutionFinished();
+	void ExecutionIsComplete();
 
 
 };
