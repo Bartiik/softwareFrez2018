@@ -59,14 +59,15 @@ void setup()
 
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
-//	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
+	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
 
 }
 
 ISR(TIMER1_OVF_vect) { //timer for steppers
-	TCNT1 = RPS3; //by changing this value we can change the speed of rotation
+	 //by changing this value we can change the speed of rotation
 	if (StateMachine.CurrentState() == EXECUTION_STATE) {
 		ExecutionInterrupt = true;
+		
 	}
 	
 	
@@ -80,7 +81,8 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
-	
+	//if (XStepper.GetBoolEnable()) MMcomm.SendMessage("EN=1");
+	//else MMcomm.SendMessage("En=0");
 	switch (StateMachine.CurrentState())
 	// nothing should happen outside this switch
 	{
@@ -101,20 +103,16 @@ void loop()
 		
 		if (MMcomm.MessageIsNew())
 		{
-			if(Command.Interpret(MMcomm.LatestMessage()))
+			if (Command.Interpret(MMcomm.LatestMessage())) {
+
+
 				Command.PrepareForExecution();
+				if (StateMachine.CurrentState() == IDLE_STATE) {
 
-
-			// TEGO TU BYC nie może
-			//if (Command.IsExecutionFinished()==0) {
-			////	MMcomm.SendMessage("Set to execution");
-			//	StateMachine.SetExecutionState();
-			//}
-			//else {
-			////	MMcomm.SendMessage("the same coord, Set to idle");
-			//	MMcomm.SendMessage(THE_SAME_COORD);
-			//	StateMachine.SetIdleState();
-			//}
+					StateMachine.SetExecutionState();
+				}
+			}
+			
 		}
 		// END OF IDLE STATE
 	}
@@ -126,26 +124,6 @@ void loop()
 		{
 			Command.ExecuteStep();
 			ExecutionInterrupt = false;
-
-			// TEGO TEŻ TU BYC NIE MOZE
-
-			//XStepper.SetEnable(0);
-			//YStepper.SetEnable(0);
-			////ZStepper.SetEnable(0);
-			//ProcessNewMessage();
-			//if (Command.IsExecutionFinished()) {
-
-			//	//	MMcomm.SendMessage("Movement done correctly");
-			//	//	MMcomm.SendMessage("");
-			//	XStepper.SetEnable(1);
-			//	YStepper.SetEnable(1);
-			//	MMcomm.SendMessage(MOVEMENT_DONE);
-			//	StateMachine.SetIdleState();
-			//	//ZStepper.SetEnable(0);
-
-			//}
-
-
 		}
 	
 		// END OF COMMAND STATE

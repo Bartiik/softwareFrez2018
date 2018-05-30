@@ -1,6 +1,6 @@
-C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\core\wiring_shift.c.o: \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\wiring_shift.c \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\wiring_private.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\Arduino.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\cores\arduino\binary.h \
- C:\Users\Bartek\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.19\variants\standard/pins_arduino.h
+C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\core\wiring_shift.c.o: \
+ F:\Arduino\hardware\arduino\avr\cores\arduino\wiring_shift.c \
+ F:\Arduino\hardware\arduino\avr\cores\arduino\wiring_private.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino\Arduino.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino\binary.h \
+ F:\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h

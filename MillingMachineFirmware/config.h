@@ -93,13 +93,19 @@
 // DUMMY
 #define DUMMY_VALUE				999999
 
-// Motro
+//					MOTOR AND MOVEMENT
+
 #define RPS0_25  25536  //50Hz
 #define RPS0_5 45536; // 100Hz
 #define RPS1 55536; // 200Hz
 #define RPS2 60536; // 400Hz
 #define RPS2_5 61536; // 500Hz
 #define RPS3 62203; // 600Hz
+
+#define WORKING_SPEED RPS2
+#define RAPID_SPEED RPS2_5
+
+#define SAFE_HEIGHT 200 // height in z axis
 
 //					STATIC COMMANDS
 

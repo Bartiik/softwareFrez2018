@@ -46,7 +46,7 @@ private:
 	float _S;
 	float _F;
 	float _U;
-	float _LV[100]; // LocalVariables vector 
+	float _LV[20]; // LocalVariables vector 
 
 	bool UnitIsCm;
 
@@ -64,9 +64,12 @@ private:
 	uint8_t _SpindleSpeed;
 	uint16_t _CartesianSpeed;
 
-	bool _isFinished;
+	void SetSteppersEn(bool);
 
+	void G00_SetUp();
 	void G01_SetUp();
+
+	void G00_Execute();
 	void G01_Execute();
 
 public:
@@ -77,7 +80,6 @@ public:
 	void ExecuteStep();
 	bool Interpret(String);
 	void Clear();
-	bool IsExecutionFinished();
 	void ExecutionIsComplete();
 
 

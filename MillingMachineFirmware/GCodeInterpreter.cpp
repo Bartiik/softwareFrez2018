@@ -6,6 +6,9 @@ GCodeInterpreter Command;
 
 GCodeInterpreter::GCodeInterpreter()
 {
+	_XPosition = 0;
+	_YPosition = 0;
+	_ZPosition = 0;
 	Clear();
 }
 
@@ -18,18 +21,14 @@ void GCodeInterpreter::Clear()
 {
 	_G = DUMMY_VALUE;
 	_M = DUMMY_VALUE;
-	_X = 0;
-	_Y = 0;
-	_Z = 0;
+	_X = DUMMY_VALUE;
+	_Y = DUMMY_VALUE;
+	_Z = DUMMY_VALUE;
 	_I = DUMMY_VALUE;
 	_J = DUMMY_VALUE;
 	_S = DUMMY_VALUE;
 	_F = DUMMY_VALUE;
 	_U = DUMMY_VALUE;
-	_XPosition = 0;
-	_YPosition = 0;
-	_ZPosition = 0;
-	_isFinished = 0;
 	for (int i = 0; i < sizeof(_LV) / sizeof(float); i++)
 	{
 		_LV[i] = DUMMY_VALUE;
@@ -37,56 +36,101 @@ void GCodeInterpreter::Clear()
 
 }
 
+void GCodeInterpreter::SetSteppersEn(bool EN) {
+	XStepper.SetEnable(EN);
+	YStepper.SetEnable(EN);
+	ZStepper.SetEnable(EN);
+}
+
+/* autor: Maciej Wiecheć
+preparing for execution G00
+set dir for each axis	
+*/
+void GCodeInterpreter::G00_SetUp() {
+	float *stepDirX = &_LV[0];
+	float *stepDirY = &_LV[1];
+	float *stepDirZ = &_LV[2];
+	
+	// dir in X-axis
+	if (_X < _XPosition) {
+		*stepDirX=-1;
+	}
+	else {
+		*stepDirX = 1;
+	}
+	// dir in Y-axis
+	if (_Y < _YPosition) {
+		*stepDirY = -1;
+	}
+	else {
+		*stepDirY = 1;
+	}
+	// dir in Z-axis
+	if (_Z < _ZPosition) {
+		*stepDirZ = -1;
+	}
+	else {
+		*stepDirZ = 1;
+	}
+}
+
+
+
 /* autor: Maciej Wiecheć
 preparing for execution G01
 calculating all the data needed for G01 movement
 */
 void GCodeInterpreter::G01_SetUp() {
 	
+	float *deltaX	= & _LV[0];
+	float *stepDirX = & _LV[1];
+	float *deltaY   = & _LV[2];
+	float *stepDirY = & _LV[3];
+	float *ai = & _LV[4];
+	float *bi = & _LV[5];
+	float *d  = & _LV[6];
+	float *wchichCase = & _LV[7];
 
-	if (_XPosition == _X && _YPosition == _Y) {
-		_isFinished = 1;
-	}
-	else {
-		_isFinished = 0;
+	if (_XPosition != _X || _YPosition != _Y) {
+		
 		if (_XPosition == _X) {
-			_LV[1] = 0;
-			_LV[0] = 0;
+			*stepDirX = 0;
+			*deltaX = 0;
 		}
 		else if (_XPosition < _X) {
-			_LV[1] = 1;
-			_LV[0] = _X - _XPosition;
+			*stepDirX = 1;
+			*deltaX = _X - _XPosition;
 		}
 		else {
-			_LV[1] = -1;
-			_LV[0] = _XPosition - _X;
+			*stepDirX = -1;
+			*deltaX = _XPosition - _X;
 		}
 
 
 		if (_YPosition == _Y) {
-			_LV[3] = 0;
-			_LV[2] = 0;
+			*stepDirY = 0;
+			*deltaY = 0;
 		}
 		else if (_YPosition < _Y) {
-			_LV[3] = 1;
-			_LV[2] = _Y - _YPosition;
+			*stepDirY = 1;
+			*deltaY = _Y - _YPosition;
 		}
 		else {
-			_LV[3] = -1;
-			_LV[2] = _YPosition - _Y;
+			*stepDirY = -1;
+			*deltaY = _YPosition - _Y;
 		}
 
-		if (_LV[0] > _LV[2]) {
-			_LV[4] = (_LV[2] - _LV[0]) * 2;
-			_LV[5] = _LV[2] * 2;
-			_LV[6] = _LV[5] - _LV[0];
-			_LV[7] = 1;
+		if (*deltaX > *deltaY) {
+			*ai = (*deltaY - *deltaX) * 2;
+			*bi = *deltaY * 2;
+			*d = *bi - *deltaX;
+			*wchichCase = 1;
 		}
 		else {
-			_LV[4] = (_LV[0] - _LV[2]) * 2;
-			_LV[5] = _LV[0] * 2;
-			_LV[6] = _LV[5] - _LV[2];
-			_LV[7] = 0;
+			*ai = (*deltaX - *deltaY) * 2;
+			*bi = *deltaX * 2;
+			*d = *bi - *deltaY;
+			*wchichCase = 0;
 		}
 	}
 }
@@ -95,64 +139,96 @@ void GCodeInterpreter::G01_SetUp() {
 void GCodeInterpreter::ExecutionIsComplete()
 {
 	Clear();
-	MMcomm.SendReply();
 	StateMachine.SetIdleState();
+	MMcomm.SendReply();
+	SetSteppersEn(1);
 }
+/* autor: Maciej Wiecheć
+making single execution of one step of rapid motion
+*/
+
+void GCodeInterpreter::G00_Execute() {
+	float *stepDirX = &_LV[0];
+	float *stepDirY = &_LV[1];
+	float *stepDirZ = &_LV[2];
+	TCNT1 = RAPID_SPEED;
+	
+	//Serial.println("_X: " + (String)_X + " _XPoz: " + (String)_XPosition);
+	if (_X != _XPosition) {
+		XStepper.Step(*stepDirX);
+		_XPosition += *stepDirX;
+	}
+	if (_Y != _YPosition) {
+		YStepper.Step(*stepDirY);
+		_YPosition += *stepDirY;
+	}
+	if (_Z != _ZPosition) {
+		ZStepper.Step(*stepDirZ);
+		_ZPosition += *stepDirZ;
+	}
+
+	if (_X == _XPosition && _Y == _YPosition && _Z == _ZPosition) {
+		Command.ExecutionIsComplete();
+	}
+
+}
+
 /* autor: Maciej Wiecheć
 making single execution of one step in streight line
 */
 void GCodeInterpreter::G01_Execute() {
-	TCNT1 = RPS2_5;
+	TCNT1 = WORKING_SPEED;
 
-	if (StateMachine.CurrentState()!= EXECUTION_STATE) {
-		XStepper.SetEnable(1);
-		YStepper.SetEnable(1);
-//		ZStepper.SetEnable(1);
-	}
-	else {
+	float *deltaX = & _LV[0];
+	float *stepDirX = & _LV[1];
+	float *deltaY = & _LV[2];
+	float *stepDirY = & _LV[3];
+	float *ai = & _LV[4];
+	float *bi = & _LV[5];
+	float *d = & _LV[6];
+	float *wchichCase = &_LV[7];
 
-		if (_LV[7] == 1) {
+	 
+		
+		if (*wchichCase == 1) {
 
 			if (_XPosition != _X) {
-				if (_LV[6] >= 0) {
-					_XPosition = _XPosition + _LV[1];
-					_YPosition = _YPosition + _LV[3];
-					_LV[6] = _LV[6] + _LV[4];
-					XStepper.Step(_LV[1]);
-					YStepper.Step(_LV[3]);
+				if (*d >= 0) {
+					_XPosition = _XPosition + *stepDirX;
+					_YPosition = _YPosition + *stepDirY;
+					*d = *d + *ai;
+					XStepper.Step(*stepDirX);
+					YStepper.Step(*stepDirY);
 				}
 				else {
-					_LV[6] = _LV[6] + _LV[5];
-					_XPosition = _XPosition + _LV[1];
-					XStepper.Step(_LV[1]);
+					*d = *d + *bi;
+					_XPosition = _XPosition + *stepDirX;
+					XStepper.Step(*stepDirX);
 				}
 			}
 		}
 		else {
 			if (_YPosition != _Y) {
-				if (_LV[6] >= 0) {
-					_XPosition = _XPosition + _LV[1];
-					_YPosition = _YPosition + _LV[3];
-					_LV[6] = _LV[6] + _LV[4];
-					XStepper.Step(_LV[1]);
-					YStepper.Step(_LV[3]);
+				if (*d >= 0) {
+					_XPosition = _XPosition + *stepDirX;
+					_YPosition = _YPosition + *stepDirY;
+					*d = *d + *ai;
+					XStepper.Step(*stepDirX);
+					YStepper.Step(*stepDirY);
 				}
 				else {
-					_LV[6] = _LV[6] + _LV[5];
-					_YPosition = _YPosition + _LV[3];
-					YStepper.Step(_LV[3]);
+					*d = *d + *bi;
+					_YPosition = _YPosition + *stepDirY;
+					YStepper.Step(*stepDirY);
 				}
 			}
 		}
-	}
-	if (_X == _XPosition && _Y == _YPosition) { 
-		_isFinished = 1;	
+	
+	if (_X == _XPosition && _Y == _YPosition && _Z == _ZPosition) {
+		Command.ExecutionIsComplete();
 	}
 }
 
-bool GCodeInterpreter::IsExecutionFinished() {
-	return _isFinished;
-}
 
 
 
@@ -173,10 +249,11 @@ void GCodeInterpreter::ExecuteStep()
 	switch ((int)_G)
 	{
 	case 0: //G00 command - to be filled
-
+		G00_Execute();
 		break;
 	case 1: //G01 command - to be filled
 		G01_Execute();
+		
 		break;
 	case 2: //G02 command - to be filled
 
@@ -248,17 +325,17 @@ funkcja wykonywana przed rozpoczęciem pętli komendy. wykonywana raz, kod róż
 */
 void GCodeInterpreter::PrepareForExecution()
 {
-
-
 	//			G COMMANDS
 
 	switch ((int)_G)
 	{
 	case 0: //G00 command - to be filled
-
+		G00_SetUp();
+		SetSteppersEn(0);
 		break;
 	case 1: //G01 command - to be filled
 		G01_SetUp();
+		SetSteppersEn(0);
 		break;
 	case 2: //G02 command - to be filled
 
@@ -326,6 +403,8 @@ void GCodeInterpreter::PrepareForExecution()
 			}
 		}
 	}
+	
+
 }
 
 
@@ -459,9 +538,15 @@ bool GCodeInterpreter::Interpret(String command)
 	{
 		MMcomm.SendMessage(INTERPRETATION_FAILED_WARNING);
 	}
-	return success;
+	
+	// jeśli nie podana była żadna wartość w komendzie to niech 
+	// docelowa wartość będzie taka jak aktualna. Nie będzie wtedy ruchu
+	if (_X == DUMMY_VALUE) _X = _XPosition;
+	if (_Y == DUMMY_VALUE) _Y = _YPosition;
+	if (_Z == DUMMY_VALUE) _Z = _ZPosition;
 
-//	MMcomm.SendMessage("G: " + (String)_G);
-//	MMcomm.SendMessage("X: " + (String)_X + "Y: " + (String)_Y);
-//	MMcomm.SendMessage("Xpoz: " + (String)_XPosition + "Ypoz: " + (String)_YPosition);
+	//MMcomm.SendMessage("G: " + (String)_G);
+	//MMcomm.SendMessage("X: " + (String)_X + "Y: " + (String)_Y);
+	//MMcomm.SendMessage("Xpoz: " + (String)_XPosition + "Ypoz: " + (String)_YPosition);
+	return success;
 }
