@@ -36,6 +36,12 @@
     <ClInclude Include="SMotor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BLDCDriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MMStateMachine.cpp">
@@ -48,6 +54,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SMotor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BLDCDriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

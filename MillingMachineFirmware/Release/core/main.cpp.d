@@ -1,13 +1,13 @@
-C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\uno\Release\core\main.cpp.o: \
- F:\Arduino\hardware\arduino\avr\cores\arduino\main.cpp \
- F:\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/WString.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/Printable.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
- F:\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
- F:\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h
+C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\core\main.cpp.o: \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino\main.cpp \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WString.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Printable.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\mega/pins_arduino.h

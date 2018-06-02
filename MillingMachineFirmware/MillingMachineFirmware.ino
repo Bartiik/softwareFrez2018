@@ -1,8 +1,11 @@
+#include <Servo.h>
 #include "config.h"
 //#include "MMStateMachine.h"
 #include "GCodeInterpreter.h"
 #include "Communication.h"
-#include"SMotor.h"
+#include "SMotor.h"
+#include "RoTable.h"
+#include "BLDCDriver.h"
 
 
 String inputString = "";
@@ -55,8 +58,9 @@ void setup()
 
 	Serial.begin(BAUD_RATE);
 	pinMode(LED_PIN, OUTPUT);
-	StateMachine.MMSafetyBegin(N_C);
-
+	StateMachine.MMSafetyBegin();
+	spindle.init();
+	Table.init();
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
@@ -81,6 +85,8 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
+	StateMachine.ResolveEndstops();
+	ProcessNewMessage();
 	//if (XStepper.GetBoolEnable()) MMcomm.SendMessage("EN=1");
 	//else MMcomm.SendMessage("En=0");
 	switch (StateMachine.CurrentState())
@@ -90,7 +96,7 @@ void loop()
 	{
 
 		// BEGIN OF INIT STATE
-		ProcessNewMessage();
+
 		// END OF INIT STATE
 	}
 	break;
@@ -98,8 +104,6 @@ void loop()
 	{
 		
 		// BEGIN OF IDLE STATE
-
-		ProcessNewMessage();
 		
 		if (MMcomm.MessageIsNew())
 		{
@@ -120,6 +124,7 @@ void loop()
 
 	case EXECUTION_STATE:
 	{
+		StateMachine.ResolveEndstops();
 		if (ExecutionInterrupt)
 		{
 			Command.ExecuteStep();
@@ -133,7 +138,6 @@ void loop()
 	case ERROR_STATE:
 	{
 		// BEGIN OF ERROR STATE
-		ProcessNewMessage();
 		// END OF ERROR STATE
 	}
 	break;
@@ -161,7 +165,7 @@ void serialEvent() {
 		}
 		else if(inChar  >= 33)
 		{
-			inputString += inChar;
+			inputString += inChar; 
 		}
 	}
 }
@@ -169,12 +173,11 @@ bool ProcessNewMessage()
 {
 	if (stringComplete)
 	{
+		stringComplete = false;
 		if (!StateMachine.TryUpdateState(inputString))
 			MMcomm.ReceiveMessage(inputString);
 		inputString = "";
-		stringComplete = false;
 		return true;
-		
 	}
 	else return false;
 }
