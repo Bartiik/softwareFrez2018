@@ -69,6 +69,7 @@ private:
 
 	void G00_SetUp();
 	void G01_SetUp();
+	void G28_SetUp();
 	void G04_SetUp();
 
 	void M03_SetUp();
@@ -83,6 +84,7 @@ private:
 	void SpindleDecelerate();
 	void S_SetUp();
 public:
+	void G28_Execute();
 
 	uint32_t time;
 

@@ -85,55 +85,68 @@ calculating all the data needed for G01 movement
 */
 void GCodeInterpreter::G01_SetUp() {
 
-	float *deltaX = &_LV[0];
-	float *stepDirX = &_LV[1];
-	float *deltaY = &_LV[2];
-	float *stepDirY = &_LV[3];
-	float *ai = &_LV[4];
-	float *bi = &_LV[5];
-	float *d = &_LV[6];
-	float *wchichCase = &_LV[7];
 
-	if (_XPosition != _X || _YPosition != _Y) {
 
-		if (_XPosition == _X) {
-			*stepDirX = 0;
-			*deltaX = 0;
-		}
-		else if (_XPosition < _X) {
-			*stepDirX = 1;
-			*deltaX = _X - _XPosition;
+	if (_Z != _ZPosition) {
+		float *stepDirZ = &_LV[8];
+		if (_Z < _ZPosition) {
+			*stepDirZ = -1;
 		}
 		else {
-			*stepDirX = -1;
-			*deltaX = _XPosition - _X;
+			*stepDirZ = 1;
 		}
+	}
+	else {
+		float *deltaX = &_LV[0];
+		float *stepDirX = &_LV[1];
+		float *deltaY = &_LV[2];
+		float *stepDirY = &_LV[3];
+		float *ai = &_LV[4];
+		float *bi = &_LV[5];
+		float *d = &_LV[6];
+		float *wchichCase = &_LV[7];
+
+		if (_XPosition != _X || _YPosition != _Y) {
+
+			if (_XPosition == _X) {
+				*stepDirX = 0;
+				*deltaX = 0;
+			}
+			else if (_XPosition < _X) {
+				*stepDirX = 1;
+				*deltaX = _X - _XPosition;
+			}
+			else {
+				*stepDirX = -1;
+				*deltaX = _XPosition - _X;
+			}
 
 
-		if (_YPosition == _Y) {
-			*stepDirY = 0;
-			*deltaY = 0;
-		}
-		else if (_YPosition < _Y) {
-			*stepDirY = 1;
-			*deltaY = _Y - _YPosition;
-		}
-		else {
-			*stepDirY = -1;
-			*deltaY = _YPosition - _Y;
-		}
+			if (_YPosition == _Y) {
+				*stepDirY = 0;
+				*deltaY = 0;
+			}
+			else if (_YPosition < _Y) {
+				*stepDirY = 1;
+				*deltaY = _Y - _YPosition;
+			}
+			else {
+				*stepDirY = -1;
+				*deltaY = _YPosition - _Y;
+			}
 
-		if (*deltaX > *deltaY) {
-			*ai = (*deltaY - *deltaX) * 2;
-			*bi = *deltaY * 2;
-			*d = *bi - *deltaX;
-			*wchichCase = 1;
-		}
-		else {
-			*ai = (*deltaX - *deltaY) * 2;
-			*bi = *deltaX * 2;
-			*d = *bi - *deltaY;
-			*wchichCase = 0;
+			if (*deltaX > *deltaY) {
+				*ai = (*deltaY - *deltaX) * 2;
+				*bi = *deltaY * 2;
+				*d = *bi - *deltaX;
+				*wchichCase = 1;
+			}
+			else {
+				*ai = (*deltaX - *deltaY) * 2;
+				*bi = *deltaX * 2;
+				*d = *bi - *deltaY;
+				*wchichCase = 0;
+			}
 		}
 	}
 }
@@ -141,6 +154,13 @@ void GCodeInterpreter::G01_SetUp() {
 void GCodeInterpreter::G04_SetUp()
 {
 	time = 0;
+}
+void GCodeInterpreter::G28_SetUp() {
+	float *procedure = &_LV[0];
+
+	*procedure = 1;
+	StateMachine.SetEndstopsEn(0);
+	
 }
 
 void GCodeInterpreter::M03_SetUp()
@@ -160,6 +180,9 @@ void GCodeInterpreter::M05_SetUp()
 }
 void GCodeInterpreter::ExecutionIsComplete()
 {
+	//MMcomm.SendMessage("MOVEMENT END " );
+	//MMcomm.SendMessage("Xpoz: " + (String)_XPosition + " Ypoz: " + (String)_YPosition + " Zpoz: " + (String)_ZPosition);
+
 	Clear();
 	StateMachine.SetIdleState();
 	MMcomm.SendReply();
@@ -174,7 +197,7 @@ void GCodeInterpreter::G00_Execute() {
 	float *stepDirY = &_LV[1];
 	float *stepDirZ = &_LV[2];
 	TCNT1 = RAPID_SPEED;
-
+	//MMcomm.SendMessage("sen: "+(String)XStepper.GetBoolEnable());
 	//Serial.println("_X: " + (String)_X + " _XPoz: " + (String)_XPosition);
 	if (_X != _XPosition) {
 		XStepper.Step(*stepDirX);
@@ -201,15 +224,27 @@ making single execution of one step in streight line
 void GCodeInterpreter::G01_Execute() {
 	TCNT1 = WORKING_SPEED;
 
-	float *deltaX = &_LV[0];
-	float *stepDirX = &_LV[1];
-	float *deltaY = &_LV[2];
-	float *stepDirY = &_LV[3];
-	float *ai = &_LV[4];
-	float *bi = &_LV[5];
-	float *d = &_LV[6];
-	float *wchichCase = &_LV[7];
 
+
+	if (_Z != _ZPosition) {
+		float *stepDirZ = &_LV[8];
+		ZStepper.Step(*stepDirZ);
+		_ZPosition = _ZPosition + *stepDirZ;
+		if (_Z == _ZPosition) {
+			Command.ExecutionIsComplete();
+		}
+	}
+	else {
+		float *deltaX = &_LV[0];
+		float *stepDirX = &_LV[1];
+		float *deltaY = &_LV[2];
+		float *stepDirY = &_LV[3];
+		float *ai = &_LV[4];
+		float *bi = &_LV[5];
+		float *d = &_LV[6];
+		float *wchichCase = &_LV[7];
+
+		if (*wchichCase == 1) {
 
 
 	if (*wchichCase == 1) {
@@ -244,11 +279,101 @@ void GCodeInterpreter::G01_Execute() {
 				YStepper.Step(*stepDirY);
 			}
 		}
-	}
 
-	if (_X == _XPosition && _Y == _YPosition && _Z == _ZPosition) {
+		if (_X == _XPosition && _Y == _YPosition) {
+			Command.ExecutionIsComplete();
+		}
+	}
+}
+
+void GCodeInterpreter::G28_Execute() {
+	float *procedure = &_LV[0];
+	TCNT1 = GO_HOME_SPEED;
+	int temp = (int)*procedure;
+	
+	
+	
+	//0 - X-Min
+	//2 - Y-Min
+	//3 - Y-Max
+	
+	switch (temp) {
+
+	case 1: {
+		if (StateMachine.returnEndstop(0) == 0) {
+			XStepper.Step(-1);			
+		}
+		else {
+			_XPosition = 0;
+			*procedure = 2;
+		}
+	}
+	break;
+
+	case 2: {
+		if (_XPosition<1000) {
+			XStepper.Step(1);
+			_XPosition += 1;
+		}
+		else {
+			*procedure = 3;
+		}
+	}
+	break;
+
+	case 3: {
+		TCNT1 = GO_HOME_SLOW_SPEED;
+		if (StateMachine.returnEndstop(0) == 0) {
+			XStepper.Step(-1);
+		}
+		else {
+			_XPosition = 0;
+			*procedure = 4;
+		}
+	}
+	break;
+
+	case 4: {
+		if (StateMachine.returnEndstop(2) == 0) {
+			YStepper.Step(-1);
+		}
+		else {
+			_YPosition = 0;
+			*procedure = 5;
+		}
+	}
+	break;
+
+	case 5: {
+		if (_YPosition<1000) {
+			YStepper.Step(1);
+			_YPosition += 1;
+		}
+		else {
+			*procedure = 6;
+		}
+	}
+	break;
+
+	case 6: {
+		TCNT1 = GO_HOME_SLOW_SPEED;
+		if (StateMachine.returnEndstop(2) == 0) {
+			YStepper.Step(-1);
+		}
+		else {
+			_YPosition = 0;
+			*procedure = 7;
+		}
+	}
+	break;
+
+	case 7:{
+		////temporary diable the endstops
+		//StateMachine.SetEndstopsEn(1);
 		Command.ExecutionIsComplete();
 	}
+	break;
+	}	
 }
 
 
@@ -316,7 +441,6 @@ funkcja wykonywana co krok programu, w zależności od komendy różny kod.
 void GCodeInterpreter::ExecuteStep()
 {
 
-	MMcomm.SendMessage("executing");
 	/*if (newCommand)
 	{
 		newCommand = false;
@@ -344,7 +468,7 @@ void GCodeInterpreter::ExecuteStep()
 		G04_Execute();
 		break;
 	case 28: //G28 command - to be filled
-
+		G28_Execute();
 		break;
 	default:
 
@@ -457,15 +581,31 @@ void GCodeInterpreter::PrepareForExecution()
 
 	MMcomm.SendMessage("preparing for execution");
 	//			G COMMANDS
-
+	
 	switch ((int)_G)
 	{
 	case 0: //G00 command - to be filled
 		G00_SetUp();
+
+		//temporary diable the endstops
+		StateMachine.SetEndstopsEn(0);
 		SetSteppersEn(0);
+
+		/*
+		for (int i = 0; i < 20; i++) {
+			MMcomm.SendMessage("stycznik " + (String)i+" "+(String)StateMachine.returnEndstop(i));
+		}
+		MMcomm.SendMessage("xen: " + (String)XStepper.GetBoolEnable());
+		MMcomm.SendMessage("yen: " + (String)YStepper.GetBoolEnable());
+		MMcomm.SendMessage("zen: " + (String)ZStepper.GetBoolEnable());
+		*/
+
 		break;
 	case 1: //G01 command - to be filled
 		G01_SetUp();
+
+		//temporary diable the endstops
+		StateMachine.SetEndstopsEn(0);
 		SetSteppersEn(0);
 		break;
 	case 2: //G02 command - to be filled
@@ -478,7 +618,8 @@ void GCodeInterpreter::PrepareForExecution()
 		G04_SetUp();
 		break;
 	case 28: //G28 command - to be filled
-
+		G28_SetUp();
+		SetSteppersEn(0);
 		break;
 	default:
 
@@ -680,6 +821,7 @@ bool GCodeInterpreter::Interpret(String command)
 			}
 			break;
 		}
+	}
 
 
 	}
@@ -700,7 +842,7 @@ bool GCodeInterpreter::Interpret(String command)
 	if (_Z == DUMMY_VALUE) _Z = _ZPosition;
 
 	//MMcomm.SendMessage("G: " + (String)_G);
-	//MMcomm.SendMessage("X: " + (String)_X + "Y: " + (String)_Y);
-	//MMcomm.SendMessage("Xpoz: " + (String)_XPosition + "Ypoz: " + (String)_YPosition);
+	//MMcomm.SendMessage("X: " + (String)_X + " Y: " + (String)_Y + " Z: " + (String)_Z);
+	//MMcomm.SendMessage("Xpoz: " + (String)_XPosition + " Ypoz: " + (String)_YPosition + " Zpoz: " + (String)_ZPosition);
 	return success;
 }
