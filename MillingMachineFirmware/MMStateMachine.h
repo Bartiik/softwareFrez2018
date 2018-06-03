@@ -21,7 +21,6 @@ private:
 	bool _endstopArray[NO_OF_ENDSTOPS];
 	
 public:
-
 	MMStateMachine();
 	~MMStateMachine();
 	void MMSafetyBegin(); // all pins setup

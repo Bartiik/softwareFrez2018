@@ -2,6 +2,7 @@
 #include "Communication.h"
 #include "MMStateMachine.h"
 #include "SMotor.h"
+#include "BLDCDriver.h"
 GCodeInterpreter Command;
 
 GCodeInterpreter::GCodeInterpreter()
@@ -9,10 +10,12 @@ GCodeInterpreter::GCodeInterpreter()
 	_XPosition = 0;
 	_YPosition = 0;
 	_ZPosition = 0;
+	_SpindleSpeed = BLDC_DEFAULT_SPEED;
+	_spindleIsWorking = false;
 	Clear();
 }
 
-GCodeInterpreter::~GCodeInterpreter(){}
+GCodeInterpreter::~GCodeInterpreter() {}
 
 /* autor: Bartek Kudroń
 wyczyszczenie danych zawartych w klasie
@@ -44,16 +47,16 @@ void GCodeInterpreter::SetSteppersEn(bool EN) {
 
 /* autor: Maciej Wiecheć
 preparing for execution G00
-set dir for each axis	
+set dir for each axis
 */
 void GCodeInterpreter::G00_SetUp() {
 	float *stepDirX = &_LV[0];
 	float *stepDirY = &_LV[1];
 	float *stepDirZ = &_LV[2];
-	
+
 	// dir in X-axis
 	if (_X < _XPosition) {
-		*stepDirX=-1;
+		*stepDirX = -1;
 	}
 	else {
 		*stepDirX = 1;
@@ -81,18 +84,18 @@ preparing for execution G01
 calculating all the data needed for G01 movement
 */
 void GCodeInterpreter::G01_SetUp() {
-	
-	float *deltaX	= & _LV[0];
-	float *stepDirX = & _LV[1];
-	float *deltaY   = & _LV[2];
-	float *stepDirY = & _LV[3];
-	float *ai = & _LV[4];
-	float *bi = & _LV[5];
-	float *d  = & _LV[6];
-	float *wchichCase = & _LV[7];
+
+	float *deltaX = &_LV[0];
+	float *stepDirX = &_LV[1];
+	float *deltaY = &_LV[2];
+	float *stepDirY = &_LV[3];
+	float *ai = &_LV[4];
+	float *bi = &_LV[5];
+	float *d = &_LV[6];
+	float *wchichCase = &_LV[7];
 
 	if (_XPosition != _X || _YPosition != _Y) {
-		
+
 		if (_XPosition == _X) {
 			*stepDirX = 0;
 			*deltaX = 0;
@@ -135,7 +138,26 @@ void GCodeInterpreter::G01_SetUp() {
 	}
 }
 
+void GCodeInterpreter::G04_SetUp()
+{
+	time = 0;
+}
 
+void GCodeInterpreter::M03_SetUp()
+{
+	time = 0;
+	MMcomm.SendMessage((String)_SpindleSpeed);
+	_LV[0] = BLDC_MINIMUM_SPEED_VALUE;
+	_spindleIsWorking = true;
+}
+
+void GCodeInterpreter::M05_SetUp()
+{
+	time = 0;
+	MMcomm.SendMessage((String)_SpindleSpeed);
+	_LV[0] = _SpindleSpeed;
+	_spindleIsWorking = false;
+}
 void GCodeInterpreter::ExecutionIsComplete()
 {
 	Clear();
@@ -152,7 +174,7 @@ void GCodeInterpreter::G00_Execute() {
 	float *stepDirY = &_LV[1];
 	float *stepDirZ = &_LV[2];
 	TCNT1 = RAPID_SPEED;
-	
+
 	//Serial.println("_X: " + (String)_X + " _XPoz: " + (String)_XPosition);
 	if (_X != _XPosition) {
 		XStepper.Step(*stepDirX);
@@ -179,65 +201,122 @@ making single execution of one step in streight line
 void GCodeInterpreter::G01_Execute() {
 	TCNT1 = WORKING_SPEED;
 
-	float *deltaX = & _LV[0];
-	float *stepDirX = & _LV[1];
-	float *deltaY = & _LV[2];
-	float *stepDirY = & _LV[3];
-	float *ai = & _LV[4];
-	float *bi = & _LV[5];
-	float *d = & _LV[6];
+	float *deltaX = &_LV[0];
+	float *stepDirX = &_LV[1];
+	float *deltaY = &_LV[2];
+	float *stepDirY = &_LV[3];
+	float *ai = &_LV[4];
+	float *bi = &_LV[5];
+	float *d = &_LV[6];
 	float *wchichCase = &_LV[7];
 
-	 
-		
-		if (*wchichCase == 1) {
 
-			if (_XPosition != _X) {
-				if (*d >= 0) {
-					_XPosition = _XPosition + *stepDirX;
-					_YPosition = _YPosition + *stepDirY;
-					*d = *d + *ai;
-					XStepper.Step(*stepDirX);
-					YStepper.Step(*stepDirY);
-				}
-				else {
-					*d = *d + *bi;
-					_XPosition = _XPosition + *stepDirX;
-					XStepper.Step(*stepDirX);
-				}
+
+	if (*wchichCase == 1) {
+
+		if (_XPosition != _X) {
+			if (*d >= 0) {
+				_XPosition = _XPosition + *stepDirX;
+				_YPosition = _YPosition + *stepDirY;
+				*d = *d + *ai;
+				XStepper.Step(*stepDirX);
+				YStepper.Step(*stepDirY);
+			}
+			else {
+				*d = *d + *bi;
+				_XPosition = _XPosition + *stepDirX;
+				XStepper.Step(*stepDirX);
 			}
 		}
-		else {
-			if (_YPosition != _Y) {
-				if (*d >= 0) {
-					_XPosition = _XPosition + *stepDirX;
-					_YPosition = _YPosition + *stepDirY;
-					*d = *d + *ai;
-					XStepper.Step(*stepDirX);
-					YStepper.Step(*stepDirY);
-				}
-				else {
-					*d = *d + *bi;
-					_YPosition = _YPosition + *stepDirY;
-					YStepper.Step(*stepDirY);
-				}
+	}
+	else {
+		if (_YPosition != _Y) {
+			if (*d >= 0) {
+				_XPosition = _XPosition + *stepDirX;
+				_YPosition = _YPosition + *stepDirY;
+				*d = *d + *ai;
+				XStepper.Step(*stepDirX);
+				YStepper.Step(*stepDirY);
+			}
+			else {
+				*d = *d + *bi;
+				_YPosition = _YPosition + *stepDirY;
+				YStepper.Step(*stepDirY);
 			}
 		}
-	
+	}
+
 	if (_X == _XPosition && _Y == _YPosition && _Z == _ZPosition) {
 		Command.ExecutionIsComplete();
 	}
 }
 
 
+void GCodeInterpreter::G04_Execute()
+{
+	if (time > _P)
+	{
+		ExecutionIsComplete();
+	}
+}
 
+void GCodeInterpreter::M03_Execute()
+{
+	if (time > BLDC_ACCELERATION_SPEED)
+	{
+		if (abs(_SpindleSpeed - _LV[0]) > BLDC_ACCELERATION_VALUE)
+		{
+
+			_LV[0] += BLDC_ACCELERATION_VALUE;
+			spindle.setSpeed(_LV[0]);
+		}
+		else
+		{
+			_LV[0] = _SpindleSpeed;
+			spindle.setSpeed(_LV[0]);
+			ExecutionIsComplete();
+		}
+		time = 0;
+	}
+}
+
+void GCodeInterpreter::M05_Execute()
+{
+	if (time > BLDC_ACCELERATION_SPEED)
+	{
+		if (abs(_LV[0] - BLDC_MINIMUM_SPEED_VALUE) > BLDC_ACCELERATION_VALUE)
+		{
+			_LV[0] -= BLDC_ACCELERATION_VALUE;
+			spindle.setSpeed(_LV[0]);
+		}
+		else
+		{
+			_LV[0] = BLDC_MINIMUM_SPEED_VALUE;
+			spindle.setSpeed(_LV[0]);
+			ExecutionIsComplete();
+		}
+		time = 0;
+	}
+}
+
+
+void GCodeInterpreter::SpindleAccelerate()
+{
+
+}
+
+void GCodeInterpreter::SpindleDecelerate()
+{
+
+}
 
 /* autor: Bartek Kudroń
 funkcja wykonywana co krok programu, w zależności od komendy różny kod.
 */
 void GCodeInterpreter::ExecuteStep()
 {
-	
+
+	MMcomm.SendMessage("executing");
 	/*if (newCommand)
 	{
 		newCommand = false;
@@ -253,7 +332,7 @@ void GCodeInterpreter::ExecuteStep()
 		break;
 	case 1: //G01 command - to be filled
 		G01_Execute();
-		
+
 		break;
 	case 2: //G02 command - to be filled
 
@@ -262,7 +341,7 @@ void GCodeInterpreter::ExecuteStep()
 
 		break;
 	case 4: //G04 command - to be filled
-
+		G04_Execute();
 		break;
 	case 28: //G28 command - to be filled
 
@@ -280,13 +359,13 @@ void GCodeInterpreter::ExecuteStep()
 		switch ((int)_M)
 		{
 		case 3: //M03 command - to be filled
-
+			M03_Execute();
 			break;
 		case 4: //M04 command - to be filled
-
+			M03_Execute();
 			break;
 		case 5: //M05 command - to be filled
-
+			M05_Execute();
 			break;
 		default:
 
@@ -310,21 +389,73 @@ void GCodeInterpreter::ExecuteStep()
 
 				break;
 			default:
+				if (_S != DUMMY_VALUE)
+				{
+					if (_spindleIsWorking)
+					{
+						if (time > 100)
+						{
+							time = 0;
+							if (_S > _SpindleSpeed)
+							{
+								if (_S - _SpindleSpeed > BLDC_ACCELERATION_VALUE)
+								{
+									_SpindleSpeed += BLDC_ACCELERATION_VALUE;
+									spindle.setSpeed(_SpindleSpeed);
+								}
+								else
+								{
+									_SpindleSpeed = _S;
+									spindle.setSpeed(_SpindleSpeed);
+									ExecutionIsComplete();
+								}
 
-				// ERROR
-				MMcomm.SendMessage("ERROR. UNKNOWN COMMAND");
-				StateMachine.SetErrorState();
-				Clear();
+							}
+							else
+							{
+								if (_SpindleSpeed - _S > BLDC_ACCELERATION_VALUE)
+								{
+									_SpindleSpeed -= BLDC_ACCELERATION_VALUE;
+									spindle.setSpeed(_SpindleSpeed);
+								}
+								else
+								{
+									_SpindleSpeed = _S;
+									spindle.setSpeed(_SpindleSpeed);
+									ExecutionIsComplete();
+								}
+							}
+
+						}
+
+					}
+					else
+					{
+						ExecutionIsComplete();
+					}
+				}
+				else
+				{
+					// ERROR
+					MMcomm.SendMessage("ERROR. UNKNOWN COMMAND");
+					StateMachine.SetErrorState();
+					Clear();
+
+				}
 				break;
 			}
+			break;
 		}
-	}
+		break;
+	};
 }
 /* autor: Bartek Kudroń
 funkcja wykonywana przed rozpoczęciem pętli komendy. wykonywana raz, kod różny w zależności od komendy.
 */
 void GCodeInterpreter::PrepareForExecution()
 {
+
+	MMcomm.SendMessage("preparing for execution");
 	//			G COMMANDS
 
 	switch ((int)_G)
@@ -344,7 +475,7 @@ void GCodeInterpreter::PrepareForExecution()
 
 		break;
 	case 4: //G04 command - to be filled
-
+		G04_SetUp();
 		break;
 	case 28: //G28 command - to be filled
 
@@ -362,13 +493,13 @@ void GCodeInterpreter::PrepareForExecution()
 		switch ((int)_M)
 		{
 		case 3: //M03 command - to be filled
-
+			M03_SetUp();
 			break;
 		case 4: //M04 command - to be filled
-
+			M03_SetUp();
 			break;
 		case 5: //M05 command - to be filled
-
+			M05_SetUp();
 			break;
 		default:
 
@@ -395,15 +526,29 @@ void GCodeInterpreter::PrepareForExecution()
 
 				break;
 			default:
-				
-				// ERROR
-				StateMachine.SetErrorState(UNKNOWN_GCODE_ERROR);
-				Clear();
+				if (_S != DUMMY_VALUE)
+				{
+					if (_spindleIsWorking)
+					{
+						time = 0;
+					}
+					else
+					{
+						_SpindleSpeed == _S;
+					}
+				}
+				else
+				{
+					// ERROR
+					StateMachine.SetErrorState(UNKNOWN_GCODE_ERROR);
+					Clear();
+
+				}
 				break;
 			}
 		}
 	}
-	
+
 
 }
 
@@ -432,7 +577,7 @@ bool GCodeInterpreter::Interpret(String command)
 			break;
 
 		case 'X':
-			
+
 			if (number != "")
 			{
 				*currentLetter = number.toFloat();
@@ -512,9 +657,18 @@ bool GCodeInterpreter::Interpret(String command)
 			}
 			currentLetter = &_U;
 			break;
-		
+		case 'P':
+
+			if (number != "")
+			{
+				*currentLetter = number.toFloat();
+				number = "";
+			}
+			currentLetter = &_P;
+			break;
+
 		default:
-			if ( ((int)command[i] - '0' >= 0 && (int)command[i] - '0' <= 9) || command[i] == '.' || command[i] == ',' || command[i] == '-')
+			if (((int)command[i] - '0' >= 0 && (int)command[i] - '0' <= 9) || command[i] == '.' || command[i] == ',' || command[i] == '-')
 				if (command[i] == ',') {
 					number += '.';
 				}
@@ -527,9 +681,9 @@ bool GCodeInterpreter::Interpret(String command)
 			break;
 		}
 
-		
+
 	}
-	
+
 	if (number != "")
 	{
 		*currentLetter = number.toFloat();
@@ -538,7 +692,7 @@ bool GCodeInterpreter::Interpret(String command)
 	{
 		MMcomm.SendMessage(INTERPRETATION_FAILED_WARNING);
 	}
-	
+
 	// jeśli nie podana była żadna wartość w komendzie to niech 
 	// docelowa wartość będzie taka jak aktualna. Nie będzie wtedy ruchu
 	if (_X == DUMMY_VALUE) _X = _XPosition;

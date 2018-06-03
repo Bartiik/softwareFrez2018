@@ -42,7 +42,10 @@ namespace Frezarka
                         valuesToSend[chars.IndexOf(c)] = (int)(value * _XY);
                     else if(c == 'Z')
                         valuesToSend[chars.IndexOf(c)] = (int)(value * _Z);
+                    else if(c== 'P')
+                        valuesToSend[chars.IndexOf(c)] = (int)(value * 1000);
                     else valuesToSend[chars.IndexOf(c)] = (int)(value);
+
                 }
                 else test = false;
             }

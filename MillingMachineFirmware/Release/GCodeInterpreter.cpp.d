@@ -15,4 +15,7 @@ C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega25
  C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\config.h \
  C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\Communication.h \
  C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\MMStateMachine.h \
- C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\SMotor.h
+ C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\SMotor.h \
+ C:\Users\Bartek\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\BLDCDriver.h \
+ C:\Program\ Files\ (x86)\Arduino\libraries\Servo\src/Servo.h \
+ C:\Program\ Files\ (x86)\Arduino\libraries\Servo\src/avr/ServoTimers.h

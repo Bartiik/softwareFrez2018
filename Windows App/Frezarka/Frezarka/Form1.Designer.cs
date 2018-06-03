@@ -34,6 +34,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.XYAxisLabel = new System.Windows.Forms.Label();
+            this.ZAxisLabel = new System.Windows.Forms.Label();
+            this.ZAxisSteps = new System.Windows.Forms.TextBox();
+            this.XYAxisSteps = new System.Windows.Forms.TextBox();
             this.SpeedText = new System.Windows.Forms.TextBox();
             this.SetSpeedButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -123,10 +127,7 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.XYAxisSteps = new System.Windows.Forms.TextBox();
-            this.ZAxisSteps = new System.Windows.Forms.TextBox();
-            this.ZAxisLabel = new System.Windows.Forms.Label();
-            this.XYAxisLabel = new System.Windows.Forms.Label();
+            this.SpindleOnOff = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -203,6 +204,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.SpindleOnOff);
             this.groupBox6.Controls.Add(this.XYAxisLabel);
             this.groupBox6.Controls.Add(this.ZAxisLabel);
             this.groupBox6.Controls.Add(this.ZAxisSteps);
@@ -257,10 +259,44 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control in mm";
             // 
+            // XYAxisLabel
+            // 
+            this.XYAxisLabel.AutoSize = true;
+            this.XYAxisLabel.Location = new System.Drawing.Point(395, 99);
+            this.XYAxisLabel.Name = "XYAxisLabel";
+            this.XYAxisLabel.Size = new System.Drawing.Size(92, 13);
+            this.XYAxisLabel.TabIndex = 109;
+            this.XYAxisLabel.Text = "XY-Axis steps/mm";
+            // 
+            // ZAxisLabel
+            // 
+            this.ZAxisLabel.AutoSize = true;
+            this.ZAxisLabel.Location = new System.Drawing.Point(395, 150);
+            this.ZAxisLabel.Name = "ZAxisLabel";
+            this.ZAxisLabel.Size = new System.Drawing.Size(85, 13);
+            this.ZAxisLabel.TabIndex = 108;
+            this.ZAxisLabel.Text = "Z-Axis steps/mm";
+            // 
+            // ZAxisSteps
+            // 
+            this.ZAxisSteps.Location = new System.Drawing.Point(398, 167);
+            this.ZAxisSteps.Name = "ZAxisSteps";
+            this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
+            this.ZAxisSteps.TabIndex = 106;
+            this.ZAxisSteps.Text = "3200";
+            // 
+            // XYAxisSteps
+            // 
+            this.XYAxisSteps.Location = new System.Drawing.Point(398, 122);
+            this.XYAxisSteps.Name = "XYAxisSteps";
+            this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
+            this.XYAxisSteps.TabIndex = 105;
+            this.XYAxisSteps.Text = "1600";
+            // 
             // SpeedText
             // 
             this.SpeedText.Enabled = false;
-            this.SpeedText.Location = new System.Drawing.Point(325, 170);
+            this.SpeedText.Location = new System.Drawing.Point(327, 163);
             this.SpeedText.Name = "SpeedText";
             this.SpeedText.Size = new System.Drawing.Size(60, 20);
             this.SpeedText.TabIndex = 88;
@@ -271,7 +307,7 @@
             // SetSpeedButton
             // 
             this.SetSpeedButton.Enabled = false;
-            this.SetSpeedButton.Location = new System.Drawing.Point(325, 189);
+            this.SetSpeedButton.Location = new System.Drawing.Point(327, 182);
             this.SetSpeedButton.Name = "SetSpeedButton";
             this.SetSpeedButton.Size = new System.Drawing.Size(60, 23);
             this.SetSpeedButton.TabIndex = 104;
@@ -281,7 +317,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(319, 53);
+            this.label8.Location = new System.Drawing.Point(321, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 13);
             this.label8.TabIndex = 0;
@@ -290,7 +326,7 @@
             // SpeedBar
             // 
             this.SpeedBar.Enabled = false;
-            this.SpeedBar.Location = new System.Drawing.Point(332, 66);
+            this.SpeedBar.Location = new System.Drawing.Point(334, 59);
             this.SpeedBar.Maximum = 255;
             this.SpeedBar.Name = "SpeedBar";
             this.SpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -1263,39 +1299,14 @@
             this.serialPort.BaudRate = 115200;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
-            // XYAxisSteps
+            // SpindleOnOff
             // 
-            this.XYAxisSteps.Location = new System.Drawing.Point(398, 122);
-            this.XYAxisSteps.Name = "XYAxisSteps";
-            this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
-            this.XYAxisSteps.TabIndex = 105;
-            this.XYAxisSteps.Text = "1600";
-            // 
-            // ZAxisSteps
-            // 
-            this.ZAxisSteps.Location = new System.Drawing.Point(398, 167);
-            this.ZAxisSteps.Name = "ZAxisSteps";
-            this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
-            this.ZAxisSteps.TabIndex = 106;
-            this.ZAxisSteps.Text = "3200";
-            // 
-            // ZAxisLabel
-            // 
-            this.ZAxisLabel.AutoSize = true;
-            this.ZAxisLabel.Location = new System.Drawing.Point(395, 150);
-            this.ZAxisLabel.Name = "ZAxisLabel";
-            this.ZAxisLabel.Size = new System.Drawing.Size(85, 13);
-            this.ZAxisLabel.TabIndex = 108;
-            this.ZAxisLabel.Text = "Z-Axis steps/mm";
-            // 
-            // XYAxisLabel
-            // 
-            this.XYAxisLabel.AutoSize = true;
-            this.XYAxisLabel.Location = new System.Drawing.Point(395, 99);
-            this.XYAxisLabel.Name = "XYAxisLabel";
-            this.XYAxisLabel.Size = new System.Drawing.Size(92, 13);
-            this.XYAxisLabel.TabIndex = 109;
-            this.XYAxisLabel.Text = "XY-Axis steps/mm";
+            this.SpindleOnOff.Location = new System.Drawing.Point(327, 206);
+            this.SpindleOnOff.Name = "SpindleOnOff";
+            this.SpindleOnOff.Size = new System.Drawing.Size(91, 23);
+            this.SpindleOnOff.TabIndex = 110;
+            this.SpindleOnOff.Text = "Spindle On/Off";
+            this.SpindleOnOff.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1429,6 +1440,7 @@
         private System.Windows.Forms.Label ZAxisLabel;
         private System.Windows.Forms.TextBox ZAxisSteps;
         private System.Windows.Forms.TextBox XYAxisSteps;
+        private System.Windows.Forms.Button SpindleOnOff;
     }
 }
 

@@ -71,7 +71,6 @@ ISR(TIMER1_OVF_vect) { //timer for steppers
 	 //by changing this value we can change the speed of rotation
 	if (StateMachine.CurrentState() == EXECUTION_STATE) {
 		ExecutionInterrupt = true;
-		
 	}
 	
 	
@@ -81,6 +80,7 @@ ISR(TIMER1_OVF_vect) { //timer for steppers
 ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 {
 	StateMachine.CheckEndstops();
+	Command.time++;
 }
 
 void loop()

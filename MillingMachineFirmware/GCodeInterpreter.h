@@ -8,12 +8,12 @@ in function EXECUTE -> loop of the commnad
 
 COMMANDS INTERPRETED HERE:
 
-G00		rapid positioning		TODO
-G01		linear interpolation	TODO
+G00		rapid positioning		
+G01		linear interpolation	
 G02		Clockwise circ. interp	TODO
 G03		CClocwise circ. interp	TODO
-G04		DWELL (DELAY)			TODO
-G28		RETURN HOME				TODO
+G04		DWELL (DELAY)			
+G28		RETURN HOME				WIP
 
 M03		SPINDLE CLOCKWISE		TODO
 M04		SPINDLE CCLOCKWISE		TODO
@@ -46,9 +46,10 @@ private:
 	float _S;
 	float _F;
 	float _U;
+	float _P;
 	float _LV[20]; // LocalVariables vector 
 
-	bool UnitIsCm;
+	bool _spindleIsWorking;
 
 	uint32_t _numberOfStepsRequired;
 	uint32_t _currentStep;
@@ -59,20 +60,33 @@ private:
 	float _RotPosition;
 	float _TablePosition;
 
-	uint8_t _TableSpeed;
-	uint8_t _TableRotationSpeed;
-	uint8_t _SpindleSpeed;
+	uint16_t _TableSpeed;
+	uint16_t _TableRotationSpeed;
+	uint16_t _SpindleSpeed;
 	uint16_t _CartesianSpeed;
 
 	void SetSteppersEn(bool);
 
 	void G00_SetUp();
 	void G01_SetUp();
+	void G04_SetUp();
 
+	void M03_SetUp();
+	void M05_SetUp();
+	
 	void G00_Execute();
 	void G01_Execute();
-
+	void G04_Execute();
+	void M03_Execute();
+	void M05_Execute();
+	void SpindleAccelerate();
+	void SpindleDecelerate();
+	void S_SetUp();
 public:
+
+	uint32_t time;
+
+
 	GCodeInterpreter();
 	~GCodeInterpreter();
 

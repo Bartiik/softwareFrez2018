@@ -1,5 +1,5 @@
 #include "BLDCDriver.h"
-
+#include "Communication.h"
 BLDCDriver spindle;
 
 BLDCDriver::BLDCDriver()
@@ -18,16 +18,19 @@ void BLDCDriver::init()
 }
 void BLDCDriver::setSpeed(uint16_t speed)
 {
+	
 	uint16_t SpeedSignal;
-	if (speed <= 0)
+	if (speed <= 1000)
 	{
 		SpeedSignal = BLDC_MINIMUM_SPEED_VALUE;
 	}
-	else if (speed < 1000)
+	else if (speed < 2000)
 	{
-		SpeedSignal = BLDC_MINIMUM_SPEED_VALUE + speed;
+		SpeedSignal = speed;
 	}
 	else SpeedSignal = BLDC_MAXIMUM_SPEED_VALUE;
 	
+	MMcomm.SendMessage((String)SpeedSignal);
 	_bldc.writeMicroseconds(SpeedSignal);
+	
 }
