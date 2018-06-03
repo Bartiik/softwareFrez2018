@@ -11,6 +11,7 @@ class MMStateMachine
 private:
 	uint8_t _state;
 	bool _Endstop;
+	bool _EndstopEn;
 	
 	uint8_t StateChangeLookupTable[4][4] = {
 	{IDLE_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE},
@@ -33,6 +34,7 @@ public:
 	void SetIdleState();
 	void Reset();
 	void CheckEndstops();
+	void SetEndstopsEn(bool);
 	void ResolveEndstops();
 	bool returnEndstop(uint8_t);
 };

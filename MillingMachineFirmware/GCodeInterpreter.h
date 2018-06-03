@@ -68,9 +68,12 @@ private:
 
 	void G00_SetUp();
 	void G01_SetUp();
+	void G28_SetUp();
 
 	void G00_Execute();
 	void G01_Execute();
+	void G28_Execute();
+
 
 public:
 	GCodeInterpreter();

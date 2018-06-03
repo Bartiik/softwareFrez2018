@@ -58,13 +58,14 @@ void SMotor::SetEnable(bool EN){
   Wykonanie pojedynczego kroku
 */
 void SMotor::Step (int DIR){
-	
+	//MMcomm.SendMessage("step en: " + (String)_enable);
   if(_enable==0){
     if(DIR>0) digitalWrite(_dir_pin,HIGH);
-	else digitalWrite(_dir_pin, LOW);
+    else digitalWrite(_dir_pin, LOW);
 
     digitalWrite(_step_pin,HIGH);
     digitalWrite(_step_pin,LOW);
+	//MMcomm.SendMessage("step" + (String)DIR);
   }
   
 }

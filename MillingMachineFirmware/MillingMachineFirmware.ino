@@ -70,10 +70,12 @@ void setup()
 ISR(TIMER1_OVF_vect) { //timer for steppers
 	 //by changing this value we can change the speed of rotation
 	if (StateMachine.CurrentState() == EXECUTION_STATE) {
-		ExecutionInterrupt = true;
-		
+		ExecutionInterrupt = true;	
 	}
-	
+	//TCNT1 = 1000;
+	//Serial.print(millis());
+	//Serial.print("   ");
+	//Serial.println(micros());
 	
 }
 
@@ -85,7 +87,7 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
-	StateMachine.ResolveEndstops();
+	//StateMachine.ResolveEndstops();
 	ProcessNewMessage();
 	//if (XStepper.GetBoolEnable()) MMcomm.SendMessage("EN=1");
 	//else MMcomm.SendMessage("En=0");
@@ -93,8 +95,9 @@ void loop()
 	// nothing should happen outside this switch
 	{
 	case INIT_STATE:
-	{
-
+	{	
+		
+	
 		// BEGIN OF INIT STATE
 
 		// END OF INIT STATE
@@ -124,7 +127,10 @@ void loop()
 
 	case EXECUTION_STATE:
 	{
+	
 		StateMachine.ResolveEndstops();
+
+
 		if (ExecutionInterrupt)
 		{
 			Command.ExecuteStep();

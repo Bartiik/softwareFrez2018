@@ -8,7 +8,7 @@
 #define RX0_PIN						0   // RX PIN - DO NOT USE <- CONNECTED TO USB
 #define TX0_PIN						1	// TX PIN - DO NOT USE <- CONNECTED TO USB
 #define X_MAX_ENDSTOP_PIN			2   // PWM PIN
-#define X_MIN_ENDSTOP_PIN			3   // PWM PIN
+#define X_MIN_ENDSTOP_PIN			15//3   // PWM PIN
 #define SERVO_4_PIN					4   // PWM PIN
 #define SERVO_3_PIN					5   // PWM PIN // Analog In 1
 #define SERVO_2_PIN					6   // PWM PIN
@@ -20,7 +20,7 @@
 #define PS_ON_PIN					12  // PWM PIN
 #define LED_PIN						13  // PWM PIN
 #define Y_MIN_ENDSTOP_PIN			14  // TX3
-#define Y_MAX_ENDSTOP_PIN			15  // RX3
+#define Y_MAX_ENDSTOP_PIN			3//15  // RX3
 #define UNKNOWN_PIN					16  // TX2
 #define UNKNOWN_PIN					17  // RX2
 #define Z_MIN_ENDSTOP_PIN			18  // TX1
@@ -51,9 +51,9 @@
 #define TABLE_HOLD_RIGHT_ENDSTOP_2	43
 #define DC_ENABLE					44  // PWM PIN
 #define TABLE_HOLD_RIGHT_ENDSTOP_1	45  // PWM PIN
-#define Z_STEP_PIN					46  // PWM PIN
+#define Z_STEP_PIN					A6//46  // PWM PIN
 #define TABLE_LEVEL_SENSOR			47
-#define Z_DIR_PIN					48
+#define Z_DIR_PIN					A7//48
 #define UNKNOWN_PIN					49
 #define UNKNOWN_PIN					50  // MISO
 #define UNKNOWN_PIN					51  // MOSI
@@ -61,13 +61,13 @@
 #define UNKNOWN_PIN					53
 #define X_STEP_PIN					A0  // ANALOG PIN
 #define X_DIR_PIN					A1  // ANALOG PIN
-#define Y_ENABLE_PIN				A2  // ANALOG PIN
+#define Y_ENABLE_PIN				A8//A2  // ANALOG PIN
 #define SPINDLE_SIGNAL_PIN			A3  // ANALOG PIN
 #define UNKNOWN_PIN					A4  // ANALOG PIN
 #define UNKNOWN_PIN					A5  // ANALOG PIN
-#define Y_STEP_PIN					A6  // ANALOG PIN
-#define Y_DIR_PIN					A7  // ANALOG PIN
-#define Z_ENABLE_PIN				A8  // ANALOG PIN
+#define Y_STEP_PIN					46//A6  // ANALOG PIN
+#define Y_DIR_PIN					48//A7  // ANALOG PIN
+#define Z_ENABLE_PIN				A2//A8  // ANALOG PIN
 #define UNKNOWN_PIN					A9  // ANALOG PIN
 #define UNKNOWN_PIN					A10 // ANALOG PIN
 #define UNKNOWN_PIN					A11 // ANALOG PIN
@@ -100,10 +100,15 @@
 #define RPS2_5 61536; // 500Hz
 #define RPS3 62203; // 600Hz
 
-#define WORKING_SPEED RPS2
-#define RAPID_SPEED RPS2_5
+#define GO_HOME_SPEED 63000
+#define GO_HOME_SLOW_SPEED 60000
+#define WORKING_SPEED 64911
+#define RAPID_SPEED 64911
 
 #define SAFE_HEIGHT 200 // height in z axis
+#define XHOME 0
+#define YHOME 0
+#define ZHOME 10000
 
 //					STATIC COMMANDS
 
