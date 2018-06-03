@@ -77,19 +77,27 @@
             this.TableFlipButton = new System.Windows.Forms.Button();
             this.XYChangeText = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.QueueStatus = new System.Windows.Forms.Label();
-            this.PrepareQueue = new System.Windows.Forms.Button();
-            this.MoveQueueDown = new System.Windows.Forms.Button();
-            this.MoveQueueUp = new System.Windows.Forms.Button();
-            this.AddCommandToQueue = new System.Windows.Forms.Button();
+            this.GenerateButton = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.RemainingGCodesLabel = new System.Windows.Forms.Label();
+            this.BoundaryAddButton = new System.Windows.Forms.Button();
+            this.BoundaryClearButton = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.BoundaryTextBox = new System.Windows.Forms.TextBox();
+            this.HolesAddButton = new System.Windows.Forms.Button();
+            this.HolesClearButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.HolesTextBox = new System.Windows.Forms.TextBox();
+            this.SecondLayerAddButton = new System.Windows.Forms.Button();
+            this.SecondLayerClearButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.CommandComboBox = new System.Windows.Forms.ComboBox();
-            this.RemoveFromQueueButton = new System.Windows.Forms.Button();
-            this.GCodeQueue = new System.Windows.Forms.ListBox();
+            this.SecondLayerTextBox = new System.Windows.Forms.TextBox();
+            this.FirstLayerAddButton = new System.Windows.Forms.Button();
+            this.FirstLayerClearButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.FirstLayerTextBox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.UnloadGCode = new System.Windows.Forms.Button();
-            this.AddGCodeToQueue = new System.Windows.Forms.Button();
+            this.RemoveFileButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.OpenedGCodesList = new System.Windows.Forms.ListBox();
             this.GCodeBrowseButton = new System.Windows.Forms.Button();
@@ -115,6 +123,10 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
+            this.XYAxisSteps = new System.Windows.Forms.TextBox();
+            this.ZAxisSteps = new System.Windows.Forms.TextBox();
+            this.ZAxisLabel = new System.Windows.Forms.Label();
+            this.XYAxisLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -175,9 +187,9 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.groupBox6, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox8, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox5, 0, 0);
@@ -191,6 +203,10 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.XYAxisLabel);
+            this.groupBox6.Controls.Add(this.ZAxisLabel);
+            this.groupBox6.Controls.Add(this.ZAxisSteps);
+            this.groupBox6.Controls.Add(this.XYAxisSteps);
             this.groupBox6.Controls.Add(this.SpeedText);
             this.groupBox6.Controls.Add(this.SetSpeedButton);
             this.groupBox6.Controls.Add(this.label8);
@@ -234,12 +250,12 @@
             this.groupBox6.Controls.Add(this.TableFlipButton);
             this.groupBox6.Controls.Add(this.XYChangeText);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(599, 3);
+            this.groupBox6.Location = new System.Drawing.Point(500, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(394, 236);
+            this.groupBox6.Size = new System.Drawing.Size(493, 236);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Manual Control";
+            this.groupBox6.Text = "Manual Control in mm";
             // 
             // SpeedText
             // 
@@ -740,144 +756,256 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.QueueStatus);
-            this.groupBox8.Controls.Add(this.PrepareQueue);
-            this.groupBox8.Controls.Add(this.MoveQueueDown);
-            this.groupBox8.Controls.Add(this.MoveQueueUp);
-            this.groupBox8.Controls.Add(this.AddCommandToQueue);
+            this.groupBox8.Controls.Add(this.GenerateButton);
+            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.RemainingGCodesLabel);
+            this.groupBox8.Controls.Add(this.BoundaryAddButton);
+            this.groupBox8.Controls.Add(this.BoundaryClearButton);
+            this.groupBox8.Controls.Add(this.label13);
+            this.groupBox8.Controls.Add(this.BoundaryTextBox);
+            this.groupBox8.Controls.Add(this.HolesAddButton);
+            this.groupBox8.Controls.Add(this.HolesClearButton);
+            this.groupBox8.Controls.Add(this.label12);
+            this.groupBox8.Controls.Add(this.HolesTextBox);
+            this.groupBox8.Controls.Add(this.SecondLayerAddButton);
+            this.groupBox8.Controls.Add(this.SecondLayerClearButton);
             this.groupBox8.Controls.Add(this.label11);
-            this.groupBox8.Controls.Add(this.CommandComboBox);
-            this.groupBox8.Controls.Add(this.RemoveFromQueueButton);
-            this.groupBox8.Controls.Add(this.GCodeQueue);
+            this.groupBox8.Controls.Add(this.SecondLayerTextBox);
+            this.groupBox8.Controls.Add(this.FirstLayerAddButton);
+            this.groupBox8.Controls.Add(this.FirstLayerClearButton);
             this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Controls.Add(this.FirstLayerTextBox);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.Location = new System.Drawing.Point(301, 3);
+            this.groupBox8.Location = new System.Drawing.Point(202, 3);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(292, 236);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Milling Process Overview";
+            this.groupBox8.Text = "Process Creator";
             // 
-            // QueueStatus
+            // GenerateButton
             // 
-            this.QueueStatus.AutoSize = true;
-            this.QueueStatus.Location = new System.Drawing.Point(138, 194);
-            this.QueueStatus.Name = "QueueStatus";
-            this.QueueStatus.Size = new System.Drawing.Size(90, 13);
-            this.QueueStatus.TabIndex = 9;
-            this.QueueStatus.Text = "No Queue Added";
+            this.GenerateButton.Location = new System.Drawing.Point(189, 201);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(88, 23);
+            this.GenerateButton.TabIndex = 104;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
-            // PrepareQueue
+            // label15
             // 
-            this.PrepareQueue.Location = new System.Drawing.Point(141, 165);
-            this.PrepareQueue.Name = "PrepareQueue";
-            this.PrepareQueue.Size = new System.Drawing.Size(101, 23);
-            this.PrepareQueue.TabIndex = 8;
-            this.PrepareQueue.Text = "Generate Queue";
-            this.PrepareQueue.UseVisualStyleBackColor = true;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 208);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 13);
+            this.label15.TabIndex = 117;
+            this.label15.Text = "g-codes remaining:";
             // 
-            // MoveQueueDown
+            // RemainingGCodesLabel
             // 
-            this.MoveQueueDown.Location = new System.Drawing.Point(141, 136);
-            this.MoveQueueDown.Name = "MoveQueueDown";
-            this.MoveQueueDown.Size = new System.Drawing.Size(75, 23);
-            this.MoveQueueDown.TabIndex = 7;
-            this.MoveQueueDown.Text = "Move Down";
-            this.MoveQueueDown.UseVisualStyleBackColor = true;
+            this.RemainingGCodesLabel.AutoSize = true;
+            this.RemainingGCodesLabel.Location = new System.Drawing.Point(115, 208);
+            this.RemainingGCodesLabel.Name = "RemainingGCodesLabel";
+            this.RemainingGCodesLabel.Size = new System.Drawing.Size(13, 13);
+            this.RemainingGCodesLabel.TabIndex = 104;
+            this.RemainingGCodesLabel.Text = "0";
             // 
-            // MoveQueueUp
+            // BoundaryAddButton
             // 
-            this.MoveQueueUp.Location = new System.Drawing.Point(141, 107);
-            this.MoveQueueUp.Name = "MoveQueueUp";
-            this.MoveQueueUp.Size = new System.Drawing.Size(75, 23);
-            this.MoveQueueUp.TabIndex = 6;
-            this.MoveQueueUp.Text = "Move Up";
-            this.MoveQueueUp.UseVisualStyleBackColor = true;
+            this.BoundaryAddButton.Location = new System.Drawing.Point(6, 164);
+            this.BoundaryAddButton.Name = "BoundaryAddButton";
+            this.BoundaryAddButton.Size = new System.Drawing.Size(44, 23);
+            this.BoundaryAddButton.TabIndex = 116;
+            this.BoundaryAddButton.Tag = "4";
+            this.BoundaryAddButton.Text = "Add";
+            this.BoundaryAddButton.UseVisualStyleBackColor = true;
+            this.BoundaryAddButton.Click += new System.EventHandler(this.Add);
             // 
-            // AddCommandToQueue
+            // BoundaryClearButton
             // 
-            this.AddCommandToQueue.Location = new System.Drawing.Point(141, 62);
-            this.AddCommandToQueue.Name = "AddCommandToQueue";
-            this.AddCommandToQueue.Size = new System.Drawing.Size(119, 23);
-            this.AddCommandToQueue.TabIndex = 5;
-            this.AddCommandToQueue.Text = "Add Command";
-            this.AddCommandToQueue.UseVisualStyleBackColor = true;
+            this.BoundaryClearButton.Location = new System.Drawing.Point(223, 164);
+            this.BoundaryClearButton.Name = "BoundaryClearButton";
+            this.BoundaryClearButton.Size = new System.Drawing.Size(54, 23);
+            this.BoundaryClearButton.TabIndex = 115;
+            this.BoundaryClearButton.Tag = "4";
+            this.BoundaryClearButton.Text = "Clear";
+            this.BoundaryClearButton.UseVisualStyleBackColor = true;
+            this.BoundaryClearButton.Click += new System.EventHandler(this.Clear);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 150);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.TabIndex = 114;
+            this.label13.Text = "Boundary";
+            // 
+            // BoundaryTextBox
+            // 
+            this.BoundaryTextBox.AllowDrop = true;
+            this.BoundaryTextBox.Location = new System.Drawing.Point(56, 166);
+            this.BoundaryTextBox.Name = "BoundaryTextBox";
+            this.BoundaryTextBox.ReadOnly = true;
+            this.BoundaryTextBox.Size = new System.Drawing.Size(161, 20);
+            this.BoundaryTextBox.TabIndex = 113;
+            this.BoundaryTextBox.Tag = "4";
+            this.BoundaryTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.drop);
+            this.BoundaryTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
+            // 
+            // HolesAddButton
+            // 
+            this.HolesAddButton.Location = new System.Drawing.Point(6, 119);
+            this.HolesAddButton.Name = "HolesAddButton";
+            this.HolesAddButton.Size = new System.Drawing.Size(44, 23);
+            this.HolesAddButton.TabIndex = 112;
+            this.HolesAddButton.Tag = "3";
+            this.HolesAddButton.Text = "Add";
+            this.HolesAddButton.UseVisualStyleBackColor = true;
+            this.HolesAddButton.Click += new System.EventHandler(this.Add);
+            // 
+            // HolesClearButton
+            // 
+            this.HolesClearButton.Location = new System.Drawing.Point(223, 119);
+            this.HolesClearButton.Name = "HolesClearButton";
+            this.HolesClearButton.Size = new System.Drawing.Size(54, 23);
+            this.HolesClearButton.TabIndex = 111;
+            this.HolesClearButton.Tag = "3";
+            this.HolesClearButton.Text = "Clear";
+            this.HolesClearButton.UseVisualStyleBackColor = true;
+            this.HolesClearButton.Click += new System.EventHandler(this.Clear);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 105);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 110;
+            this.label12.Text = "Holes";
+            // 
+            // HolesTextBox
+            // 
+            this.HolesTextBox.AllowDrop = true;
+            this.HolesTextBox.Location = new System.Drawing.Point(56, 121);
+            this.HolesTextBox.Name = "HolesTextBox";
+            this.HolesTextBox.ReadOnly = true;
+            this.HolesTextBox.Size = new System.Drawing.Size(161, 20);
+            this.HolesTextBox.TabIndex = 109;
+            this.HolesTextBox.Tag = "3";
+            this.HolesTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.drop);
+            this.HolesTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
+            // 
+            // SecondLayerAddButton
+            // 
+            this.SecondLayerAddButton.Location = new System.Drawing.Point(6, 80);
+            this.SecondLayerAddButton.Name = "SecondLayerAddButton";
+            this.SecondLayerAddButton.Size = new System.Drawing.Size(44, 23);
+            this.SecondLayerAddButton.TabIndex = 108;
+            this.SecondLayerAddButton.Tag = "2";
+            this.SecondLayerAddButton.Text = "Add";
+            this.SecondLayerAddButton.UseVisualStyleBackColor = true;
+            this.SecondLayerAddButton.Click += new System.EventHandler(this.Add);
+            // 
+            // SecondLayerClearButton
+            // 
+            this.SecondLayerClearButton.Location = new System.Drawing.Point(223, 80);
+            this.SecondLayerClearButton.Name = "SecondLayerClearButton";
+            this.SecondLayerClearButton.Size = new System.Drawing.Size(54, 23);
+            this.SecondLayerClearButton.TabIndex = 107;
+            this.SecondLayerClearButton.Tag = "2";
+            this.SecondLayerClearButton.Text = "Clear";
+            this.SecondLayerClearButton.UseVisualStyleBackColor = true;
+            this.SecondLayerClearButton.Click += new System.EventHandler(this.Clear);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(138, 23);
+            this.label11.Location = new System.Drawing.Point(15, 66);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(120, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Add command to queue";
+            this.label11.Size = new System.Drawing.Size(73, 13);
+            this.label11.TabIndex = 106;
+            this.label11.Text = "Second Layer";
             // 
-            // CommandComboBox
+            // SecondLayerTextBox
             // 
-            this.CommandComboBox.FormattingEnabled = true;
-            this.CommandComboBox.Location = new System.Drawing.Point(141, 39);
-            this.CommandComboBox.Name = "CommandComboBox";
-            this.CommandComboBox.Size = new System.Drawing.Size(119, 21);
-            this.CommandComboBox.TabIndex = 3;
+            this.SecondLayerTextBox.AllowDrop = true;
+            this.SecondLayerTextBox.Location = new System.Drawing.Point(56, 82);
+            this.SecondLayerTextBox.Name = "SecondLayerTextBox";
+            this.SecondLayerTextBox.ReadOnly = true;
+            this.SecondLayerTextBox.Size = new System.Drawing.Size(161, 20);
+            this.SecondLayerTextBox.TabIndex = 105;
+            this.SecondLayerTextBox.Tag = "2";
+            this.SecondLayerTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.drop);
+            this.SecondLayerTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
             // 
-            // RemoveFromQueueButton
+            // FirstLayerAddButton
             // 
-            this.RemoveFromQueueButton.Location = new System.Drawing.Point(9, 196);
-            this.RemoveFromQueueButton.Name = "RemoveFromQueueButton";
-            this.RemoveFromQueueButton.Size = new System.Drawing.Size(120, 23);
-            this.RemoveFromQueueButton.TabIndex = 2;
-            this.RemoveFromQueueButton.Text = "Remove From Queue";
-            this.RemoveFromQueueButton.UseVisualStyleBackColor = true;
+            this.FirstLayerAddButton.Location = new System.Drawing.Point(6, 41);
+            this.FirstLayerAddButton.Name = "FirstLayerAddButton";
+            this.FirstLayerAddButton.Size = new System.Drawing.Size(44, 23);
+            this.FirstLayerAddButton.TabIndex = 104;
+            this.FirstLayerAddButton.Tag = "1";
+            this.FirstLayerAddButton.Text = "Add";
+            this.FirstLayerAddButton.UseVisualStyleBackColor = true;
+            this.FirstLayerAddButton.Click += new System.EventHandler(this.Add);
             // 
-            // GCodeQueue
+            // FirstLayerClearButton
             // 
-            this.GCodeQueue.FormattingEnabled = true;
-            this.GCodeQueue.Location = new System.Drawing.Point(9, 39);
-            this.GCodeQueue.Name = "GCodeQueue";
-            this.GCodeQueue.Size = new System.Drawing.Size(120, 147);
-            this.GCodeQueue.TabIndex = 1;
+            this.FirstLayerClearButton.Location = new System.Drawing.Point(223, 41);
+            this.FirstLayerClearButton.Name = "FirstLayerClearButton";
+            this.FirstLayerClearButton.Size = new System.Drawing.Size(54, 23);
+            this.FirstLayerClearButton.TabIndex = 2;
+            this.FirstLayerClearButton.Tag = "1";
+            this.FirstLayerClearButton.Text = "Clear";
+            this.FirstLayerClearButton.UseVisualStyleBackColor = true;
+            this.FirstLayerClearButton.Click += new System.EventHandler(this.Clear);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 23);
+            this.label10.Location = new System.Drawing.Point(15, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "G-code queue:";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "First Layer";
+            // 
+            // FirstLayerTextBox
+            // 
+            this.FirstLayerTextBox.AllowDrop = true;
+            this.FirstLayerTextBox.Location = new System.Drawing.Point(56, 43);
+            this.FirstLayerTextBox.Name = "FirstLayerTextBox";
+            this.FirstLayerTextBox.ReadOnly = true;
+            this.FirstLayerTextBox.Size = new System.Drawing.Size(161, 20);
+            this.FirstLayerTextBox.TabIndex = 0;
+            this.FirstLayerTextBox.Tag = "1";
+            this.FirstLayerTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.drop);
+            this.FirstLayerTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.UnloadGCode);
-            this.groupBox5.Controls.Add(this.AddGCodeToQueue);
+            this.groupBox5.Controls.Add(this.RemoveFileButton);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.OpenedGCodesList);
             this.groupBox5.Controls.Add(this.GCodeBrowseButton);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(292, 236);
+            this.groupBox5.Size = new System.Drawing.Size(193, 236);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Open G-Code file";
             // 
-            // UnloadGCode
+            // RemoveFileButton
             // 
-            this.UnloadGCode.Location = new System.Drawing.Point(140, 117);
-            this.UnloadGCode.Name = "UnloadGCode";
-            this.UnloadGCode.Size = new System.Drawing.Size(146, 23);
-            this.UnloadGCode.TabIndex = 104;
-            this.UnloadGCode.Text = "Unload the G-Code";
-            this.UnloadGCode.UseVisualStyleBackColor = true;
-            // 
-            // AddGCodeToQueue
-            // 
-            this.AddGCodeToQueue.Location = new System.Drawing.Point(140, 88);
-            this.AddGCodeToQueue.Name = "AddGCodeToQueue";
-            this.AddGCodeToQueue.Size = new System.Drawing.Size(146, 23);
-            this.AddGCodeToQueue.TabIndex = 103;
-            this.AddGCodeToQueue.Text = "Add the G-Code to queue";
-            this.AddGCodeToQueue.UseVisualStyleBackColor = true;
+            this.RemoveFileButton.Location = new System.Drawing.Point(6, 202);
+            this.RemoveFileButton.Name = "RemoveFileButton";
+            this.RemoveFileButton.Size = new System.Drawing.Size(167, 23);
+            this.RemoveFileButton.TabIndex = 103;
+            this.RemoveFileButton.Text = "remove file";
+            this.RemoveFileButton.UseVisualStyleBackColor = true;
+            this.RemoveFileButton.Click += new System.EventHandler(this.RemoveFileButton_Click);
             // 
             // label9
             // 
@@ -894,18 +1022,20 @@
             this.OpenedGCodesList.FormattingEnabled = true;
             this.OpenedGCodesList.Location = new System.Drawing.Point(6, 88);
             this.OpenedGCodesList.Name = "OpenedGCodesList";
-            this.OpenedGCodesList.Size = new System.Drawing.Size(123, 134);
+            this.OpenedGCodesList.Size = new System.Drawing.Size(167, 108);
             this.OpenedGCodesList.TabIndex = 1;
             // 
             // GCodeBrowseButton
             // 
+            this.GCodeBrowseButton.AllowDrop = true;
             this.GCodeBrowseButton.Location = new System.Drawing.Point(6, 23);
             this.GCodeBrowseButton.Name = "GCodeBrowseButton";
-            this.GCodeBrowseButton.Size = new System.Drawing.Size(62, 21);
+            this.GCodeBrowseButton.Size = new System.Drawing.Size(167, 40);
             this.GCodeBrowseButton.TabIndex = 0;
-            this.GCodeBrowseButton.Text = "browse...";
+            this.GCodeBrowseButton.Text = "Drop File Here";
             this.GCodeBrowseButton.UseVisualStyleBackColor = true;
-            this.GCodeBrowseButton.Click += new System.EventHandler(this.GCodeBrowseButton_Click);
+            this.GCodeBrowseButton.DragDrop += new System.Windows.Forms.DragEventHandler(this.GCodeBrowseButton_DragDrop);
+            this.GCodeBrowseButton.DragEnter += new System.Windows.Forms.DragEventHandler(this.GCodeBrowseButton_DragEnter);
             // 
             // groupBox7
             // 
@@ -1048,7 +1178,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1002, 45);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connections";
+            this.groupBox1.Text = " ";
             // 
             // StopButton
             // 
@@ -1059,6 +1189,7 @@
             this.StopButton.TabIndex = 11;
             this.StopButton.Text = "Stop Early";
             this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // PauseButton
             // 
@@ -1069,6 +1200,7 @@
             this.PauseButton.TabIndex = 10;
             this.PauseButton.Text = "Pause";
             this.PauseButton.UseVisualStyleBackColor = true;
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
             // OpenPortLabel
             // 
@@ -1097,6 +1229,7 @@
             this.BeginButton.TabIndex = 8;
             this.BeginButton.Text = "Start Milling Process";
             this.BeginButton.UseVisualStyleBackColor = true;
+            this.BeginButton.Click += new System.EventHandler(this.BeginButton_Click);
             // 
             // HardStopButton
             // 
@@ -1109,6 +1242,7 @@
             this.HardStopButton.TabIndex = 7;
             this.HardStopButton.Text = "STOP";
             this.HardStopButton.UseVisualStyleBackColor = false;
+            this.HardStopButton.Click += new System.EventHandler(this.HardStopButton_Click);
             // 
             // PortListCombo
             // 
@@ -1128,6 +1262,40 @@
             // 
             this.serialPort.BaudRate = 115200;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            // 
+            // XYAxisSteps
+            // 
+            this.XYAxisSteps.Location = new System.Drawing.Point(398, 122);
+            this.XYAxisSteps.Name = "XYAxisSteps";
+            this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
+            this.XYAxisSteps.TabIndex = 105;
+            this.XYAxisSteps.Text = "1600";
+            // 
+            // ZAxisSteps
+            // 
+            this.ZAxisSteps.Location = new System.Drawing.Point(398, 167);
+            this.ZAxisSteps.Name = "ZAxisSteps";
+            this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
+            this.ZAxisSteps.TabIndex = 106;
+            this.ZAxisSteps.Text = "3200";
+            // 
+            // ZAxisLabel
+            // 
+            this.ZAxisLabel.AutoSize = true;
+            this.ZAxisLabel.Location = new System.Drawing.Point(395, 150);
+            this.ZAxisLabel.Name = "ZAxisLabel";
+            this.ZAxisLabel.Size = new System.Drawing.Size(85, 13);
+            this.ZAxisLabel.TabIndex = 108;
+            this.ZAxisLabel.Text = "Z-Axis steps/mm";
+            // 
+            // XYAxisLabel
+            // 
+            this.XYAxisLabel.AutoSize = true;
+            this.XYAxisLabel.Location = new System.Drawing.Point(395, 99);
+            this.XYAxisLabel.Name = "XYAxisLabel";
+            this.XYAxisLabel.Size = new System.Drawing.Size(92, 13);
+            this.XYAxisLabel.TabIndex = 109;
+            this.XYAxisLabel.Text = "XY-Axis steps/mm";
             // 
             // Form1
             // 
@@ -1233,22 +1401,34 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TrackBar SpeedBar;
         private System.Windows.Forms.ListBox OpenedGCodesList;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CommandComboBox;
-        private System.Windows.Forms.Button RemoveFromQueueButton;
-        private System.Windows.Forms.ListBox GCodeQueue;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button UnloadGCode;
-        private System.Windows.Forms.Button AddGCodeToQueue;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button MoveQueueUp;
-        private System.Windows.Forms.Button AddCommandToQueue;
-        private System.Windows.Forms.Button MoveQueueDown;
         private System.Windows.Forms.Button CommandSendButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.IO.Ports.SerialPort serialPort;
-        private System.Windows.Forms.Label QueueStatus;
-        private System.Windows.Forms.Button PrepareQueue;
+        private System.Windows.Forms.Button FirstLayerClearButton;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox FirstLayerTextBox;
+        private System.Windows.Forms.Button RemoveFileButton;
+        private System.Windows.Forms.Button GenerateButton;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label RemainingGCodesLabel;
+        private System.Windows.Forms.Button BoundaryAddButton;
+        private System.Windows.Forms.Button BoundaryClearButton;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox BoundaryTextBox;
+        private System.Windows.Forms.Button HolesAddButton;
+        private System.Windows.Forms.Button HolesClearButton;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox HolesTextBox;
+        private System.Windows.Forms.Button SecondLayerAddButton;
+        private System.Windows.Forms.Button SecondLayerClearButton;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox SecondLayerTextBox;
+        private System.Windows.Forms.Button FirstLayerAddButton;
+        private System.Windows.Forms.Label XYAxisLabel;
+        private System.Windows.Forms.Label ZAxisLabel;
+        private System.Windows.Forms.TextBox ZAxisSteps;
+        private System.Windows.Forms.TextBox XYAxisSteps;
     }
 }
 

@@ -14,9 +14,16 @@ using System.Windows.Forms;
 
 namespace Frezarka
 {
+
     public partial class Form1 : Form
     {
         public List<Command> AllCommands = new List<Command>();
+        public List<string> FilesLoaded = new List<string>();
+        bool workingMessage = false;
+        bool WorkInProgress = false;
+        int currentMessage = 0;
+        public List<Command> Queue = new List<Command>();
+        int Commands;
         public Form1()
         {
             InitializeComponent();
@@ -38,35 +45,7 @@ namespace Frezarka
 
         private void GCodeBrowseButton_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog()==DialogResult.OK)
-            {
-                Stream myStream = null;
-                
-                try
-                {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        OpenedGCodesList.Items.Add(openFileDialog1.FileName);
-                        using (myStream)
-                        {
-                            StreamReader stream = new StreamReader(myStream);
-                            while(!stream.EndOfStream)
-                            {
-                                Command temp = new Command();
-                                temp.Fill(stream.ReadLine());
-                                temp.ParentFile = openFileDialog1.FileName;
-                                AllCommands.Add(temp);
-                            }
-                        }
-                    }
-                    
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            }
-            
+
         }
 
         private void SpeedBar_Scroll(object sender, EventArgs e)
@@ -92,7 +71,7 @@ namespace Frezarka
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
-        { 
+        {
             try
             {
                 if (ConnectButton.Tag.ToString() == "0")
@@ -106,20 +85,20 @@ namespace Frezarka
                     {
                         OpenPortLabel.Text = serialPort.PortName;
                     }
-                    Command begin = new Command();
+                    Command begin = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
                     begin.Fill("U4");
                     try
                     {
                         serialPort.DiscardOutBuffer();
                     }
-                    catch(Exception error1)
+                    catch (Exception error1)
                     {
                         MessageBox.Show("buffer is empty\n" + error1);
                     }
                     Thread.Sleep(1000);
-                    sendCommand(begin);
+                    prepareMessage(begin);
                     DisableEnable(true);
-                    
+
 
                 }
                 else
@@ -130,35 +109,36 @@ namespace Frezarka
                     DisableEnable(false);
                 }
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 MessageBox.Show("Wrong port\n" + error);
             }
-            
+
         }
 
         private void CommandSendButton_Click(object sender, EventArgs e)
         {
             String gcode = customGText.Text;
-            Command temp = new Command();
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
             if (temp.Fill(gcode))
             {
                 //MessageBox.Show(temp.ToSend());
                 customGText.Clear();
-                sendCommand(temp);
+                prepareMessage(temp);
             }
             else MessageBox.Show("Something went Wrong");
         }
         void sendCommand(Command comm)
         {
-            if(serialPort.IsOpen)
+            if (serialPort.IsOpen)
             {
-                if(serialPort.BytesToWrite > 0)
+                if (serialPort.BytesToWrite > 0)
                 {
                     serialPort.DiscardOutBuffer();
                 }
                 addToCommunicationBox(true, comm);
                 serialPort.WriteLine(comm.ToSend());
+                workingMessage = true;
             }
         }
         void DisableEnable(bool e)
@@ -201,6 +181,7 @@ namespace Frezarka
             //SetSpeedButton.Enabled = e;
             CommandSendButton.Enabled = e;
             customGText.Enabled = e;
+            GenerateButton.Enabled = e;
         }
 
         private void customGText_KeyDown(object sender, KeyEventArgs e)
@@ -216,7 +197,7 @@ namespace Frezarka
             String time = DateTime.Now.ToString("hh:mm:ss tt");
             StringBuilder k = new StringBuilder();
             k.Append(time);
-            if(messageToArduino)
+            if (messageToArduino)
             {
                 k.Append(" <<<< ");
             }
@@ -225,8 +206,9 @@ namespace Frezarka
                 k.Append(" >>>> ");
             }
             k.Append(C.ToString());
-            CommunicationBox.Invoke((MethodInvoker)delegate {
-                CommunicationBox.Items.Add(k.ToString() );
+            CommunicationBox.Invoke((MethodInvoker)delegate
+            {
+                CommunicationBox.Items.Add(k.ToString());
                 CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
             });
         }
@@ -244,24 +226,25 @@ namespace Frezarka
                 k.Append(" >>>> ");
             }
             k.Append(C);
-            CommunicationBox.Invoke((MethodInvoker)delegate {
+            CommunicationBox.Invoke((MethodInvoker)delegate
+            {
                 CommunicationBox.Items.Add(k.ToString());
                 CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
             });
         }
-        
-    
+
+
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Command temp = new Command();
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
             String msg = serialPort.ReadLine();
             String State;
             int state;
             State = msg[0].ToString();
             //MessageBox.Show(msg);
             String st = MillingMachineStateLabel.Text;
-            
-            if(Int32.TryParse(State,out state))
+
+            if (Int32.TryParse(State, out state))
             {
                 State = state.ToString();
             }
@@ -269,7 +252,8 @@ namespace Frezarka
             {
                 State = "ERROR";
             }
-            MillingMachineStateLabel.Invoke((MethodInvoker)delegate {
+            MillingMachineStateLabel.Invoke((MethodInvoker)delegate
+            {
                 MillingMachineStateLabel.Text = State;
             });
             msg.Remove(0, 1);
@@ -328,9 +312,25 @@ namespace Frezarka
                 }
 
             }
-                    
-
+            workingMessage = false;
+            if (Queue.Count > 0)
+            {
+                prepareMessage(Queue[0]);
+                Queue.RemoveAt(0);
+                CommandsInQueueLabel.Text = Queue.Count.ToString();
                 
+            }
+            if(WorkInProgress)
+            {
+                prepareMessage(AllCommands[currentMessage]);
+                ProgressBar.Value = currentMessage;
+                RemainingGCodesLabel.Text = (AllCommands.Count-currentMessage).ToString();
+                currentMessage++;
+
+            }
+
+
+
             //if (st == "0" && State == "2")
             //{
             //    temp.Fill("U4");
@@ -343,9 +343,250 @@ namespace Frezarka
             PortListCombo.Items.Clear();
             PortListCombo.Items.AddRange(SerialPort.GetPortNames());
         }
+
+        private void GCodeBrowseButton_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void GCodeBrowseButton_DragDrop(object sender, DragEventArgs e)
+        {
+            //int length = 0;
+            //int length1 = 0;
+            List<String> codes = new List<string>();
+            List<int> val = new List<int>();
+
+            StringBuilder k = new StringBuilder();
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                //k.AppendLine(Path.GetFileName(file));
+                //foreach(String line in File.ReadAllLines(file))
+                //{
+                //    length++;
+                //    string code = line.Substring(0, 3);
+                //    if(!codes.Contains(code))
+                //    {
+                //        codes.Add(code);
+                //        val.Add(1);
+                //    }
+                //    else
+                //    {
+                //        val[codes.IndexOf(code)]++;
+                //    }
+                //}
+                //for(int i = 0; i< val.Count; i++)
+                //{
+                //    k.Append(codes[i]);
+                //    k.Append(" : ");
+                //    k.AppendLine(val[i].ToString());
+                //    length1 += val[i];
+                //}
+                //k.AppendLine(length1.ToString());
+                //k.AppendLine(length.ToString());
+                //MessageBox.Show(k.ToString());
+                //k.Clear();
+                if (!OpenedGCodesList.Items.Contains(Path.GetFileName(file)))
+                {
+                    FilesLoaded.Add(Path.GetFileName(file));
+                    OpenedGCodesList.Items.Add(Path.GetFileName(file));
+                }
+                else
+                    MessageBox.Show(Path.GetFileName(file) + " already exists!");
+            }
+
+        }
+
+        private void RemoveFileButton_Click(object sender, EventArgs e)
+        {
+            if (OpenedGCodesList.SelectedItem != null)
+            {
+                int chosen = OpenedGCodesList.SelectedIndex;
+
+                if (FirstLayerTextBox.Text == OpenedGCodesList.SelectedItem.ToString()) FirstLayerTextBox.Clear();
+                if (SecondLayerTextBox.Text == OpenedGCodesList.SelectedItem.ToString()) SecondLayerTextBox.Clear();
+                if (HolesTextBox.Text == OpenedGCodesList.SelectedItem.ToString()) HolesTextBox.Clear();
+                if (BoundaryTextBox.Text == OpenedGCodesList.SelectedItem.ToString()) BoundaryTextBox.Clear();
+                FilesLoaded.RemoveAt(chosen);
+                OpenedGCodesList.Items.RemoveAt(chosen);
+            }
+
+        }
+
+        private void Clear(object sender, EventArgs e)
+        {
+            switch (((Button)sender).Tag.ToString())
+            {
+                case "1": FirstLayerTextBox.Clear(); break;
+                case "2": SecondLayerTextBox.Clear(); break;
+                case "3": HolesTextBox.Clear(); break;
+                case "4": BoundaryTextBox.Clear(); break;
+            }
+        }
+        private void Add(object sender, EventArgs e)
+        {
+            if (OpenedGCodesList.SelectedItem != null)
+                switch (((Button)sender).Tag.ToString())
+                {
+                    case "1": FirstLayerTextBox.Text = OpenedGCodesList.SelectedItem.ToString(); break;
+                    case "2": SecondLayerTextBox.Text = OpenedGCodesList.SelectedItem.ToString(); break;
+                    case "3": HolesTextBox.Text = OpenedGCodesList.SelectedItem.ToString(); break;
+                    case "4": BoundaryTextBox.Text = OpenedGCodesList.SelectedItem.ToString(); break;
+                }
+
+        }
+
+        private void drop(object sender, DragEventArgs e)
+        {
+            List<String> codes = new List<string>();
+            List<int> val = new List<int>();
+
+            StringBuilder k = new StringBuilder();
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 1)
+            {
+                MessageBox.Show("too many items, first one is added: " + files[0]);
+            }
+            string file = files[0];
+            if (!OpenedGCodesList.Items.Contains(Path.GetFileName(file)))
+            {
+                FilesLoaded.Add(file);
+                OpenedGCodesList.Items.Add(Path.GetFileName(file));
+            }
+            else
+                MessageBox.Show(Path.GetFileName(file) + " already exists!");
+
+            switch (((TextBox)sender).Tag.ToString())
+            {
+                case "1": FirstLayerTextBox.Text = Path.GetFileName(file); break;
+                case "2": SecondLayerTextBox.Text = Path.GetFileName(file); break;
+                case "3": HolesTextBox.Text = Path.GetFileName(file); break;
+                case "4": BoundaryTextBox.Text = Path.GetFileName(file); break;
+            }
+        }
+
+        private void Drag_Enter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            AllCommands.Clear();
+            StringBuilder k = new StringBuilder();
+            int i = 0;
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            if (FirstLayerTextBox.Text != "")
+                foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(FirstLayerTextBox.Text)]))
+                {
+                    if (temp.Fill(line))
+                    {
+                        AllCommands.Add(temp);
+                    }
+                    else
+                    {
+                        k.AppendLine(line);
+                        i++;
+                    }
+                }
+            if (SecondLayerTextBox.Text != "")
+                foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(SecondLayerTextBox.Text)]))
+                {
+                    if (temp.Fill(line))
+                    {
+                        AllCommands.Add(temp);
+                    }
+                    else
+                    {
+                        k.AppendLine(line);
+                        i++;
+                    }
+                }
+            if (HolesTextBox.Text != "")
+                foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(HolesTextBox.Text)]))
+                {
+                    if (temp.Fill(line))
+                    {
+                        AllCommands.Add(temp);
+                    }
+                    else
+                    {
+                        k.AppendLine(line);
+                        i++;
+                    }
+                }
+            if (BoundaryTextBox.Text != "")
+                foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(BoundaryTextBox.Text)]))
+                {
+                    if (temp.Fill(line))
+                    {
+                        AllCommands.Add(temp);
+                    }
+                    else
+                    {
+                        k.AppendLine(line);
+                        i++;
+                    }
+                }
+            Commands = AllCommands.Count;
+            RemainingGCodesLabel.Text = Commands.ToString();
+            ProgressBar.Maximum = AllCommands.Count;
+            ProgressBar.Value = 0;
+            if(i>0)
+                MessageBox.Show(k.ToString());
+        }
+        private bool prepareMessage(Command C)
+        {
+            if (workingMessage)
+            {
+                Queue.Add(C);
+                CommandsInQueueLabel.Text = Queue.Count.ToString();
+                return false;
+            }
+            else
+            {
+                sendCommand(C);
+                return true;
+            }
+                
+        }
+
+        private void BeginButton_Click(object sender, EventArgs e)
+        {
+            if(AllCommands.Count>0)
+            {
+                WorkInProgress = true;
+                DisableEnable(false);
+                prepareMessage(AllCommands[0]);
+            }
+            else
+            {
+                MessageBox.Show("Generate G-Codes first!");
+            }
+
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            WorkInProgress = false;
+            DisableEnable(true);
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            WorkInProgress = false;
+            DisableEnable(true);
+            AllCommands.Clear();
+            Queue.Clear();
+            CommandsInQueueLabel.Text = "0";
+            RemainingGCodesLabel.Text = "0";
+        }
+
+        private void HardStopButton_Click(object sender, EventArgs e)
+        {
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            temp.Fill("U7");
+            sendCommand(temp);
+        }
     }
-    
-
-
-
 }

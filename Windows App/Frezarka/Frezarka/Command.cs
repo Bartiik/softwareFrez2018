@@ -10,28 +10,39 @@ namespace Frezarka
     {
         double[] values;
         String chars;
-        public Command()
+        int[] valuesToSend;
+        int _Z;
+        int _XY;
+        public Command(int StepsPerValXY, int StepsPerValZ)
         {
-            ParentFile = "";
-            values = new double[12];
-            chars = "GXYZIJMSFUEW";
+            _XY = StepsPerValXY;
+            _Z = StepsPerValZ;
+            valuesToSend = new int[13];
+            values = new double[13];
+            chars = "GXYZIJMSFUEWP";
             for (int i = 0; i < values.Length; i++)
                 values[i] = 1234.56789;
         }
         public bool Fill(String code)
         {
             bool test = true;
-            code.Replace(" ", String.Empty);
+            code = code.Replace(" ", String.Empty);
+            code = code.Replace(".", ",");
             code = code.ToUpper();
             var myRegex = new Regex(@"[A-Z][-]{0,1}\d{0,}[\.\,]{0,1}\d{0,}");
             List<String> lines = myRegex.Matches(code).Cast<Match>().Select(m => m.Value).ToList();
             foreach ( String line in lines)
             {
                 char c = line[0];
-                int value;
-                if(Int32.TryParse(line.Substring(1), out value) && chars.Contains(c))
+                float value;
+                if(float.TryParse(line.Substring(1), out value) && chars.Contains(c))
                 {
                     values[chars.IndexOf(c)] = value;
+                    if("XYIJ".Contains(c))
+                        valuesToSend[chars.IndexOf(c)] = (int)(value * _XY);
+                    else if(c == 'Z')
+                        valuesToSend[chars.IndexOf(c)] = (int)(value * _Z);
+                    else valuesToSend[chars.IndexOf(c)] = (int)(value);
                 }
                 else test = false;
             }
@@ -41,7 +52,6 @@ namespace Frezarka
         {
             return values[chars.IndexOf(c)];
         }
-        public String ParentFile { get; set; }
         public override String ToString()
         {
             StringBuilder value = new StringBuilder();
