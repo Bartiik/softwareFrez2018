@@ -97,7 +97,11 @@ void loop()
 	{
 	case INIT_STATE:
 	{	
-		
+		StateMachine.ResolveEndstops();
+		for (int i = 0; i < 20; i++) {
+			Serial.print((String)StateMachine.returnEndstop(i) + " ");
+		}
+		Serial.println(" ");
 	
 		// BEGIN OF INIT STATE
 

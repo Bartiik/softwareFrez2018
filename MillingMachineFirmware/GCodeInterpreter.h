@@ -13,11 +13,11 @@ G01		linear interpolation
 G02		Clockwise circ. interp	TODO
 G03		CClocwise circ. interp	TODO
 G04		DWELL (DELAY)			
-G28		RETURN HOME				WIP
+G28		RETURN HOME				
 
-M03		SPINDLE CLOCKWISE		TODO
-M04		SPINDLE CCLOCKWISE		TODO
-M05		SPINDLE STOP			TODO
+M03		SPINDLE CLOCKWISE		
+M04		SPINDLE CCLOCKWISE		
+M05		SPINDLE STOP			
 
 U00		ROTATE TABLE			TODO
 U01		board locking command	TODO
@@ -26,12 +26,12 @@ U03		LEVELING				TODO
 
 COMMANDS NOT INTERPRETED HERE:
 
-U04		COMMUNICATION TEST		TODO
-U05		Standard reply			TODO
-U06		ERROR command			TODO
-U07		begin process			TODO
-U08		end process				TODO
-U09		reset					TODO
+U04		COMMUNICATION TEST		
+U05		Standard reply			
+U06		ERROR command			
+U07		begin process			
+U08		end process				
+U09		reset					
  */
 class GCodeInterpreter
 {
@@ -80,9 +80,6 @@ private:
 	void G04_Execute();
 	void M03_Execute();
 	void M05_Execute();
-	void SpindleAccelerate();
-	void SpindleDecelerate();
-	void S_SetUp();
 public:
 	void G28_Execute();
 

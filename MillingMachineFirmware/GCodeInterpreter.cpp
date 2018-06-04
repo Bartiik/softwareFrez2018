@@ -160,7 +160,7 @@ void GCodeInterpreter::G28_SetUp() {
 
 	*procedure = 1;
 	StateMachine.SetEndstopsEn(0);
-	
+
 }
 
 void GCodeInterpreter::M03_SetUp()
@@ -221,20 +221,24 @@ void GCodeInterpreter::G00_Execute() {
 /* autor: Maciej Wiecheć
 making single execution of one step in streight line
 */
-void GCodeInterpreter::G01_Execute() {
+void GCodeInterpreter::G01_Execute()
+{
 	TCNT1 = WORKING_SPEED;
 
 
 
-	if (_Z != _ZPosition) {
+	if (_Z != _ZPosition)
+	{
 		float *stepDirZ = &_LV[8];
 		ZStepper.Step(*stepDirZ);
 		_ZPosition = _ZPosition + *stepDirZ;
-		if (_Z == _ZPosition) {
+		if (_Z == _ZPosition)
+		{
 			Command.ExecutionIsComplete();
 		}
 	}
-	else {
+	else
+	{
 		float *deltaX = &_LV[0];
 		float *stepDirX = &_LV[1];
 		float *deltaY = &_LV[2];
@@ -247,71 +251,73 @@ void GCodeInterpreter::G01_Execute() {
 		if (*wchichCase == 1) {
 
 
-	if (*wchichCase == 1) {
+			if (*wchichCase == 1) {
 
-		if (_XPosition != _X) {
-			if (*d >= 0) {
-				_XPosition = _XPosition + *stepDirX;
-				_YPosition = _YPosition + *stepDirY;
-				*d = *d + *ai;
-				XStepper.Step(*stepDirX);
-				YStepper.Step(*stepDirY);
+				if (_XPosition != _X) {
+					if (*d >= 0) {
+						_XPosition = _XPosition + *stepDirX;
+						_YPosition = _YPosition + *stepDirY;
+						*d = *d + *ai;
+						XStepper.Step(*stepDirX);
+						YStepper.Step(*stepDirY);
+					}
+					else {
+						*d = *d + *bi;
+						_XPosition = _XPosition + *stepDirX;
+						XStepper.Step(*stepDirX);
+					}
+				}
 			}
 			else {
-				*d = *d + *bi;
-				_XPosition = _XPosition + *stepDirX;
-				XStepper.Step(*stepDirX);
-			}
-		}
-	}
-	else {
-		if (_YPosition != _Y) {
-			if (*d >= 0) {
-				_XPosition = _XPosition + *stepDirX;
-				_YPosition = _YPosition + *stepDirY;
-				*d = *d + *ai;
-				XStepper.Step(*stepDirX);
-				YStepper.Step(*stepDirY);
-			}
-			else {
-				*d = *d + *bi;
-				_YPosition = _YPosition + *stepDirY;
-				YStepper.Step(*stepDirY);
-			}
-		}
+				if (_YPosition != _Y) {
+					if (*d >= 0) {
+						_XPosition = _XPosition + *stepDirX;
+						_YPosition = _YPosition + *stepDirY;
+						*d = *d + *ai;
+						XStepper.Step(*stepDirX);
+						YStepper.Step(*stepDirY);
+					}
+					else {
+						*d = *d + *bi;
+						_YPosition = _YPosition + *stepDirY;
+						YStepper.Step(*stepDirY);
+					}
+				}
 
-		if (_X == _XPosition && _Y == _YPosition) {
-			Command.ExecutionIsComplete();
+				if (_X == _XPosition && _Y == _YPosition) {
+					Command.ExecutionIsComplete();
+				}
+			}
 		}
 	}
 }
-
-void GCodeInterpreter::G28_Execute() {
+void GCodeInterpreter::G28_Execute()
+{
 	float *procedure = &_LV[0];
 	TCNT1 = GO_HOME_SPEED;
 	int temp = (int)*procedure;
-	
-	
-	
+
+
+
 	//0 - X-Min
 	//2 - Y-Min
 	//3 - Y-Max
-	
+
 	switch (temp) {
 
 	case 1: {
 		if (StateMachine.returnEndstop(0) == 0) {
-			XStepper.Step(-1);			
+			XStepper.Step(-1);
 		}
 		else {
 			_XPosition = 0;
 			*procedure = 2;
 		}
 	}
-	break;
+			break;
 
 	case 2: {
-		if (_XPosition<1000) {
+		if (_XPosition < 1000) {
 			XStepper.Step(1);
 			_XPosition += 1;
 		}
@@ -319,7 +325,7 @@ void GCodeInterpreter::G28_Execute() {
 			*procedure = 3;
 		}
 	}
-	break;
+			break;
 
 	case 3: {
 		TCNT1 = GO_HOME_SLOW_SPEED;
@@ -331,7 +337,7 @@ void GCodeInterpreter::G28_Execute() {
 			*procedure = 4;
 		}
 	}
-	break;
+			break;
 
 	case 4: {
 		if (StateMachine.returnEndstop(2) == 0) {
@@ -342,10 +348,10 @@ void GCodeInterpreter::G28_Execute() {
 			*procedure = 5;
 		}
 	}
-	break;
+			break;
 
 	case 5: {
-		if (_YPosition<1000) {
+		if (_YPosition < 1000) {
 			YStepper.Step(1);
 			_YPosition += 1;
 		}
@@ -353,7 +359,7 @@ void GCodeInterpreter::G28_Execute() {
 			*procedure = 6;
 		}
 	}
-	break;
+			break;
 
 	case 6: {
 		TCNT1 = GO_HOME_SLOW_SPEED;
@@ -365,15 +371,15 @@ void GCodeInterpreter::G28_Execute() {
 			*procedure = 7;
 		}
 	}
-	break;
+			break;
 
-	case 7:{
+	case 7: {
 		////temporary diable the endstops
 		//StateMachine.SetEndstopsEn(1);
 		Command.ExecutionIsComplete();
 	}
-	break;
-	}	
+			break;
+	}
 }
 
 
@@ -422,17 +428,6 @@ void GCodeInterpreter::M05_Execute()
 		}
 		time = 0;
 	}
-}
-
-
-void GCodeInterpreter::SpindleAccelerate()
-{
-
-}
-
-void GCodeInterpreter::SpindleDecelerate()
-{
-
 }
 
 /* autor: Bartek Kudroń
@@ -581,7 +576,7 @@ void GCodeInterpreter::PrepareForExecution()
 
 	MMcomm.SendMessage("preparing for execution");
 	//			G COMMANDS
-	
+
 	switch ((int)_G)
 	{
 	case 0: //G00 command - to be filled
@@ -823,8 +818,6 @@ bool GCodeInterpreter::Interpret(String command)
 		}
 	}
 
-
-	}
 
 	if (number != "")
 	{
