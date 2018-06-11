@@ -6,6 +6,7 @@
 SMotor XStepper;
 SMotor YStepper;
 SMotor ZStepper;
+SMotor TableStepper;
 
 SMotor::SMotor( ){
   

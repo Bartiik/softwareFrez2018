@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_ro_table_8cpp" kind="file">
+    <compoundname>RoTable.cpp</compoundname>
+    <includes refid="_ro_table_8h" local="yes">RoTable.h</includes>
+    <incdepgraph>
+      <node id="92">
+        <label>RoTable.h</label>
+        <link refid="_ro_table_8h"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>SMotor.h</label>
+        <link refid="_s_motor_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>Arduino.h</label>
+      </node>
+      <node id="91">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp</label>
+        <link refid="RoTable.cpp"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_ro_table_8cpp_1a98448a906b8b3e495e66c5c27337aa85" prot="public" static="no" mutable="no">
+        <type><ref refid="class_ro_table" kindref="compound">RoTable</ref></type>
+        <definition>RoTable Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" line="3" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_ro_table_8h" kindref="compound">RoTable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="_ro_table_8h_1a98448a906b8b3e495e66c5c27337aa85" refkind="member"><highlight class="normal"><ref refid="class_ro_table" kindref="compound">RoTable</ref><sp/><ref refid="_ro_table_8cpp_1a98448a906b8b3e495e66c5c27337aa85" kindref="member">Table</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_ro_table_1aa0060c40996bc60d00b5349fd591247b" refkind="member"><highlight class="normal"><ref refid="class_ro_table_1aa0060c40996bc60d00b5349fd591247b" kindref="member">RoTable::RoTable</ref>()</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_ro_table_1ad7dfc13c7703a255e908f09eb4d08f30" refkind="member"><highlight class="normal"><ref refid="class_ro_table_1ad7dfc13c7703a255e908f09eb4d08f30" kindref="member">RoTable::~RoTable</ref>()</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" kindref="member">RoTable::init</ref>()</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_ro_table_1ae6d1542b9c9ed39c769f5e119a98c908" kindref="member">holder</ref>.<ref refid="class_s_motor_1af1951a1dbe48b456fc09d20a94f374e5" kindref="member">Init</ref>(<ref refid="config_8h_1a7c2df7bfbfd93c9c1de2a1972aab769a" kindref="member">E1_DIR_PIN</ref>,<sp/><ref refid="config_8h_1a5025fb8ca0e5ac00f6dd2253acbe304a" kindref="member">E1_STEP_PIN</ref>,<sp/><ref refid="config_8h_1ac96447ac9ce19c302cd2d8279b76d528" kindref="member">E1_ENABLE_PIN</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" kindref="member">DC_PHASE</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1aca2a4b6703d85236a0949f049524ba92" kindref="member">DC_ENABLE</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" kindref="member">DC_SLEEP</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" kindref="member">RoTable::setRotationSpeed</ref>(int16_t<sp/>speed)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>val;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dir;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&lt;=<sp/>-<ref refid="config_8h_1a1d73ed82d3200d0b5f26f6ad5eb3e5b3" kindref="member">DC_MINIMUM_SPEED_VALUE</ref>)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed<sp/>=<sp/><ref refid="config_8h_1a74f491f5a99781c8046749cc86dd7f66" kindref="member">DC_MAXIMUM_SPEED_VALUE</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir<sp/>=<sp/>COUNTER_CLOCKWISE;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed<sp/>=<sp/>-speed;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir<sp/>=<sp/>COUNTER_CLOCKWISE;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&lt;<sp/>255)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir<sp/>=<sp/><ref refid="config_8h_1ab97a98583824a9ef7d480fe8fdca33cf" kindref="member">CLOCKWISE</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed<sp/>=<sp/><ref refid="config_8h_1a74f491f5a99781c8046749cc86dd7f66" kindref="member">DC_MAXIMUM_SPEED_VALUE</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir<sp/>=<sp/><ref refid="config_8h_1ab97a98583824a9ef7d480fe8fdca33cf" kindref="member">CLOCKWISE</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" kindref="member">DC_PHASE</ref>,<sp/>dir);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>analogWrite(<ref refid="config_8h_1aca2a4b6703d85236a0949f049524ba92" kindref="member">DC_ENABLE</ref>,<sp/>speed);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="class_ro_table_1ac0e4daad9e49bdedba2fe14b1db6fcb1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ro_table_1ac0e4daad9e49bdedba2fe14b1db6fcb1" kindref="member">RoTable::rotationSleep</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>setToWorking)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" kindref="member">DC_SLEEP</ref>,<sp/>setToWorking);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp"/>
+  </compounddef>
+</doxygen>

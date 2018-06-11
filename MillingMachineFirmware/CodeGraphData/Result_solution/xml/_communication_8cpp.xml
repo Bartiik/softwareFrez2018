@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_communication_8cpp" kind="file">
+    <compoundname>Communication.cpp</compoundname>
+    <includes refid="_communication_8h" local="yes">Communication.h</includes>
+    <incdepgraph>
+      <node id="23">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Communication.h</label>
+        <link refid="_communication_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>MMStateMachine.h</label>
+        <link refid="_m_m_state_machine_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Arduino.h</label>
+      </node>
+      <node id="18">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp</label>
+        <link refid="Communication.cpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" prot="public" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref></type>
+        <definition>Communication MMcomm</definition>
+        <argsstring></argsstring>
+        <name>MMcomm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" line="3" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="3" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a067558ddc18ddc6746a32b5e520afc2a" compoundref="_g_code_interpreter_8cpp" startline="182" endline="191">GCodeInterpreter::ExecutionIsComplete</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a5ec608f015ca18102a8355377665e8c9" compoundref="_g_code_interpreter_8cpp" startline="691" endline="837">GCodeInterpreter::Interpret</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a455489dea72a3945379872755800932b" compoundref="_g_code_interpreter_8cpp" startline="166" endline="172">GCodeInterpreter::M03_SetUp</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a164fede99a7bfa04093673802b5d6dc4" compoundref="_g_code_interpreter_8cpp" startline="174" endline="180">GCodeInterpreter::M05_SetUp</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a1b5ddb75a98da69d348e2617c29aeee1" compoundref="_m_m_state_machine_8cpp" startline="168" endline="172">MMStateMachine::SetErrorState</referencedby>
+        <referencedby refid="class_b_l_d_c_driver_1a63c9233e0e698bd0e0ff2e5d35bf155e" compoundref="_b_l_d_c_driver_8cpp" startline="19" endline="36">BLDCDriver::setSpeed</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_communication_8h" kindref="compound">Communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="_communication_8h_1a4756c682962624a258ac8b1fe94f4557" refkind="member"><highlight class="normal"><ref refid="class_communication" kindref="compound">Communication</ref><sp/><ref refid="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_communication_1a88aa7a2d2ac5202e2b8eef787d1a8689" refkind="member"><highlight class="normal"><ref refid="class_communication_1a88aa7a2d2ac5202e2b8eef787d1a8689" kindref="member">Communication::Communication</ref>(){}</highlight></codeline>
+<codeline lineno="6" refid="class_communication_1a75ba08ce908d45251e28e4c1db94e6f4" refkind="member"><highlight class="normal"><ref refid="class_communication_1a75ba08ce908d45251e28e4c1db94e6f4" kindref="member">Communication::~Communication</ref>(){}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/><sp/>wysłanie<sp/>wiadomości<sp/>wraz<sp/>ze<sp/>stanem<sp/>maszyny.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">Communication::SendMessage</ref>(String<sp/>message<sp/>)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(String(<ref refid="_m_m_state_machine_8cpp_1aa99c34df0d9dffb7a7545a602c72e4c5" kindref="member">StateMachine</ref>.<ref refid="class_m_m_state_machine_1afd51964a25bf341b752afe6e0a15e3f4" kindref="member">CurrentState</ref>())<sp/>+<sp/>message);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/><sp/>otrzymanie<sp/>komendy<sp/>i<sp/>przechowanie<sp/>jej</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" kindref="member">Communication::ReceiveMessage</ref>(String<sp/>message)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" kindref="member">_message</ref><sp/>=<sp/>message;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" kindref="member">_newMessage</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/><sp/>zwrot<sp/>najnowszej<sp/>komendy.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" refkind="member"><highlight class="normal">String<sp/><ref refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" kindref="member">Communication::LatestMessage</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" kindref="member">_newMessage</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" kindref="member">_message</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/>test<sp/>czy<sp/>wiadomość<sp/>została<sp/>użyta</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" kindref="member">Communication::MessageIsNew</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" kindref="member">_newMessage</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/>wysłanie<sp/>odpowiedzi<sp/>do<sp/>kompa</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" kindref="member">Communication::SendReply</ref>()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">SendMessage</ref>(<ref refid="config_8h_1a1bb7c8e0978fdcbc50b9656ba307c2f1" kindref="member">STANDARD_REPLY_COMMAND</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dir_d829bb99f84cab8d2b8a21d637805fd7" kind="dir">
+    <compoundname>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware</compoundname>
+    <innerdir refid="dir_2a14d01eeabed935c42599f3921aa1b6">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/__vm</innerdir>
+    <innerfile refid="_b_l_d_c_driver_8cpp">BLDCDriver.cpp</innerfile>
+    <innerfile refid="_b_l_d_c_driver_8h">BLDCDriver.h</innerfile>
+    <innerfile refid="_communication_8cpp">Communication.cpp</innerfile>
+    <innerfile refid="_communication_8h">Communication.h</innerfile>
+    <innerfile refid="config_8h">config.h</innerfile>
+    <innerfile refid="_g_code_interpreter_8cpp">GCodeInterpreter.cpp</innerfile>
+    <innerfile refid="_g_code_interpreter_8h">GCodeInterpreter.h</innerfile>
+    <innerfile refid="_m_m_state_machine_8cpp">MMStateMachine.cpp</innerfile>
+    <innerfile refid="_m_m_state_machine_8h">MMStateMachine.h</innerfile>
+    <innerfile refid="_ro_table_8cpp">RoTable.cpp</innerfile>
+    <innerfile refid="_ro_table_8h">RoTable.h</innerfile>
+    <innerfile refid="_s_motor_8cpp">SMotor.cpp</innerfile>
+    <innerfile refid="_s_motor_8h">SMotor.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/"/>
+  </compounddef>
+</doxygen>

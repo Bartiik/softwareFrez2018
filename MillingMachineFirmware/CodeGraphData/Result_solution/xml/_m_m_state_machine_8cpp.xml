@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_m_m_state_machine_8cpp" kind="file">
+    <compoundname>MMStateMachine.cpp</compoundname>
+    <includes refid="_m_m_state_machine_8h" local="yes">MMStateMachine.h</includes>
+    <includes refid="_g_code_interpreter_8h" local="yes">GCodeInterpreter.h</includes>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includes refid="_s_motor_8h" local="yes">SMotor.h</includes>
+    <incdepgraph>
+      <node id="72">
+        <label>stdint.h</label>
+      </node>
+      <node id="70">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</label>
+        <link refid="MMStateMachine.cpp"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>SMotor.h</label>
+        <link refid="_s_motor_8h"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>Communication.h</label>
+        <link refid="_communication_8h"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>MMStateMachine.h</label>
+        <link refid="_m_m_state_machine_8h"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>Arduino.h</label>
+      </node>
+      <node id="76">
+        <label>GCodeInterpreter.h</label>
+        <link refid="_g_code_interpreter_8h"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_m_m_state_machine_8cpp_1aa99c34df0d9dffb7a7545a602c72e4c5" prot="public" static="no" mutable="no">
+        <type><ref refid="class_m_m_state_machine" kindref="compound">MMStateMachine</ref></type>
+        <definition>MMStateMachine StateMachine</definition>
+        <argsstring></argsstring>
+        <name>StateMachine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp" line="6" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp" bodystart="6" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a067558ddc18ddc6746a32b5e520afc2a" compoundref="_g_code_interpreter_8cpp" startline="182" endline="191">GCodeInterpreter::ExecutionIsComplete</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a253eb4509b1a88265ee44107b12bc53f" compoundref="_g_code_interpreter_8cpp" startline="294" endline="383">GCodeInterpreter::G28_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1aa2c9aeb452c55229df31f1986ddfa3a4" compoundref="_g_code_interpreter_8cpp" startline="158" endline="164">GCodeInterpreter::G28_SetUp</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a66457b1960f01193ae29e7ddba655165" compoundref="_g_code_interpreter_8cpp" startline="571" endline="685">GCodeInterpreter::PrepareForExecution</referencedby>
+        <referencedby refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" compoundref="_communication_8cpp" startline="11" endline="14">Communication::SendMessage</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_m_m_state_machine_8h" kindref="compound">MMStateMachine.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_g_code_interpreter_8h" kindref="compound">GCodeInterpreter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_s_motor_8h" kindref="compound">SMotor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="_m_m_state_machine_8h_1aa99c34df0d9dffb7a7545a602c72e4c5" refkind="member"><highlight class="normal"><ref refid="class_m_m_state_machine" kindref="compound">MMStateMachine</ref><sp/><ref refid="_m_m_state_machine_8cpp_1aa99c34df0d9dffb7a7545a602c72e4c5" kindref="member">StateMachine</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="class_m_m_state_machine_1aa8eff3bc3c448d7fc131be14d77d6682" refkind="member"><highlight class="normal"><ref refid="class_m_m_state_machine_1aa8eff3bc3c448d7fc131be14d77d6682" kindref="member">MMStateMachine::MMStateMachine</ref>()</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a2906ef41ee76a455fbc3f844427282db" kindref="member">_EndstopEn</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="config_8h_1a96cb576b9a3b5f8cb90bd4bb7ee449d2" kindref="member">INIT_STATE</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="config_8h_1ae09879934fe302960a6c738f2d847c0f" kindref="member">NO_OF_ENDSTOPS</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[i]<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17" refid="class_m_m_state_machine_1a0a72913fa8d1d6fe7a38c0241dbbd422" refkind="member"><highlight class="normal"><ref refid="class_m_m_state_machine_1a0a72913fa8d1d6fe7a38c0241dbbd422" kindref="member">MMStateMachine::~MMStateMachine</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/><sp/>Inicjalizacja<sp/>klasy<sp/>bezpieczeństwa.<sp/>Działąnie<sp/>niesprawdzone.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" kindref="member">MMStateMachine::MMSafetyBegin</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a73279ce8676b41df41dfcf0c4f2bc13f" kindref="member">X_MIN_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1ad4a6979b1248bbebcdafc3528c6149b4" kindref="member">X_MAX_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a948f866f0e1a69f4fef71378bdb9696e" kindref="member">Y_MIN_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a0c812ee01c532e21e6df0591949d4527" kindref="member">Y_MAX_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a9a2bfc38a33aafb3308ce6fb653ea218" kindref="member">Z_MIN_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a9f16c09dcc25cb65573dd6ba285b59f1" kindref="member">Z_MAX_ENDSTOP_PIN</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a73b2f97ea03afc986fa17aa61cffa882" kindref="member">TABLE_FLIP_ENDSTOP_1</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a42d0e277cbaa58117c5c1f0aff812273" kindref="member">TABLE_FLIP_ENDSTOP_2</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1ace3d61d4356102057ee48e5e17f5af21" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_1</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1ac42be4c058d368da905e7675cc0561b4" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_2</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a9509058896b8c9415c51c69f4983d566" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_3</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a4a5063fb224d6e1d57dcd142391e072b" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_4</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1ad0b65e2883b97ca24e44afbbd7ea7a15" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_1</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a3fb04c3f6e2f92dbee332d5a6cc3c82b" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_2</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a6b7678389dec97b26436cd9a445d73b9" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_3</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a140dd53ab6d46cebf5dd928afc7dbdd4" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_4</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a54bcb169fbc47171100d26fb511eebdb" kindref="member">TABLE_HOLD_MAX_ENDSTOP</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a36c626b26cf830f8baae3129642c69ff" kindref="member">TABLE_LEVEL_ENDSTOP</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a530c83656b67929ee3b4c4a721355ec6" kindref="member">TABLE_LEVEL_SENSOR</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(<ref refid="config_8h_1a3b1b5549836149b98b2ea1a06081f04c" kindref="member">TABLE_LEVEL_PROBE</ref>,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>zwraca<sp/>stan<sp/>maszyny.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="class_m_m_state_machine_1afd51964a25bf341b752afe6e0a15e3f4" refkind="member"><highlight class="normal">uint8_t<sp/><ref refid="class_m_m_state_machine_1afd51964a25bf341b752afe6e0a15e3f4" kindref="member">MMStateMachine::CurrentState</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="class_m_m_state_machine_1a1cdd65088e713575fb482c75519c2ffa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a1cdd65088e713575fb482c75519c2ffa" kindref="member">MMStateMachine::SetEndstopsEn</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EN)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a2906ef41ee76a455fbc3f844427282db" kindref="member">_EndstopEn</ref><sp/>=<sp/>EN;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>funkcja<sp/>sprawdza<sp/>krańcówki<sp/>i<sp/>zapisuje<sp/>do<sp/>macierzy<sp/>oraz<sp/>zmienia<sp/>enable<sp/>konkretnych<sp/>napędów.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" kindref="member">MMStateMachine::ResolveEndstops</ref>()</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tempArray[<ref refid="config_8h_1ae09879934fe302960a6c738f2d847c0f" kindref="member">NO_OF_ENDSTOPS</ref>]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a73279ce8676b41df41dfcf0c4f2bc13f" kindref="member">X_MIN_ENDSTOP_PIN</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1ad4a6979b1248bbebcdafc3528c6149b4" kindref="member">X_MAX_ENDSTOP_PIN</ref>),</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a948f866f0e1a69f4fef71378bdb9696e" kindref="member">Y_MIN_ENDSTOP_PIN</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a0c812ee01c532e21e6df0591949d4527" kindref="member">Y_MAX_ENDSTOP_PIN</ref>),</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a9a2bfc38a33aafb3308ce6fb653ea218" kindref="member">Z_MIN_ENDSTOP_PIN</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a9f16c09dcc25cb65573dd6ba285b59f1" kindref="member">Z_MAX_ENDSTOP_PIN</ref>),</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a73b2f97ea03afc986fa17aa61cffa882" kindref="member">TABLE_FLIP_ENDSTOP_1</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a42d0e277cbaa58117c5c1f0aff812273" kindref="member">TABLE_FLIP_ENDSTOP_2</ref>),</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1ace3d61d4356102057ee48e5e17f5af21" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_1</ref>),<sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1ac42be4c058d368da905e7675cc0561b4" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_2</ref>),</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a9509058896b8c9415c51c69f4983d566" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_3</ref>),<sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a4a5063fb224d6e1d57dcd142391e072b" kindref="member">TABLE_HOLD_LEFT_ENDSTOP_4</ref>),</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1ad0b65e2883b97ca24e44afbbd7ea7a15" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_1</ref>),<sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a3fb04c3f6e2f92dbee332d5a6cc3c82b" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_2</ref>),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a6b7678389dec97b26436cd9a445d73b9" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_3</ref>),<sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a140dd53ab6d46cebf5dd928afc7dbdd4" kindref="member">TABLE_HOLD_RIGHT_ENDSTOP_4</ref>),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a54bcb169fbc47171100d26fb511eebdb" kindref="member">TABLE_HOLD_MAX_ENDSTOP</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a36c626b26cf830f8baae3129642c69ff" kindref="member">TABLE_LEVEL_ENDSTOP</ref>),</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a530c83656b67929ee3b4c4a721355ec6" kindref="member">TABLE_LEVEL_SENSOR</ref>),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalRead(<ref refid="config_8h_1a3b1b5549836149b98b2ea1a06081f04c" kindref="member">TABLE_LEVEL_PROBE</ref>)<sp/>};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="config_8h_1ae09879934fe302960a6c738f2d847c0f" kindref="member">NO_OF_ENDSTOPS</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[i]<sp/>=<sp/>tempArray[i];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_m_m_state_machine_1a2906ef41ee76a455fbc3f844427282db" kindref="member">_EndstopEn</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[0]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[1])</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_s_motor_8cpp_1a7cef1d353abf4b23bfcb2caddce929be" kindref="member">XStepper</ref>.<ref refid="class_s_motor_1a8f5df744732384e56e1b438d3627803d" kindref="member">SetEnable</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[2]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[3])</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_s_motor_8cpp_1a5e29e04a16556f7fcd3945b86b8c43cc" kindref="member">YStepper</ref>.<ref refid="class_s_motor_1a8f5df744732384e56e1b438d3627803d" kindref="member">SetEnable</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[4]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[5]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[17]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[18]<sp/>+<sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[19])</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_s_motor_8cpp_1a0bac53a352f839a31de88b6af240006d" kindref="member">ZStepper</ref>.<ref refid="class_s_motor_1a8f5df744732384e56e1b438d3627803d" kindref="member">SetEnable</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/>if((_endstopArray[8]<sp/>+<sp/>_endstopArray[9]<sp/>+<sp/>_endstopArray[10]<sp/>+<sp/>_endstopArray[11])*(_endstopArray[12]<sp/>+<sp/>_endstopArray[13]<sp/>+<sp/>_endstopArray[14]<sp/>+<sp/>_endstopArray[15])<sp/>+<sp/>_endstopArray[16])</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Table.SetEnable(false);</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/>if((_endstopArray[6]<sp/>+<sp/>_endstopArray[7])</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FlipTable.SetEnable(false);</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/>Autor:<sp/>Bartosz<sp/>Kudroń</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/>funkcja<sp/>zwraca<sp/>wartość<sp/>danej<sp/>krańcówki,<sp/>według<sp/>wartości:</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/>0<sp/>-<sp/>X-Min<sp/>1<sp/>-<sp/>X-Max<sp/>2<sp/>-<sp/>Y-Min<sp/>3<sp/>-<sp/>Y-Max</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/>4<sp/>-<sp/>Z-Min<sp/>5<sp/>-<sp/>Z-Max<sp/>6<sp/>-<sp/>endstop<sp/>obrotu<sp/>stołu<sp/>I</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/>7<sp/>-<sp/>endstop<sp/>obrotu<sp/>stołu<sp/>II</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>8-11<sp/>-<sp/>kolejne<sp/>endstopy<sp/>zaciskania<sp/>z<sp/>lewej<sp/>strony</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/>12-15<sp/>-<sp/>kolejne<sp/>endstopy<sp/>zaciskania<sp/>z<sp/>prawej<sp/>strony</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/>16<sp/>-<sp/>endstop<sp/>maksymalnego<sp/>rozłożenia<sp/>zaciskania<sp/>stołu</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/>17<sp/>-<sp/>endstop<sp/>zerowania<sp/>stołu</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/>18<sp/>-<sp/>czujnik<sp/>zetknięcia<sp/>wrzeciona<sp/>ze<sp/>stołem</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/>19<sp/>-<sp/>próbnik<sp/>działania<sp/>stycznika<sp/>wrzeciona</highlight></codeline>
+<codeline lineno="126"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="class_m_m_state_machine_1a81fedf6924136318aec609d7401376e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a81fedf6924136318aec609d7401376e9" kindref="member">MMStateMachine::returnEndstop</ref>(uint8_t<sp/>nr)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1ac5b6edfc02e4d33c28019e95ba9ca884" kindref="member">_endstopArray</ref>[nr];</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>próba<sp/>wykorzystania<sp/>komendy<sp/>do<sp/>zmiany<sp/>stanu<sp/>(sprawdzenie<sp/>czy<sp/>komenda<sp/>należy<sp/>do<sp/>jednej<sp/>z<sp/>konkretnych<sp/>komend<sp/>U<sp/>i<sp/>zmiana<sp/>jeśli<sp/>tak).</highlight></codeline>
+<codeline lineno="135"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" kindref="member">MMStateMachine::TryUpdateState</ref>(String<sp/>command)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>commandIsUsed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>cmd;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(command<sp/>==<sp/><ref refid="config_8h_1a294d8563d70a01eed7441f99783918ff" kindref="member">COMMUNICATION_TEST_COMMAND</ref>)<sp/>cmd<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(command<sp/>==<sp/><ref refid="config_8h_1ab0b731682a3334b071d1bb2ae764077c" kindref="member">ERROR_COMMAND</ref>)<sp/>cmd<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(command<sp/>==<sp/><ref refid="config_8h_1ac950ebd1ed784f784eb48dfe838a5eb1" kindref="member">RESET_COMMAND</ref>)<sp/>cmd<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(command<sp/>==<sp/><ref refid="config_8h_1a1bb7c8e0978fdcbc50b9656ba307c2f1" kindref="member">STANDARD_REPLY_COMMAND</ref>)<sp/>cmd<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>commandIsUsed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(commandIsUsed)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="class_m_m_state_machine_1ab17fabbeedf396d720fee4aeff0608de" kindref="member">StateChangeLookupTable</ref>[cmd][<ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref>];</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>==<sp/><ref refid="config_8h_1a60db3d3e5c5fb314c0d698922d0b7124" kindref="member">ERROR_STATE</ref>)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>.<ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">SendMessage</ref>(<ref refid="config_8h_1a1e4f8ed6b4c234c3beaeeb8ea4254b36" kindref="member">UNEXPECTED_STATE_ERROR</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>.<ref refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" kindref="member">SendReply</ref>();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>commandIsUsed;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/>zmiana<sp/>stanu<sp/>na<sp/>INIT</highlight></codeline>
+<codeline lineno="160"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="class_m_m_state_machine_1ac77831d53e34eac63d703ae7bf20c0dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1ac77831d53e34eac63d703ae7bf20c0dc" kindref="member">MMStateMachine::Reset</ref>()</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="config_8h_1a96cb576b9a3b5f8cb90bd4bb7ee449d2" kindref="member">INIT_STATE</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Bartek<sp/>Kudroń</highlight></codeline>
+<codeline lineno="166"><highlight class="comment">zmiana<sp/>stanu<sp/>na<sp/>error.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="class_m_m_state_machine_1a1b5ddb75a98da69d348e2617c29aeee1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a818911258746bac2fbeb9d5709a4943a" kindref="member">MMStateMachine::SetErrorState</ref>(String<sp/>error)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>.<ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">SendMessage</ref>(error);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="config_8h_1a60db3d3e5c5fb314c0d698922d0b7124" kindref="member">ERROR_STATE</ref>;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173" refid="class_m_m_state_machine_1a818911258746bac2fbeb9d5709a4943a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a818911258746bac2fbeb9d5709a4943a" kindref="member">MMStateMachine::SetErrorState</ref>()</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_communication_8cpp_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>.<ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">SendMessage</ref>(<ref refid="config_8h_1a13b7b9ceea0c8133053f90fef1dd7cd7" kindref="member">UNKNOWN_ERROR</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Maciej<sp/>Wiecheć</highlight></codeline>
+<codeline lineno="178"><highlight class="comment">zmiana<sp/>stanu<sp/>na<sp/>execution.</highlight></codeline>
+<codeline lineno="179"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="class_m_m_state_machine_1a5522079252755f3d6fdad344a7714f57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a5522079252755f3d6fdad344a7714f57" kindref="member">MMStateMachine::SetExecutionState</ref>()</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="config_8h_1ad410f2df51004ff4b0f84cacba12eceb" kindref="member">EXECUTION_STATE</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>autor:<sp/>Maciej<sp/>Wiecheć</highlight></codeline>
+<codeline lineno="185"><highlight class="comment">zmiana<sp/>stanu<sp/>na<sp/>idle.</highlight></codeline>
+<codeline lineno="186"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="class_m_m_state_machine_1a2529cfeb110e0f3fabf2cc4b5156bb7e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_m_m_state_machine_1a2529cfeb110e0f3fabf2cc4b5156bb7e" kindref="member">MMStateMachine::SetIdleState</ref>()</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_m_state_machine_1a4b25bf7288f75e5b71f2412d85086f54" kindref="member">_state</ref><sp/>=<sp/><ref refid="config_8h_1a1d66c9130165248f0563074180dd1432" kindref="member">IDLE_STATE</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp"/>
+  </compounddef>
+</doxygen>

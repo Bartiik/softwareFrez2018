@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_communication_8h" kind="file">
+    <compoundname>Communication.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includes refid="_m_m_state_machine_8h" local="yes">MMStateMachine.h</includes>
+    <includedby refid="_b_l_d_c_driver_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/BLDCDriver.cpp</includedby>
+    <includedby refid="_m_m_state_machine_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.h</includedby>
+    <includedby refid="_communication_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp</includedby>
+    <includedby refid="_g_code_interpreter_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.cpp</includedby>
+    <includedby refid="_s_motor_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</includedby>
+    <incdepgraph>
+      <node id="29">
+        <label>stdint.h</label>
+      </node>
+      <node id="27">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h</label>
+        <link refid="Communication.h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>MMStateMachine.h</label>
+        <link refid="_m_m_state_machine_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="31">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/BLDCDriver.cpp</label>
+        <link refid="_b_l_d_c_driver_8cpp"/>
+      </node>
+      <node id="34">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</label>
+        <link refid="_m_m_state_machine_8cpp"/>
+      </node>
+      <node id="30">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h</label>
+        <link refid="Communication.h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.h</label>
+        <link refid="_m_m_state_machine_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</label>
+        <link refid="_s_motor_8cpp"/>
+      </node>
+      <node id="33">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.cpp</label>
+        <link refid="_g_code_interpreter_8cpp"/>
+      </node>
+      <node id="35">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp</label>
+        <link refid="_communication_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_communication" prot="public">Communication</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_communication_8h_1a4756c682962624a258ac8b1fe94f4557" prot="public" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref></type>
+        <definition>Communication MMcomm</definition>
+        <argsstring></argsstring>
+        <name>MMcomm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="21" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="3" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a067558ddc18ddc6746a32b5e520afc2a" compoundref="_g_code_interpreter_8cpp" startline="182" endline="191">GCodeInterpreter::ExecutionIsComplete</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a5ec608f015ca18102a8355377665e8c9" compoundref="_g_code_interpreter_8cpp" startline="691" endline="837">GCodeInterpreter::Interpret</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a455489dea72a3945379872755800932b" compoundref="_g_code_interpreter_8cpp" startline="166" endline="172">GCodeInterpreter::M03_SetUp</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a164fede99a7bfa04093673802b5d6dc4" compoundref="_g_code_interpreter_8cpp" startline="174" endline="180">GCodeInterpreter::M05_SetUp</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a1b5ddb75a98da69d348e2617c29aeee1" compoundref="_m_m_state_machine_8cpp" startline="168" endline="172">MMStateMachine::SetErrorState</referencedby>
+        <referencedby refid="class_b_l_d_c_driver_1a63c9233e0e698bd0e0ff2e5d35bf155e" compoundref="_b_l_d_c_driver_8cpp" startline="19" endline="36">BLDCDriver::setSpeed</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_m_m_state_machine_8h" kindref="compound">MMStateMachine.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="class_communication" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_communication" kindref="compound">Communication</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="9" refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" kindref="member">_message</ref>;</highlight></codeline>
+<codeline lineno="10" refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" kindref="member">_newMessage</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1a88aa7a2d2ac5202e2b8eef787d1a8689" kindref="member">Communication</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_communication_1a75ba08ce908d45251e28e4c1db94e6f4" kindref="member">~Communication</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" kindref="member">SendMessage</ref>(String);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" kindref="member">ReceiveMessage</ref>(String);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" kindref="member">LatestMessage</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" kindref="member">SendReply</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" kindref="member">MessageIsNew</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_communication" kindref="compound">Communication</ref><sp/><ref refid="_communication_8h_1a4756c682962624a258ac8b1fe94f4557" kindref="member">MMcomm</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h"/>
+  </compounddef>
+</doxygen>

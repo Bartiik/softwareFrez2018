@@ -25,3 +25,4 @@ class SMotor
 extern SMotor XStepper;
 extern SMotor YStepper;
 extern SMotor ZStepper;
+extern SMotor TableStepper;

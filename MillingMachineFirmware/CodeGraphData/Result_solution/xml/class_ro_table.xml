@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_ro_table" kind="class" prot="public">
+    <compoundname>RoTable</compoundname>
+    <includes refid="_ro_table_8h" local="no">RoTable.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_ro_table_1ae6d1542b9c9ed39c769f5e119a98c908" prot="public" static="no" mutable="no">
+        <type><ref refid="class_s_motor" kindref="compound">SMotor</ref></type>
+        <definition>SMotor RoTable::holder</definition>
+        <argsstring></argsstring>
+        <name>holder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="12" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">init</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ro_table_1aa0060c40996bc60d00b5349fd591247b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RoTable::RoTable</definition>
+        <argsstring>()</argsstring>
+        <name>RoTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="7" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ro_table_1ad7dfc13c7703a255e908f09eb4d08f30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RoTable::~RoTable</definition>
+        <argsstring>()</argsstring>
+        <name>~RoTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="8" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RoTable::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="9" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="16" bodyend="22"/>
+        <references refid="config_8h_1aca2a4b6703d85236a0949f049524ba92" compoundref="config_8h" startline="52">DC_ENABLE</references>
+        <references refid="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" compoundref="config_8h" startline="48">DC_PHASE</references>
+        <references refid="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" compoundref="config_8h" startline="50">DC_SLEEP</references>
+        <references refid="config_8h_1a7c2df7bfbfd93c9c1de2a1972aab769a" compoundref="config_8h" startline="42">E1_DIR_PIN</references>
+        <references refid="config_8h_1ac96447ac9ce19c302cd2d8279b76d528" compoundref="config_8h" startline="38">E1_ENABLE_PIN</references>
+        <references refid="config_8h_1a5025fb8ca0e5ac00f6dd2253acbe304a" compoundref="config_8h" startline="44">E1_STEP_PIN</references>
+        <references refid="class_ro_table_1ae6d1542b9c9ed39c769f5e119a98c908" compoundref="_ro_table_8h" startline="12">holder</references>
+        <references refid="class_s_motor_1af1951a1dbe48b456fc09d20a94f374e5" compoundref="_s_motor_8cpp" startline="23" endline="32">SMotor::Init</references>
+      </memberdef>
+      <memberdef kind="function" id="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RoTable::setRotationSpeed</definition>
+        <argsstring>(int16_t)</argsstring>
+        <name>setRotationSpeed</name>
+        <param>
+          <type>int16_t</type>
+          <defname>speed</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="10" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="24" bodyend="50"/>
+        <references refid="config_8h_1ab97a98583824a9ef7d480fe8fdca33cf" compoundref="config_8h" startline="160">CLOCKWISE</references>
+        <references refid="config_8h_1aca2a4b6703d85236a0949f049524ba92" compoundref="config_8h" startline="52">DC_ENABLE</references>
+        <references refid="config_8h_1a74f491f5a99781c8046749cc86dd7f66" compoundref="config_8h" startline="158">DC_MAXIMUM_SPEED_VALUE</references>
+        <references refid="config_8h_1a1d73ed82d3200d0b5f26f6ad5eb3e5b3" compoundref="config_8h" startline="157">DC_MINIMUM_SPEED_VALUE</references>
+        <references refid="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" compoundref="config_8h" startline="48">DC_PHASE</references>
+      </memberdef>
+      <memberdef kind="function" id="class_ro_table_1ac0e4daad9e49bdedba2fe14b1db6fcb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RoTable::rotationSleep</definition>
+        <argsstring>(bool)</argsstring>
+        <name>rotationSleep</name>
+        <param>
+          <type>bool</type>
+          <defname>setToWorking</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="11" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp" bodystart="52" bodyend="55"/>
+        <references refid="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" compoundref="config_8h" startline="50">DC_SLEEP</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="9">
+        <label>RoTable</label>
+        <link refid="class_ro_table"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>holder</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SMotor</label>
+        <link refid="class_s_motor"/>
+      </node>
+    </collaborationgraph>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" line="5" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h" bodystart="4" bodyend="13"/>
+    <listofallmembers>
+      <member refid="class_ro_table_1ae6d1542b9c9ed39c769f5e119a98c908" prot="public" virt="non-virtual"><scope>RoTable</scope><name>holder</name></member>
+      <member refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" prot="public" virt="non-virtual"><scope>RoTable</scope><name>init</name></member>
+      <member refid="class_ro_table_1aa0060c40996bc60d00b5349fd591247b" prot="public" virt="non-virtual"><scope>RoTable</scope><name>RoTable</name></member>
+      <member refid="class_ro_table_1ac0e4daad9e49bdedba2fe14b1db6fcb1" prot="public" virt="non-virtual"><scope>RoTable</scope><name>rotationSleep</name></member>
+      <member refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" prot="public" virt="non-virtual"><scope>RoTable</scope><name>setRotationSpeed</name></member>
+      <member refid="class_ro_table_1ad7dfc13c7703a255e908f09eb4d08f30" prot="public" virt="non-virtual"><scope>RoTable</scope><name>~RoTable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

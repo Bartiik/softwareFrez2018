@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_communication" kind="class" prot="public">
+    <compoundname>Communication</compoundname>
+    <includes refid="_communication_8h" local="no">Communication.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String Communication::_message</definition>
+        <argsstring></argsstring>
+        <name>_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="9" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" compoundref="_communication_8cpp" startline="26" endline="31">LatestMessage</referencedby>
+        <referencedby refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" compoundref="_communication_8cpp" startline="18" endline="22">ReceiveMessage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Communication::_newMessage</definition>
+        <argsstring></argsstring>
+        <name>_newMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="10" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" bodystart="10" bodyend="-1"/>
+        <referencedby refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" compoundref="_communication_8cpp" startline="26" endline="31">LatestMessage</referencedby>
+        <referencedby refid="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" compoundref="_communication_8cpp" startline="35" endline="38">MessageIsNew</referencedby>
+        <referencedby refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" compoundref="_communication_8cpp" startline="18" endline="22">ReceiveMessage</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_communication_1a88aa7a2d2ac5202e2b8eef787d1a8689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Communication::Communication</definition>
+        <argsstring>()</argsstring>
+        <name>Communication</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="12" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="5" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a75ba08ce908d45251e28e4c1db94e6f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Communication::~Communication</definition>
+        <argsstring>()</argsstring>
+        <name>~Communication</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="13" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="6" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a2bea94775148a1bd3faaa377301103a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::SendMessage</definition>
+        <argsstring>(String)</argsstring>
+        <name>SendMessage</name>
+        <param>
+          <type>String</type>
+          <defname>message</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="14" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="11" bodyend="14"/>
+        <references refid="class_m_m_state_machine_1afd51964a25bf341b752afe6e0a15e3f4" compoundref="_m_m_state_machine_8cpp" startline="48" endline="51">MMStateMachine::CurrentState</references>
+        <references refid="_m_m_state_machine_8cpp_1aa99c34df0d9dffb7a7545a602c72e4c5" compoundref="_m_m_state_machine_8cpp" startline="6">StateMachine</references>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a5ec608f015ca18102a8355377665e8c9" compoundref="_g_code_interpreter_8cpp" startline="691" endline="837">GCodeInterpreter::Interpret</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a455489dea72a3945379872755800932b" compoundref="_g_code_interpreter_8cpp" startline="166" endline="172">GCodeInterpreter::M03_SetUp</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a164fede99a7bfa04093673802b5d6dc4" compoundref="_g_code_interpreter_8cpp" startline="174" endline="180">GCodeInterpreter::M05_SetUp</referencedby>
+        <referencedby refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" compoundref="_communication_8cpp" startline="42" endline="45">SendReply</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a1b5ddb75a98da69d348e2617c29aeee1" compoundref="_m_m_state_machine_8cpp" startline="168" endline="172">MMStateMachine::SetErrorState</referencedby>
+        <referencedby refid="class_b_l_d_c_driver_1a63c9233e0e698bd0e0ff2e5d35bf155e" compoundref="_b_l_d_c_driver_8cpp" startline="19" endline="36">BLDCDriver::setSpeed</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a9a6e39c7d18af59d0919b718291ce539" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::ReceiveMessage</definition>
+        <argsstring>(String)</argsstring>
+        <name>ReceiveMessage</name>
+        <param>
+          <type>String</type>
+          <defname>message</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="15" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="18" bodyend="22"/>
+        <references refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" compoundref="_communication_8h" startline="9">_message</references>
+        <references refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" compoundref="_communication_8h" startline="10">_newMessage</references>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String Communication::LatestMessage</definition>
+        <argsstring>()</argsstring>
+        <name>LatestMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="16" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="26" bodyend="31"/>
+        <references refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" compoundref="_communication_8h" startline="9">_message</references>
+        <references refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" compoundref="_communication_8h" startline="10">_newMessage</references>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::SendReply</definition>
+        <argsstring>()</argsstring>
+        <name>SendReply</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="17" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="42" bodyend="45"/>
+        <references refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" compoundref="_communication_8cpp" startline="11" endline="14">SendMessage</references>
+        <references refid="config_8h_1a1bb7c8e0978fdcbc50b9656ba307c2f1" compoundref="config_8h" startline="126">STANDARD_REPLY_COMMAND</references>
+        <referencedby refid="class_g_code_interpreter_1a067558ddc18ddc6746a32b5e520afc2a" compoundref="_g_code_interpreter_8cpp" startline="182" endline="191">GCodeInterpreter::ExecutionIsComplete</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Communication::MessageIsNew</definition>
+        <argsstring>()</argsstring>
+        <name>MessageIsNew</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="18" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp" bodystart="35" bodyend="38"/>
+        <references refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" compoundref="_communication_8h" startline="10">_newMessage</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" line="7" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h" bodystart="6" bodyend="19"/>
+    <listofallmembers>
+      <member refid="class_communication_1ab552fb88482fc3ed9ea9bc6a739ada23" prot="private" virt="non-virtual"><scope>Communication</scope><name>_message</name></member>
+      <member refid="class_communication_1a386ccbcb48f6972f64327d2c13ed3f47" prot="private" virt="non-virtual"><scope>Communication</scope><name>_newMessage</name></member>
+      <member refid="class_communication_1a88aa7a2d2ac5202e2b8eef787d1a8689" prot="public" virt="non-virtual"><scope>Communication</scope><name>Communication</name></member>
+      <member refid="class_communication_1a992ee10b64b20765f52cd27d4b2a1130" prot="public" virt="non-virtual"><scope>Communication</scope><name>LatestMessage</name></member>
+      <member refid="class_communication_1ad93c74d75d44b732c0fa8ec583ef5e97" prot="public" virt="non-virtual"><scope>Communication</scope><name>MessageIsNew</name></member>
+      <member refid="class_communication_1a9a6e39c7d18af59d0919b718291ce539" prot="public" virt="non-virtual"><scope>Communication</scope><name>ReceiveMessage</name></member>
+      <member refid="class_communication_1a2bea94775148a1bd3faaa377301103a0" prot="public" virt="non-virtual"><scope>Communication</scope><name>SendMessage</name></member>
+      <member refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" prot="public" virt="non-virtual"><scope>Communication</scope><name>SendReply</name></member>
+      <member refid="class_communication_1a75ba08ce908d45251e28e4c1db94e6f4" prot="public" virt="non-virtual"><scope>Communication</scope><name>~Communication</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -8,7 +8,7 @@
 #define RX0_PIN						0   // RX PIN - DO NOT USE <- CONNECTED TO USB
 #define TX0_PIN						1	// TX PIN - DO NOT USE <- CONNECTED TO USB
 #define X_MAX_ENDSTOP_PIN			2   // PWM PIN
-#define X_MIN_ENDSTOP_PIN			15//3   // PWM PIN
+#define X_MIN_ENDSTOP_PIN			3   // PWM PIN
 #define SERVO_4_PIN					4   // PWM PIN
 #define SERVO_3_PIN					5   // PWM PIN // Analog In 1
 #define SERVO_2_PIN					6   // PWM PIN
@@ -16,11 +16,11 @@
 #define D8_ENABLE_PIN				8   // PWM PIN
 #define D9_ENABLE_PIN				9   // PWM PIN
 #define D10_ENABLE_PIN				10  // PWM PIN
-#define SERVO_1_PIN					11  // PWM PIN
+#define SPINDLE_SIGNAL_PIN			11  // PWM PIN
 #define PS_ON_PIN					12  // PWM PIN
 #define LED_PIN						13  // PWM PIN
 #define Y_MIN_ENDSTOP_PIN			14  // TX3
-#define Y_MAX_ENDSTOP_PIN			3//15  // RX3
+#define Y_MAX_ENDSTOP_PIN			15  // RX3
 #define UNKNOWN_PIN					16  // TX2
 #define UNKNOWN_PIN					17  // RX2
 #define Z_MIN_ENDSTOP_PIN			18  // TX1
@@ -29,19 +29,19 @@
 #define UNKNOWN_PIN					21  // SCL
 #define N_C							22  // NOT CONNECTED, DO NOT USE
 #define TABLE_FLIP_ENDSTOP_1		23
-#define E1_ENABLE_PIN				24
+#define TABLE_ENABLE_PIN			24
 #define TABLE_FLIP_ENDSTOP_2		25
-#define E1_STEP_PIN					26
+#define TABLE_STEP_PIN				26
 #define TABLE_HOLD_MAX_ENDSTOP		27
-#define E1_DIR_PIN					28
+#define TABLE_DIR_PIN				28
 #define TABLE_LEVEL_ENDSTOP			29
-#define E2_ENABLE_PIN				30
+#define E1_ENABLE_PIN				30//e1
 #define TABLE_HOLD_LEFT_ENDSTOP_4	31
 #define TABLE_LEVEL_PROBE			32
 #define TABLE_HOLD_LEFT_ENDSTOP_3	33
-#define E2_DIR_PIN					34
+#define E1_DIR_PIN					34//e1
 #define TABLE_HOLD_LEFT_ENDSTOP_2	35
-#define E2_STEP_PIN					36
+#define E1_STEP_PIN					36//e1
 #define TABLE_HOLD_LEFT_ENDSTOP_1	37
 #define X_ENABLE_PIN				38
 #define TABLE_HOLD_RIGHT_ENDSTOP_4	39
@@ -51,9 +51,9 @@
 #define TABLE_HOLD_RIGHT_ENDSTOP_2	43
 #define DC_ENABLE					44  // PWM PIN
 #define TABLE_HOLD_RIGHT_ENDSTOP_1	45  // PWM PIN
-#define Z_STEP_PIN					A6//46  // PWM PIN
-#define TABLE_LEVEL_SENSOR			47
-#define Z_DIR_PIN					A7//48
+#define Y_STEP_PIN					46  // PWM PIN
+#define UNKNOWN_PIN					47
+#define Y_DIR_PIN					48
 #define UNKNOWN_PIN					49
 #define UNKNOWN_PIN					50  // MISO
 #define UNKNOWN_PIN					51  // MOSI
@@ -61,13 +61,13 @@
 #define UNKNOWN_PIN					53
 #define X_STEP_PIN					A0  // ANALOG PIN
 #define X_DIR_PIN					A1  // ANALOG PIN
-#define Y_ENABLE_PIN				A8//A2  // ANALOG PIN
-#define SPINDLE_SIGNAL_PIN			A3  // ANALOG PIN
+#define Z_ENABLE_PIN				A2  // ANALOG PIN
+#define UNKNOWN_PIN					A3  // ANALOG PIN
 #define UNKNOWN_PIN					A4  // ANALOG PIN
 #define UNKNOWN_PIN					A5  // ANALOG PIN
-#define Y_STEP_PIN					46//A6  // ANALOG PIN
-#define Y_DIR_PIN					48//A7  // ANALOG PIN
-#define Z_ENABLE_PIN				A2//A8  // ANALOG PIN
+#define Z_STEP_PIN					A6  // ANALOG PIN
+#define Z_DIR_PIN					A7  // ANALOG PIN
+#define Y_ENABLE_PIN				A8  // ANALOG PIN
 #define UNKNOWN_PIN					A9  // ANALOG PIN
 #define UNKNOWN_PIN					A10 // ANALOG PIN
 #define UNKNOWN_PIN					A11 // ANALOG PIN
@@ -87,23 +87,29 @@
 
 // SERIAL
 #define BAUD_RATE				115200
-#define NO_OF_ENDSTOPS			20
+#define NO_OF_ENDSTOPS			19
 // DUMMY
-#define DUMMY_VALUE				999999
+#define DUMMY_VALUE				999999999
 
 //					MOTOR AND MOVEMENT
 
-#define RPS0_25  25536  //50Hz
-#define RPS0_5 45536; // 100Hz
-#define RPS1 55536; // 200Hz
-#define RPS2 60536; // 400Hz
-#define RPS2_5 61536; // 500Hz
-#define RPS3 62203; // 600Hz
+//dziala
+#define RPS0_25 11384//45536; 
+#define RPS0_5 55536
+#define RPS1 60536
+#define RPS1_5 62203
 
-#define GO_HOME_SPEED 63000
-#define GO_HOME_SLOW_SPEED 60000
-#define WORKING_SPEED 64911
-#define RAPID_SPEED 64911
+//nie dziala
+#define RPS2 63036
+#define RPS2_5 63536
+#define RPS3 63869
+#define RPS4 64286
+
+
+#define GO_HOME_SPEED RPS0_5
+#define GO_HOME_SLOW_SPEED RPS0_25
+#define WORKING_SPEED RPS1_5
+#define RAPID_SPEED 57536
 
 #define SAFE_HEIGHT 200 // height in z axis
 #define XHOME 0

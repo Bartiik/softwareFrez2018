@@ -15,7 +15,7 @@ RoTable::~RoTable()
 
 void RoTable::init()
 {
-	holder.Init(E1_DIR_PIN, E1_STEP_PIN, E1_ENABLE_PIN);
+	holder.Init(TABLE_DIR_PIN, TABLE_STEP_PIN, TABLE_ENABLE_PIN);
 	pinMode(DC_PHASE, OUTPUT);
 	pinMode(DC_ENABLE, OUTPUT);
 	pinMode(DC_SLEEP, OUTPUT);

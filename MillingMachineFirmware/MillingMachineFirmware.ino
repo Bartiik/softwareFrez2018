@@ -50,7 +50,7 @@ void setup()
 	TCCR1A = 0;
 	TCCR1B = 0;
 	TCNT1 = RPS2_5;
-	TCCR1B |= (1 << CS11);
+	TCCR1B |= (1 << CS10);
 	TIMSK1 |= (1 << TOIE1);
 
 	sei();
@@ -64,6 +64,7 @@ void setup()
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
+	TableStepper.Init(TABLE_DIR_PIN, TABLE_STEP_PIN, TABLE_ENABLE_PIN);
 
 }
 
@@ -82,7 +83,7 @@ ISR(TIMER1_OVF_vect) { //timer for steppers
 
 ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 {
-	StateMachine.CheckEndstops();
+	StateMachine.ResolveEndstops();
 	Command.time++;
 }
 
@@ -97,8 +98,8 @@ void loop()
 	{
 	case INIT_STATE:
 	{	
-		StateMachine.ResolveEndstops();
-		for (int i = 0; i < 20; i++) {
+		
+		for (int i = 0; i < 19; i++) {
 			Serial.print((String)StateMachine.returnEndstop(i) + " ");
 		}
 		Serial.println(" ");
@@ -133,9 +134,6 @@ void loop()
 	case EXECUTION_STATE:
 	{
 	
-		StateMachine.ResolveEndstops();
-
-
 		if (ExecutionInterrupt)
 		{
 			Command.ExecuteStep();

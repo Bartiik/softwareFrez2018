@@ -1,0 +1,1695 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="config_8h" kind="file">
+    <compoundname>config.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includedby refid="_b_l_d_c_driver_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/BLDCDriver.h</includedby>
+    <includedby refid="_communication_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h</includedby>
+    <includedby refid="_g_code_interpreter_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.h</includedby>
+    <includedby refid="_s_motor_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h</includedby>
+    <includedby refid="_m_m_state_machine_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</includedby>
+    <includedby refid="_ro_table_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h</includedby>
+    <includedby refid="_s_motor_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</includedby>
+    <incdepgraph>
+      <node id="37">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h</label>
+        <link refid="config.h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="41">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/BLDCDriver.cpp</label>
+        <link refid="_b_l_d_c_driver_8cpp"/>
+      </node>
+      <node id="50">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h</label>
+        <link refid="_ro_table_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</label>
+        <link refid="_m_m_state_machine_8cpp"/>
+      </node>
+      <node id="49">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h</label>
+        <link refid="_s_motor_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h</label>
+        <link refid="config.h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.h</label>
+        <link refid="_communication_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.h</label>
+        <link refid="_m_m_state_machine_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.h</label>
+        <link refid="_g_code_interpreter_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</label>
+        <link refid="_s_motor_8cpp"/>
+      </node>
+      <node id="42">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.cpp</label>
+        <link refid="_g_code_interpreter_8cpp"/>
+      </node>
+      <node id="46">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/Communication.cpp</label>
+        <link refid="_communication_8cpp"/>
+      </node>
+      <node id="40">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/BLDCDriver.h</label>
+        <link refid="_b_l_d_c_driver_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp</label>
+        <link refid="_ro_table_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="config_8h_1ad72dbcf6d0153db1b8d8a58001feed83" prot="public" static="no">
+        <name>DEBUG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="4" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a180be9b2a19c1283013104fe99b2db16" prot="public" static="no">
+        <name>RX0_PIN</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="8" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a06567fd052099278dfda65cd602ca06e" prot="public" static="no">
+        <name>TX0_PIN</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="9" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad4a6979b1248bbebcdafc3528c6149b4" prot="public" static="no">
+        <name>X_MAX_ENDSTOP_PIN</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="10" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="10" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a73279ce8676b41df41dfcf0c4f2bc13f" prot="public" static="no">
+        <name>X_MIN_ENDSTOP_PIN</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="11" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1a97630e5e199917c117777663c38ec8" prot="public" static="no">
+        <name>SERVO_4_PIN</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="12" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aa047e6d7e10286669e8d29bea5362e83" prot="public" static="no">
+        <name>SERVO_3_PIN</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="13" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1abb8bec2cfb60a7cbcf4379f51c83583c" prot="public" static="no">
+        <name>SERVO_2_PIN</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="14" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a8929654595d3c4e5b818cc79c9401324" prot="public" static="no">
+        <name>N_C</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="15" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a756262d6250455a7e65ce53074e81c60" prot="public" static="no">
+        <name>D8_ENABLE_PIN</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="16" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ab3f0eec637dd012c09b051016e0bd8a6" prot="public" static="no">
+        <name>D9_ENABLE_PIN</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="17" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aee8d418890f32b41909c14a987cdfc0c" prot="public" static="no">
+        <name>D10_ENABLE_PIN</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="18" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ae04df1405fd257caa75330e5c198b6d6" prot="public" static="no">
+        <name>SPINDLE_SIGNAL_PIN</name>
+        <initializer>11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="19" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="class_b_l_d_c_driver_1a44f4b1106aa6168c67ec096a0fe5d4a8" compoundref="_b_l_d_c_driver_8cpp" startline="14" endline="18">BLDCDriver::init</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1adfa9645ffbea2e304b2fb7059862e787" prot="public" static="no">
+        <name>PS_ON_PIN</name>
+        <initializer>12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="20" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ab4553be4db9860d940f81d7447173b2f" prot="public" static="no">
+        <name>LED_PIN</name>
+        <initializer>13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="21" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a948f866f0e1a69f4fef71378bdb9696e" prot="public" static="no">
+        <name>Y_MIN_ENDSTOP_PIN</name>
+        <initializer>14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="22" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a0c812ee01c532e21e6df0591949d4527" prot="public" static="no">
+        <name>Y_MAX_ENDSTOP_PIN</name>
+        <initializer>15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="23" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="24" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="25" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9a2bfc38a33aafb3308ce6fb653ea218" prot="public" static="no">
+        <name>Z_MIN_ENDSTOP_PIN</name>
+        <initializer>18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="26" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9f16c09dcc25cb65573dd6ba285b59f1" prot="public" static="no">
+        <name>Z_MAX_ENDSTOP_PIN</name>
+        <initializer>19</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="27" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="28" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="29" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a8929654595d3c4e5b818cc79c9401324" prot="public" static="no">
+        <name>N_C</name>
+        <initializer>22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="30" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a73b2f97ea03afc986fa17aa61cffa882" prot="public" static="no">
+        <name>TABLE_FLIP_ENDSTOP_1</name>
+        <initializer>23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="31" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1afb04e0371d4ebd8321f5e8f1de099486" prot="public" static="no">
+        <name>TABLE_ENABLE_PIN</name>
+        <initializer>24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="32" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a42d0e277cbaa58117c5c1f0aff812273" prot="public" static="no">
+        <name>TABLE_FLIP_ENDSTOP_2</name>
+        <initializer>25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="33" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9a03ffe7df8161fc5692c7a56d20b2eb" prot="public" static="no">
+        <name>TABLE_STEP_PIN</name>
+        <initializer>26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="34" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a54bcb169fbc47171100d26fb511eebdb" prot="public" static="no">
+        <name>TABLE_HOLD_MAX_ENDSTOP</name>
+        <initializer>27</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="35" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1b3ac5bd4293096ae5ef97cb4db29621" prot="public" static="no">
+        <name>TABLE_DIR_PIN</name>
+        <initializer>28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="36" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a36c626b26cf830f8baae3129642c69ff" prot="public" static="no">
+        <name>TABLE_LEVEL_ENDSTOP</name>
+        <initializer>29</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="37" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ac96447ac9ce19c302cd2d8279b76d528" prot="public" static="no">
+        <name>E1_ENABLE_PIN</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="38" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a4a5063fb224d6e1d57dcd142391e072b" prot="public" static="no">
+        <name>TABLE_HOLD_LEFT_ENDSTOP_4</name>
+        <initializer>31</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="39" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a3b1b5549836149b98b2ea1a06081f04c" prot="public" static="no">
+        <name>TABLE_LEVEL_PROBE</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="40" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9509058896b8c9415c51c69f4983d566" prot="public" static="no">
+        <name>TABLE_HOLD_LEFT_ENDSTOP_3</name>
+        <initializer>33</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="41" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a7c2df7bfbfd93c9c1de2a1972aab769a" prot="public" static="no">
+        <name>E1_DIR_PIN</name>
+        <initializer>34</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="42" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ac42be4c058d368da905e7675cc0561b4" prot="public" static="no">
+        <name>TABLE_HOLD_LEFT_ENDSTOP_2</name>
+        <initializer>35</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="43" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a5025fb8ca0e5ac00f6dd2253acbe304a" prot="public" static="no">
+        <name>E1_STEP_PIN</name>
+        <initializer>36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="44" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ace3d61d4356102057ee48e5e17f5af21" prot="public" static="no">
+        <name>TABLE_HOLD_LEFT_ENDSTOP_1</name>
+        <initializer>37</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="45" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1adccee7e1e7d60b08b2d18fad5387df25" prot="public" static="no">
+        <name>X_ENABLE_PIN</name>
+        <initializer>38</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="46" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a140dd53ab6d46cebf5dd928afc7dbdd4" prot="public" static="no">
+        <name>TABLE_HOLD_RIGHT_ENDSTOP_4</name>
+        <initializer>39</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="47" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" prot="public" static="no">
+        <name>DC_PHASE</name>
+        <initializer>40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="48" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+        <referencedby refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" compoundref="_ro_table_8cpp" startline="24" endline="50">RoTable::setRotationSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a6b7678389dec97b26436cd9a445d73b9" prot="public" static="no">
+        <name>TABLE_HOLD_RIGHT_ENDSTOP_3</name>
+        <initializer>41</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="49" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" prot="public" static="no">
+        <name>DC_SLEEP</name>
+        <initializer>42</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="50" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+        <referencedby refid="class_ro_table_1ac0e4daad9e49bdedba2fe14b1db6fcb1" compoundref="_ro_table_8cpp" startline="52" endline="55">RoTable::rotationSleep</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a3fb04c3f6e2f92dbee332d5a6cc3c82b" prot="public" static="no">
+        <name>TABLE_HOLD_RIGHT_ENDSTOP_2</name>
+        <initializer>43</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="51" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aca2a4b6703d85236a0949f049524ba92" prot="public" static="no">
+        <name>DC_ENABLE</name>
+        <initializer>44</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="52" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1acfca5557a5e9a4c2cdfa3fee5e224413" compoundref="_ro_table_8cpp" startline="16" endline="22">RoTable::init</referencedby>
+        <referencedby refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" compoundref="_ro_table_8cpp" startline="24" endline="50">RoTable::setRotationSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad0b65e2883b97ca24e44afbbd7ea7a15" prot="public" static="no">
+        <name>TABLE_HOLD_RIGHT_ENDSTOP_1</name>
+        <initializer>45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="53" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="53" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9313863a817f571f7a89deeaf77662fb" prot="public" static="no">
+        <name>Y_STEP_PIN</name>
+        <initializer>46</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="54" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a530c83656b67929ee3b4c4a721355ec6" prot="public" static="no">
+        <name>TABLE_LEVEL_SENSOR</name>
+        <initializer>47</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="55" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1ae2848e59e7c4de36d768b3c77c95215e" compoundref="_m_m_state_machine_8cpp" startline="22" endline="44">MMStateMachine::MMSafetyBegin</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a627c6a2d953f587bec3881dd9e0f9670" prot="public" static="no">
+        <name>Y_DIR_PIN</name>
+        <initializer>48</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="56" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>49</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="57" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="58" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>51</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="59" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>52</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="60" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>53</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="61" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a3018c6ebc4818a40ca658b5bbf2d044f" prot="public" static="no">
+        <name>X_STEP_PIN</name>
+        <initializer>A0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="62" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a550987a19a802873845a5686134fb3e0" prot="public" static="no">
+        <name>X_DIR_PIN</name>
+        <initializer>A1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="63" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a6483b796b38eaf1efcb7b9348fdcc8e5" prot="public" static="no">
+        <name>Z_ENABLE_PIN</name>
+        <initializer>A2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="64" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="65" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="66" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="67" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a07eb0240238e8582d5a00fb67179d325" prot="public" static="no">
+        <name>Z_STEP_PIN</name>
+        <initializer>A6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="68" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a2a05d4e873384a0b78499d5c1323f1c4" prot="public" static="no">
+        <name>Z_DIR_PIN</name>
+        <initializer>A7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="69" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a78560c0173e13b5de2134bdfcc6f6c16" prot="public" static="no">
+        <name>Y_ENABLE_PIN</name>
+        <initializer>A8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="70" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="71" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="72" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="73" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad42f83eec19001970f6d7b60ba41b171" prot="public" static="no">
+        <name>UNKNOWN_PIN</name>
+        <initializer>A12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="74" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a96330b6ff5c286e57917655eb38beab6" prot="public" static="no">
+        <name>THERM_0_PIN</name>
+        <initializer>A13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="75" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a5a2f7ac18c77e388ba8cf752ba2da1e1" prot="public" static="no">
+        <name>THERM_1_PIN</name>
+        <initializer>A14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="76" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a554e3dacbfd26f25115417db2c58c2ca" prot="public" static="no">
+        <name>THERM_2_PIN</name>
+        <initializer>A15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="77" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a96cb576b9a3b5f8cb90bd4bb7ee449d2" prot="public" static="no">
+        <name>INIT_STATE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="81" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="81" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1aa8eff3bc3c448d7fc131be14d77d6682" compoundref="_m_m_state_machine_8cpp" startline="8" endline="16">MMStateMachine::MMStateMachine</referencedby>
+        <referencedby refid="class_m_m_state_machine_1ac77831d53e34eac63d703ae7bf20c0dc" compoundref="_m_m_state_machine_8cpp" startline="161" endline="164">MMStateMachine::Reset</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1d66c9130165248f0563074180dd1432" prot="public" static="no">
+        <name>IDLE_STATE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="82" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="82" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a2529cfeb110e0f3fabf2cc4b5156bb7e" compoundref="_m_m_state_machine_8cpp" startline="187" endline="190">MMStateMachine::SetIdleState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad410f2df51004ff4b0f84cacba12eceb" prot="public" static="no">
+        <name>EXECUTION_STATE</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="83" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="83" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a5522079252755f3d6fdad344a7714f57" compoundref="_m_m_state_machine_8cpp" startline="180" endline="183">MMStateMachine::SetExecutionState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a60db3d3e5c5fb314c0d698922d0b7124" prot="public" static="no">
+        <name>ERROR_STATE</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="84" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="84" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a1b5ddb75a98da69d348e2617c29aeee1" compoundref="_m_m_state_machine_8cpp" startline="168" endline="172">MMStateMachine::SetErrorState</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad4455691936f92fdd6c37566fc58ba1f" prot="public" static="no">
+        <name>BAUD_RATE</name>
+        <initializer>115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="89" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ae09879934fe302960a6c738f2d847c0f" prot="public" static="no">
+        <name>NO_OF_ENDSTOPS</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="90" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1aa8eff3bc3c448d7fc131be14d77d6682" compoundref="_m_m_state_machine_8cpp" startline="8" endline="16">MMStateMachine::MMStateMachine</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a973581a7f103f334c318faa4adec561a" prot="public" static="no">
+        <name>DUMMY_VALUE</name>
+        <initializer>999999</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="92" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a792b04d24f89a0bf4fa5a19fc89a1644" compoundref="_g_code_interpreter_8cpp" startline="23" endline="40">GCodeInterpreter::Clear</referencedby>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a5ec608f015ca18102a8355377665e8c9" compoundref="_g_code_interpreter_8cpp" startline="691" endline="837">GCodeInterpreter::Interpret</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a66457b1960f01193ae29e7ddba655165" compoundref="_g_code_interpreter_8cpp" startline="571" endline="685">GCodeInterpreter::PrepareForExecution</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a98810469c4a18583063f1cc94ae8ca3c" prot="public" static="no">
+        <name>RPS0_25</name>
+        <initializer>11384</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="97" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a8fa5c0ff6e37b4ae905dad112daa20bf" prot="public" static="no">
+        <name>RPS0_5</name>
+        <initializer>55536</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="98" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a5c15c6fa61d11b87fc3b6590309cd5d7" prot="public" static="no">
+        <name>RPS1</name>
+        <initializer>60536</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="99" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a8ea6c5a64466b0a5a44011fcc2725336" prot="public" static="no">
+        <name>RPS1_5</name>
+        <initializer>62203</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="100" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1abb409e49089871147d2fd051666dc894" prot="public" static="no">
+        <name>RPS2</name>
+        <initializer>63036</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="103" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aee68b4291a3e1fad54b65909d1da3846" prot="public" static="no">
+        <name>RPS2_5</name>
+        <initializer>63536</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="104" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a4f45d72f9ddfc5a412f7381ccf858460" prot="public" static="no">
+        <name>RPS3</name>
+        <initializer>63869</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="105" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a53a4e628affc6f1fdbb68b7485d8a5c5" prot="public" static="no">
+        <name>RPS4</name>
+        <initializer>64286</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="106" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1afeab472de214f73915708ae9d16304f9" prot="public" static="no">
+        <name>GO_HOME_SPEED</name>
+        <initializer><ref refid="config_8h_1a8fa5c0ff6e37b4ae905dad112daa20bf" kindref="member">RPS0_5</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="109" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a253eb4509b1a88265ee44107b12bc53f" compoundref="_g_code_interpreter_8cpp" startline="294" endline="383">GCodeInterpreter::G28_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a373fa305d2332b8d0a8134580f9001e6" prot="public" static="no">
+        <name>GO_HOME_SLOW_SPEED</name>
+        <initializer><ref refid="config_8h_1a98810469c4a18583063f1cc94ae8ca3c" kindref="member">RPS0_25</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="110" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a253eb4509b1a88265ee44107b12bc53f" compoundref="_g_code_interpreter_8cpp" startline="294" endline="383">GCodeInterpreter::G28_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1f1ed2d16708ebb109dc67d8e8288d14" prot="public" static="no">
+        <name>WORKING_SPEED</name>
+        <initializer><ref refid="config_8h_1a8ea6c5a64466b0a5a44011fcc2725336" kindref="member">RPS1_5</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="111" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a3267f2e7df0a4b73255e0226bc2a6050" compoundref="_g_code_interpreter_8cpp" startline="225" endline="292">GCodeInterpreter::G01_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a77b6536cdde399f9d8cc193835d138cb" prot="public" static="no">
+        <name>RAPID_SPEED</name>
+        <initializer><ref refid="config_8h_1a98810469c4a18583063f1cc94ae8ca3c" kindref="member">RPS0_25</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="112" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="112" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a9090de44ebe0b877446dd24072743be8" compoundref="_g_code_interpreter_8cpp" startline="196" endline="220">GCodeInterpreter::G00_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ae218016ee4bdd8cab1c67d66e214ed2b" prot="public" static="no">
+        <name>SAFE_HEIGHT</name>
+        <initializer>200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="114" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a6b76c9792134add4edc31b64901d3c11" prot="public" static="no">
+        <name>XHOME</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="115" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a06cf116fb36ea454c9bfce5a581dcd25" prot="public" static="no">
+        <name>YHOME</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="116" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ab37a611b43637c98a228cd112c979925" prot="public" static="no">
+        <name>ZHOME</name>
+        <initializer>10000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="117" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a6cd79e44c0a5df2c5ce17feca59c8991" prot="public" static="no">
+        <name>ROTATE_TABLE_COMMAND</name>
+        <initializer>&quot;U0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="121" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a3a8b57307416533f19358d0ae4bd8f3e" prot="public" static="no">
+        <name>LOCK_BOARD_COMMAND</name>
+        <initializer>&quot;U1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="122" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ad2d177be87dcff8a6842564f95450da0" prot="public" static="no">
+        <name>UNLOCK_BOARD_COMMAND</name>
+        <initializer>&quot;U2&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="123" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a9ee3d181ebc37529558cdf258b7552df" prot="public" static="no">
+        <name>BED_LEVELING_COMMAND</name>
+        <initializer>&quot;U3&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="124" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a294d8563d70a01eed7441f99783918ff" prot="public" static="no">
+        <name>COMMUNICATION_TEST_COMMAND</name>
+        <initializer>&quot;U4&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="125" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1bb7c8e0978fdcbc50b9656ba307c2f1" prot="public" static="no">
+        <name>STANDARD_REPLY_COMMAND</name>
+        <initializer>&quot;U5&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="126" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="class_communication_1a84f5e9ad09fa6a2d3b01b193020e56e8" compoundref="_communication_8cpp" startline="42" endline="45">Communication::SendReply</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ab0b731682a3334b071d1bb2ae764077c" prot="public" static="no">
+        <name>ERROR_COMMAND</name>
+        <initializer>&quot;U6&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="127" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ac950ebd1ed784f784eb48dfe838a5eb1" prot="public" static="no">
+        <name>RESET_COMMAND</name>
+        <initializer>&quot;U7&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="128" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a4f31d803235209db466a1911c63396fd" prot="public" static="no">
+        <name>MOVEMENT_DONE</name>
+        <initializer>&quot;U8&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="129" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a83722a81af3b9a4be2fc9b85fe50938e" prot="public" static="no">
+        <name>THE_SAME_COORD</name>
+        <initializer>&quot;U9&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="130" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a13b7b9ceea0c8133053f90fef1dd7cd7" prot="public" static="no">
+        <name>UNKNOWN_ERROR</name>
+        <initializer>&quot;E0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="135" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a818911258746bac2fbeb9d5709a4943a" compoundref="_m_m_state_machine_8cpp" startline="173" endline="176">MMStateMachine::SetErrorState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1e4f8ed6b4c234c3beaeeb8ea4254b36" prot="public" static="no">
+        <name>UNEXPECTED_STATE_ERROR</name>
+        <initializer>&quot;E1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="136" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="class_m_m_state_machine_1a8ebbf5197c0b24a039ce3f32e62ce0cf" compoundref="_m_m_state_machine_8cpp" startline="136" endline="157">MMStateMachine::TryUpdateState</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a5821e224584d39abe6a9ebfc19f2fe81" prot="public" static="no">
+        <name>UNHANDLED_STATE_ERROR</name>
+        <initializer>&quot;E2&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="137" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ae609eb1e381f9b5320de65c319ca66b1" prot="public" static="no">
+        <name>UNKNOWN_GCODE_ERROR</name>
+        <initializer>&quot;E3&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="138" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="138" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a66457b1960f01193ae29e7ddba655165" compoundref="_g_code_interpreter_8cpp" startline="571" endline="685">GCodeInterpreter::PrepareForExecution</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a5cb439d9f933fde4cf23caa370c030e7" prot="public" static="no">
+        <name>WARNING</name>
+        <initializer>&quot;W0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="142" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1af3064254ec4694114bd1ddec17fac0c5" prot="public" static="no">
+        <name>INTERPRETATION_FAILED_WARNING</name>
+        <initializer>&quot;W1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="143" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="143" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a5ec608f015ca18102a8355377665e8c9" compoundref="_g_code_interpreter_8cpp" startline="691" endline="837">GCodeInterpreter::Interpret</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aefb899b714bbb18ce31895e05a88b25c" prot="public" static="no">
+        <name>BLDC_MINIMUM_SPEED_VALUE</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="150" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="150" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a455489dea72a3945379872755800932b" compoundref="_g_code_interpreter_8cpp" startline="166" endline="172">GCodeInterpreter::M03_SetUp</referencedby>
+        <referencedby refid="class_g_code_interpreter_1ae9488fd4c5a08aca8a851b48478d4060" compoundref="_g_code_interpreter_8cpp" startline="413" endline="430">GCodeInterpreter::M05_Execute</referencedby>
+        <referencedby refid="class_b_l_d_c_driver_1a63c9233e0e698bd0e0ff2e5d35bf155e" compoundref="_b_l_d_c_driver_8cpp" startline="19" endline="36">BLDCDriver::setSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ac37a20b29a468e31f8da8de6e61b2ce5" prot="public" static="no">
+        <name>BLDC_MAXIMUM_SPEED_VALUE</name>
+        <initializer>2000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="151" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="151" bodyend="-1"/>
+        <referencedby refid="class_b_l_d_c_driver_1a63c9233e0e698bd0e0ff2e5d35bf155e" compoundref="_b_l_d_c_driver_8cpp" startline="19" endline="36">BLDCDriver::setSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a75289c62bcd3b902d00abb794fe305f7" prot="public" static="no">
+        <name>BLDC_ACCELERATION_VALUE</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="152" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="152" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1ad388b67c14358a726320f9c6fe6d563e" compoundref="_g_code_interpreter_8cpp" startline="439" endline="567">GCodeInterpreter::ExecuteStep</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a9eef2ea5e8a3abcdd2020e518fa7dc3c" compoundref="_g_code_interpreter_8cpp" startline="393" endline="411">GCodeInterpreter::M03_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1ae9488fd4c5a08aca8a851b48478d4060" compoundref="_g_code_interpreter_8cpp" startline="413" endline="430">GCodeInterpreter::M05_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a40aaa0e71f78453d79cdbdaf00946787" prot="public" static="no">
+        <name>BLDC_DEFAULT_SPEED</name>
+        <initializer>1800</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="153" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="153" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a4bdcc1ba9a10f2e6cc0cefcc647fd18f" compoundref="_g_code_interpreter_8cpp" startline="8" endline="16">GCodeInterpreter::GCodeInterpreter</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1aa8da01489f27a51f4f8b28892ee43a63" prot="public" static="no">
+        <name>BLDC_ACCELERATION_SPEED</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="154" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="154" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a9eef2ea5e8a3abcdd2020e518fa7dc3c" compoundref="_g_code_interpreter_8cpp" startline="393" endline="411">GCodeInterpreter::M03_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1ae9488fd4c5a08aca8a851b48478d4060" compoundref="_g_code_interpreter_8cpp" startline="413" endline="430">GCodeInterpreter::M05_Execute</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1d73ed82d3200d0b5f26f6ad5eb3e5b3" prot="public" static="no">
+        <name>DC_MINIMUM_SPEED_VALUE</name>
+        <initializer>-255</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="157" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="157" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" compoundref="_ro_table_8cpp" startline="24" endline="50">RoTable::setRotationSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a74f491f5a99781c8046749cc86dd7f66" prot="public" static="no">
+        <name>DC_MAXIMUM_SPEED_VALUE</name>
+        <initializer>255</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="158" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="158" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" compoundref="_ro_table_8cpp" startline="24" endline="50">RoTable::setRotationSpeed</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1a1eae078d615b7e8bcec8899b52819815" prot="public" static="no">
+        <name>ROTATION_TABLE_SPEED</name>
+        <initializer>25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="159" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="config_8h_1ab97a98583824a9ef7d480fe8fdca33cf" prot="public" static="no">
+        <name>CLOCKWISE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" line="160" column="9" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h" bodystart="160" bodyend="-1"/>
+        <referencedby refid="class_ro_table_1a6da66965501af5a987e5a38b26d86d33" compoundref="_ro_table_8cpp" startline="24" endline="50">RoTable::setRotationSpeed</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="config_8h_1ad72dbcf6d0153db1b8d8a58001feed83" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG</highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PINOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="config_8h_1a180be9b2a19c1283013104fe99b2db16" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RX0_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/>//<sp/>RX<sp/>PIN<sp/>-<sp/>DO<sp/>NOT<sp/>USE<sp/>&lt;-<sp/>CONNECTED<sp/>TO<sp/>USB</highlight></codeline>
+<codeline lineno="9" refid="config_8h_1a06567fd052099278dfda65cd602ca06e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TX0_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/>//<sp/>TX<sp/>PIN<sp/>-<sp/>DO<sp/>NOT<sp/>USE<sp/>&lt;-<sp/>CONNECTED<sp/>TO<sp/>USB</highlight></codeline>
+<codeline lineno="10" refid="config_8h_1ad4a6979b1248bbebcdafc3528c6149b4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>X_MAX_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="11" refid="config_8h_1a73279ce8676b41df41dfcf0c4f2bc13f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>X_MIN_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="12" refid="config_8h_1a1a97630e5e199917c117777663c38ec8" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SERVO_4_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="13" refid="config_8h_1aa047e6d7e10286669e8d29bea5362e83" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SERVO_3_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>5<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN<sp/>//<sp/>Analog<sp/>In<sp/>1</highlight></codeline>
+<codeline lineno="14" refid="config_8h_1abb8bec2cfb60a7cbcf4379f51c83583c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SERVO_2_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>6<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>N_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>7<sp/><sp/><sp/>//<sp/>NOT<sp/>CONNECTED,<sp/>DO<sp/>NOT<sp/>USE</highlight></codeline>
+<codeline lineno="16" refid="config_8h_1a756262d6250455a7e65ce53074e81c60" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>D8_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="17" refid="config_8h_1ab3f0eec637dd012c09b051016e0bd8a6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>D9_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>9<sp/><sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="18" refid="config_8h_1aee8d418890f32b41909c14a987cdfc0c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>D10_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="19" refid="config_8h_1ae04df1405fd257caa75330e5c198b6d6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SPINDLE_SIGNAL_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>11<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="20" refid="config_8h_1adfa9645ffbea2e304b2fb7059862e787" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PS_ON_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="21" refid="config_8h_1ab4553be4db9860d940f81d7447173b2f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>LED_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="22" refid="config_8h_1a948f866f0e1a69f4fef71378bdb9696e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y_MIN_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>14<sp/><sp/>//<sp/>TX3</highlight></codeline>
+<codeline lineno="23" refid="config_8h_1a0c812ee01c532e21e6df0591949d4527" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y_MAX_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>15<sp/><sp/>//<sp/>RX3</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16<sp/><sp/>//<sp/>TX2</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>17<sp/><sp/>//<sp/>RX2</highlight></codeline>
+<codeline lineno="26" refid="config_8h_1a9a2bfc38a33aafb3308ce6fb653ea218" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z_MIN_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>18<sp/><sp/>//<sp/>TX1</highlight></codeline>
+<codeline lineno="27" refid="config_8h_1a9f16c09dcc25cb65573dd6ba285b59f1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z_MAX_ENDSTOP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>19<sp/><sp/>//<sp/>RX1</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>20<sp/><sp/>//<sp/>SDA</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>21<sp/><sp/>//<sp/>SCL</highlight></codeline>
+<codeline lineno="30" refid="config_8h_1a8929654595d3c4e5b818cc79c9401324" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>N_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>22<sp/><sp/>//<sp/>NOT<sp/>CONNECTED,<sp/>DO<sp/>NOT<sp/>USE</highlight></codeline>
+<codeline lineno="31" refid="config_8h_1a73b2f97ea03afc986fa17aa61cffa882" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_FLIP_ENDSTOP_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>23</highlight></codeline>
+<codeline lineno="32" refid="config_8h_1afb04e0371d4ebd8321f5e8f1de099486" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>24</highlight></codeline>
+<codeline lineno="33" refid="config_8h_1a42d0e277cbaa58117c5c1f0aff812273" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_FLIP_ENDSTOP_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>25</highlight></codeline>
+<codeline lineno="34" refid="config_8h_1a9a03ffe7df8161fc5692c7a56d20b2eb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_STEP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>26</highlight></codeline>
+<codeline lineno="35" refid="config_8h_1a54bcb169fbc47171100d26fb511eebdb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_MAX_ENDSTOP<sp/><sp/><sp/><sp/><sp/><sp/>27</highlight></codeline>
+<codeline lineno="36" refid="config_8h_1a1b3ac5bd4293096ae5ef97cb4db29621" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_DIR_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>28</highlight></codeline>
+<codeline lineno="37" refid="config_8h_1a36c626b26cf830f8baae3129642c69ff" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_LEVEL_ENDSTOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>29</highlight></codeline>
+<codeline lineno="38" refid="config_8h_1ac96447ac9ce19c302cd2d8279b76d528" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>E1_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>30</highlight></codeline>
+<codeline lineno="39" refid="config_8h_1a4a5063fb224d6e1d57dcd142391e072b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_LEFT_ENDSTOP_4<sp/><sp/><sp/>31</highlight></codeline>
+<codeline lineno="40" refid="config_8h_1a3b1b5549836149b98b2ea1a06081f04c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_LEVEL_PROBE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
+<codeline lineno="41" refid="config_8h_1a9509058896b8c9415c51c69f4983d566" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_LEFT_ENDSTOP_3<sp/><sp/><sp/>33</highlight></codeline>
+<codeline lineno="42" refid="config_8h_1a7c2df7bfbfd93c9c1de2a1972aab769a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>E1_DIR_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>34</highlight></codeline>
+<codeline lineno="43" refid="config_8h_1ac42be4c058d368da905e7675cc0561b4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_LEFT_ENDSTOP_2<sp/><sp/><sp/>35</highlight></codeline>
+<codeline lineno="44" refid="config_8h_1a5025fb8ca0e5ac00f6dd2253acbe304a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>E1_STEP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>36</highlight></codeline>
+<codeline lineno="45" refid="config_8h_1ace3d61d4356102057ee48e5e17f5af21" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_LEFT_ENDSTOP_1<sp/><sp/><sp/>37</highlight></codeline>
+<codeline lineno="46" refid="config_8h_1adccee7e1e7d60b08b2d18fad5387df25" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>X_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>38</highlight></codeline>
+<codeline lineno="47" refid="config_8h_1a140dd53ab6d46cebf5dd928afc7dbdd4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_RIGHT_ENDSTOP_4<sp/><sp/>39</highlight></codeline>
+<codeline lineno="48" refid="config_8h_1ada6c41f54a9ed966aa65f4002b077e7c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DC_PHASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40</highlight></codeline>
+<codeline lineno="49" refid="config_8h_1a6b7678389dec97b26436cd9a445d73b9" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_RIGHT_ENDSTOP_3<sp/><sp/>41</highlight></codeline>
+<codeline lineno="50" refid="config_8h_1a2a932d075a4c19b413b7c40ab2935d45" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DC_SLEEP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>42</highlight></codeline>
+<codeline lineno="51" refid="config_8h_1a3fb04c3f6e2f92dbee332d5a6cc3c82b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_RIGHT_ENDSTOP_2<sp/><sp/>43</highlight></codeline>
+<codeline lineno="52" refid="config_8h_1aca2a4b6703d85236a0949f049524ba92" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DC_ENABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>44<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="53" refid="config_8h_1ad0b65e2883b97ca24e44afbbd7ea7a15" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_HOLD_RIGHT_ENDSTOP_1<sp/><sp/>45<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="54" refid="config_8h_1a9313863a817f571f7a89deeaf77662fb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y_STEP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>46<sp/><sp/>//<sp/>PWM<sp/>PIN</highlight></codeline>
+<codeline lineno="55" refid="config_8h_1a530c83656b67929ee3b4c4a721355ec6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TABLE_LEVEL_SENSOR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>47</highlight></codeline>
+<codeline lineno="56" refid="config_8h_1a627c6a2d953f587bec3881dd9e0f9670" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y_DIR_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>48</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>49</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>50<sp/><sp/>//<sp/>MISO</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>51<sp/><sp/>//<sp/>MOSI</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>52</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>53</highlight></codeline>
+<codeline lineno="62" refid="config_8h_1a3018c6ebc4818a40ca658b5bbf2d044f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>X_STEP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A0<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="63" refid="config_8h_1a550987a19a802873845a5686134fb3e0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>X_DIR_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A1<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="64" refid="config_8h_1a6483b796b38eaf1efcb7b9348fdcc8e5" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A2<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A3<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A4<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A5<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="68" refid="config_8h_1a07eb0240238e8582d5a00fb67179d325" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z_STEP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A6<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="69" refid="config_8h_1a2a05d4e873384a0b78499d5c1323f1c4" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z_DIR_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A7<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="70" refid="config_8h_1a78560c0173e13b5de2134bdfcc6f6c16" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y_ENABLE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A8<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A9<sp/><sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A10<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A11<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="74" refid="config_8h_1ad42f83eec19001970f6d7b60ba41b171" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A12<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="75" refid="config_8h_1a96330b6ff5c286e57917655eb38beab6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>THERM_0_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A13<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="76" refid="config_8h_1a5a2f7ac18c77e388ba8cf752ba2da1e1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>THERM_1_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A14<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="77" refid="config_8h_1a554e3dacbfd26f25115417db2c58c2ca" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>THERM_2_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A15<sp/>//<sp/>ANALOG<sp/>PIN</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>possible<sp/>States</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="config_8h_1a96cb576b9a3b5f8cb90bd4bb7ee449d2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INIT_STATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="82" refid="config_8h_1a1d66c9130165248f0563074180dd1432" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDLE_STATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="83" refid="config_8h_1ad410f2df51004ff4b0f84cacba12eceb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXECUTION_STATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="84" refid="config_8h_1a60db3d3e5c5fb314c0d698922d0b7124" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ERROR_STATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PARAMETERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SERIAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="config_8h_1ad4455691936f92fdd6c37566fc58ba1f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BAUD_RATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>115200</highlight></codeline>
+<codeline lineno="90" refid="config_8h_1ae09879934fe302960a6c738f2d847c0f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NO_OF_ENDSTOPS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>DUMMY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="config_8h_1a973581a7f103f334c318faa4adec561a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DUMMY_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>999999</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MOTOR<sp/>AND<sp/>MOVEMENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//dziala</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="config_8h_1a98810469c4a18583063f1cc94ae8ca3c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RPS0_25<sp/>11384//45536;<sp/></highlight></codeline>
+<codeline lineno="98" refid="config_8h_1a8fa5c0ff6e37b4ae905dad112daa20bf" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS0_5<sp/>55536</highlight></codeline>
+<codeline lineno="99" refid="config_8h_1a5c15c6fa61d11b87fc3b6590309cd5d7" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS1<sp/>60536</highlight></codeline>
+<codeline lineno="100" refid="config_8h_1a8ea6c5a64466b0a5a44011fcc2725336" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS1_5<sp/>62203</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//nie<sp/>dziala</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="config_8h_1abb409e49089871147d2fd051666dc894" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RPS2<sp/>63036</highlight></codeline>
+<codeline lineno="104" refid="config_8h_1aee68b4291a3e1fad54b65909d1da3846" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS2_5<sp/>63536</highlight></codeline>
+<codeline lineno="105" refid="config_8h_1a4f45d72f9ddfc5a412f7381ccf858460" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS3<sp/>63869</highlight></codeline>
+<codeline lineno="106" refid="config_8h_1a53a4e628affc6f1fdbb68b7485d8a5c5" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RPS4<sp/>64286</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="config_8h_1afeab472de214f73915708ae9d16304f9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GO_HOME_SPEED<sp/>RPS0_5</highlight></codeline>
+<codeline lineno="110" refid="config_8h_1a373fa305d2332b8d0a8134580f9001e6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GO_HOME_SLOW_SPEED<sp/>RPS0_25</highlight></codeline>
+<codeline lineno="111" refid="config_8h_1a1f1ed2d16708ebb109dc67d8e8288d14" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WORKING_SPEED<sp/>RPS1_5</highlight></codeline>
+<codeline lineno="112" refid="config_8h_1a77b6536cdde399f9d8cc193835d138cb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RAPID_SPEED<sp/>RPS0_25</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="config_8h_1ae218016ee4bdd8cab1c67d66e214ed2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAFE_HEIGHT<sp/>200<sp/>//<sp/>height<sp/>in<sp/>z<sp/>axis</highlight></codeline>
+<codeline lineno="115" refid="config_8h_1a6b76c9792134add4edc31b64901d3c11" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>XHOME<sp/>0</highlight></codeline>
+<codeline lineno="116" refid="config_8h_1a06cf116fb36ea454c9bfce5a581dcd25" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>YHOME<sp/>0</highlight></codeline>
+<codeline lineno="117" refid="config_8h_1ab37a611b43637c98a228cd112c979925" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ZHOME<sp/>10000</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>STATIC<sp/>COMMANDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="config_8h_1a6cd79e44c0a5df2c5ce17feca59c8991" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROTATE_TABLE_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U0&quot;</highlight></codeline>
+<codeline lineno="122" refid="config_8h_1a3a8b57307416533f19358d0ae4bd8f3e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>LOCK_BOARD_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U1&quot;</highlight></codeline>
+<codeline lineno="123" refid="config_8h_1ad2d177be87dcff8a6842564f95450da0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNLOCK_BOARD_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U2&quot;</highlight></codeline>
+<codeline lineno="124" refid="config_8h_1a9ee3d181ebc37529558cdf258b7552df" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BED_LEVELING_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U3&quot;</highlight></codeline>
+<codeline lineno="125" refid="config_8h_1a294d8563d70a01eed7441f99783918ff" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>COMMUNICATION_TEST_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U4&quot;</highlight></codeline>
+<codeline lineno="126" refid="config_8h_1a1bb7c8e0978fdcbc50b9656ba307c2f1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>STANDARD_REPLY_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U5&quot;</highlight></codeline>
+<codeline lineno="127" refid="config_8h_1ab0b731682a3334b071d1bb2ae764077c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ERROR_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U6&quot;</highlight></codeline>
+<codeline lineno="128" refid="config_8h_1ac950ebd1ed784f784eb48dfe838a5eb1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RESET_COMMAND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U7&quot;</highlight></codeline>
+<codeline lineno="129" refid="config_8h_1a4f31d803235209db466a1911c63396fd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MOVEMENT_DONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U8&quot;</highlight></codeline>
+<codeline lineno="130" refid="config_8h_1a83722a81af3b9a4be2fc9b85fe50938e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>THE_SAME_COORD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;U9&quot;</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kody<sp/>błędów<sp/>-<sp/>używane<sp/>przez<sp/>funkcję<sp/>MMComm.SetErrorState<sp/>-<sp/>jeśli<sp/>funkcja<sp/>nie<sp/>posiada<sp/>parametru,<sp/>wysyła<sp/>E0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="config_8h_1a13b7b9ceea0c8133053f90fef1dd7cd7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;E0&quot;<sp/>//<sp/>ogólny<sp/>błąd<sp/>wskazujący<sp/>że<sp/>coś<sp/>jest<sp/>nie<sp/>tak.<sp/>Im<sp/>mniej<sp/>się<sp/>go<sp/>użyje,<sp/>tym<sp/>lepiej.<sp/></highlight></codeline>
+<codeline lineno="136" refid="config_8h_1a1e4f8ed6b4c234c3beaeeb8ea4254b36" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNEXPECTED_STATE_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;E1&quot;<sp/>//<sp/>wysłana<sp/>wiadomość<sp/>error<sp/>lub<sp/>nieogarnięta<sp/>wiadomość<sp/>-<sp/>np.<sp/>test<sp/>komunikacji<sp/>w<sp/>stanie<sp/>innym<sp/>niż<sp/>init.</highlight></codeline>
+<codeline lineno="137" refid="config_8h_1a5821e224584d39abe6a9ebfc19f2fe81" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNHANDLED_STATE_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;E2&quot;<sp/>//<sp/>nieznana<sp/>wartość<sp/>zmiennej<sp/>_State</highlight></codeline>
+<codeline lineno="138" refid="config_8h_1ae609eb1e381f9b5320de65c319ca66b1" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UNKNOWN_GCODE_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;E3&quot;<sp/>//<sp/>nieznana<sp/>komenda<sp/>G,<sp/>M<sp/>lub<sp/>U</highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//kody<sp/>ostrzeżeń<sp/>-<sp/>nie<sp/>zmieniają<sp/>stanu<sp/>na<sp/>error,<sp/>ale<sp/>informują<sp/>o<sp/>czymś<sp/>komputer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="config_8h_1a5cb439d9f933fde4cf23caa370c030e7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARNING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;W0&quot;<sp/>//<sp/>nieznany<sp/>warning.</highlight></codeline>
+<codeline lineno="143" refid="config_8h_1af3064254ec4694114bd1ddec17fac0c5" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>INTERPRETATION_FAILED_WARNING<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;W1&quot;<sp/>//<sp/>błąd<sp/>interpretacji<sp/>G-Kodu</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BLDC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="config_8h_1aefb899b714bbb18ce31895e05a88b25c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BLDC_MINIMUM_SPEED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000</highlight></codeline>
+<codeline lineno="151" refid="config_8h_1ac37a20b29a468e31f8da8de6e61b2ce5" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BLDC_MAXIMUM_SPEED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2000</highlight></codeline>
+<codeline lineno="152" refid="config_8h_1a75289c62bcd3b902d00abb794fe305f7" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BLDC_ACCELERATION_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100</highlight></codeline>
+<codeline lineno="153" refid="config_8h_1a40aaa0e71f78453d79cdbdaf00946787" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BLDC_DEFAULT_SPEED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1800</highlight></codeline>
+<codeline lineno="154" refid="config_8h_1aa8da01489f27a51f4f8b28892ee43a63" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BLDC_ACCELERATION_SPEED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100</highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>DC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="config_8h_1a1d73ed82d3200d0b5f26f6ad5eb3e5b3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DC_MINIMUM_SPEED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-255</highlight></codeline>
+<codeline lineno="158" refid="config_8h_1a74f491f5a99781c8046749cc86dd7f66" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DC_MAXIMUM_SPEED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>255</highlight></codeline>
+<codeline lineno="159" refid="config_8h_1a1eae078d615b7e8bcec8899b52819815" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>ROTATION_TABLE_SPEED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>25</highlight></codeline>
+<codeline lineno="160" refid="config_8h_1ab97a98583824a9ef7d480fe8fdca33cf" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CLOCKWISE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor">#define<sp/>COUNTER_CLOCKWISE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/config.h"/>
+  </compounddef>
+</doxygen>

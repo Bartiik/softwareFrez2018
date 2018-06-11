@@ -39,7 +39,6 @@ void MMStateMachine::MMSafetyBegin()
 	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_4, INPUT_PULLUP);
 	pinMode(TABLE_HOLD_MAX_ENDSTOP, INPUT_PULLUP);
 	pinMode(TABLE_LEVEL_ENDSTOP, INPUT_PULLUP);
-	pinMode(TABLE_LEVEL_SENSOR, INPUT_PULLUP);
 	pinMode(TABLE_LEVEL_PROBE, INPUT_PULLUP);
 }
 /* autor: Bartek Kudroń
@@ -56,32 +55,14 @@ void MMStateMachine::SetEndstopsEn(bool EN) {
 }
 
 
-/* autor: Bartek Kudroń
-	sprawdzenie krańcówek, czy któraś nie jest wciśnięta. niesprawdzone
-*/
-void MMStateMachine::CheckEndstops()
-{
 
-	_Endstop = digitalRead(X_MIN_ENDSTOP_PIN) + digitalRead(X_MAX_ENDSTOP_PIN) +
-		digitalRead(Y_MIN_ENDSTOP_PIN) + digitalRead(Y_MAX_ENDSTOP_PIN) +
-		digitalRead(Z_MIN_ENDSTOP_PIN) + digitalRead(Z_MAX_ENDSTOP_PIN) +
-		digitalRead(TABLE_FLIP_ENDSTOP_1) + digitalRead(TABLE_FLIP_ENDSTOP_2) +
-		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_1) + digitalRead(TABLE_HOLD_LEFT_ENDSTOP_2) +
-		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_3) + digitalRead(TABLE_HOLD_LEFT_ENDSTOP_4) +
-		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1) + digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2) +
-		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3) + digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4) +
-		digitalRead(TABLE_HOLD_MAX_ENDSTOP) + digitalRead(TABLE_LEVEL_ENDSTOP) +
-		digitalRead(TABLE_LEVEL_SENSOR) + digitalRead(TABLE_LEVEL_PROBE) > 0 ? true : false;
-
-}
 /* autor: Bartek Kudroń
-	funkcja zapisuje wciśnięte krańcówki do macierzy oraz zmienia enable konkretnych napędów.
+	funkcja sprawdza krańcówki i zapisuje do macierzy oraz zmienia enable konkretnych napędów.
 */
 void MMStateMachine::ResolveEndstops()
 {
 
-	if (_Endstop > 0)
-	{
+
 		bool tempArray[NO_OF_ENDSTOPS] = {
 			digitalRead(X_MIN_ENDSTOP_PIN),				digitalRead(X_MAX_ENDSTOP_PIN),
 			digitalRead(Y_MIN_ENDSTOP_PIN),				digitalRead(Y_MAX_ENDSTOP_PIN),
@@ -92,13 +73,14 @@ void MMStateMachine::ResolveEndstops()
 			digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2),
 			digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4),
 			digitalRead(TABLE_HOLD_MAX_ENDSTOP),		digitalRead(TABLE_LEVEL_ENDSTOP),
-			digitalRead(TABLE_LEVEL_SENSOR),			digitalRead(TABLE_LEVEL_PROBE) };
+			!digitalRead(TABLE_LEVEL_PROBE)  };
 
 		for (int i = 0; i < NO_OF_ENDSTOPS; i++)
 		{
 			_endstopArray[i] = tempArray[i];
 		}
-	}
+
+
 	if (_EndstopEn) {
 		if (_endstopArray[0] + _endstopArray[1])
 		{
@@ -110,7 +92,7 @@ void MMStateMachine::ResolveEndstops()
 			YStepper.SetEnable(true);
 		}
 
-		if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18] + _endstopArray[19])
+		if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
 		{
 			ZStepper.SetEnable(true);
 		}

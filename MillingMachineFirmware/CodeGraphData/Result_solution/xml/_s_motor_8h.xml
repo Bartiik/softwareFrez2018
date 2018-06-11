@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_s_motor_8h" kind="file">
+    <compoundname>SMotor.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includedby refid="_g_code_interpreter_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.cpp</includedby>
+    <includedby refid="_m_m_state_machine_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</includedby>
+    <includedby refid="_ro_table_8h" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h</includedby>
+    <includedby refid="_s_motor_8cpp" local="yes">F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</includedby>
+    <incdepgraph>
+      <node id="112">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h</label>
+        <link refid="SMotor.h"/>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="114">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="113" relation="include">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="118">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.h</label>
+        <link refid="_ro_table_8h"/>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/MMStateMachine.cpp</label>
+        <link refid="_m_m_state_machine_8cpp"/>
+      </node>
+      <node id="115">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h</label>
+        <link refid="SMotor.h"/>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp</label>
+        <link refid="_s_motor_8cpp"/>
+      </node>
+      <node id="116">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/GCodeInterpreter.cpp</label>
+        <link refid="_g_code_interpreter_8cpp"/>
+      </node>
+      <node id="119">
+        <label>F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/RoTable.cpp</label>
+        <link refid="_ro_table_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_s_motor" prot="public">SMotor</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_s_motor_8h_1a7cef1d353abf4b23bfcb2caddce929be" prot="public" static="no" mutable="no">
+        <type><ref refid="class_s_motor" kindref="compound">SMotor</ref></type>
+        <definition>SMotor XStepper</definition>
+        <argsstring></argsstring>
+        <name>XStepper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h" line="25" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp" bodystart="6" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a9090de44ebe0b877446dd24072743be8" compoundref="_g_code_interpreter_8cpp" startline="196" endline="220">GCodeInterpreter::G00_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3267f2e7df0a4b73255e0226bc2a6050" compoundref="_g_code_interpreter_8cpp" startline="225" endline="292">GCodeInterpreter::G01_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a253eb4509b1a88265ee44107b12bc53f" compoundref="_g_code_interpreter_8cpp" startline="294" endline="383">GCodeInterpreter::G28_Execute</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3c930d806006013be061e20f580cbb5d" compoundref="_g_code_interpreter_8cpp" startline="42" endline="46">GCodeInterpreter::SetSteppersEn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_s_motor_8h_1a5e29e04a16556f7fcd3945b86b8c43cc" prot="public" static="no" mutable="no">
+        <type><ref refid="class_s_motor" kindref="compound">SMotor</ref></type>
+        <definition>SMotor YStepper</definition>
+        <argsstring></argsstring>
+        <name>YStepper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h" line="26" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp" bodystart="7" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a9090de44ebe0b877446dd24072743be8" compoundref="_g_code_interpreter_8cpp" startline="196" endline="220">GCodeInterpreter::G00_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3267f2e7df0a4b73255e0226bc2a6050" compoundref="_g_code_interpreter_8cpp" startline="225" endline="292">GCodeInterpreter::G01_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a253eb4509b1a88265ee44107b12bc53f" compoundref="_g_code_interpreter_8cpp" startline="294" endline="383">GCodeInterpreter::G28_Execute</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3c930d806006013be061e20f580cbb5d" compoundref="_g_code_interpreter_8cpp" startline="42" endline="46">GCodeInterpreter::SetSteppersEn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_s_motor_8h_1a0bac53a352f839a31de88b6af240006d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_s_motor" kindref="compound">SMotor</ref></type>
+        <definition>SMotor ZStepper</definition>
+        <argsstring></argsstring>
+        <name>ZStepper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h" line="27" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp" bodystart="8" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a9090de44ebe0b877446dd24072743be8" compoundref="_g_code_interpreter_8cpp" startline="196" endline="220">GCodeInterpreter::G00_Execute</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3267f2e7df0a4b73255e0226bc2a6050" compoundref="_g_code_interpreter_8cpp" startline="225" endline="292">GCodeInterpreter::G01_Execute</referencedby>
+        <referencedby refid="class_m_m_state_machine_1a5e3ede320f6dfe33fca667d39116c10c" compoundref="_m_m_state_machine_8cpp" startline="63" endline="112">MMStateMachine::ResolveEndstops</referencedby>
+        <referencedby refid="class_g_code_interpreter_1a3c930d806006013be061e20f580cbb5d" compoundref="_g_code_interpreter_8cpp" startline="42" endline="46">GCodeInterpreter::SetSteppersEn</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_s_motor_8h_1a4189d41d76eb0551f8329c9487b3af32" prot="public" static="no" mutable="no">
+        <type><ref refid="class_s_motor" kindref="compound">SMotor</ref></type>
+        <definition>SMotor TableStepper</definition>
+        <argsstring></argsstring>
+        <name>TableStepper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h" line="28" column="1" bodyfile="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.cpp" bodystart="9" bodyend="-1"/>
+        <referencedby refid="class_g_code_interpreter_1a66457b1960f01193ae29e7ddba655165" compoundref="_g_code_interpreter_8cpp" startline="571" endline="685">GCodeInterpreter::PrepareForExecution</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_s_motor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_s_motor" kindref="compound">SMotor</ref></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8" refid="class_s_motor_1a5d912ae5b0f3cfd037e8450441d4bd5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_s_motor_1a5d912ae5b0f3cfd037e8450441d4bd5e" kindref="member">_dir_pin</ref>;</highlight></codeline>
+<codeline lineno="9" refid="class_s_motor_1a2206e424dd2729e6990182672ca75f00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_s_motor_1a2206e424dd2729e6990182672ca75f00" kindref="member">_step_pin</ref>;</highlight></codeline>
+<codeline lineno="10" refid="class_s_motor_1a3a09e13cd012b4434eb6ed6000a8df31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_s_motor_1a3a09e13cd012b4434eb6ed6000a8df31" kindref="member">_enable_pin</ref>;</highlight></codeline>
+<codeline lineno="11" refid="class_s_motor_1ac40586ccc8034b027bfe747e4df561e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1ac40586ccc8034b027bfe747e4df561e2" kindref="member">_enable</ref>;</highlight></codeline>
+<codeline lineno="12" refid="class_s_motor_1a08d0567324c4377d7acdef258ecdc83d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><ref refid="class_s_motor_1a08d0567324c4377d7acdef258ecdc83d" kindref="member">_abs_possition</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_s_motor_1a29d1d10288f83e41d200e3623541a351" kindref="member">SMotor</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_s_motor_1a2d895062c2a19f0fc933b58b9cfaca5e" kindref="member">~SMotor</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1af1951a1dbe48b456fc09d20a94f374e5" kindref="member">Init</ref>(uint8_t<sp/>,uint8_t,<sp/>uint8_t);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1a96fa9159a7167a8ac2a8ca03d2d18d07" kindref="member">GetAbsPossition</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1a9b3d69475ed1e31d9463a9c578d53afd" kindref="member">GetBoolEnable</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1a8f5df744732384e56e1b438d3627803d" kindref="member">SetEnable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_s_motor_1a09f82c901d20851a3d026c6deae537d8" kindref="member">Step</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>DIR);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_s_motor" kindref="compound">SMotor</ref><sp/><ref refid="_s_motor_8h_1a7cef1d353abf4b23bfcb2caddce929be" kindref="member">XStepper</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_s_motor" kindref="compound">SMotor</ref><sp/><ref refid="_s_motor_8h_1a5e29e04a16556f7fcd3945b86b8c43cc" kindref="member">YStepper</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_s_motor" kindref="compound">SMotor</ref><sp/><ref refid="_s_motor_8h_1a0bac53a352f839a31de88b6af240006d" kindref="member">ZStepper</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_s_motor" kindref="compound">SMotor</ref><sp/><ref refid="_s_motor_8h_1a4189d41d76eb0551f8329c9487b3af32" kindref="member">TableStepper</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="F:/studia/6th_semester/Mechatroinc_design/manka/MankaNator-master/MankaNator/MillingMachineFirmware/SMotor.h"/>
+  </compounddef>
+</doxygen>
