@@ -18,4 +18,5 @@ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega25
  C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\SMotor.h \
  C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\BLDCDriver.h \
  F:\Arduino\libraries\Servo\src/Servo.h \
- F:\Arduino\libraries\Servo\src/avr/ServoTimers.h
+ F:\Arduino\libraries\Servo\src/avr/ServoTimers.h \
+ C:\Users\Maciej\AppData\Local\Temp\VMBuilds\MillingMachineFirmware\mega_atmega2560\Release\RoTable.h

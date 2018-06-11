@@ -3,6 +3,7 @@
 #include "MMStateMachine.h"
 #include "SMotor.h"
 #include "BLDCDriver.h"
+#include "RoTable.h"
 GCodeInterpreter Command;
 
 GCodeInterpreter::GCodeInterpreter()
@@ -185,6 +186,22 @@ void GCodeInterpreter::M05_SetUp()
 	MMcomm.SendMessage((String)_SpindleSpeed);
 	_LV[0] = _SpindleSpeed;
 	_spindleIsWorking = false;
+}
+
+void GCodeInterpreter::U00_SetUp() {
+	float *Direction = &_LV[0];
+	float *Endstop = &_LV[1];
+
+
+
+	if (Table.returnTablePosition() == 1) {
+		*Direction = ROTATION_TABLE_SPEED;
+		*Endstop = 6;
+	}
+	else {
+		*Direction = -1* ROTATION_TABLE_SPEED;
+		*Endstop = 7;
+	}
 }
 
 void GCodeInterpreter::ExecutionIsComplete()
@@ -445,16 +462,50 @@ void GCodeInterpreter::M05_Execute()
 	}
 }
 
-void GCodeInterpreter::U00_Execute()
-{
+
+void GCodeInterpreter::U00_Execute(){
+	float *Direction = &_LV[0];
+	float *Endstop = &_LV[1];
+	
+	
+	Table.setRotationSpeed(*Direction);
+	while (StateMachine.returnEndstop(*Endstop) == 0) {
+		MMcomm.SendMessage((String)StateMachine.returnEndstop(*Endstop));
+	}
+	Table.setRotationSpeed(0);
+	Table.setTablePosition(!Table.returnTablePosition());
+	MMcomm.SendMessage((String)StateMachine.returnEndstop(*Endstop));
+
+	ExecutionIsComplete();
 }
 
 void GCodeInterpreter::U01_Execute() {
-	 
+
+	int sum = (StateMachine.returnEndstop(8) + StateMachine.returnEndstop(9) +
+		StateMachine.returnEndstop(10) + StateMachine.returnEndstop(11))*(
+			StateMachine.returnEndstop(12) + StateMachine.returnEndstop(13) +
+				StateMachine.returnEndstop(14) + StateMachine.returnEndstop(15));
+
+	 if (sum) {
+		StateMachine.SetIdleState();
+		MMcomm.SendReply();		
+		Table.holder.SetEnable(1);
+	}
+	else {
+		Table.holder.Step(1);
+	}
 }
 
 void GCodeInterpreter::U02_Execute() {
-	 
+
+	if (StateMachine.returnEndstop(16)) {
+		StateMachine.SetIdleState();
+		MMcomm.SendReply();		
+		Table.holder.SetEnable(1);
+	}
+	else {
+		Table.holder.Step(-1);
+	}
 }
 
 void GCodeInterpreter::U03_Execute() {
@@ -521,13 +572,13 @@ void GCodeInterpreter::ExecuteStep()
 			{
 
 			case 0: //U00 command - to be filled
-
+				U00_Execute();
 				break;
 			case 1: //U01 command - to be filled
 
 				break;
 			case 2: //U02 command - to be filled
-
+				U02_Execute();
 				break;
 			case 3: //U03 command - to be filled
 
@@ -674,13 +725,13 @@ void GCodeInterpreter::PrepareForExecution()
 			{
 
 			case 0: //U00 command - to be filled
-
+				U00_SetUp();
 				break;
 			case 1: //U01 command - to be filled
-				TableStepper.SetEnable(0);
+				Table.holder.SetEnable(0);
 				break;
 			case 2: //U02 command - to be filled
-
+				Table.holder.SetEnable(0);
 				break;
 			case 3: //U03 command - to be filled
 

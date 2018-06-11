@@ -4,7 +4,7 @@ RoTable Table;
 
 RoTable::RoTable()
 {
-
+	_tablePosition = 0;
 }
 
 
@@ -13,12 +13,21 @@ RoTable::~RoTable()
 
 }
 
+void RoTable::setTablePosition(bool TP) {
+	_tablePosition = TP;
+}
+
+bool RoTable::returnTablePosition() {
+	return _tablePosition;
+}
+
 void RoTable::init()
 {
 	holder.Init(TABLE_DIR_PIN, TABLE_STEP_PIN, TABLE_ENABLE_PIN);
 	pinMode(DC_PHASE, OUTPUT);
 	pinMode(DC_ENABLE, OUTPUT);
 	pinMode(DC_SLEEP, OUTPUT);
+	pinMode(DC_SLEEP, HIGH);
 }
 
 void RoTable::setRotationSpeed(int16_t speed)

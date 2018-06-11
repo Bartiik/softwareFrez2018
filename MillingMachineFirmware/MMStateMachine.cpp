@@ -114,8 +114,8 @@ void MMStateMachine::ResolveEndstops()
 	Autor: Bartosz Kudroń
 	funkcja zwraca wartość danej krańcówki, według wartości:
 	0 - X-Min 1 - X-Max	2 - Y-Min 3 - Y-Max
-	4 - Z-Min 5 - Z-Max	6 - endstop obrotu stołu I
-	7 - endstop obrotu stołu II
+	4 - Z-Min 5 - Z-Max	6 - endstop obrotu stołu I cl
+	7 - endstop obrotu stołu II  ccl
 	8-11 - kolejne endstopy zaciskania z lewej strony
 	12-15 - kolejne endstopy zaciskania z prawej strony
 	16 - endstop maksymalnego rozłożenia zaciskania stołu

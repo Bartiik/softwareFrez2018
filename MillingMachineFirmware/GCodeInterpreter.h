@@ -75,6 +75,7 @@ private:
 	void G04_SetUp();
 	void M03_SetUp();
 	void M05_SetUp();
+	void U00_SetUp();
 	
 	void G00_Execute();
 	void G01_Execute();

@@ -38,6 +38,8 @@ Polecam poczytać działanie klas, powinno być w miarę proste i niezbyt skompl
 
 void setup()
 {
+	pinMode(D9_ENABLE_PIN, OUTPUT);
+	digitalWrite(D9_ENABLE_PIN, HIGH);
 	cli(); //Timer 0 - endstops - 1000Hz
 	TCCR0A = 0;
 	TCCR0B = 0;
@@ -64,7 +66,8 @@ void setup()
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
-	TableStepper.Init(TABLE_DIR_PIN, TABLE_STEP_PIN, TABLE_ENABLE_PIN);
+	
+	analogWrite(DC_ENABLE, 128);
 
 }
 
