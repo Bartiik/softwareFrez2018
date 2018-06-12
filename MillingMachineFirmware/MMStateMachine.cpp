@@ -63,50 +63,60 @@ void MMStateMachine::ResolveEndstops()
 {
 
 
-		bool tempArray[NO_OF_ENDSTOPS] = {
-			digitalRead(X_MIN_ENDSTOP_PIN),				digitalRead(X_MAX_ENDSTOP_PIN),
-			digitalRead(Y_MIN_ENDSTOP_PIN),				digitalRead(Y_MAX_ENDSTOP_PIN),
-			digitalRead(Z_MIN_ENDSTOP_PIN),				digitalRead(Z_MAX_ENDSTOP_PIN),
-			digitalRead(TABLE_FLIP_ENDSTOP_1),			digitalRead(TABLE_FLIP_ENDSTOP_2),
-			digitalRead(TABLE_HOLD_LEFT_ENDSTOP_1),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_2),
-			digitalRead(TABLE_HOLD_LEFT_ENDSTOP_3),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_4),
-			digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2),
-			digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4),
-			digitalRead(TABLE_HOLD_MAX_ENDSTOP),		digitalRead(TABLE_LEVEL_ENDSTOP),
-			!digitalRead(TABLE_LEVEL_PROBE)  };
+	bool tempArray[NO_OF_ENDSTOPS] = {
+		digitalRead(X_MIN_ENDSTOP_PIN),				digitalRead(X_MAX_ENDSTOP_PIN),
+		digitalRead(Y_MIN_ENDSTOP_PIN),				digitalRead(Y_MAX_ENDSTOP_PIN),
+		digitalRead(Z_MIN_ENDSTOP_PIN),				digitalRead(Z_MAX_ENDSTOP_PIN),
+		digitalRead(TABLE_FLIP_ENDSTOP_1),			digitalRead(TABLE_FLIP_ENDSTOP_2),
+		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_1),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_2),
+		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_3),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_4),
+		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2),
+		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4),
+		digitalRead(TABLE_HOLD_MAX_ENDSTOP),		digitalRead(TABLE_LEVEL_ENDSTOP),
+		!digitalRead(TABLE_LEVEL_PROBE) };
 
-		for (int i = 0; i < NO_OF_ENDSTOPS; i++)
-		{
-			_endstopArray[i] = tempArray[i];
-		}
-
-
-	if (_EndstopEn) {
-		if (_endstopArray[0] + _endstopArray[1])
-		{
-			XStepper.SetEnable(true);
-		}
-
-		if (_endstopArray[2] + _endstopArray[3])
-		{
-			YStepper.SetEnable(true);
-		}
-
-		if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
-		{
-			ZStepper.SetEnable(true);
-		}
+	for (int i = 0; i < NO_OF_ENDSTOPS; i++)
+	{
+		_endstopArray[i] = tempArray[i];
 	}
+
+
+	
+
+
+	
 	/*
-	if((_endstopArray[8] + _endstopArray[9] + _endstopArray[10] + _endstopArray[11])*(_endstopArray[12] + _endstopArray[13] + _endstopArray[14] + _endstopArray[15]) + _endstopArray[16])
-	{
-		Table.SetEnable(false);
-	}
-	if((_endstopArray[6] + _endstopArray[7])
-	{
-		FlipTable.SetEnable(false);
-	}
-	*/
+		if (_EndstopEn) {
+			if (_endstopArray[0] + _endstopArray[1])
+			{
+				XStepper.SetEnable(true);
+				Command.ExecutionIsComplete();
+			}
+
+			if (_endstopArray[2] + _endstopArray[3])
+			{
+				YStepper.SetEnable(true);
+				Command.ExecutionIsComplete();
+			}
+
+			if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
+			{
+				ZStepper.SetEnable(true);
+				Command.ExecutionIsComplete();
+			}
+		}
+		*/
+
+		/*
+		if((_endstopArray[8] + _endstopArray[9] + _endstopArray[10] + _endstopArray[11])*(_endstopArray[12] + _endstopArray[13] + _endstopArray[14] + _endstopArray[15]) + _endstopArray[16])
+		{
+			Table.SetEnable(false);
+		}
+		if((_endstopArray[6] + _endstopArray[7])
+		{
+			FlipTable.SetEnable(false);
+		}
+		*/
 
 }
 

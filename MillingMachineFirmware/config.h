@@ -11,7 +11,7 @@
 #define X_MIN_ENDSTOP_PIN			3   // PWM PIN
 #define SERVO_4_PIN					4   // PWM PIN
 #define SERVO_3_PIN					5   // PWM PIN // Analog In 1
-#define SERVO_2_PIN					6   // PWM PIN
+#define DC_ENABLE					6   // PWM PIN
 #define N_C							7   // NOT CONNECTED, DO NOT USE
 #define D8_ENABLE_PIN				8   // PWM PIN
 #define D9_ENABLE_PIN				9   // PWM PIN
@@ -45,11 +45,11 @@
 #define TABLE_HOLD_LEFT_ENDSTOP_1	37
 #define X_ENABLE_PIN				38
 #define TABLE_HOLD_RIGHT_ENDSTOP_4	39
-#define DC_PHASE					40
+#define DC_DIR_2					40
 #define TABLE_HOLD_RIGHT_ENDSTOP_3	41
-#define DC_SLEEP					42
+#define DC_DIR_1					42
 #define TABLE_HOLD_RIGHT_ENDSTOP_2	43
-#define DC_ENABLE					44  // PWM PIN
+#define UNKNOWN_PIN					44  // PWM PIN
 #define TABLE_HOLD_RIGHT_ENDSTOP_1	45  // PWM PIN
 #define Y_STEP_PIN					46  // PWM PIN
 #define UNKNOWN_PIN					47
@@ -108,7 +108,7 @@
 
 #define GO_HOME_SPEED RPS0_5
 #define GO_HOME_SLOW_SPEED RPS0_25
-#define WORKING_SPEED RPS1_5
+#define WORKING_SPEED RPS0_5
 #define RAPID_SPEED 57536
 
 #define SAFE_HEIGHT 200 // height in z axis
@@ -156,6 +156,6 @@
 
 #define DC_MINIMUM_SPEED_VALUE				-255
 #define DC_MAXIMUM_SPEED_VALUE				255
-#define ROTATION_TABLE_SPEED				25
+#define ROTATION_TABLE_SPEED				40
 #define CLOCKWISE							1
 #define COUNTER_CLOCKWISE					0

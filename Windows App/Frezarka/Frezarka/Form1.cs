@@ -182,6 +182,7 @@ namespace Frezarka
             CommandSendButton.Enabled = e;
             customGText.Enabled = e;
             GenerateButton.Enabled = e;
+            SpindleOnOff.Enabled = e;
         }
 
         private void customGText_KeyDown(object sender, KeyEventArgs e)
@@ -586,6 +587,37 @@ namespace Frezarka
         {
             Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
             temp.Fill("U7");
+            sendCommand(temp);
+        }
+
+        private void HomeAllButton_Click(object sender, EventArgs e)
+        {
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+            temp.Fill("G28");
+            sendCommand(temp);
+        }
+
+        private void TableFlipButton_Click(object sender, EventArgs e)
+        {
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+            temp.Fill("U0");
+            sendCommand(temp);
+
+        }
+
+        private void BoardHoldButton_Click(object sender, EventArgs e)
+        {
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+            if (BoardHoldButton.Text == "Board Hold")
+            {
+                BoardHoldButton.Text = "Board Unhold";
+                temp.Fill("U1");
+            }
+            else
+            {
+                BoardHoldButton.Text = "Board Hold";
+                temp.Fill("U2");
+            }
             sendCommand(temp);
         }
     }

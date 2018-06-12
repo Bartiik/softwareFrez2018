@@ -76,6 +76,7 @@ private:
 	void M03_SetUp();
 	void M05_SetUp();
 	void U00_SetUp();
+	void U01_SetUp();
 	
 	void G00_Execute();
 	void G01_Execute();
@@ -103,6 +104,7 @@ public:
 	bool Interpret(String);
 	void Clear();
 	void ExecutionIsComplete();
+	String returnPosition();
 	
 };
 

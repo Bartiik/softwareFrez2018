@@ -40,6 +40,12 @@ void GCodeInterpreter::Clear()
 
 }
 
+
+String GCodeInterpreter::returnPosition() {
+	String position = "X" + (String)_XPosition + "Y" + (String)_YPosition + "Z" + (String)_ZPosition;
+	return position;
+}
+
 void GCodeInterpreter::SetSteppersEn(bool EN) {
 	XStepper.SetEnable(EN);
 	YStepper.SetEnable(EN);
@@ -110,7 +116,6 @@ void GCodeInterpreter::G01_SetUp() {
 		if (_XPosition != _X || _YPosition != _Y) {
 
 			if (_XPosition == _X) {
-				*stepDirX = 0;
 				*deltaX = 0;
 			}
 			else if (_XPosition < _X) {
@@ -124,7 +129,6 @@ void GCodeInterpreter::G01_SetUp() {
 
 
 			if (_YPosition == _Y) {
-				*stepDirY = 0;
 				*deltaY = 0;
 			}
 			else if (_YPosition < _Y) {
@@ -189,19 +193,31 @@ void GCodeInterpreter::M05_SetUp()
 }
 
 void GCodeInterpreter::U00_SetUp() {
-	float *Direction = &_LV[0];
+	float *temp = &_LV[0];
 	float *Endstop = &_LV[1];
-
+	float *Distance = &_LV[2];
+	float *Direction = &_LV[3];
+	
+	*temp = 0;
+	*Distance = 0;
 
 
 	if (Table.returnTablePosition() == 1) {
-		*Direction = ROTATION_TABLE_SPEED;
-		*Endstop = 6;
-	}
-	else {
-		*Direction = -1* ROTATION_TABLE_SPEED;
+		*Direction = 1;
 		*Endstop = 7;
 	}
+	else {
+		*Direction =  0;
+		*Endstop = 6;
+	}
+	
+
+}
+
+void GCodeInterpreter::U01_SetUp() {
+	float *temp = &_LV[0];
+	*temp = 0;
+	
 }
 
 void GCodeInterpreter::ExecutionIsComplete()
@@ -223,6 +239,21 @@ void GCodeInterpreter::G00_Execute() {
 	float *stepDirY = &_LV[1];
 	float *stepDirZ = &_LV[2];
 	TCNT1 = RAPID_SPEED;
+
+	if ((*stepDirX == -1 && StateMachine.returnEndstop(0))	 ||
+		(*stepDirX == 1 && StateMachine.returnEndstop(1))	 || 
+		(*stepDirY == -1 && StateMachine.returnEndstop(2))	 || 
+		(*stepDirY == 1 && StateMachine.returnEndstop(3))	 ||
+		(*stepDirZ == -1 && StateMachine.returnEndstop(4))	 || 
+		(*stepDirZ == 1 && StateMachine.returnEndstop(5))	  ) {
+
+		ExecutionIsComplete();
+
+	}
+
+
+
+
 	//MMcomm.SendMessage("sen: "+(String)XStepper.GetBoolEnable());
 	//Serial.println("_X: " + (String)_X + " _XPoz: " + (String)_XPosition);
 	if (_X != _XPosition) {
@@ -240,6 +271,7 @@ void GCodeInterpreter::G00_Execute() {
 
 	if (_X == _XPosition && _Y == _YPosition && _Z == _ZPosition) {
 		Command.ExecutionIsComplete();
+		StateMachine.SetEndstopsEn(1);
 	}
 
 }
@@ -350,7 +382,7 @@ void GCodeInterpreter::G28_Execute()
 			break;
 
 	case 2: {
-		if (_XPosition < 1000) {
+		if (_XPosition < 500) {
 			XStepper.Step(1);
 			_XPosition += 1;
 		}
@@ -463,33 +495,66 @@ void GCodeInterpreter::M05_Execute()
 }
 
 
-void GCodeInterpreter::U00_Execute(){
-	float *Direction = &_LV[0];
+void GCodeInterpreter::U00_Execute() {
+	TCNT1 = RPS0_25;
+	float *temp = &_LV[0];
 	float *Endstop = &_LV[1];
-	
-	
-	Table.setRotationSpeed(*Direction);
-	while (StateMachine.returnEndstop(*Endstop) == 0) {
-		MMcomm.SendMessage((String)StateMachine.returnEndstop(*Endstop));
-	}
-	Table.setRotationSpeed(0);
-	Table.setTablePosition(!Table.returnTablePosition());
-	MMcomm.SendMessage((String)StateMachine.returnEndstop(*Endstop));
+	float *Distance = &_LV[2];
+	float *Direction = &_LV[3];
 
-	ExecutionIsComplete();
+	MMcomm.SendMessage("dist: " + (String)*Distance + " temp: " + (String)*temp + " endstop: " + (String)!Table.returnTablePosition());
+	
+	if (*Distance < 6000) {
+		Table.holder.Step(-1);
+		*Distance = *Distance + 1;
+	}
+	else {
+		
+		if (StateMachine.returnEndstop(*Endstop) == 0) {
+			if (*Direction) Table.rotateClockwise();
+			else Table.rotateCounterClockwise();
+
+			MMcomm.SendMessage("rotation");
+		}
+		else {
+			MMcomm.SendMessage("closing");
+			if (*temp == 349) {
+				Table.holder.SetEnable(0);
+				Table.setTablePosition(!Table.returnTablePosition());
+			}
+
+			Table.stop();
+			U01_Execute();
+		}
+	}
+
+	
 }
 
 void GCodeInterpreter::U01_Execute() {
+	TCNT1 = RPS0_25;
+	float *temp = &_LV[0];
 
 	int sum = (StateMachine.returnEndstop(8) + StateMachine.returnEndstop(9) +
 		StateMachine.returnEndstop(10) + StateMachine.returnEndstop(11))*(
 			StateMachine.returnEndstop(12) + StateMachine.returnEndstop(13) +
-				StateMachine.returnEndstop(14) + StateMachine.returnEndstop(15));
+			StateMachine.returnEndstop(14) + StateMachine.returnEndstop(15));
 
-	 if (sum) {
-		StateMachine.SetIdleState();
-		MMcomm.SendReply();		
-		Table.holder.SetEnable(1);
+	if (sum) {
+
+		if(*temp<350){
+			Table.holder.Step(1);
+			*temp = *temp + 1;
+		}
+		else {
+			MMcomm.SendMessage("end");
+			MMcomm.SendReply();
+			Table.holder.SetEnable(1);
+			Clear();
+			MMcomm.SendMessage("dist: " + (String)_LV[2] + " temp: " + (String)_LV[0] + " endstop: " + (String)!Table.returnTablePosition());
+			StateMachine.SetIdleState();
+		}
+
 	}
 	else {
 		Table.holder.Step(1);
@@ -497,10 +562,10 @@ void GCodeInterpreter::U01_Execute() {
 }
 
 void GCodeInterpreter::U02_Execute() {
-
+	TCNT1 = RPS0_25;
 	if (StateMachine.returnEndstop(16)) {
 		StateMachine.SetIdleState();
-		MMcomm.SendReply();		
+		MMcomm.SendReply();
 		Table.holder.SetEnable(1);
 	}
 	else {
@@ -509,7 +574,7 @@ void GCodeInterpreter::U02_Execute() {
 }
 
 void GCodeInterpreter::U03_Execute() {
-	 
+
 }
 
 /* autor: Bartek Kudroń
@@ -575,7 +640,7 @@ void GCodeInterpreter::ExecuteStep()
 				U00_Execute();
 				break;
 			case 1: //U01 command - to be filled
-
+				U01_Execute();
 				break;
 			case 2: //U02 command - to be filled
 				U02_Execute();
@@ -725,9 +790,12 @@ void GCodeInterpreter::PrepareForExecution()
 			{
 
 			case 0: //U00 command - to be filled
+				Table.holder.SetEnable(0);
 				U00_SetUp();
+				
 				break;
 			case 1: //U01 command - to be filled
+				U01_SetUp();
 				Table.holder.SetEnable(0);
 				break;
 			case 2: //U02 command - to be filled
