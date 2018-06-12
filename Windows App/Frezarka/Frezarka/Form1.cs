@@ -291,8 +291,8 @@ namespace Frezarka
                 }
                 else if (temp.returnValue('U') == 5)
                 {
-                    //message = "OK.";
-                    message = msg;
+                    message = "OK.";
+                    //message = msg;
                     XPosText.Invoke((MethodInvoker)delegate
                     {
                         XPosText.Text = Math.Round(temp.returnValue('X') / double.Parse(XYAxisSteps.Text),5).ToString();
@@ -599,15 +599,15 @@ namespace Frezarka
                 case "HOLD":
                     {
                         {
-                            if (SpindleOnOff.Text == "Table Hold")
+                            if (BoardHoldButton.Text == "Table Hold")
                             {
-                                message = "M01";
-                                SpindleOnOff.Text = "Table Unhold";
+                                message = "U01";
+                                BoardHoldButton.Text = "Table Unhold";
                             }
                             else
                             {
-                                message = "M02";
-                                SpindleOnOff.Text = "Table Hold";
+                                message = "U02";
+                                BoardHoldButton.Text = "Table Hold";
                             }
 
                             break;
