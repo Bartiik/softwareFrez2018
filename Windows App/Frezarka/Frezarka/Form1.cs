@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Frezarka
 {
-
     public partial class Form1 : Form
     {
         public List<Command> AllCommands = new List<Command>();
@@ -28,7 +20,6 @@ namespace Frezarka
         {
             InitializeComponent();
         }
-
         private void ManualControlXYMouseHoverEvent(object sender, EventArgs e)
         {
             XYChangeText.Text = ((Button)sender).Tag.ToString();
@@ -42,34 +33,18 @@ namespace Frezarka
             ZChangeText.Text = "";
             XYChangeText.Text = "";
         }
-
         private void GCodeBrowseButton_Click(object sender, EventArgs e)
         {
 
         }
-
         private void SpeedBar_Scroll(object sender, EventArgs e)
         {
-            SpeedText.Text = SpeedBar.Value.ToString();
+            SpeedText.Text = (SpeedBar.Value*100).ToString();
         }
-
         private void SpeedText_TextChanged(object sender, EventArgs e)
         {
-
-            int value;
-            if (Int32.TryParse(SpeedText.Text, out value))
-            {
-                if (value > 255) SpeedBar.Value = 255;
-                else if (value > 0) SpeedBar.Value = value;
-                else SpeedBar.Value = 0;
-            }
-            else SpeedBar.Value = 0;
-
-
-
-
+           
         }
-
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             try
@@ -97,7 +72,8 @@ namespace Frezarka
                     }
                     Thread.Sleep(1000);
                     prepareMessage(begin);
-                    DisableEnable(true);
+                    ManualControlEnable(true);
+                    MillingProcessEnable(true);
 
 
                 }
@@ -106,7 +82,8 @@ namespace Frezarka
                     ConnectButton.Tag = "0";
                     ConnectButton.Text = "Open Port";
                     serialPort.Close();
-                    DisableEnable(false);
+                    ManualControlEnable(false);
+                    MillingProcessEnable(false);
                 }
             }
             catch (Exception error)
@@ -115,7 +92,6 @@ namespace Frezarka
             }
 
         }
-
         private void CommandSendButton_Click(object sender, EventArgs e)
         {
             String gcode = customGText.Text;
@@ -136,54 +112,61 @@ namespace Frezarka
                 {
                     serialPort.DiscardOutBuffer();
                 }
+                comm = updateMovement(comm);
                 addToCommunicationBox(true, comm);
                 serialPort.WriteLine(comm.ToSend());
                 workingMessage = true;
             }
         }
-        void DisableEnable(bool e)
+        void MillingProcessEnable(bool e)
         {
-            //BeginButton.Enabled = e;
-            //PauseButton.Enabled = e;
-            //StopButton.Enabled = e;
-            //Z1plus.Enabled = e;
-            //Z2plus.Enabled = e;
-            //Z3plus.Enabled = e;
-            //Z4plus.Enabled = e;
-            //Z1minus.Enabled = e;
-            //Z2minus.Enabled = e;
-            //Z3minus.Enabled = e;
-            //Z4minus.Enabled = e;
-            //Y1plus.Enabled = e;
-            //Y2plus.Enabled = e;
-            //Y3plus.Enabled = e;
-            //Y4plus.Enabled = e;
-            //Y1minus.Enabled = e;
-            //Y2minus.Enabled = e;
-            //Y3minus.Enabled = e;
-            //Y4minus.Enabled = e;
-            //X1plus.Enabled = e;
-            //X2plus.Enabled = e;
-            //X3plus.Enabled = e;
-            //X4plus.Enabled = e;
-            //X1minus.Enabled = e;
-            //X2minus.Enabled = e;
-            //X3minus.Enabled = e;
-            //X4minus.Enabled = e;
-            //HomeAllButton.Enabled = e;
-            //HomeX.Enabled = e;
-            //HomeY.Enabled = e;
-            //HomeZ.Enabled = e;
-            //BoardHoldButton.Enabled = e;
-            //TableFlipButton.Enabled = e;
-            //SpeedBar.Enabled = e;
-            //SpeedText.Enabled = e;
-            //SetSpeedButton.Enabled = e;
+            BeginButton.Enabled = e;
+            PauseButton.Enabled = e;
+            StopButton.Enabled = e;
+        }
+        void ManualControlEnable(bool e)
+        {
+            
+            Z1plus.Enabled = e;
+            Z2plus.Enabled = e;
+            Z3plus.Enabled = e;
+            Z4plus.Enabled = e;
+            Z1minus.Enabled = e;
+            Z2minus.Enabled = e;
+            Z3minus.Enabled = e;
+            Z4minus.Enabled = e;
+            Y1plus.Enabled = e;
+            Y2plus.Enabled = e;
+            Y3plus.Enabled = e;
+            Y4plus.Enabled = e;
+            Y1minus.Enabled = e;
+            Y2minus.Enabled = e;
+            Y3minus.Enabled = e;
+            Y4minus.Enabled = e;
+            X1plus.Enabled = e;
+            X2plus.Enabled = e;
+            X3plus.Enabled = e;
+            X4plus.Enabled = e;
+            X1minus.Enabled = e;
+            X2minus.Enabled = e;
+            X3minus.Enabled = e;
+            X4minus.Enabled = e;
+            HomeAllButton.Enabled = e;
+            HomeX.Enabled = e;
+            HomeY.Enabled = e;
+            HomeZ.Enabled = e;
+            BoardHoldButton.Enabled = e;
+            TableFlipButton.Enabled = e;
+            SpeedBar.Enabled = e;
+            SpeedText.Enabled = e;
+            SetSpeedButton.Enabled = e;
             CommandSendButton.Enabled = e;
             customGText.Enabled = e;
             GenerateButton.Enabled = e;
+            SpindleOnOff.Enabled = e;
+            XYAxisSteps.Enabled = e;
+            ZAxisSteps.Enabled = e;
         }
-
         private void customGText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -191,7 +174,6 @@ namespace Frezarka
                 CommandSendButton_Click(sender, e);
             }
         }
-
         void addToCommunicationBox(bool messageToArduino, Command C)
         {
             String time = DateTime.Now.ToString("hh:mm:ss tt");
@@ -232,8 +214,6 @@ namespace Frezarka
                 CommunicationBox.SelectedIndex = CommunicationBox.Items.Count - 1;
             });
         }
-
-
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
@@ -256,7 +236,7 @@ namespace Frezarka
             {
                 MillingMachineStateLabel.Text = State;
             });
-            msg.Remove(0, 1);
+            msg = msg.Remove(0, 1);
             String message;
             if (temp.Fill(msg))
             {
@@ -280,7 +260,6 @@ namespace Frezarka
                             }
                             break;
                     }
-                    addToCommunicationBox(false, message);
 
                 }
                 else if (temp.returnValue('E') != 1234.56789)
@@ -310,14 +289,39 @@ namespace Frezarka
                             break;
                     }
                 }
+                else if (temp.returnValue('U') == 5)
+                {
+                    //message = "OK.";
+                    message = msg;
+                    XPosText.Invoke((MethodInvoker)delegate
+                    {
+                        XPosText.Text = Math.Round(temp.returnValue('X') / double.Parse(XYAxisSteps.Text),5).ToString();
+                    });
+                    YPosText.Invoke((MethodInvoker)delegate
+                    {
+                        YPosText.Text = Math.Round(temp.returnValue('Y') / double.Parse(XYAxisSteps.Text),5).ToString();
+                    });
+                    ZPosText.Invoke((MethodInvoker)delegate
+                    {
+                        ZPosText.Text = Math.Round(temp.returnValue('Z') / double.Parse(ZAxisSteps.Text),5).ToString();
+                    });
 
+
+                }
+                else message = msg;
+
+                addToCommunicationBox(false, message);
             }
             workingMessage = false;
             if (Queue.Count > 0)
             {
                 prepareMessage(Queue[0]);
                 Queue.RemoveAt(0);
-                CommandsInQueueLabel.Text = Queue.Count.ToString();
+                CommandsInQueueLabel.Invoke((MethodInvoker)delegate
+                {
+                    CommandsInQueueLabel.Text = Queue.Count.ToString();
+                });
+                
                 
             }
             if(WorkInProgress)
@@ -337,18 +341,15 @@ namespace Frezarka
             //    sendCommand(temp);
             //}
         }
-
         private void PortListCombo_MouseDown(object sender, MouseEventArgs e)
         {
             PortListCombo.Items.Clear();
             PortListCombo.Items.AddRange(SerialPort.GetPortNames());
         }
-
         private void GCodeBrowseButton_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
         }
-
         private void GCodeBrowseButton_DragDrop(object sender, DragEventArgs e)
         {
             //int length = 0;
@@ -396,7 +397,6 @@ namespace Frezarka
             }
 
         }
-
         private void RemoveFileButton_Click(object sender, EventArgs e)
         {
             if (OpenedGCodesList.SelectedItem != null)
@@ -412,7 +412,6 @@ namespace Frezarka
             }
 
         }
-
         private void Clear(object sender, EventArgs e)
         {
             switch (((Button)sender).Tag.ToString())
@@ -435,7 +434,6 @@ namespace Frezarka
                 }
 
         }
-
         private void drop(object sender, DragEventArgs e)
         {
             List<String> codes = new List<string>();
@@ -464,12 +462,10 @@ namespace Frezarka
                 case "4": BoundaryTextBox.Text = Path.GetFileName(file); break;
             }
         }
-
         private void Drag_Enter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
         }
-
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             AllCommands.Clear();
@@ -550,13 +546,12 @@ namespace Frezarka
             }
                 
         }
-
         private void BeginButton_Click(object sender, EventArgs e)
         {
             if(AllCommands.Count>0)
             {
                 WorkInProgress = true;
-                DisableEnable(false);
+                ManualControlEnable(false);
                 prepareMessage(AllCommands[0]);
             }
             else
@@ -565,28 +560,157 @@ namespace Frezarka
             }
 
         }
-
         private void PauseButton_Click(object sender, EventArgs e)
         {
             WorkInProgress = false;
-            DisableEnable(true);
+            ManualControlEnable(true);
         }
-
         private void StopButton_Click(object sender, EventArgs e)
         {
             WorkInProgress = false;
-            DisableEnable(true);
+            ManualControlEnable(true);
             AllCommands.Clear();
             Queue.Clear();
             CommandsInQueueLabel.Text = "0";
             RemainingGCodesLabel.Text = "0";
         }
-
         private void HardStopButton_Click(object sender, EventArgs e)
         {
             Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
             temp.Fill("U7");
             sendCommand(temp);
         }
+        private void ManualControlButton(object sender, EventArgs e)
+        {
+            Command temp = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+            String message;
+            String tag = ((Button)sender).Tag.ToString();
+            switch (tag)
+            {
+                case "HOME": message = "G28"; break;
+                case "HOME X": message = "G28"; break;
+                case "HOME Y": message = "G28"; break;
+                case "HOME Z": message = "G28"; break;
+                case "SET":
+                    {
+                        message = "S1"+SpeedText.Text;
+                        break;
+                    }
+                case "HOLD":
+                    {
+                        {
+                            if (SpindleOnOff.Text == "Table Hold")
+                            {
+                                message = "M01";
+                                SpindleOnOff.Text = "Table Unhold";
+                            }
+                            else
+                            {
+                                message = "M02";
+                                SpindleOnOff.Text = "Table Hold";
+                            }
+
+                            break;
+                        }
+                    }
+                    break;
+                case "SPINDLE":
+                    {
+                        if(SpindleOnOff.Text=="Spindle On")
+                        {
+                            message = "M03";
+                            SpindleOnOff.Text="Spindle Off";
+                        }
+                        else
+                        {
+                            message = "M05";
+                            SpindleOnOff.Text = "Spindle On";
+                        }
+                        
+                        break;
+                    }
+                case "FLIP": message = "U0"; break;
+                default:
+                    {
+                        StringBuilder k = new StringBuilder();
+                        k.Append("G00");
+                        k.Append(tag[0]);
+                        tag = tag.Replace('.', ',');
+                        tag = tag.Remove(0, 2);
+                        float val = 0;
+                        if (tag[0] == '+')
+                        {
+                            tag = tag.Remove(0, 1);
+                            val = val + float.Parse(tag);
+                        }
+                        else
+                        {
+                            tag = tag.Remove(0, 1);
+                            val = val - float.Parse(tag);
+                        }
+                        k.Append(val);
+                        message = k.ToString();
+                        break;
+                    }
+            };
+            temp.Fill(message);
+            prepareMessage(temp);
+        }
+        private void SpeedText_KeyUp(object sender, KeyEventArgs e)
+        {
+            int value;
+            if (Int32.TryParse(SpeedText.Text, out value))
+            {
+                if (value > SpeedBar.Maximum)
+                {
+                    SpeedBar.Value = SpeedBar.Maximum;
+                    SpeedText.Text = SpeedBar.Maximum.ToString();
+                }
+                else if (value > SpeedBar.Minimum)
+                {
+                    SpeedBar.Value = value;
+                }
+                else
+                {
+                    SpeedBar.Value = SpeedBar.Minimum;
+                    SpeedText.Text = SpeedBar.Minimum.ToString();
+                }
+            }
+            else SpeedBar.Value = 0;
+        }
+        private Command updateMovement(Command comm)
+        {
+            if(comm.returnValue('G') != 1234.56789)
+            {
+                Command C = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+                double X = comm.returnValue('X');
+                double Y = comm.returnValue('Y');
+                double Z = comm.returnValue('Z');
+                StringBuilder k = new StringBuilder();
+                k.Append('G');
+                k.Append(comm.returnValue('G'));
+                if (X != 1234.56789)
+                {
+                    k.Append('X');
+                    k.Append(X + double.Parse(XPosText.Text));
+                }
+                if (Y != 1234.56789)
+                {
+                    k.Append('Y');
+                    k.Append(Y + double.Parse(YPosText.Text));
+                }
+                if (Z != 1234.56789)
+                {
+                    k.Append('Z');
+                    k.Append(Z + double.Parse(ZPosText.Text));
+                }
+                C.Fill(k.ToString());
+                comm = C;
+            }
+            
+
+            return comm;
+        }
     }
+    
 }

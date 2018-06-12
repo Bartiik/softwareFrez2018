@@ -45,7 +45,6 @@ namespace Frezarka
                     else if(c== 'P')
                         valuesToSend[chars.IndexOf(c)] = (int)(value * 1000);
                     else valuesToSend[chars.IndexOf(c)] = (int)(value);
-
                 }
                 else test = false;
             }
@@ -63,7 +62,7 @@ namespace Frezarka
                 if (values[i] != 1234.56789)
                 {
                     value.Append(chars[i]);
-                    value.Append(values[i]);
+                    value.Append(valuesToSend[i]);
                     value.Append(" ");
                 }
             }
@@ -77,11 +76,10 @@ namespace Frezarka
                 if (values[i] != 1234.56789)
                 {
                     value.Append(chars[i]);
-                    value.Append(values[i]);
+                    value.Append(valuesToSend[i]);
                 }
             }
             return value.ToString();
         }
-
     }
 }

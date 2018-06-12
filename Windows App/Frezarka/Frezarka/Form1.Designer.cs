@@ -34,6 +34,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.SpindleOnOff = new System.Windows.Forms.Button();
             this.XYAxisLabel = new System.Windows.Forms.Label();
             this.ZAxisLabel = new System.Windows.Forms.Label();
             this.ZAxisSteps = new System.Windows.Forms.TextBox();
@@ -127,7 +128,6 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.SpindleOnOff = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -259,6 +259,18 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control in mm";
             // 
+            // SpindleOnOff
+            // 
+            this.SpindleOnOff.Enabled = false;
+            this.SpindleOnOff.Location = new System.Drawing.Point(327, 206);
+            this.SpindleOnOff.Name = "SpindleOnOff";
+            this.SpindleOnOff.Size = new System.Drawing.Size(76, 23);
+            this.SpindleOnOff.TabIndex = 110;
+            this.SpindleOnOff.Tag = "SPINDLE";
+            this.SpindleOnOff.Text = "Spindle On";
+            this.SpindleOnOff.UseVisualStyleBackColor = true;
+            this.SpindleOnOff.Click += new System.EventHandler(this.ManualControlButton);
+            // 
             // XYAxisLabel
             // 
             this.XYAxisLabel.AutoSize = true;
@@ -279,30 +291,33 @@
             // 
             // ZAxisSteps
             // 
+            this.ZAxisSteps.Enabled = false;
             this.ZAxisSteps.Location = new System.Drawing.Point(398, 167);
             this.ZAxisSteps.Name = "ZAxisSteps";
             this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.ZAxisSteps.TabIndex = 106;
-            this.ZAxisSteps.Text = "3200";
+            this.ZAxisSteps.Text = "800";
             // 
             // XYAxisSteps
             // 
+            this.XYAxisSteps.Enabled = false;
             this.XYAxisSteps.Location = new System.Drawing.Point(398, 122);
             this.XYAxisSteps.Name = "XYAxisSteps";
             this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.XYAxisSteps.TabIndex = 105;
-            this.XYAxisSteps.Text = "1600";
+            this.XYAxisSteps.Text = "400";
             // 
             // SpeedText
             // 
-            this.SpeedText.Enabled = false;
             this.SpeedText.Location = new System.Drawing.Point(327, 163);
             this.SpeedText.Name = "SpeedText";
+            this.SpeedText.ReadOnly = true;
             this.SpeedText.Size = new System.Drawing.Size(60, 20);
             this.SpeedText.TabIndex = 88;
             this.SpeedText.Text = "0";
             this.SpeedText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SpeedText.TextChanged += new System.EventHandler(this.SpeedText_TextChanged);
+            this.SpeedText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SpeedText_KeyUp);
             // 
             // SetSpeedButton
             // 
@@ -311,8 +326,10 @@
             this.SetSpeedButton.Name = "SetSpeedButton";
             this.SetSpeedButton.Size = new System.Drawing.Size(60, 23);
             this.SetSpeedButton.TabIndex = 104;
+            this.SetSpeedButton.Tag = "SET";
             this.SetSpeedButton.Text = "set";
             this.SetSpeedButton.UseVisualStyleBackColor = true;
+            this.SetSpeedButton.Click += new System.EventHandler(this.ManualControlButton);
             // 
             // label8
             // 
@@ -326,8 +343,8 @@
             // SpeedBar
             // 
             this.SpeedBar.Enabled = false;
+            this.SpeedBar.LargeChange = 1;
             this.SpeedBar.Location = new System.Drawing.Point(334, 59);
-            this.SpeedBar.Maximum = 255;
             this.SpeedBar.Name = "SpeedBar";
             this.SpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.SpeedBar.Size = new System.Drawing.Size(45, 104);
@@ -353,16 +370,19 @@
             this.HomeY.Tag = "HOME Y";
             this.HomeY.Text = "Home Y";
             this.HomeY.UseVisualStyleBackColor = true;
+            this.HomeY.Visible = false;
+            this.HomeY.Click += new System.EventHandler(this.ManualControlButton);
             this.HomeY.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.HomeY.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
             // ZPosText
             // 
-            this.ZPosText.Enabled = false;
             this.ZPosText.Location = new System.Drawing.Point(102, 203);
             this.ZPosText.Name = "ZPosText";
+            this.ZPosText.ReadOnly = true;
             this.ZPosText.Size = new System.Drawing.Size(58, 20);
             this.ZPosText.TabIndex = 89;
+            this.ZPosText.Text = "-";
             this.ZPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
@@ -384,16 +404,19 @@
             this.HomeX.Tag = "HOME X";
             this.HomeX.Text = "Home X";
             this.HomeX.UseVisualStyleBackColor = true;
+            this.HomeX.Visible = false;
+            this.HomeX.Click += new System.EventHandler(this.ManualControlButton);
             this.HomeX.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.HomeX.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
             // YPosText
             // 
-            this.YPosText.Enabled = false;
             this.YPosText.Location = new System.Drawing.Point(102, 177);
             this.YPosText.Name = "YPosText";
+            this.YPosText.ReadOnly = true;
             this.YPosText.Size = new System.Drawing.Size(58, 20);
             this.YPosText.TabIndex = 88;
+            this.YPosText.Text = "-";
             this.YPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // HomeZ
@@ -406,16 +429,19 @@
             this.HomeZ.Tag = "HOME Z";
             this.HomeZ.Text = "Home Z";
             this.HomeZ.UseVisualStyleBackColor = true;
+            this.HomeZ.Visible = false;
+            this.HomeZ.Click += new System.EventHandler(this.ManualControlButton);
             this.HomeZ.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.HomeZ.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
             // XPosText
             // 
-            this.XPosText.Enabled = false;
             this.XPosText.Location = new System.Drawing.Point(102, 151);
             this.XPosText.Name = "XPosText";
+            this.XPosText.ReadOnly = true;
             this.XPosText.Size = new System.Drawing.Size(58, 20);
             this.XPosText.TabIndex = 87;
+            this.XPosText.Text = "-";
             this.XPosText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // X4minus
@@ -428,6 +454,7 @@
             this.X4minus.Tag = "X -10";
             this.X4minus.Text = "<\r\n<\r\n<\r\n<";
             this.X4minus.UseVisualStyleBackColor = true;
+            this.X4minus.Click += new System.EventHandler(this.ManualControlButton);
             this.X4minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X4minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -450,6 +477,7 @@
             this.X4plus.Tag = "X +10";
             this.X4plus.Text = ">\r\n>\r\n>\r\n>";
             this.X4plus.UseVisualStyleBackColor = true;
+            this.X4plus.Click += new System.EventHandler(this.ManualControlButton);
             this.X4plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X4plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -463,6 +491,7 @@
             this.Z4plus.Tag = "Z +10";
             this.Z4plus.Text = "/\\/\\/\\/\\";
             this.Z4plus.UseVisualStyleBackColor = true;
+            this.Z4plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z4plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z4plus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -476,6 +505,7 @@
             this.X3plus.Tag = "X +5";
             this.X3plus.Text = ">\r\n>\r\n>";
             this.X3plus.UseVisualStyleBackColor = true;
+            this.X3plus.Click += new System.EventHandler(this.ManualControlButton);
             this.X3plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X3plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -489,6 +519,7 @@
             this.X3minus.Tag = "X -5";
             this.X3minus.Text = "<\r\n<\r\n<";
             this.X3minus.UseVisualStyleBackColor = true;
+            this.X3minus.Click += new System.EventHandler(this.ManualControlButton);
             this.X3minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X3minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -502,6 +533,7 @@
             this.Z3plus.Tag = "Z +5";
             this.Z3plus.Text = "/\\/\\/\\";
             this.Z3plus.UseVisualStyleBackColor = true;
+            this.Z3plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z3plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z3plus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -515,6 +547,7 @@
             this.X1minus.Tag = "X -0.1";
             this.X1minus.Text = "<";
             this.X1minus.UseVisualStyleBackColor = true;
+            this.X1minus.Click += new System.EventHandler(this.ManualControlButton);
             this.X1minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X1minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -528,6 +561,7 @@
             this.X2plus.Tag = "X +1";
             this.X2plus.Text = ">\r\n>";
             this.X2plus.UseVisualStyleBackColor = true;
+            this.X2plus.Click += new System.EventHandler(this.ManualControlButton);
             this.X2plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X2plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -541,6 +575,7 @@
             this.X2minus.Tag = "X -1";
             this.X2minus.Text = "<\r\n<";
             this.X2minus.UseVisualStyleBackColor = true;
+            this.X2minus.Click += new System.EventHandler(this.ManualControlButton);
             this.X2minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X2minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -554,6 +589,7 @@
             this.Z2plus.Tag = "Z +1";
             this.Z2plus.Text = "/\\/\\";
             this.Z2plus.UseVisualStyleBackColor = true;
+            this.Z2plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z2plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z2plus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -567,16 +603,18 @@
             this.X1plus.Tag = "X +0.1";
             this.X1plus.Text = ">";
             this.X1plus.UseVisualStyleBackColor = true;
+            this.X1plus.Click += new System.EventHandler(this.ManualControlButton);
             this.X1plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.X1plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
             // ZChangeText
             // 
-            this.ZChangeText.Enabled = false;
             this.ZChangeText.Location = new System.Drawing.Point(6, 107);
             this.ZChangeText.Name = "ZChangeText";
+            this.ZChangeText.ReadOnly = true;
             this.ZChangeText.Size = new System.Drawing.Size(60, 20);
             this.ZChangeText.TabIndex = 87;
+            this.ZChangeText.Text = "-";
             this.ZChangeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Z1plus
@@ -589,6 +627,7 @@
             this.Z1plus.Tag = "Z +0.1";
             this.Z1plus.Text = "/\\";
             this.Z1plus.UseVisualStyleBackColor = true;
+            this.Z1plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z1plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z1plus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -602,6 +641,7 @@
             this.Z4minus.Tag = "Z -10";
             this.Z4minus.Text = "\\/\\/\\/\\/";
             this.Z4minus.UseVisualStyleBackColor = true;
+            this.Z4minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z4minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z4minus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -615,6 +655,7 @@
             this.Z3minus.Tag = "Z -5";
             this.Z3minus.Text = "\\/\\/\\/";
             this.Z3minus.UseVisualStyleBackColor = true;
+            this.Z3minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z3minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z3minus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -628,6 +669,7 @@
             this.Z2minus.Tag = "Z -1";
             this.Z2minus.Text = "\\/\\/";
             this.Z2minus.UseVisualStyleBackColor = true;
+            this.Z2minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z2minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z2minus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -641,6 +683,7 @@
             this.Z1minus.Tag = "Z -0.1";
             this.Z1minus.Text = "\\/";
             this.Z1minus.UseVisualStyleBackColor = true;
+            this.Z1minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Z1minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Z1minus.MouseHover += new System.EventHandler(this.ManualControlZMouseHoverEvent);
             // 
@@ -654,6 +697,7 @@
             this.Y4minus.Tag = "Y -10";
             this.Y4minus.Text = "\\/\\/\\/\\/";
             this.Y4minus.UseVisualStyleBackColor = true;
+            this.Y4minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y4minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y4minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -664,8 +708,10 @@
             this.BoardHoldButton.Name = "BoardHoldButton";
             this.BoardHoldButton.Size = new System.Drawing.Size(74, 40);
             this.BoardHoldButton.TabIndex = 92;
-            this.BoardHoldButton.Text = "board hold/unhold";
+            this.BoardHoldButton.Tag = "HOLD";
+            this.BoardHoldButton.Text = "Board Hold";
             this.BoardHoldButton.UseVisualStyleBackColor = true;
+            this.BoardHoldButton.Click += new System.EventHandler(this.ManualControlButton);
             // 
             // Y4plus
             // 
@@ -677,6 +723,7 @@
             this.Y4plus.Tag = "Y +10";
             this.Y4plus.Text = "/\\/\\/\\/\\";
             this.Y4plus.UseVisualStyleBackColor = true;
+            this.Y4plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y4plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y4plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -690,6 +737,7 @@
             this.Y3plus.Tag = "Y +5";
             this.Y3plus.Text = "/\\/\\/\\";
             this.Y3plus.UseVisualStyleBackColor = true;
+            this.Y3plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y3plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y3plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -703,6 +751,7 @@
             this.Y3minus.Tag = "Y -5";
             this.Y3minus.Text = "\\/\\/\\/";
             this.Y3minus.UseVisualStyleBackColor = true;
+            this.Y3minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y3minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y3minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -716,6 +765,7 @@
             this.HomeAllButton.Tag = "HOME";
             this.HomeAllButton.Text = "Home All";
             this.HomeAllButton.UseVisualStyleBackColor = true;
+            this.HomeAllButton.Click += new System.EventHandler(this.ManualControlButton);
             this.HomeAllButton.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.HomeAllButton.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -729,6 +779,7 @@
             this.Y2minus.Tag = "Y -1";
             this.Y2minus.Text = "\\/\\/";
             this.Y2minus.UseVisualStyleBackColor = true;
+            this.Y2minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y2minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y2minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -742,6 +793,7 @@
             this.Y2plus.Tag = "Y +1";
             this.Y2plus.Text = "/\\/\\";
             this.Y2plus.UseVisualStyleBackColor = true;
+            this.Y2plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y2plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y2plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -755,6 +807,7 @@
             this.Y1minus.Tag = "Y -0.1";
             this.Y1minus.Text = "\\/";
             this.Y1minus.UseVisualStyleBackColor = true;
+            this.Y1minus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y1minus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y1minus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -768,6 +821,7 @@
             this.Y1plus.Tag = "Y +0.1";
             this.Y1plus.Text = "/\\";
             this.Y1plus.UseVisualStyleBackColor = true;
+            this.Y1plus.Click += new System.EventHandler(this.ManualControlButton);
             this.Y1plus.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
             this.Y1plus.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
@@ -778,16 +832,19 @@
             this.TableFlipButton.Name = "TableFlipButton";
             this.TableFlipButton.Size = new System.Drawing.Size(71, 28);
             this.TableFlipButton.TabIndex = 91;
+            this.TableFlipButton.Tag = "FLIP";
             this.TableFlipButton.Text = "Flip Table";
             this.TableFlipButton.UseVisualStyleBackColor = true;
+            this.TableFlipButton.Click += new System.EventHandler(this.ManualControlButton);
             // 
             // XYChangeText
             // 
-            this.XYChangeText.Enabled = false;
             this.XYChangeText.Location = new System.Drawing.Point(179, 127);
             this.XYChangeText.Name = "XYChangeText";
+            this.XYChangeText.ReadOnly = true;
             this.XYChangeText.Size = new System.Drawing.Size(58, 20);
             this.XYChangeText.TabIndex = 86;
+            this.XYChangeText.Text = "-";
             this.XYChangeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox8
@@ -1298,15 +1355,6 @@
             // 
             this.serialPort.BaudRate = 115200;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-            // 
-            // SpindleOnOff
-            // 
-            this.SpindleOnOff.Location = new System.Drawing.Point(327, 206);
-            this.SpindleOnOff.Name = "SpindleOnOff";
-            this.SpindleOnOff.Size = new System.Drawing.Size(91, 23);
-            this.SpindleOnOff.TabIndex = 110;
-            this.SpindleOnOff.Text = "Spindle On/Off";
-            this.SpindleOnOff.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
