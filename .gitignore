@@ -10,3 +10,13 @@ Windows App/Frezarka/\.vs/
 Windows App/Frezarka/Frezarka/bin/
 
 Windows App/Frezarka/Frezarka/obj/
+
+*.xml
+
+*.buildinfo
+
+*.d
+
+*.o
+
+*.elf

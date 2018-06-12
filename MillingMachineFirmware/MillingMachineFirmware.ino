@@ -102,10 +102,10 @@ void loop()
 	case INIT_STATE:
 	{	
 		
-		for (int i = 0; i < 19; i++) {
+		/*for (int i = 0; i < 19; i++) {
 			Serial.print((String)StateMachine.returnEndstop(i) + " ");
 		}
-		Serial.println(" ");
+		Serial.println(" ");*/
 	
 		// BEGIN OF INIT STATE
 
