@@ -28,3 +28,13 @@ C:\Users\Bartek\Documents\GitKraken\MańkaNator\MankaNator\Windows App\Frezarka\
 C:\Users\Bartek\Documents\GitKraken\MańkaNator\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.CoreCompileInputs.cache
 C:\Users\Bartek\Documents\GitKraken\MańkaNator\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.exe
 C:\Users\Bartek\Documents\GitKraken\MańkaNator\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.pdb
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe.config
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.exe
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\bin\Debug\Frezarka.pdb
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csprojResolveAssemblyReference.cache
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Form1.resources
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.Properties.Resources.resources
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.GenerateResource.cache
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.csproj.CoreCompileInputs.cache
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.exe
+F:\studia\6th_semester\Mechatroinc_design\manka\MankaNator-master\MankaNator\Windows App\Frezarka\Frezarka\obj\Debug\Frezarka.pdb

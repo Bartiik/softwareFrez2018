@@ -20,3 +20,15 @@ Windows App/Frezarka/Frezarka/obj/
 *.o
 
 *.elf
+
+*.vcxproj
+
+*.hex
+
+*.ide
+
+*.exe
+
+*.pdb
+
+*.cache

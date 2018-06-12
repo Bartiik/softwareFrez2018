@@ -11,8 +11,10 @@ public:
 	bool returnTablePosition();
 	void init();
 	void setRotationSpeed(int16_t);
-	void rotationSleep(bool);
 	SMotor holder;
+	void rotateClockwise();
+	void rotateCounterClockwise();
+	void stop();
 };
 
 extern RoTable Table;

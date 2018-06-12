@@ -1,6 +1,6 @@
 #include <Servo.h>
 #include "config.h"
-//#include "MMStateMachine.h"
+#include "MMStateMachine.h"
 #include "GCodeInterpreter.h"
 #include "Communication.h"
 #include "SMotor.h"
@@ -67,8 +67,7 @@ void setup()
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
 	
-	analogWrite(DC_ENABLE, 128);
-
+	
 }
 
 ISR(TIMER1_OVF_vect) { //timer for steppers
@@ -92,6 +91,7 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
+	
 	//StateMachine.ResolveEndstops();
 	ProcessNewMessage();
 	//if (XStepper.GetBoolEnable()) MMcomm.SendMessage("EN=1");
@@ -149,6 +149,7 @@ void loop()
 
 	case ERROR_STATE:
 	{
+		Table.stop();
 		// BEGIN OF ERROR STATE
 		// END OF ERROR STATE
 	}

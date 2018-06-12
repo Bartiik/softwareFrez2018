@@ -1,4 +1,5 @@
 #include "Communication.h"
+#include "GCodeInterpreter.h"
 
 Communication MMcomm;
 
@@ -10,6 +11,7 @@ Communication::~Communication(){}
 */
 void Communication::SendMessage(String message )
 {
+
 	Serial.println(String(StateMachine.CurrentState()) + message);
 }
 /* autor: Bartek Kudroń
@@ -41,5 +43,5 @@ bool Communication::MessageIsNew()
 */
 void Communication::SendReply()
 {
-	SendMessage(STANDARD_REPLY_COMMAND);
+	SendMessage(STANDARD_REPLY_COMMAND+Command.returnPosition());
 }
