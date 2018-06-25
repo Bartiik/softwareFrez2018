@@ -21,8 +21,6 @@ Windows App/Frezarka/Frezarka/obj/
 
 *.elf
 
-*.vcxproj
-
 *.hex
 
 *.ide
