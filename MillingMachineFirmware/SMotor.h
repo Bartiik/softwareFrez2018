@@ -9,14 +9,14 @@ class SMotor
     uint8_t _step_pin;
     uint8_t _enable_pin;
     bool _enable;
-    long  _abs_possition;
+    long  _abs_position;
 
   public:
 
     SMotor();
     ~SMotor();
     void Init(uint8_t ,uint8_t, uint8_t);
-    long GetAbsPossition();
+    long GetAbsPosition();
     bool GetBoolEnable();
     void SetEnable(bool);
     void Step (int DIR);

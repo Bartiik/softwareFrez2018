@@ -85,27 +85,27 @@ void MMStateMachine::ResolveEndstops()
 
 
 	
-	/*
+	
 		if (_EndstopEn) {
 			if (_endstopArray[0] + _endstopArray[1])
 			{
 				XStepper.SetEnable(true);
-				Command.ExecutionIsComplete();
+				//Command.ExecutionIsComplete();
 			}
 
 			if (_endstopArray[2] + _endstopArray[3])
 			{
 				YStepper.SetEnable(true);
-				Command.ExecutionIsComplete();
+				//Command.ExecutionIsComplete();
 			}
 
 			if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
 			{
 				ZStepper.SetEnable(true);
-				Command.ExecutionIsComplete();
+				//Command.ExecutionIsComplete();
 			}
 		}
-		*/
+		
 
 		/*
 		if((_endstopArray[8] + _endstopArray[9] + _endstopArray[10] + _endstopArray[11])*(_endstopArray[12] + _endstopArray[13] + _endstopArray[14] + _endstopArray[15]) + _endstopArray[16])

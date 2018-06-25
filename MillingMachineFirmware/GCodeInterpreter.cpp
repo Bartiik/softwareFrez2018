@@ -240,7 +240,7 @@ void GCodeInterpreter::G00_Execute() {
 	float *stepDirZ = &_LV[2];
 	TCNT1 = RAPID_SPEED;
 
-	if ((*stepDirX == -1 && StateMachine.returnEndstop(0))	 ||
+	/*if ((*stepDirX == -1 && StateMachine.returnEndstop(0))	 ||
 		(*stepDirX == 1 && StateMachine.returnEndstop(1))	 || 
 		(*stepDirY == -1 && StateMachine.returnEndstop(2))	 || 
 		(*stepDirY == 1 && StateMachine.returnEndstop(3))	 ||
@@ -249,7 +249,7 @@ void GCodeInterpreter::G00_Execute() {
 
 		ExecutionIsComplete();
 
-	}
+	}*/
 
 
 
