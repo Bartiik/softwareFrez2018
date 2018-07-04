@@ -10,14 +10,8 @@ namespace Frezarka
     {
         double[] values;
         String chars;
-        int[] valuesToSend;
-        int _Z;
-        int _XY;
-        public Command(int StepsPerValXY, int StepsPerValZ)
+        public Command()
         {
-            _XY = StepsPerValXY;
-            _Z = StepsPerValZ;
-            valuesToSend = new int[13];
             values = new double[13];
             chars = "GXYZIJMSFUEWP";
             for (int i = 0; i < values.Length; i++)
@@ -38,13 +32,9 @@ namespace Frezarka
                 if(float.TryParse(line.Substring(1), out value) && chars.Contains(c))
                 {
                     values[chars.IndexOf(c)] = value;
-                    if("XYIJ".Contains(c))
-                        valuesToSend[chars.IndexOf(c)] = (int)(value * _XY);
-                    else if(c == 'Z')
-                        valuesToSend[chars.IndexOf(c)] = (int)(value * _Z);
-                    else if(c== 'P')
-                        valuesToSend[chars.IndexOf(c)] = (int)(value * 1000);
-                    else valuesToSend[chars.IndexOf(c)] = (int)(value);
+                    if (c == 'P')
+                        values[chars.IndexOf(c)] = (value * 1000);
+                    values[chars.IndexOf(c)] = Math.Round(values[chars.IndexOf(c)], 6);
                 }
                 else test = false;
             }
@@ -62,7 +52,7 @@ namespace Frezarka
                 if (values[i] != 1234.56789)
                 {
                     value.Append(chars[i]);
-                    value.Append(valuesToSend[i]);
+                    value.Append(values[i]);
                     value.Append(" ");
                 }
             }
@@ -76,7 +66,7 @@ namespace Frezarka
                 if (values[i] != 1234.56789)
                 {
                     value.Append(chars[i]);
-                    value.Append(valuesToSend[i]);
+                    value.Append(values[i]);
                 }
             }
             return value.ToString();

@@ -27,19 +27,19 @@ void MMStateMachine::MMSafetyBegin()
 	pinMode(Y_MAX_ENDSTOP_PIN, INPUT_PULLUP);
 	pinMode(Z_MIN_ENDSTOP_PIN, INPUT_PULLUP);
 	pinMode(Z_MAX_ENDSTOP_PIN, INPUT_PULLUP);
-	pinMode(TABLE_FLIP_ENDSTOP_1, INPUT_PULLUP);
-	pinMode(TABLE_FLIP_ENDSTOP_2, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_LEFT_ENDSTOP_1, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_LEFT_ENDSTOP_2, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_LEFT_ENDSTOP_3, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_LEFT_ENDSTOP_4, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_1, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_2, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_3, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_4, INPUT_PULLUP);
-	pinMode(TABLE_HOLD_MAX_ENDSTOP, INPUT_PULLUP);
-	pinMode(TABLE_LEVEL_ENDSTOP, INPUT_PULLUP);
-	pinMode(TABLE_LEVEL_PROBE, INPUT_PULLUP);
+	pinMode(TABLE_FLIP_ENDSTOP_1_PIN, INPUT_PULLUP);
+	pinMode(TABLE_FLIP_ENDSTOP_2_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_LEFT_ENDSTOP_1_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_LEFT_ENDSTOP_2_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_LEFT_ENDSTOP_3_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_LEFT_ENDSTOP_4_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_1_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_2_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_3_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_RIGHT_ENDSTOP_4_PIN, INPUT_PULLUP);
+	pinMode(TABLE_HOLD_MAX_ENDSTOP_PIN, INPUT_PULLUP);
+	pinMode(TABLE_LEVEL_ENDSTOP_PIN, INPUT_PULLUP);
+	pinMode(TABLE_LEVEL_PROBE_PIN, INPUT_PULLUP);
 }
 /* autor: Bartek Kudroń
 	zwraca stan maszyny.
@@ -64,16 +64,16 @@ void MMStateMachine::ResolveEndstops()
 
 
 	bool tempArray[NO_OF_ENDSTOPS] = {
-		digitalRead(X_MIN_ENDSTOP_PIN),				digitalRead(X_MAX_ENDSTOP_PIN),
-		digitalRead(Y_MIN_ENDSTOP_PIN),				digitalRead(Y_MAX_ENDSTOP_PIN),
-		digitalRead(Z_MIN_ENDSTOP_PIN),				digitalRead(Z_MAX_ENDSTOP_PIN),
-		digitalRead(TABLE_FLIP_ENDSTOP_1),			digitalRead(TABLE_FLIP_ENDSTOP_2),
-		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_1),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_2),
-		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_3),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_4),
-		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2),
-		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4),
-		digitalRead(TABLE_HOLD_MAX_ENDSTOP),		digitalRead(TABLE_LEVEL_ENDSTOP),
-		!digitalRead(TABLE_LEVEL_PROBE) };
+		digitalRead(X_MIN_ENDSTOP_PIN),					digitalRead(X_MAX_ENDSTOP_PIN),
+		digitalRead(Y_MIN_ENDSTOP_PIN),					digitalRead(Y_MAX_ENDSTOP_PIN),
+		digitalRead(Z_MIN_ENDSTOP_PIN),					digitalRead(Z_MAX_ENDSTOP_PIN),
+		digitalRead(TABLE_FLIP_ENDSTOP_1_PIN),			digitalRead(TABLE_FLIP_ENDSTOP_2_PIN),
+		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_1_PIN),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_2_PIN),
+		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_3_PIN),		digitalRead(TABLE_HOLD_LEFT_ENDSTOP_4_PIN),
+		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_1_PIN),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_2_PIN),
+		digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_3_PIN),	digitalRead(TABLE_HOLD_RIGHT_ENDSTOP_4_PIN),
+		digitalRead(TABLE_HOLD_MAX_ENDSTOP_PIN),		digitalRead(TABLE_LEVEL_ENDSTOP_PIN),
+		!digitalRead(TABLE_LEVEL_PROBE_PIN) };
 
 	for (int i = 0; i < NO_OF_ENDSTOPS; i++)
 	{
@@ -86,25 +86,25 @@ void MMStateMachine::ResolveEndstops()
 
 	
 	
-		if (_EndstopEn) {
-			if (_endstopArray[0] + _endstopArray[1])
-			{
-				XStepper.SetEnable(true);
-				//Command.ExecutionIsComplete();
-			}
+		//if (_EndstopEn) {
+		//	if (_endstopArray[0] + _endstopArray[1])
+		//	{
+		//		XStepper.SetEnable(true);
+		//		//Command.ExecutionIsComplete();
+		//	}
 
-			if (_endstopArray[2] + _endstopArray[3])
-			{
-				YStepper.SetEnable(true);
-				//Command.ExecutionIsComplete();
-			}
+		//	if (_endstopArray[2] + _endstopArray[3])
+		//	{
+		//		YStepper.SetEnable(true);
+		//		//Command.ExecutionIsComplete();
+		//	}
 
-			if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
-			{
-				ZStepper.SetEnable(true);
-				//Command.ExecutionIsComplete();
-			}
-		}
+		//	if (_endstopArray[4] + _endstopArray[5] + _endstopArray[17] + _endstopArray[18])
+		//	{
+		//		ZStepper.SetEnable(true);
+		//		//Command.ExecutionIsComplete();
+		//	}
+		//}
 		
 
 		/*
@@ -162,6 +162,23 @@ bool MMStateMachine::TryUpdateState(String command)
 		else
 			MMcomm.SendReply();
 	}
+	else
+	{
+		if (command == BEGIN_WORK_COMMAND)
+		{
+			commandIsUsed = true; 
+			workInProgress = true;
+			MMcomm.SendReply();
+		}
+		else if (command == END_WORK_COMMAND)
+		{
+			commandIsUsed = true; 
+			workInProgress = false;
+			MMcomm.SendReply();
+		}
+	}
+		
+		
 	return commandIsUsed;
 }
 /* autor: Bartek Kudroń

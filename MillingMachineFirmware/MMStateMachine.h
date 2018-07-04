@@ -4,14 +4,11 @@
 #include <Arduino.h>
 #include "Communication.h"
 
-
-
 class MMStateMachine
 {
 private:
 	uint8_t _state;
 	bool _EndstopEn;
-	
 	uint8_t StateChangeLookupTable[4][4] = {
 	{IDLE_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE},
 	{ ERROR_STATE, ERROR_STATE, ERROR_STATE, ERROR_STATE},
@@ -19,7 +16,6 @@ private:
 	{ INIT_STATE, IDLE_STATE,EXECUTION_STATE,ERROR_STATE} };
 
 	bool _endstopArray[NO_OF_ENDSTOPS];
-	
 public:
 	MMStateMachine();
 	~MMStateMachine();
@@ -34,6 +30,6 @@ public:
 	void SetEndstopsEn(bool);
 	void ResolveEndstops();
 	bool returnEndstop(uint8_t);
+	bool workInProgress;
 };
-
 extern MMStateMachine StateMachine;

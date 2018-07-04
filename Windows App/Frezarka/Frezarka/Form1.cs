@@ -53,6 +53,7 @@ namespace Frezarka
                 {
                     ConnectButton.Tag = "1";
                     ConnectButton.Text = "Close Port";
+                    CommunicationBox.Items.Clear();
                     serialPort.BaudRate = 115200;
                     serialPort.PortName = PortListCombo.SelectedItem.ToString();
                     serialPort.Open();
@@ -60,7 +61,7 @@ namespace Frezarka
                     {
                         OpenPortLabel.Text = serialPort.PortName;
                     }
-                    Command begin = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+                    Command begin = new Command();
                     begin.Fill("U4");
                     try
                     {
@@ -95,7 +96,7 @@ namespace Frezarka
         private void CommandSendButton_Click(object sender, EventArgs e)
         {
             String gcode = customGText.Text;
-            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            Command temp = new Command();
             if (temp.Fill(gcode))
             {
                 //MessageBox.Show(temp.ToSend());
@@ -166,6 +167,9 @@ namespace Frezarka
             SpindleOnOff.Enabled = e;
             XYAxisSteps.Enabled = e;
             ZAxisSteps.Enabled = e;
+            UpdateSteps.Enabled = e;
+            SaveSteps.Enabled = e;
+            LoadSteps.Enabled = e;
         }
         private void customGText_KeyDown(object sender, KeyEventArgs e)
         {
@@ -216,7 +220,7 @@ namespace Frezarka
         }
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            Command temp = new Command();
             String msg = serialPort.ReadLine();
             String State;
             int state;
@@ -295,15 +299,15 @@ namespace Frezarka
                     //message = msg;
                     XPosText.Invoke((MethodInvoker)delegate
                     {
-                        XPosText.Text = Math.Round(temp.returnValue('X') / double.Parse(XYAxisSteps.Text),5).ToString();
+                        XPosText.Text = (temp.returnValue('X') / 100000).ToString();
                     });
                     YPosText.Invoke((MethodInvoker)delegate
                     {
-                        YPosText.Text = Math.Round(temp.returnValue('Y') / double.Parse(XYAxisSteps.Text),5).ToString();
+                        YPosText.Text = (temp.returnValue('Y') / 100000).ToString();
                     });
                     ZPosText.Invoke((MethodInvoker)delegate
                     {
-                        ZPosText.Text = Math.Round(temp.returnValue('Z') / double.Parse(ZAxisSteps.Text),5).ToString();
+                        ZPosText.Text = (temp.returnValue('Z') / 100000).ToString();
                     });
 
 
@@ -471,7 +475,7 @@ namespace Frezarka
             AllCommands.Clear();
             StringBuilder k = new StringBuilder();
             int i = 0;
-            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            Command temp = new Command();
             if (FirstLayerTextBox.Text != "")
                 foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(FirstLayerTextBox.Text)]))
                 {
@@ -576,13 +580,13 @@ namespace Frezarka
         }
         private void HardStopButton_Click(object sender, EventArgs e)
         {
-            Command temp = new Command(Int32.Parse(XYAxisSteps.Text),Int32.Parse(ZAxisSteps.Text));
+            Command temp = new Command();
             temp.Fill("U7");
             sendCommand(temp);
         }
         private void ManualControlButton(object sender, EventArgs e)
         {
-            Command temp = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+            Command temp = new Command();
             String message;
             String tag = ((Button)sender).Tag.ToString();
             switch (tag)
@@ -591,6 +595,20 @@ namespace Frezarka
                 case "HOME X": message = "G28"; break;
                 case "HOME Y": message = "G28"; break;
                 case "HOME Z": message = "G28"; break;
+                case "UPDATE":
+                    {
+                        StringBuilder k = new StringBuilder();
+                        k.Append("M92X");
+                        k.Append(XYAxisSteps.Text);
+                        k.Append("Y");
+                        k.Append(XYAxisSteps.Text);
+                        k.Append("Z");
+                        k.Append(ZAxisSteps.Text);
+                        message = k.ToString();
+                        break;
+                    }
+                case "SAVE": message = "M500"; break;
+                case "LOAD": message = "M501"; break;
                 case "SET":
                     {
                         message = "S1"+SpeedText.Text;
@@ -609,8 +627,6 @@ namespace Frezarka
                                 message = "U02";
                                 BoardHoldButton.Text = "Table Hold";
                             }
-
-                            break;
                         }
                     }
                     break;
@@ -641,13 +657,14 @@ namespace Frezarka
                         if (tag[0] == '+')
                         {
                             tag = tag.Remove(0, 1);
-                            val = val + float.Parse(tag);
+                            val = val + Convert.ToInt32(float.Parse(tag)*10);
                         }
                         else
                         {
                             tag = tag.Remove(0, 1);
-                            val = val - float.Parse(tag);
+                            val = val - Convert.ToInt32(float.Parse(tag) * 10);
                         }
+                        val = (float)Math.Round(val/10,1);
                         k.Append(val);
                         message = k.ToString();
                         break;
@@ -680,9 +697,9 @@ namespace Frezarka
         }
         private Command updateMovement(Command comm)
         {
-            if(comm.returnValue('G') != 1234.56789)
+            if (comm.returnValue('G') == 0 || comm.returnValue('G') == 1 || comm.returnValue('G') == 2 || comm.returnValue('G') == 3)
             {
-                Command C = new Command(Int32.Parse(XYAxisSteps.Text), Int32.Parse(ZAxisSteps.Text));
+                Command C = new Command();
                 double X = comm.returnValue('X');
                 double Y = comm.returnValue('Y');
                 double Z = comm.returnValue('Z');
@@ -692,18 +709,34 @@ namespace Frezarka
                 if (X != 1234.56789)
                 {
                     k.Append('X');
-                    k.Append(X + double.Parse(XPosText.Text));
+                    k.Append((X + double.Parse(XPosText.Text)));
+                }
+                else if (double.Parse(XPosText.Text) != 0)
+                {
+                    k.Append('X');
+                    k.Append(double.Parse(XPosText.Text));
                 }
                 if (Y != 1234.56789)
                 {
                     k.Append('Y');
-                    k.Append(Y + double.Parse(YPosText.Text));
+                    k.Append((Y + double.Parse(YPosText.Text)));
+                }
+                else if (double.Parse(YPosText.Text) != 0)
+                {
+                    k.Append('Y');
+                    k.Append(double.Parse(YPosText.Text));
                 }
                 if (Z != 1234.56789)
                 {
                     k.Append('Z');
-                    k.Append(Z + double.Parse(ZPosText.Text));
+                    k.Append((Z + double.Parse(ZPosText.Text)));
                 }
+                else if (double.Parse(ZPosText.Text) != 0)
+                {
+                    k.Append('Z');
+                    k.Append(double.Parse(ZPosText.Text));
+                }
+                
                 C.Fill(k.ToString());
                 comm = C;
             }

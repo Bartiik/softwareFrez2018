@@ -1,3 +1,4 @@
+
 #include <Servo.h>
 #include "config.h"
 #include "MMStateMachine.h"
@@ -13,28 +14,6 @@ boolean stringComplete = false;
 bool initial = true;
 bool var = false;
 bool ExecutionInterrupt = false;
-
-/* 
-ZASADA DZIAŁANIA PROGAMU (IDEA, NIEZWERYFIKOWANA - MOGĄ BYĆ BŁĘDY) 
-
-kod opiera się na reagowaniu na konkretne komendy. W pliku MMStateMachine.h znajdują się opisy komend. Komendy U to są moje własne, M i G to komendy standardowe.
-na podstawie kilku komend U w pliku MMStateMachine.cpp dochodzi do zmian stanu maszyny między INIT, IDLE, EXECUTE, ERROR.
-
-W LOOP znajduje się switch stanów. Jak na razie każdy jedynie co robi, to interpretuje komendy otrzymane.
-Jeżeli otrzymana komenda należy do listy kilku wybranych komend U, to od razu jest wykonywana, jeśli nie, to zostaje wysłana do klasy Communication, gdzie jest przechowywana na potrzeby dalszego wykorzystania.
-W pliku GCodeInterpreter.cpp znajduje się interpretacja G-Code'ów, nie są jeszcze zaimplementowane żadne jej użycia.
-Koncepcja programu jest taka, że w stanie IDLE sprawdzana jest komenda, jeśli zgadza się z istniejącymi, 
-to wykonać ma się funkcja PrepareForExecution(), w której powinny znajdować się podstawowe obliczenia wstępne, wykonywane tylko raz.
-Następnie stan maszyny ma się zmienić na EXECUTION, i w tym stanie ma się znajdować funkcja ExecuteStep(), która wykonywać ma się do momentu zakończenia komendy i wysłania wiadomości zwrotnej do frezarki.
-Potem nastąpić ma powrót do IDLE, gdzie czekać ma program na nową komendę.
-
-WAŻNE - program windowsowy do komunikacji przetwarza komendy przed wysłaniem, nie przyjmie nic, co nie zgadza się z regexem konkretnym - wszystko musi składać się z jednej z 10 liter i następnie liczby.
-Pary litery z liczbą można łączyć w jeden łańcuch, np. X10Y20Z30, wtedy wyśle się wszystko naraz.
-Litery przyjmowane przez komunikator - "GXYZIJMSFU". Wielkość nieważna.
- 
-Polecam poczytać działanie klas, powinno być w miarę proste i niezbyt skomplikowane ;)
-*/
-
 
 void setup()
 {
@@ -66,7 +45,6 @@ void setup()
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
-	
 	
 }
 
@@ -101,7 +79,7 @@ void loop()
 	{
 	case INIT_STATE:
 	{	
-		
+
 		/*for (int i = 0; i < 19; i++) {
 			Serial.print((String)StateMachine.returnEndstop(i) + " ");
 		}
@@ -114,9 +92,8 @@ void loop()
 	break;
 	case IDLE_STATE:
 	{
-		
+
 		// BEGIN OF IDLE STATE
-		
 		if (MMcomm.MessageIsNew())
 		{
 			if (Command.Interpret(MMcomm.LatestMessage())) {
@@ -193,10 +170,4 @@ bool ProcessNewMessage()
 		return true;
 	}
 	else return false;
-}
-
-void debugLED()
-{
-	digitalWrite(13, var);
-	var = !var;
 }

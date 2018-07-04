@@ -29,8 +29,6 @@ void BLDCDriver::setSpeed(uint16_t speed)
 		SpeedSignal = speed;
 	}
 	else SpeedSignal = BLDC_MAXIMUM_SPEED_VALUE;
-	
-	MMcomm.SendMessage((String)SpeedSignal);
 	_bldc.writeMicroseconds(SpeedSignal);
 	
 }

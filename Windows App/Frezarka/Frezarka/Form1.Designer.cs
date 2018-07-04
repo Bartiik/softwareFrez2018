@@ -128,6 +128,9 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
+            this.UpdateSteps = new System.Windows.Forms.Button();
+            this.LoadSteps = new System.Windows.Forms.Button();
+            this.SaveSteps = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -170,7 +173,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 561);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 562);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox2
@@ -180,7 +183,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1002, 300);
+            this.groupBox2.Size = new System.Drawing.Size(1002, 301);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Control";
@@ -199,11 +202,14 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 241);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 242);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.SaveSteps);
+            this.groupBox6.Controls.Add(this.LoadSteps);
+            this.groupBox6.Controls.Add(this.UpdateSteps);
             this.groupBox6.Controls.Add(this.SpindleOnOff);
             this.groupBox6.Controls.Add(this.XYAxisLabel);
             this.groupBox6.Controls.Add(this.ZAxisLabel);
@@ -254,7 +260,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(500, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(493, 235);
+            this.groupBox6.Size = new System.Drawing.Size(493, 236);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control in mm";
@@ -274,7 +280,7 @@
             // XYAxisLabel
             // 
             this.XYAxisLabel.AutoSize = true;
-            this.XYAxisLabel.Location = new System.Drawing.Point(395, 99);
+            this.XYAxisLabel.Location = new System.Drawing.Point(392, 13);
             this.XYAxisLabel.Name = "XYAxisLabel";
             this.XYAxisLabel.Size = new System.Drawing.Size(92, 13);
             this.XYAxisLabel.TabIndex = 109;
@@ -283,7 +289,7 @@
             // ZAxisLabel
             // 
             this.ZAxisLabel.AutoSize = true;
-            this.ZAxisLabel.Location = new System.Drawing.Point(395, 150);
+            this.ZAxisLabel.Location = new System.Drawing.Point(392, 64);
             this.ZAxisLabel.Name = "ZAxisLabel";
             this.ZAxisLabel.Size = new System.Drawing.Size(85, 13);
             this.ZAxisLabel.TabIndex = 108;
@@ -292,7 +298,7 @@
             // ZAxisSteps
             // 
             this.ZAxisSteps.Enabled = false;
-            this.ZAxisSteps.Location = new System.Drawing.Point(398, 167);
+            this.ZAxisSteps.Location = new System.Drawing.Point(395, 81);
             this.ZAxisSteps.Name = "ZAxisSteps";
             this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.ZAxisSteps.TabIndex = 106;
@@ -301,7 +307,7 @@
             // XYAxisSteps
             // 
             this.XYAxisSteps.Enabled = false;
-            this.XYAxisSteps.Location = new System.Drawing.Point(398, 122);
+            this.XYAxisSteps.Location = new System.Drawing.Point(395, 36);
             this.XYAxisSteps.Name = "XYAxisSteps";
             this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.XYAxisSteps.TabIndex = 105;
@@ -871,7 +877,7 @@
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox8.Location = new System.Drawing.Point(202, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(292, 235);
+            this.groupBox8.Size = new System.Drawing.Size(292, 236);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Process Creator";
@@ -1085,7 +1091,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(193, 235);
+            this.groupBox5.Size = new System.Drawing.Size(193, 236);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Open G-Code file";
@@ -1135,7 +1141,7 @@
             this.groupBox7.Controls.Add(this.CommandSendButton);
             this.groupBox7.Controls.Add(this.customGText);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox7.Location = new System.Drawing.Point(3, 257);
+            this.groupBox7.Location = new System.Drawing.Point(3, 258);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(996, 40);
             this.groupBox7.TabIndex = 3;
@@ -1167,7 +1173,7 @@
             // 
             this.groupBox3.Controls.Add(this.CommunicationBox);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 360);
+            this.groupBox3.Location = new System.Drawing.Point(3, 361);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1002, 147);
             this.groupBox3.TabIndex = 9;
@@ -1195,7 +1201,7 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 513);
+            this.groupBox4.Location = new System.Drawing.Point(3, 514);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1002, 45);
             this.groupBox4.TabIndex = 10;
@@ -1354,13 +1360,50 @@
             // serialPort
             // 
             this.serialPort.BaudRate = 115200;
+            this.serialPort.DtrEnable = true;
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            // 
+            // UpdateSteps
+            // 
+            this.UpdateSteps.Enabled = false;
+            this.UpdateSteps.Location = new System.Drawing.Point(395, 106);
+            this.UpdateSteps.Name = "UpdateSteps";
+            this.UpdateSteps.Size = new System.Drawing.Size(89, 23);
+            this.UpdateSteps.TabIndex = 111;
+            this.UpdateSteps.Tag = "UPDATE";
+            this.UpdateSteps.Text = "Update New";
+            this.UpdateSteps.UseVisualStyleBackColor = true;
+            this.UpdateSteps.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // LoadSteps
+            // 
+            this.LoadSteps.Enabled = false;
+            this.LoadSteps.Location = new System.Drawing.Point(395, 135);
+            this.LoadSteps.Name = "LoadSteps";
+            this.LoadSteps.Size = new System.Drawing.Size(89, 23);
+            this.LoadSteps.TabIndex = 112;
+            this.LoadSteps.Tag = "LOAD";
+            this.LoadSteps.Text = "EEPROM Load";
+            this.LoadSteps.UseVisualStyleBackColor = true;
+            this.LoadSteps.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // SaveSteps
+            // 
+            this.SaveSteps.Enabled = false;
+            this.SaveSteps.Location = new System.Drawing.Point(395, 164);
+            this.SaveSteps.Name = "SaveSteps";
+            this.SaveSteps.Size = new System.Drawing.Size(89, 23);
+            this.SaveSteps.TabIndex = 113;
+            this.SaveSteps.Tag = "SAVE";
+            this.SaveSteps.Text = "EEPROM Save";
+            this.SaveSteps.UseVisualStyleBackColor = true;
+            this.SaveSteps.Click += new System.EventHandler(this.ManualControlButton);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 561);
+            this.ClientSize = new System.Drawing.Size(1008, 562);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1024, 600);
@@ -1489,6 +1532,9 @@
         private System.Windows.Forms.TextBox ZAxisSteps;
         private System.Windows.Forms.TextBox XYAxisSteps;
         private System.Windows.Forms.Button SpindleOnOff;
+        private System.Windows.Forms.Button SaveSteps;
+        private System.Windows.Forms.Button LoadSteps;
+        private System.Windows.Forms.Button UpdateSteps;
     }
 }
 
