@@ -45,7 +45,7 @@ void setup()
 	XStepper.Init(X_DIR_PIN, X_STEP_PIN, X_ENABLE_PIN);
 	YStepper.Init(Y_DIR_PIN, Y_STEP_PIN, Y_ENABLE_PIN);
 	ZStepper.Init(Z_DIR_PIN, Z_STEP_PIN, Z_ENABLE_PIN);
-	
+
 }
 
 ISR(TIMER1_OVF_vect) { //timer for steppers
@@ -69,6 +69,7 @@ ISR(TIMER0_COMPA_vect) //check endstops, if any is pressed
 
 void loop()
 {
+
 	
 	//StateMachine.ResolveEndstops();
 	ProcessNewMessage();
@@ -78,8 +79,7 @@ void loop()
 	// nothing should happen outside this switch
 	{
 	case INIT_STATE:
-	{	
-
+	{
 		/*for (int i = 0; i < 19; i++) {
 			Serial.print((String)StateMachine.returnEndstop(i) + " ");
 		}
@@ -127,6 +127,9 @@ void loop()
 	case ERROR_STATE:
 	{
 		Table.stop();
+		Command.SetSteppersEn(1);
+		spindle.setSpeed(1000);
+		MMcomm.SendReply();
 		// BEGIN OF ERROR STATE
 		// END OF ERROR STATE
 	}
@@ -137,6 +140,7 @@ void loop()
 		// COMPLETE FUCKUP STATE, IF HAPPENS THE PROGRAM
 		// IS SOMEWHERE COMPLETELY FUCKED UP
 		StateMachine.SetErrorState(UNHANDLED_STATE_ERROR);
+		Table.stop();
 		StateMachine.Reset();
 	}
 

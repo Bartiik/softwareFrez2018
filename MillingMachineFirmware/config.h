@@ -23,8 +23,8 @@
 #define Y_MAX_ENDSTOP_PIN				15  // RX3
 #define UNKNOWN_PIN						16  // TX2
 #define UNKNOWN_PIN						17  // RX2
-#define Z_MIN_ENDSTOP_PIN				18  // TX1
-#define Z_MAX_ENDSTOP_PIN				19  // RX1
+#define Z_MAX_ENDSTOP_PIN				18  // TX1
+#define Z_MIN_ENDSTOP_PIN				19  // RX1
 #define UNKNOWN_PIN						20  // SDA
 #define UNKNOWN_PIN						21  // SCL
 #define N_C								22  // NOT CONNECTED, DO NOT USE
@@ -70,8 +70,8 @@
 #define Y_ENABLE_PIN					A8  // ANALOG PIN
 #define UNKNOWN_PIN						A9  // ANALOG PIN
 #define UNKNOWN_PIN						A10 // ANALOG PIN
-#define UNKNOWN_PIN						A11 // ANALOG PIN
-#define UNKNOWN_PIN						A12 // ANALOG PIN
+#define RANDOM_SEED_1_PIN				A11 // ANALOG PIN
+#define RANDOM_SEED_2_PIN				A12 // ANALOG PIN
 #define THERM_0_PIN						A13 // ANALOG PIN
 #define THERM_1_PIN						A14 // ANALOG PIN
 #define THERM_2_PIN						A15 // ANALOG PIN
@@ -93,6 +93,7 @@
 #define POSITION_ACCURACY				0.00001
 #define POSITION_ACCURACY_INVERSE		100000
 #define EEPROM_SAVE_PLACE				10
+#define LEVEL_SENSOR_DELTA				1400
 // DUMMY
 #define DUMMY_VALUE						999999999
 
@@ -101,7 +102,7 @@
 //dziala
 #define RPS0_25							11384//45536; 
 #define RPS0_5							55536
-#define RPS1							60536
+#define RPS1							58036//60536
 #define RPS1_5							62203
 
 //nie dziala
@@ -111,10 +112,10 @@
 #define RPS4							64286
 
 
-#define GO_HOME_SPEED					RPS0_5
+#define GO_HOME_SPEED					RPS1
 #define GO_HOME_SLOW_SPEED				RPS0_25
 #define WORKING_SPEED					RPS0_5
-#define RAPID_SPEED						57536
+#define RAPID_SPEED						RPS1//57536
 
 #define SAFE_HEIGHT						200 // height in z axis
 #define XHOME							0
@@ -143,6 +144,7 @@
 #define UNEXPECTED_STATE_ERROR			"E1" // wysłana wiadomość error lub nieogarnięta wiadomość - np. test komunikacji w stanie innym niż init.
 #define UNHANDLED_STATE_ERROR			"E2" // nieznana wartość zmiennej _State
 #define UNKNOWN_GCODE_ERROR				"E3" // nieznana komenda G, M lub U
+#define SENSOR_ERROR					"E4" // niesprawny czujnik miedzi
 
 //kody ostrzeżeń - nie zmieniają stanu na error, ale informują o czymś komputer.
 

@@ -34,6 +34,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SaveSteps = new System.Windows.Forms.Button();
+            this.LoadSteps = new System.Windows.Forms.Button();
+            this.UpdateSteps = new System.Windows.Forms.Button();
             this.SpindleOnOff = new System.Windows.Forms.Button();
             this.XYAxisLabel = new System.Windows.Forms.Label();
             this.ZAxisLabel = new System.Windows.Forms.Label();
@@ -44,10 +51,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.SpeedBar = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
-            this.HomeY = new System.Windows.Forms.Button();
+            this.BoardLevelingButton = new System.Windows.Forms.Button();
             this.ZPosText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.HomeX = new System.Windows.Forms.Button();
+            this.CheckSensorButton = new System.Windows.Forms.Button();
             this.YPosText = new System.Windows.Forms.TextBox();
             this.HomeZ = new System.Windows.Forms.Button();
             this.XPosText = new System.Windows.Forms.TextBox();
@@ -128,9 +135,6 @@
             this.PortListCombo = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.UpdateSteps = new System.Windows.Forms.Button();
-            this.LoadSteps = new System.Windows.Forms.Button();
-            this.SaveSteps = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -173,7 +177,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 562);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 562);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox2
@@ -183,7 +187,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1002, 301);
+            this.groupBox2.Size = new System.Drawing.Size(1178, 301);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Control";
@@ -191,9 +195,9 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.8F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.2F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.Controls.Add(this.groupBox6, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox8, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox5, 0, 0);
@@ -202,11 +206,15 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(996, 242);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1172, 242);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.button4);
+            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Controls.Add(this.SaveSteps);
             this.groupBox6.Controls.Add(this.LoadSteps);
             this.groupBox6.Controls.Add(this.UpdateSteps);
@@ -220,10 +228,10 @@
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.SpeedBar);
             this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.HomeY);
+            this.groupBox6.Controls.Add(this.BoardLevelingButton);
             this.groupBox6.Controls.Add(this.ZPosText);
             this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Controls.Add(this.HomeX);
+            this.groupBox6.Controls.Add(this.CheckSensorButton);
             this.groupBox6.Controls.Add(this.YPosText);
             this.groupBox6.Controls.Add(this.HomeZ);
             this.groupBox6.Controls.Add(this.XPosText);
@@ -258,21 +266,103 @@
             this.groupBox6.Controls.Add(this.TableFlipButton);
             this.groupBox6.Controls.Add(this.XYChangeText);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(500, 3);
+            this.groupBox6.Location = new System.Drawing.Point(471, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(493, 236);
+            this.groupBox6.Size = new System.Drawing.Size(698, 236);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Manual Control in mm";
             // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(511, 210);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(76, 23);
+            this.button4.TabIndex = 117;
+            this.button4.Tag = "SPINDLEOFF";
+            this.button4.Text = "Spindle Off";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(299, 61);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 23);
+            this.button3.TabIndex = 116;
+            this.button3.Tag = "GOBEGIN";
+            this.button3.Text = "Go to Begin";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(404, 183);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 24);
+            this.button2.TabIndex = 115;
+            this.button2.Tag = "FLIPII";
+            this.button2.Text = "Flip Table to II";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(299, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 24);
+            this.button1.TabIndex = 114;
+            this.button1.Tag = "SETBEGIN";
+            this.button1.Text = "Set as Begin";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // SaveSteps
+            // 
+            this.SaveSteps.Enabled = false;
+            this.SaveSteps.Location = new System.Drawing.Point(603, 182);
+            this.SaveSteps.Name = "SaveSteps";
+            this.SaveSteps.Size = new System.Drawing.Size(89, 23);
+            this.SaveSteps.TabIndex = 113;
+            this.SaveSteps.Tag = "SAVE";
+            this.SaveSteps.Text = "EEPROM Save";
+            this.SaveSteps.UseVisualStyleBackColor = true;
+            this.SaveSteps.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // LoadSteps
+            // 
+            this.LoadSteps.Enabled = false;
+            this.LoadSteps.Location = new System.Drawing.Point(603, 153);
+            this.LoadSteps.Name = "LoadSteps";
+            this.LoadSteps.Size = new System.Drawing.Size(89, 23);
+            this.LoadSteps.TabIndex = 112;
+            this.LoadSteps.Tag = "LOAD";
+            this.LoadSteps.Text = "EEPROM Load";
+            this.LoadSteps.UseVisualStyleBackColor = true;
+            this.LoadSteps.Click += new System.EventHandler(this.ManualControlButton);
+            // 
+            // UpdateSteps
+            // 
+            this.UpdateSteps.Enabled = false;
+            this.UpdateSteps.Location = new System.Drawing.Point(603, 124);
+            this.UpdateSteps.Name = "UpdateSteps";
+            this.UpdateSteps.Size = new System.Drawing.Size(89, 23);
+            this.UpdateSteps.TabIndex = 111;
+            this.UpdateSteps.Tag = "UPDATE";
+            this.UpdateSteps.Text = "Update Steps";
+            this.UpdateSteps.UseVisualStyleBackColor = true;
+            this.UpdateSteps.Click += new System.EventHandler(this.ManualControlButton);
+            // 
             // SpindleOnOff
             // 
             this.SpindleOnOff.Enabled = false;
-            this.SpindleOnOff.Location = new System.Drawing.Point(327, 206);
+            this.SpindleOnOff.Location = new System.Drawing.Point(511, 184);
             this.SpindleOnOff.Name = "SpindleOnOff";
             this.SpindleOnOff.Size = new System.Drawing.Size(76, 23);
             this.SpindleOnOff.TabIndex = 110;
-            this.SpindleOnOff.Tag = "SPINDLE";
+            this.SpindleOnOff.Tag = "SPINDLEON";
             this.SpindleOnOff.Text = "Spindle On";
             this.SpindleOnOff.UseVisualStyleBackColor = true;
             this.SpindleOnOff.Click += new System.EventHandler(this.ManualControlButton);
@@ -280,7 +370,7 @@
             // XYAxisLabel
             // 
             this.XYAxisLabel.AutoSize = true;
-            this.XYAxisLabel.Location = new System.Drawing.Point(392, 13);
+            this.XYAxisLabel.Location = new System.Drawing.Point(600, 31);
             this.XYAxisLabel.Name = "XYAxisLabel";
             this.XYAxisLabel.Size = new System.Drawing.Size(92, 13);
             this.XYAxisLabel.TabIndex = 109;
@@ -289,7 +379,7 @@
             // ZAxisLabel
             // 
             this.ZAxisLabel.AutoSize = true;
-            this.ZAxisLabel.Location = new System.Drawing.Point(392, 64);
+            this.ZAxisLabel.Location = new System.Drawing.Point(600, 82);
             this.ZAxisLabel.Name = "ZAxisLabel";
             this.ZAxisLabel.Size = new System.Drawing.Size(85, 13);
             this.ZAxisLabel.TabIndex = 108;
@@ -298,7 +388,7 @@
             // ZAxisSteps
             // 
             this.ZAxisSteps.Enabled = false;
-            this.ZAxisSteps.Location = new System.Drawing.Point(395, 81);
+            this.ZAxisSteps.Location = new System.Drawing.Point(603, 99);
             this.ZAxisSteps.Name = "ZAxisSteps";
             this.ZAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.ZAxisSteps.TabIndex = 106;
@@ -307,7 +397,7 @@
             // XYAxisSteps
             // 
             this.XYAxisSteps.Enabled = false;
-            this.XYAxisSteps.Location = new System.Drawing.Point(395, 36);
+            this.XYAxisSteps.Location = new System.Drawing.Point(603, 54);
             this.XYAxisSteps.Name = "XYAxisSteps";
             this.XYAxisSteps.Size = new System.Drawing.Size(89, 20);
             this.XYAxisSteps.TabIndex = 105;
@@ -315,10 +405,10 @@
             // 
             // SpeedText
             // 
-            this.SpeedText.Location = new System.Drawing.Point(327, 163);
+            this.SpeedText.Location = new System.Drawing.Point(511, 139);
             this.SpeedText.Name = "SpeedText";
             this.SpeedText.ReadOnly = true;
-            this.SpeedText.Size = new System.Drawing.Size(60, 20);
+            this.SpeedText.Size = new System.Drawing.Size(76, 20);
             this.SpeedText.TabIndex = 88;
             this.SpeedText.Text = "0";
             this.SpeedText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -328,9 +418,9 @@
             // SetSpeedButton
             // 
             this.SetSpeedButton.Enabled = false;
-            this.SetSpeedButton.Location = new System.Drawing.Point(327, 182);
+            this.SetSpeedButton.Location = new System.Drawing.Point(511, 158);
             this.SetSpeedButton.Name = "SetSpeedButton";
-            this.SetSpeedButton.Size = new System.Drawing.Size(60, 23);
+            this.SetSpeedButton.Size = new System.Drawing.Size(76, 23);
             this.SetSpeedButton.TabIndex = 104;
             this.SetSpeedButton.Tag = "SET";
             this.SetSpeedButton.Text = "set";
@@ -340,7 +430,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(321, 46);
+            this.label8.Location = new System.Drawing.Point(515, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 13);
             this.label8.TabIndex = 0;
@@ -350,10 +440,10 @@
             // 
             this.SpeedBar.Enabled = false;
             this.SpeedBar.LargeChange = 1;
-            this.SpeedBar.Location = new System.Drawing.Point(334, 59);
+            this.SpeedBar.Location = new System.Drawing.Point(530, 42);
             this.SpeedBar.Name = "SpeedBar";
             this.SpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.SpeedBar.Size = new System.Drawing.Size(45, 104);
+            this.SpeedBar.Size = new System.Drawing.Size(45, 91);
             this.SpeedBar.TabIndex = 0;
             this.SpeedBar.Scroll += new System.EventHandler(this.SpeedBar_Scroll);
             // 
@@ -366,20 +456,19 @@
             this.label7.TabIndex = 103;
             this.label7.Text = "Z";
             // 
-            // HomeY
+            // BoardLevelingButton
             // 
-            this.HomeY.Enabled = false;
-            this.HomeY.Location = new System.Drawing.Point(80, 39);
-            this.HomeY.Name = "HomeY";
-            this.HomeY.Size = new System.Drawing.Size(58, 24);
-            this.HomeY.TabIndex = 89;
-            this.HomeY.Tag = "HOME Y";
-            this.HomeY.Text = "Home Y";
-            this.HomeY.UseVisualStyleBackColor = true;
-            this.HomeY.Visible = false;
-            this.HomeY.Click += new System.EventHandler(this.ManualControlButton);
-            this.HomeY.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
-            this.HomeY.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
+            this.BoardLevelingButton.Enabled = false;
+            this.BoardLevelingButton.Location = new System.Drawing.Point(404, 62);
+            this.BoardLevelingButton.Name = "BoardLevelingButton";
+            this.BoardLevelingButton.Size = new System.Drawing.Size(99, 24);
+            this.BoardLevelingButton.TabIndex = 89;
+            this.BoardLevelingButton.Tag = "LEVEL";
+            this.BoardLevelingButton.Text = "Board Level";
+            this.BoardLevelingButton.UseVisualStyleBackColor = true;
+            this.BoardLevelingButton.Click += new System.EventHandler(this.ManualControlButton);
+            this.BoardLevelingButton.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
+            this.BoardLevelingButton.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
             // ZPosText
             // 
@@ -400,20 +489,19 @@
             this.label2.TabIndex = 102;
             this.label2.Text = "Y";
             // 
-            // HomeX
+            // CheckSensorButton
             // 
-            this.HomeX.Enabled = false;
-            this.HomeX.Location = new System.Drawing.Point(80, 11);
-            this.HomeX.Name = "HomeX";
-            this.HomeX.Size = new System.Drawing.Size(58, 25);
-            this.HomeX.TabIndex = 88;
-            this.HomeX.Tag = "HOME X";
-            this.HomeX.Text = "Home X";
-            this.HomeX.UseVisualStyleBackColor = true;
-            this.HomeX.Visible = false;
-            this.HomeX.Click += new System.EventHandler(this.ManualControlButton);
-            this.HomeX.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
-            this.HomeX.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
+            this.CheckSensorButton.Enabled = false;
+            this.CheckSensorButton.Location = new System.Drawing.Point(404, 31);
+            this.CheckSensorButton.Name = "CheckSensorButton";
+            this.CheckSensorButton.Size = new System.Drawing.Size(99, 25);
+            this.CheckSensorButton.TabIndex = 88;
+            this.CheckSensorButton.Tag = "SENSOR";
+            this.CheckSensorButton.Text = "Sensor Check";
+            this.CheckSensorButton.UseVisualStyleBackColor = true;
+            this.CheckSensorButton.Click += new System.EventHandler(this.ManualControlButton);
+            this.CheckSensorButton.MouseLeave += new System.EventHandler(this.ManualControlXYZMouseLeaveEvent);
+            this.CheckSensorButton.MouseHover += new System.EventHandler(this.ManualControlXYMouseHoverEvent);
             // 
             // YPosText
             // 
@@ -428,12 +516,12 @@
             // HomeZ
             // 
             this.HomeZ.Enabled = false;
-            this.HomeZ.Location = new System.Drawing.Point(80, 66);
+            this.HomeZ.Location = new System.Drawing.Point(404, 122);
             this.HomeZ.Name = "HomeZ";
-            this.HomeZ.Size = new System.Drawing.Size(58, 25);
+            this.HomeZ.Size = new System.Drawing.Size(99, 25);
             this.HomeZ.TabIndex = 90;
-            this.HomeZ.Tag = "HOME Z";
-            this.HomeZ.Text = "Home Z";
+            this.HomeZ.Tag = "UNHOLD";
+            this.HomeZ.Text = "Board Unhold";
             this.HomeZ.UseVisualStyleBackColor = true;
             this.HomeZ.Visible = false;
             this.HomeZ.Click += new System.EventHandler(this.ManualControlButton);
@@ -710,9 +798,9 @@
             // BoardHoldButton
             // 
             this.BoardHoldButton.Enabled = false;
-            this.BoardHoldButton.Location = new System.Drawing.Point(242, 23);
+            this.BoardHoldButton.Location = new System.Drawing.Point(404, 92);
             this.BoardHoldButton.Name = "BoardHoldButton";
-            this.BoardHoldButton.Size = new System.Drawing.Size(74, 40);
+            this.BoardHoldButton.Size = new System.Drawing.Size(99, 25);
             this.BoardHoldButton.TabIndex = 92;
             this.BoardHoldButton.Tag = "HOLD";
             this.BoardHoldButton.Text = "Board Hold";
@@ -834,12 +922,12 @@
             // TableFlipButton
             // 
             this.TableFlipButton.Enabled = false;
-            this.TableFlipButton.Location = new System.Drawing.Point(242, 177);
+            this.TableFlipButton.Location = new System.Drawing.Point(404, 153);
             this.TableFlipButton.Name = "TableFlipButton";
-            this.TableFlipButton.Size = new System.Drawing.Size(71, 28);
+            this.TableFlipButton.Size = new System.Drawing.Size(99, 24);
             this.TableFlipButton.TabIndex = 91;
-            this.TableFlipButton.Tag = "FLIP";
-            this.TableFlipButton.Text = "Flip Table";
+            this.TableFlipButton.Tag = "FLIPI";
+            this.TableFlipButton.Text = "Flip Table to I";
             this.TableFlipButton.UseVisualStyleBackColor = true;
             this.TableFlipButton.Click += new System.EventHandler(this.ManualControlButton);
             // 
@@ -875,9 +963,9 @@
             this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Controls.Add(this.FirstLayerTextBox);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.Location = new System.Drawing.Point(202, 3);
+            this.groupBox8.Location = new System.Drawing.Point(188, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(292, 236);
+            this.groupBox8.Size = new System.Drawing.Size(277, 236);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Process Creator";
@@ -1091,7 +1179,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(193, 236);
+            this.groupBox5.Size = new System.Drawing.Size(179, 236);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Open G-Code file";
@@ -1143,7 +1231,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox7.Location = new System.Drawing.Point(3, 258);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(996, 40);
+            this.groupBox7.Size = new System.Drawing.Size(1172, 40);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Custom G-Code";
@@ -1163,9 +1251,9 @@
             // 
             this.customGText.Dock = System.Windows.Forms.DockStyle.Right;
             this.customGText.Enabled = false;
-            this.customGText.Location = new System.Drawing.Point(81, 16);
+            this.customGText.Location = new System.Drawing.Point(88, 16);
             this.customGText.Name = "customGText";
-            this.customGText.Size = new System.Drawing.Size(912, 20);
+            this.customGText.Size = new System.Drawing.Size(1081, 20);
             this.customGText.TabIndex = 0;
             this.customGText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.customGText_KeyDown);
             // 
@@ -1175,7 +1263,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 361);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1002, 147);
+            this.groupBox3.Size = new System.Drawing.Size(1178, 147);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Communication Dialog";
@@ -1187,7 +1275,7 @@
             this.CommunicationBox.FormattingEnabled = true;
             this.CommunicationBox.Location = new System.Drawing.Point(3, 16);
             this.CommunicationBox.Name = "CommunicationBox";
-            this.CommunicationBox.Size = new System.Drawing.Size(996, 128);
+            this.CommunicationBox.Size = new System.Drawing.Size(1172, 128);
             this.CommunicationBox.TabIndex = 1;
             this.CommunicationBox.TabStop = false;
             this.CommunicationBox.UseTabStops = false;
@@ -1203,7 +1291,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 514);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1002, 45);
+            this.groupBox4.Size = new System.Drawing.Size(1178, 45);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Status";
@@ -1228,7 +1316,7 @@
             // 
             // ProgressBar
             // 
-            this.ProgressBar.Location = new System.Drawing.Point(759, 19);
+            this.ProgressBar.Location = new System.Drawing.Point(935, 15);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(234, 23);
             this.ProgressBar.Step = 100;
@@ -1237,7 +1325,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(699, 25);
+            this.label5.Location = new System.Drawing.Point(875, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 9;
@@ -1274,7 +1362,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1002, 45);
+            this.groupBox1.Size = new System.Drawing.Size(1178, 45);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " ";
@@ -1282,7 +1370,7 @@
             // StopButton
             // 
             this.StopButton.Enabled = false;
-            this.StopButton.Location = new System.Drawing.Point(626, 14);
+            this.StopButton.Location = new System.Drawing.Point(802, 14);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(75, 23);
             this.StopButton.TabIndex = 11;
@@ -1293,7 +1381,7 @@
             // PauseButton
             // 
             this.PauseButton.Enabled = false;
-            this.PauseButton.Location = new System.Drawing.Point(545, 14);
+            this.PauseButton.Location = new System.Drawing.Point(721, 14);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(75, 23);
             this.PauseButton.TabIndex = 10;
@@ -1322,7 +1410,7 @@
             // BeginButton
             // 
             this.BeginButton.Enabled = false;
-            this.BeginButton.Location = new System.Drawing.Point(425, 14);
+            this.BeginButton.Location = new System.Drawing.Point(601, 14);
             this.BeginButton.Name = "BeginButton";
             this.BeginButton.Size = new System.Drawing.Size(114, 23);
             this.BeginButton.TabIndex = 8;
@@ -1335,7 +1423,7 @@
             this.HardStopButton.BackColor = System.Drawing.Color.Red;
             this.HardStopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.HardStopButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HardStopButton.Location = new System.Drawing.Point(797, 9);
+            this.HardStopButton.Location = new System.Drawing.Point(973, 9);
             this.HardStopButton.Name = "HardStopButton";
             this.HardStopButton.Size = new System.Drawing.Size(196, 30);
             this.HardStopButton.TabIndex = 7;
@@ -1361,53 +1449,19 @@
             // 
             this.serialPort.BaudRate = 115200;
             this.serialPort.DtrEnable = true;
+            this.serialPort.PortName = "COM10";
+            this.serialPort.ErrorReceived += new System.IO.Ports.SerialErrorReceivedEventHandler(this.serialPort_ErrorReceived);
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-            // 
-            // UpdateSteps
-            // 
-            this.UpdateSteps.Enabled = false;
-            this.UpdateSteps.Location = new System.Drawing.Point(395, 106);
-            this.UpdateSteps.Name = "UpdateSteps";
-            this.UpdateSteps.Size = new System.Drawing.Size(89, 23);
-            this.UpdateSteps.TabIndex = 111;
-            this.UpdateSteps.Tag = "UPDATE";
-            this.UpdateSteps.Text = "Update New";
-            this.UpdateSteps.UseVisualStyleBackColor = true;
-            this.UpdateSteps.Click += new System.EventHandler(this.ManualControlButton);
-            // 
-            // LoadSteps
-            // 
-            this.LoadSteps.Enabled = false;
-            this.LoadSteps.Location = new System.Drawing.Point(395, 135);
-            this.LoadSteps.Name = "LoadSteps";
-            this.LoadSteps.Size = new System.Drawing.Size(89, 23);
-            this.LoadSteps.TabIndex = 112;
-            this.LoadSteps.Tag = "LOAD";
-            this.LoadSteps.Text = "EEPROM Load";
-            this.LoadSteps.UseVisualStyleBackColor = true;
-            this.LoadSteps.Click += new System.EventHandler(this.ManualControlButton);
-            // 
-            // SaveSteps
-            // 
-            this.SaveSteps.Enabled = false;
-            this.SaveSteps.Location = new System.Drawing.Point(395, 164);
-            this.SaveSteps.Name = "SaveSteps";
-            this.SaveSteps.Size = new System.Drawing.Size(89, 23);
-            this.SaveSteps.TabIndex = 113;
-            this.SaveSteps.Tag = "SAVE";
-            this.SaveSteps.Text = "EEPROM Save";
-            this.SaveSteps.UseVisualStyleBackColor = true;
-            this.SaveSteps.Click += new System.EventHandler(this.ManualControlButton);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.ClientSize = new System.Drawing.Size(1184, 562);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1024, 600);
-            this.MinimumSize = new System.Drawing.Size(1024, 600);
+            this.MaximumSize = new System.Drawing.Size(1200, 600);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1463,9 +1517,9 @@
         private System.Windows.Forms.Button BoardHoldButton;
         private System.Windows.Forms.TextBox ZChangeText;
         private System.Windows.Forms.Button TableFlipButton;
-        private System.Windows.Forms.Button HomeX;
+        private System.Windows.Forms.Button CheckSensorButton;
         private System.Windows.Forms.TextBox XYChangeText;
-        private System.Windows.Forms.Button HomeY;
+        private System.Windows.Forms.Button BoardLevelingButton;
         private System.Windows.Forms.Button Y3minus;
         private System.Windows.Forms.Button HomeZ;
         private System.Windows.Forms.Button Y2minus;
@@ -1535,6 +1589,10 @@
         private System.Windows.Forms.Button SaveSteps;
         private System.Windows.Forms.Button LoadSteps;
         private System.Windows.Forms.Button UpdateSteps;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
     }
 }
 

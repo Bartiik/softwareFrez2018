@@ -15,6 +15,11 @@ GCodeInterpreter::GCodeInterpreter()
 	_SpindleSpeed = BLDC_DEFAULT_SPEED;
 	_spindleIsWorking = false;
 	readFromEEPROM_SetUp();
+	arraySizeX = 11;
+	arraySizeY = 11;
+	//*LevelArray = (int16_t)realloc(LevelArray, sizeof(int16_t) * 121);
+	/*for (int i = 0; i < 121; i++)
+		LevelArray[i] = 0;*/
 	Clear();
 }
 
@@ -64,7 +69,7 @@ void GCodeInterpreter::SetSteppersEn(bool EN) {
 preparing for execution G00
 set dir for each axis
 */
-void GCodeInterpreter::RapidMotion_SetUp(float *stepDirX, float *stepDirY, float *stepDirZ, int16_t wantedX, int16_t wantedY, int16_t wantedZ) {
+void GCodeInterpreter::RapidMotion_SetUp(float *stepDirX, float *stepDirY, float *stepDirZ, int32_t wantedX, int32_t wantedY, int32_t wantedZ) {
 
 	// dir in X-axis
 	if (wantedX < _XPosition) 
@@ -109,7 +114,7 @@ void GCodeInterpreter::RapidMotion_SetUp(float *stepDirX, float *stepDirY, float
 preparing for execution G01
 calculating all the data needed for G01 movement
 */
-void GCodeInterpreter::LinearMotion_SetUp(float *deltaX, float *stepDirX, float *deltaY, float *stepDirY, float *ai, float *bi, float *d, float *whichCase, float *stepDirZ, int16_t wantedX, int16_t wantedY, int16_t wantedZ) {
+void GCodeInterpreter::LinearMotion_SetUp(float *deltaX, float *stepDirX, float *deltaY, float *stepDirY, float *ai, float *bi, float *d, float *whichCase, float *stepDirZ, int32_t wantedX, int32_t wantedY, int32_t wantedZ) {
 
 
 
@@ -185,6 +190,89 @@ void GCodeInterpreter::GotoBase_SetUp(float* procedure) {
 	*procedure = 1; 
 }
 
+void GCodeInterpreter::G29_SetUp(float* procedure, float* currentRow, float* currentCol, float *stepDirX, float *stepDirY, float *stepDirZ, float* move, float* setup, float* dX, float* dY)
+{
+	*procedure = 1;
+	*currentRow = 1;
+	*currentCol = 1;
+	*move = 0;
+	*setup = 1;
+	arraySizeX = (int)_I;
+	arraySizeY = (int)_J;
+	PCBsizeX = (_X-10)*_StepsPerMMX;
+	PCBsizeY = (_Y-10)*_StepsPerMMY;
+	// -10 poniewaz 5mm odpada na uchwyty z kazdej strony
+	*LevelArray = (int16_t)realloc(LevelArray, sizeof(int16_t)*arraySizeX*arraySizeY);
+	RapidMotion_SetUp(stepDirX, stepDirY, stepDirZ, _BEGINX - PCBsizeX / 2, _BEGINY, _ZPosition);
+	*dX = PCBsizeX / (arraySizeX-1);
+	*dY = PCBsizeY / (arraySizeY-1);
+
+}
+
+bool GCodeInterpreter::G29_Execute(float* procedure, float* currentRow, float* currentCol, float *stepDirX, float *stepDirY, float *stepDirZ, float* move, float* setup, float* dX, float* dY)
+{
+	switch ((int)*procedure)
+	{
+	case 1:
+		if (RapidMotion_Execute(stepDirX, stepDirY, stepDirZ, _BEGINX - PCBsizeX / 2, _BEGINY, _ZPosition))
+			*procedure = 2;
+		break;
+	case 2:
+		if (*currentRow <= arraySizeX)
+		{
+			if (*currentCol <= arraySizeY)
+			{
+				if (*move == 1)
+				{
+					if (*setup == 1)
+					{
+						RapidMotion_SetUp(stepDirX, stepDirY, stepDirZ, _XPosition, _YPosition + *dY, _ZPosition);
+						*setup = 0;
+					}
+					else
+					{
+						if (RapidMotion_Execute(stepDirX, stepDirY, stepDirZ, _XPosition, _YPosition + *dY, _ZPosition))
+						{
+							*move = 0;
+						}
+					}
+				}
+				else
+				{
+					
+					if (ZProbe_Execute())
+					{
+						*move = 1;
+						*setup = 1;
+						*currentCol = *currentCol + 1;
+					}
+				}
+			}
+			else
+			{
+				if (*setup == 1)
+				{
+					RapidMotion_SetUp(stepDirX, stepDirY, stepDirZ, _XPosition + *dX, _BEGINY, _ZPosition);
+					*setup = 0;
+				}
+				else
+				{
+					if (RapidMotion_Execute(stepDirX, stepDirY, stepDirZ, _XPosition + *dX, _BEGINY, _ZPosition))
+					{
+						*currentRow = *currentRow + 1;
+						*currentCol = 1;
+						*move = 0;
+					}
+				}
+			}
+		}
+		else
+		{
+			return true;
+		}
+		return false;
+	}
+}
 void GCodeInterpreter::setPosition_SetUp(float X, float Y, float Z)
 {
 	_XPosition = X;
@@ -225,6 +313,17 @@ void GCodeInterpreter::SpindleStop_SetUp(float* rotationSpeed)
 	_spindleIsWorking = false;
 }
 
+void GCodeInterpreter::SensorCheck_SetUp(float* procedure, float* procedure1)
+{
+	randomSeed(analogRead(RANDOM_SEED_1_PIN));
+	_X = random(5, 22);
+	randomSeed(analogRead(RANDOM_SEED_2_PIN));
+	_Y = random(0, 17);
+	CalculateSteps();
+	*procedure = 1;
+	GotoBase_SetUp(procedure1);
+}
+
 void GCodeInterpreter::setStepsPerMM_SetUp()
 {
 	if (_X != DUMMY_VALUE) _StepsPerMMX = _X;
@@ -240,13 +339,21 @@ void GCodeInterpreter::saveToEEPROM_SetUp()
 	uint8_t y2 = _StepsPerMMY - y1 * 256;
 	uint8_t z1 = _StepsPerMMZ >> 8;
 	uint8_t z2 = _StepsPerMMZ - z1 * 256;
+	uint8_t bx1 = _BEGINX >> 8;
+	uint8_t bx2 = _BEGINX - bx1 * 256;
+	uint8_t by1 = _BEGINY >> 8;
+	uint8_t by2 = _BEGINY - by1 * 256;
 	
 	EEPROM.update(EEPROM_SAVE_PLACE, x1);
-	EEPROM.update(EEPROM_SAVE_PLACE+1, x2);
-	EEPROM.update(EEPROM_SAVE_PLACE+2, y1);
-	EEPROM.update(EEPROM_SAVE_PLACE+3, y2);
-	EEPROM.update(EEPROM_SAVE_PLACE+4, z1);
-	EEPROM.update(EEPROM_SAVE_PLACE+5, z2);
+	EEPROM.update(EEPROM_SAVE_PLACE + 1, x2);
+	EEPROM.update(EEPROM_SAVE_PLACE + 2, y1);
+	EEPROM.update(EEPROM_SAVE_PLACE + 3, y2);
+	EEPROM.update(EEPROM_SAVE_PLACE + 4, z1);
+	EEPROM.update(EEPROM_SAVE_PLACE + 5, z2);
+	EEPROM.update(EEPROM_SAVE_PLACE + 6, bx1);
+	EEPROM.update(EEPROM_SAVE_PLACE + 7, bx2);
+	EEPROM.update(EEPROM_SAVE_PLACE + 8, by1);
+	EEPROM.update(EEPROM_SAVE_PLACE + 9, by2);
 }
 
 void GCodeInterpreter::readFromEEPROM_SetUp()
@@ -257,10 +364,16 @@ void GCodeInterpreter::readFromEEPROM_SetUp()
 	uint8_t y1 = EEPROM.read(index); index++; 
 	uint8_t y2 = EEPROM.read(index); index++; 
 	uint8_t z1 = EEPROM.read(index); index++; 
-	uint8_t z2 = EEPROM.read(index);
+	uint8_t z2 = EEPROM.read(index); index++;
+	uint8_t bx1 = EEPROM.read(index); index++;
+	uint8_t bx2 = EEPROM.read(index); index++;
+	uint8_t by1 = EEPROM.read(index); index++;
+	uint8_t by2 = EEPROM.read(index);
 	_StepsPerMMX = x1 * 256 + x2;
 	_StepsPerMMY = y1 * 256 + y2;
 	_StepsPerMMZ = z1 * 256 + z2;
+	_BEGINX = bx1 * 256 + bx2;
+	_BEGINY = by1 * 256 + by2;
 }
 
 void GCodeInterpreter::rotateTable_SetUp() {
@@ -299,10 +412,15 @@ void GCodeInterpreter::ExecutionIsComplete()
 	}
 }
 
+void GCodeInterpreter::U12_SetUp(float *stepDirX, float *stepDirY, float *stepDirZ)
+{
+	RapidMotion_SetUp(stepDirX, stepDirY, stepDirZ, _BEGINX, _BEGINY, _ZPosition);
+}
+
 /* autor: Maciej Wiecheć
 making single execution of one step of rapid motion
 */
-bool GCodeInterpreter::RapidMotion_Execute(float *stepDirX,float *stepDirY, float *stepDirZ, int16_t wantedX, int16_t wantedY, int16_t wantedZ) {
+bool GCodeInterpreter::RapidMotion_Execute(float *stepDirX,float *stepDirY, float *stepDirZ, int32_t wantedX, int32_t wantedY, int32_t wantedZ) {
 	TCNT1 = RAPID_SPEED;
 
 	/*if ((*stepDirX == -1 && StateMachine.returnEndstop(0))	 ||
@@ -319,24 +437,29 @@ bool GCodeInterpreter::RapidMotion_Execute(float *stepDirX,float *stepDirY, floa
 
 	//MMcomm.SendMessage("sen: "+(String)XStepper.GetBoolEnable());
 	//Serial.println("_X: " + (String)_X + " _XPoz: " + (String)_XPosition);
-	if (CheckMovementPossibility())
+	if (CheckMovementPossibility(stepDirX, stepDirY, stepDirZ))
 	{
+		bool ready = true;
 		if (wantedX != _XPosition)
 		{
 			XStepper.Step(*stepDirX);
 			_XPosition += *stepDirX;
+			ready = false;
 		}
 		if (wantedY != _YPosition)
 		{
 			YStepper.Step(*stepDirY);
 			_YPosition += *stepDirY;
+			ready = false;
 		}
 		if (wantedZ != _ZPosition)
 		{
 			ZStepper.Step(*stepDirZ);
 			_ZPosition += *stepDirZ;
+			ready = false;
 		}
-		if (wantedX == _XPosition && wantedY == _YPosition && wantedZ == _ZPosition)
+		//if (wantedX == _XPosition && wantedY == _YPosition && wantedZ == _ZPosition)
+		if(ready)
 		{
 			//Command.ExecutionIsComplete();
 			return true;
@@ -357,7 +480,7 @@ bool GCodeInterpreter::RapidMotion_Execute(float *stepDirX,float *stepDirY, floa
 /* autor: Maciej Wiecheć
 making single execution of one step in streight line
 */
-bool GCodeInterpreter::LinearMotion_Execute(float *deltaX, float *stepDirX, float *deltaY, float *stepDirY, float *ai, float *bi, float *d, float *whichCase, float *stepDirZ, int16_t wantedX, int16_t wantedY, int16_t wantedZ)
+bool GCodeInterpreter::LinearMotion_Execute(float *deltaX, float *stepDirX, float *deltaY, float *stepDirY, float *ai, float *bi, float *d, float *whichCase, float *stepDirZ, int32_t wantedX, int32_t wantedY, int32_t wantedZ)
 {
 	TCNT1 = WORKING_SPEED;
 
@@ -444,23 +567,26 @@ bool GCodeInterpreter::GotoBase_Execute(float* procedure)
 	//2 - Y-Min
 	//3 - Y-Max
 
-	switch (temp) {
-
-	case 1: {
-		if (StateMachine.returnEndstop(0) == 0) {
-			XStepper.Step(-1);
+	switch (temp) 
+	{
+	case 1:
+	{
+		if (!StateMachine.returnEndstop(Z_MIN_ENDSTOP))
+		{
+			ZStepper.Step(1);
 		}
-		else {
-			_XPosition = 0;
+		else
+		{
+			_ZPosition = 0;
 			*procedure = 2;
 		}
 	}
-			break;
+	break;
 
 	case 2: {
-		if (_XPosition < 500) {
-			XStepper.Step(1);
-			_XPosition += 1;
+		if (_ZPosition > -500) {
+			ZStepper.Step(-1);
+			_ZPosition -= 1;
 		}
 		else {
 			*procedure = 3;
@@ -470,31 +596,33 @@ bool GCodeInterpreter::GotoBase_Execute(float* procedure)
 
 	case 3: {
 		TCNT1 = GO_HOME_SLOW_SPEED;
-		if (StateMachine.returnEndstop(0) == 0) {
-			XStepper.Step(-1);
+		if (!StateMachine.returnEndstop(Z_MIN_ENDSTOP)) {
+			ZStepper.Step(1);
 		}
 		else {
-			_XPosition = 0;
+			_ZPosition = 0;
 			*procedure = 4;
 		}
 	}
 			break;
-
-	case 4: {
-		if (StateMachine.returnEndstop(2) == 0) {
-			YStepper.Step(-1);
+	case 4: 
+	{
+		if (!StateMachine.returnEndstop(X_MIN_ENDSTOP)) 
+		{
+			XStepper.Step(-1);
 		}
-		else {
-			_YPosition = 0;
+		else 
+		{
+			_XPosition = 0;
 			*procedure = 5;
 		}
 	}
 			break;
 
 	case 5: {
-		if (_YPosition < 1000) {
-			YStepper.Step(1);
-			_YPosition += 1;
+		if (_XPosition < 500) {
+			XStepper.Step(1);
+			_XPosition += 1;
 		}
 		else {
 			*procedure = 6;
@@ -504,23 +632,72 @@ bool GCodeInterpreter::GotoBase_Execute(float* procedure)
 
 	case 6: {
 		TCNT1 = GO_HOME_SLOW_SPEED;
-		if (StateMachine.returnEndstop(2) == 0) {
-			YStepper.Step(-1);
+		if (!StateMachine.returnEndstop(X_MIN_ENDSTOP)) {
+			XStepper.Step(-1);
 		}
 		else {
-			_YPosition = 0;
+			_XPosition = 0;
 			*procedure = 7;
 		}
 	}
 			break;
 
 	case 7: {
+		if (!StateMachine.returnEndstop(Y_MIN_ENDSTOP)) {
+			YStepper.Step(-1);
+		}
+		else {
+			_YPosition = 0;
+			*procedure = 8;
+		}
+	}
+			break;
+
+	case 8: {
+		if (_YPosition < 1000) {
+			YStepper.Step(1);
+			_YPosition += 1;
+		}
+		else {
+			*procedure = 9;
+		}
+	}
+			break;
+
+	case 9: {
+		TCNT1 = GO_HOME_SLOW_SPEED;
+		if (!StateMachine.returnEndstop(Y_MIN_ENDSTOP)) {
+			YStepper.Step(-1);
+		}
+		else {
+			_YPosition = 0;
+			*procedure = 10;
+		}
+	}
+			break;
+
+	default: {
 		////temporary diable the endstops
 		//StateMachine.SetEndstopsEn(1);
 		//Command.ExecutionIsComplete();
 		return true;
 	}
-			break;
+			 break;
+	}
+	return false;
+}
+
+bool GCodeInterpreter::ZProbe_Execute()
+{
+	if (!StateMachine.returnEndstop(TABLE_LEVEL_PROBE))
+	{
+		ZStepper.Step(-1);
+		_ZPosition -= 1;
+	}
+	else
+	{
+		_ZProbeValue = _ZPosition;
+		return true;
 	}
 	return false;
 }
@@ -568,6 +745,82 @@ bool GCodeInterpreter::SpindleStop_Execute(float* rotationSpeed)
 	return false;
 }
 
+bool GCodeInterpreter::SensorCheck_Execute(float* procedure, float* procedure1, float* stepDirX, float* stepDirY, float* stepDirZ)
+{
+		switch ((int)*procedure)
+		{
+		case 1:
+			if(GotoBase_Execute(procedure1))
+				*procedure = 2;
+			break;
+		case 2:
+			TCNT1 = RAPID_SPEED;
+			if (!StateMachine.returnEndstop(TABLE_LEVEL_ENDSTOP))
+			{
+				ZStepper.Step(-1);
+				_ZPosition -= 1;
+			}
+			else
+			{
+				_Z = _ZPosition;
+				*procedure = 3;
+			}
+			break;
+		case 3:
+			if (_ZPosition < _Z + 800)
+			{
+				ZStepper.Step(1);
+				_ZPosition += 1;
+			}
+			else {
+				*procedure = 4;
+			}
+			break;
+		case 4:
+			RapidMotion_SetUp(stepDirX, stepDirY, stepDirZ, _XinSTEPS, _YinSTEPS, _ZPosition);
+			*procedure = 5;
+			break;
+		case 5:
+			if (RapidMotion_Execute(stepDirX, stepDirY, stepDirZ, _XinSTEPS, _YinSTEPS, _ZPosition))
+				*procedure = 6;
+			break;
+		case 6:
+			if (_ZPosition > _Z - LEVEL_SENSOR_DELTA)
+			{
+				if (ZProbe_Execute())
+				{
+					*procedure = 7;
+					_SensorIsWorking = true;
+				}
+					
+			}
+			else
+			{
+				*procedure = 7;
+				_SensorIsWorking = false;
+			}
+			break;
+		case 7:
+			GotoBase_SetUp(procedure1);
+			*procedure = 8;
+			break;
+		case 8:
+			if (GotoBase_Execute(procedure1))
+				*procedure = 9;
+			break;
+		default:
+			if (!_SensorIsWorking)
+			{
+				StateMachine.SetErrorState(SENSOR_ERROR);
+				return false;
+			}
+			return true;
+			break;
+		}
+		
+	return false;
+}
+
 bool GCodeInterpreter::rotateTable_Execute() {
 	TCNT1 = RPS0_25;
 	float *temp = &_LV[0];
@@ -575,7 +828,7 @@ bool GCodeInterpreter::rotateTable_Execute() {
 	float *Distance = &_LV[2];
 	float *Direction = &_LV[3];
 
-	MMcomm.SendMessage("dist: " + (String)*Distance + " temp: " + (String)*temp + " endstop: " + (String)!Table.returnTablePosition());
+	//MMcomm.SendMessage("dist: " + (String)*Distance + " temp: " + (String)*temp + " endstop: " + (String)!Table.returnTablePosition());
 	
 	if (*Distance < 6000) {
 		Table.holder.Step(-1);
@@ -587,10 +840,10 @@ bool GCodeInterpreter::rotateTable_Execute() {
 			if (*Direction) Table.rotateClockwise();
 			else Table.rotateCounterClockwise();
 
-			MMcomm.SendMessage("rotation");
+			//MMcomm.SendMessage("rotation");
 		}
 		else {
-			MMcomm.SendMessage("closing");
+			//MMcomm.SendMessage("closing");
 			if (*temp == 349) {
 				Table.holder.SetEnable(0);
 				Table.setTablePosition(!Table.returnTablePosition());
@@ -646,6 +899,11 @@ bool GCodeInterpreter::boardUnlock_Execute() {
 	}
 }
 
+bool GCodeInterpreter::U12_Execute(float *stepDirX, float *stepDirY, float *stepDirZ)
+{
+	RapidMotion_Execute(stepDirX, stepDirY, stepDirZ, _BEGINX, _BEGINY, _ZPosition);
+}
+
 /* autor: Bartek Kudroń
 funkcja wykonywana co krok programu, w zależności od komendy różny kod.
 */
@@ -681,8 +939,14 @@ void GCodeInterpreter::ExecuteStep()
 		ExecutionIsComplete();
 		break;
 	case 28:
-
 		if (GotoBase_Execute(&_LV[0]))
+			ExecutionIsComplete();
+		break;
+	case 29:
+		if (G29_Execute(&_LV[0], &_LV[1], &_LV[2], &_LV[3], &_LV[4], &_LV[5], &_LV[6], &_LV[7], &_LV[8], &_LV[9]))
+			ExecutionIsComplete();
+	case 30:
+		if (ZProbe_Execute())
 			ExecutionIsComplete();
 		break;
 	case 90:
@@ -718,6 +982,10 @@ void GCodeInterpreter::ExecuteStep()
 			if (SpindleStop_Execute(&_LV[0]))
 				ExecutionIsComplete();
 			break;
+		case 48:
+			if (SensorCheck_Execute(&_LV[0], &_LV[1], &_LV[2], &_LV[3], &_LV[4]))
+				ExecutionIsComplete();
+			break;
 		case 92:
 			ExecutionIsComplete();
 			break;
@@ -744,8 +1012,12 @@ void GCodeInterpreter::ExecuteStep()
 			case 2:
 				boardUnlock_Execute();
 				break;
-			case 3: //U03 command - to be filled
-
+			case 11: //U03 command - to be filled
+				ExecutionIsComplete();
+				break;
+			case 12:
+				if (U12_Execute(&_LV[0], &_LV[1], &_LV[2]))
+					ExecutionIsComplete();
 				break;
 			default:
 				if (_S != DUMMY_VALUE)
@@ -814,7 +1086,6 @@ funkcja wykonywana przed rozpoczęciem pętli komendy. wykonywana raz, kod róż
 */
 void GCodeInterpreter::PrepareForExecution()
 {
-
 	//			G COMMANDS
 	SetSteppersEn(0);
 	switch ((int)_G)
@@ -855,14 +1126,19 @@ void GCodeInterpreter::PrepareForExecution()
 		Dwell_SetUp();
 		break;
 	case 20:
-		_unitsMM = true;
+		_unitsMM = false;
 		break;
 	case 21:
-		_unitsMM = false;
+		_unitsMM = true;
 		break;
 	case 28:
 		GotoBase_SetUp(&_LV[0]);
 		//SetSteppersEn(0);
+		break;
+	case 29:
+		G29_SetUp(&_LV[0], &_LV[1], &_LV[2], &_LV[3], &_LV[4], &_LV[5], &_LV[6], &_LV[7], &_LV[8], &_LV[9]);
+	case 30:
+		TCNT1 = RAPID_SPEED;
 		break;
 	case 90:
 		_AbsoluteMotion = true;
@@ -895,6 +1171,9 @@ void GCodeInterpreter::PrepareForExecution()
 			break;
 		case 5:
 			SpindleStop_SetUp(&_LV[0]);
+			break;
+		case 48:
+			SensorCheck_SetUp(&_LV[0], &_LV[1]);
 			break;
 		case 92:
 			setStepsPerMM_SetUp();
@@ -929,6 +1208,12 @@ void GCodeInterpreter::PrepareForExecution()
 			case 2: 
 				Table.holder.SetEnable(0);
 				break;
+			case 11:
+				_BEGINX = _X;
+				_BEGINY = _Y;
+				break;
+			case 12:
+				U12_SetUp(&_LV[0], &_LV[1], &_LV[2]);
 			default:
 				if (_S != DUMMY_VALUE)
 				{
@@ -1089,7 +1374,12 @@ bool GCodeInterpreter::Interpret(String command)
 
 	if (number != "")
 	{
-		*currentLetter = round(number.toFloat()*POSITION_ACCURACY_INVERSE)*POSITION_ACCURACY;
+		//MMcomm.SendMessage(number);
+		//MMcomm.SendMessage(String(number.toFloat()));
+		*currentLetter = round(number.toFloat()*POSITION_ACCURACY_INVERSE);
+		//MMcomm.SendMessage(String(*currentLetter));
+		*currentLetter *= POSITION_ACCURACY;
+		//MMcomm.SendMessage(String(*currentLetter));
 	}
 	if (!success)
 	{
@@ -1110,32 +1400,41 @@ bool GCodeInterpreter::Interpret(String command)
 
 void GCodeInterpreter::CalculateSteps()
 {
-	_XinSTEPS = _X;
-	_YinSTEPS = _Y;
-	_ZinSTEPS = _Z;
+	float x = _X;
+	float y = _Y;
+	float z = _Z;
+	//_XinSTEPS = _X * POSITION_ACCURACY_INVERSE;
+	//_YinSTEPS = _Y * POSITION_ACCURACY_INVERSE;
+	//_ZinSTEPS = _Z * POSITION_ACCURACY_INVERSE;
 	if (!_unitsMM)
 	{
-		_XinSTEPS *= INCH_TO_MM;
-		_YinSTEPS *= INCH_TO_MM;
-		_ZinSTEPS *= INCH_TO_MM;
+		x *= INCH_TO_MM;
+		y *= INCH_TO_MM;
+		z *= INCH_TO_MM;
+		//_XinSTEPS *= INCH_TO_MM;
+		//_YinSTEPS *= INCH_TO_MM;
+		//_ZinSTEPS *= INCH_TO_MM;
 	}
-	_XinSTEPS *= _StepsPerMMX;
-	_YinSTEPS *= _StepsPerMMY;
-	_ZinSTEPS *= _StepsPerMMZ;
+	_XinSTEPS = x * _StepsPerMMX;
+	_YinSTEPS = y * _StepsPerMMY;
+	_ZinSTEPS = z * _StepsPerMMZ;
+	//_XinSTEPS *= _StepsPerMMX * POSITION_ACCURACY;
+	//_YinSTEPS *= _StepsPerMMY * POSITION_ACCURACY;
+	//_ZinSTEPS *= _StepsPerMMZ * POSITION_ACCURACY;
 }
 
-bool GCodeInterpreter::CheckMovementPossibility()
+bool GCodeInterpreter::CheckMovementPossibility(float* stepDirX, float* stepDirY, float* stepDirZ)
 {
-	float *stepDirX = &_LV[0];
-	float *stepDirY = &_LV[1];
-	float *stepDirZ = &_LV[2];
 	if (((*stepDirX == -1) && (StateMachine.returnEndstop(X_MIN_ENDSTOP))) ||
 		((*stepDirX ==  1) && (StateMachine.returnEndstop(X_MAX_ENDSTOP))) ||
 		((*stepDirY == -1) && (StateMachine.returnEndstop(Y_MIN_ENDSTOP))) ||
 		((*stepDirY ==  1) && (StateMachine.returnEndstop(Y_MAX_ENDSTOP))) ||
-		((*stepDirZ == -1) && (StateMachine.returnEndstop(Z_MIN_ENDSTOP))) ||
-		((*stepDirZ ==  1) && (StateMachine.returnEndstop(Z_MAX_ENDSTOP))))
+		((*stepDirZ ==  1) && (StateMachine.returnEndstop(Z_MIN_ENDSTOP))) ||
+		((*stepDirZ == -1) && (StateMachine.returnEndstop(Z_MAX_ENDSTOP) ||
+							   StateMachine.returnEndstop(TABLE_LEVEL_ENDSTOP) ||
+							   StateMachine.returnEndstop(TABLE_LEVEL_PROBE))))
 	{
+		//MMcomm.SendMessage(String((*stepDirX == -1) && (StateMachine.returnEndstop(X_MIN_ENDSTOP))));
 		return false;
 	}
 	return true;

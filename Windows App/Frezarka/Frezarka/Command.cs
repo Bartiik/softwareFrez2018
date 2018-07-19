@@ -8,17 +8,19 @@ namespace Frezarka
 {
     public class Command
     {
+        public bool isAbsolute { get; private set; }
         double[] values;
         String chars;
         public Command()
         {
             values = new double[13];
-            chars = "GXYZIJMSFUEWP";
+            chars = "GXYZIJMFSUEWP";
             for (int i = 0; i < values.Length; i++)
                 values[i] = 1234.56789;
         }
-        public bool Fill(String code)
+        public bool Fill(String code, bool abs)
         {
+            isAbsolute = abs;
             bool test = true;
             code = code.Replace(" ", String.Empty);
             code = code.Replace(".", ",");
@@ -63,7 +65,9 @@ namespace Frezarka
             StringBuilder value = new StringBuilder();
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] != 1234.56789)
+                if (values[chars.IndexOf('F')] != 1234.56789 || values[0] == 94)
+                    return "U5";
+                else if (values[i] != 1234.56789)
                 {
                     value.Append(chars[i]);
                     value.Append(values[i]);

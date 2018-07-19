@@ -14,7 +14,12 @@ namespace Frezarka
         bool workingMessage = false;
         bool WorkInProgress = false;
         int currentMessage = 0;
+        public Form settings;
         public List<Command> Queue = new List<Command>();
+        double Xsize = 100;
+        double Ysize = 100;
+        int Xnum = 11;
+        int Ynum = 11;
         int Commands;
         public Form1()
         {
@@ -62,7 +67,7 @@ namespace Frezarka
                         OpenPortLabel.Text = serialPort.PortName;
                     }
                     Command begin = new Command();
-                    begin.Fill("U4");
+                    begin.Fill("U4",false);
                     try
                     {
                         serialPort.DiscardOutBuffer();
@@ -97,7 +102,7 @@ namespace Frezarka
         {
             String gcode = customGText.Text;
             Command temp = new Command();
-            if (temp.Fill(gcode))
+            if (temp.Fill(gcode,true))
             {
                 //MessageBox.Show(temp.ToSend());
                 customGText.Clear();
@@ -113,7 +118,7 @@ namespace Frezarka
                 {
                     serialPort.DiscardOutBuffer();
                 }
-                comm = updateMovement(comm);
+                if(!comm.isAbsolute) comm = updateMovement(comm);
                 addToCommunicationBox(true, comm);
                 serialPort.WriteLine(comm.ToSend());
                 workingMessage = true;
@@ -153,8 +158,8 @@ namespace Frezarka
             X3minus.Enabled = e;
             X4minus.Enabled = e;
             HomeAllButton.Enabled = e;
-            HomeX.Enabled = e;
-            HomeY.Enabled = e;
+            CheckSensorButton.Enabled = e;
+            BoardLevelingButton.Enabled = e;
             HomeZ.Enabled = e;
             BoardHoldButton.Enabled = e;
             TableFlipButton.Enabled = e;
@@ -221,11 +226,17 @@ namespace Frezarka
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Command temp = new Command();
+            //StringBuilder k = new StringBuilder();
+            //while(serialPort.BytesToRead > 0)
+            //{
+            //    k.AppendLine(serialPort.ReadByte().ToString());
+            //}
             String msg = serialPort.ReadLine();
             String State;
             int state;
+            msg.Remove(0, 1);
             State = msg[0].ToString();
-            //MessageBox.Show(msg);
+            
             String st = MillingMachineStateLabel.Text;
 
             if (Int32.TryParse(State, out state))
@@ -242,7 +253,7 @@ namespace Frezarka
             });
             msg = msg.Remove(0, 1);
             String message;
-            if (temp.Fill(msg))
+            if (temp.Fill(msg,true))
             {
                 if (temp.returnValue('W') != 1234.56789)
                 {
@@ -331,10 +342,23 @@ namespace Frezarka
             if(WorkInProgress)
             {
                 prepareMessage(AllCommands[currentMessage]);
-                ProgressBar.Value = currentMessage;
-                RemainingGCodesLabel.Text = (AllCommands.Count-currentMessage).ToString();
-                currentMessage++;
-
+                
+                ProgressBar.Invoke((MethodInvoker)delegate
+                {
+                    ProgressBar.Value = currentMessage;
+                });
+                
+                RemainingGCodesLabel.Invoke((MethodInvoker)delegate
+                {
+                    RemainingGCodesLabel.Text = (AllCommands.Count - currentMessage).ToString();
+                });
+                if (currentMessage < AllCommands.Count - 1)
+                    currentMessage++;
+                else
+                {
+                    WorkInProgress = false;
+                    //ManualControlEnable(true);
+                }
             }
 
 
@@ -475,11 +499,11 @@ namespace Frezarka
             AllCommands.Clear();
             StringBuilder k = new StringBuilder();
             int i = 0;
-            Command temp = new Command();
             if (FirstLayerTextBox.Text != "")
                 foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(FirstLayerTextBox.Text)]))
                 {
-                    if (temp.Fill(line))
+                    Command temp = new Command();
+                    if (temp.Fill(line,true))
                     {
                         AllCommands.Add(temp);
                     }
@@ -492,7 +516,8 @@ namespace Frezarka
             if (SecondLayerTextBox.Text != "")
                 foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(SecondLayerTextBox.Text)]))
                 {
-                    if (temp.Fill(line))
+                    Command temp = new Command();
+                    if (temp.Fill(line,true))
                     {
                         AllCommands.Add(temp);
                     }
@@ -505,7 +530,8 @@ namespace Frezarka
             if (HolesTextBox.Text != "")
                 foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(HolesTextBox.Text)]))
                 {
-                    if (temp.Fill(line))
+                    Command temp = new Command();
+                    if (temp.Fill(line,true))
                     {
                         AllCommands.Add(temp);
                     }
@@ -518,7 +544,8 @@ namespace Frezarka
             if (BoundaryTextBox.Text != "")
                 foreach (String line in File.ReadAllLines(FilesLoaded[OpenedGCodesList.Items.IndexOf(BoundaryTextBox.Text)]))
                 {
-                    if (temp.Fill(line))
+                    Command temp = new Command();
+                    if (temp.Fill(line, true))
                     {
                         AllCommands.Add(temp);
                     }
@@ -581,9 +608,89 @@ namespace Frezarka
         private void HardStopButton_Click(object sender, EventArgs e)
         {
             Command temp = new Command();
-            temp.Fill("U7");
+            temp.Fill("U7", true);
             sendCommand(temp);
         }
+        String AutomaticBedLeveling()
+        {
+            settings = new Form();
+            settings.ControlBox = false;
+            settings.Size = new System.Drawing.Size(250,150);
+            Button Close = new Button();
+            TextBox sizeX = new TextBox();
+            TextBox sizeY = new TextBox();
+            TextBox numX = new TextBox();
+            TextBox numY = new TextBox();
+            Label label1 = new Label();
+            Label label2 = new Label();
+            Label label3 = new Label();
+            Label label4 = new Label();
+
+            sizeX.Text = Xsize.ToString();
+            sizeY.Text = Ysize.ToString();
+            numX.Text = Xnum.ToString();
+            numY.Text = Ynum.ToString();
+
+            sizeX.Location = new System.Drawing.Point(115, 20);
+            sizeY.Location = new System.Drawing.Point(115, 40);
+            numX.Location = new System.Drawing.Point(115, 60);
+            numY.Location = new System.Drawing.Point(115, 80);
+
+            sizeX.Size = new System.Drawing.Size(90, 13);
+            sizeY.Size = new System.Drawing.Size(90, 13);
+            numX.Size = new System.Drawing.Size(90, 13);
+            numY.Size = new System.Drawing.Size(90, 13);
+
+            label1.Text = "PCB board size X: ";
+            label2.Text = "PCB board size Y: ";
+            label3.Text = "Points to check X: ";
+            label4.Text = "Points to check Y: ";
+
+            label1.Size = new System.Drawing.Size(95, 13);
+            label2.Size = new System.Drawing.Size(95, 13);
+            label3.Size = new System.Drawing.Size(95, 13);
+            label4.Size = new System.Drawing.Size(95, 13);
+
+            label1.Location = new System.Drawing.Point(20, 20);
+            label2.Location = new System.Drawing.Point(20, 40);
+            label3.Location = new System.Drawing.Point(20, 60);
+            label4.Location = new System.Drawing.Point(20, 80);
+
+            settings.Controls.Add(label1);
+            settings.Controls.Add(label2);
+            settings.Controls.Add(label3);
+            settings.Controls.Add(label4);
+            settings.Controls.Add(sizeX);
+            settings.Controls.Add(sizeY);
+            settings.Controls.Add(numX);
+            settings.Controls.Add(numY);
+
+            Close.Location = new System.Drawing.Point(120, 100);
+            Close.Text = "Save";
+            Close.Click += Close_Click;
+
+
+            settings.Controls.Add(Close);
+            settings.ShowDialog();
+            if (settings.DialogResult == DialogResult.OK)
+            {
+                Xsize = double.Parse(sizeX.Text);
+                Ysize = double.Parse(sizeY.Text);
+                Xnum = Int32.Parse(numX.Text);
+                Ynum = Int32.Parse(numY.Text);
+                return ("G29X" + sizeX.Text + "Y" + sizeY.Text + "I" + numX.Text + "J" + numY.Text);
+            }
+            else return "error";
+        }
+
+        
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            settings.DialogResult = DialogResult.OK;
+            settings.Close();
+        }
+
         private void ManualControlButton(object sender, EventArgs e)
         {
             Command temp = new Command();
@@ -592,9 +699,19 @@ namespace Frezarka
             switch (tag)
             {
                 case "HOME": message = "G28"; break;
-                case "HOME X": message = "G28"; break;
-                case "HOME Y": message = "G28"; break;
-                case "HOME Z": message = "G28"; break;
+                case "SENSOR": message = "M48"; break;
+                case "LEVEL": message = AutomaticBedLeveling(); break;
+                case "SAVE": message = "M500"; break;
+                case "LOAD": message = "M501"; break;
+                case "SET": message = "S1"+SpeedText.Text; break;
+                case "HOLD": message = "U01"; break;
+                case "UNHOLD": message = "U02"; break;
+                case "SPINDLEOFF": message = "M05"; break;
+                case "SPINDLEON": message = "M03"; break;
+                case "FLIPI": message = "U0"; break;
+                case "FLIPII": message = "U10"; break;
+                case "SETBEGIN": message = "U11"; break;
+                case "GOBEGIN": message = "U12"; break;
                 case "UPDATE":
                     {
                         StringBuilder k = new StringBuilder();
@@ -607,45 +724,6 @@ namespace Frezarka
                         message = k.ToString();
                         break;
                     }
-                case "SAVE": message = "M500"; break;
-                case "LOAD": message = "M501"; break;
-                case "SET":
-                    {
-                        message = "S1"+SpeedText.Text;
-                        break;
-                    }
-                case "HOLD":
-                    {
-                        {
-                            if (BoardHoldButton.Text == "Table Hold")
-                            {
-                                message = "U01";
-                                BoardHoldButton.Text = "Table Unhold";
-                            }
-                            else
-                            {
-                                message = "U02";
-                                BoardHoldButton.Text = "Table Hold";
-                            }
-                        }
-                    }
-                    break;
-                case "SPINDLE":
-                    {
-                        if(SpindleOnOff.Text=="Spindle On")
-                        {
-                            message = "M03";
-                            SpindleOnOff.Text="Spindle Off";
-                        }
-                        else
-                        {
-                            message = "M05";
-                            SpindleOnOff.Text = "Spindle On";
-                        }
-                        
-                        break;
-                    }
-                case "FLIP": message = "U0"; break;
                 default:
                     {
                         StringBuilder k = new StringBuilder();
@@ -670,7 +748,7 @@ namespace Frezarka
                         break;
                     }
             };
-            temp.Fill(message);
+            temp.Fill(message, false);
             prepareMessage(temp);
         }
         private void SpeedText_KeyUp(object sender, KeyEventArgs e)
@@ -737,12 +815,17 @@ namespace Frezarka
                     k.Append(double.Parse(ZPosText.Text));
                 }
                 
-                C.Fill(k.ToString());
+                C.Fill(k.ToString(), true);
                 comm = C;
             }
             
 
             return comm;
+        }
+
+        private void serialPort_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
         }
     }
     

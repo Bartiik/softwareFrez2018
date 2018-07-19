@@ -89,7 +89,8 @@ void RoTable::rotateCounterClockwise()
 }
 void RoTable::stop()
 {
-	analogWrite(DC_ENABLE, BLDC_MAXIMUM_SPEED_VALUE);
+	holder.SetEnable(1);
+	analogWrite(DC_ENABLE, 0);
 	digitalWrite(DC_DIR_2, HIGH);
 	digitalWrite(DC_DIR_1, HIGH);
 }
